@@ -1,0 +1,68 @@
+teamname IMPORTANT
+
+1 paragraph summary before the end of the week
+
+*Comments YA NEED IT
+STACK
+    Java, 
+    Oracle SQL (RDS) aka hibernate
+    Angular
+        Java Web Token
+    Maven
+    Unit Testing
+        *Selenium, (cucumber), TestNG YA NEED IT
+    Logging
+    (Servlets) -> (Jersey)
+    suggestion: (JWT)
+    -& More!
+
+Ticket system
+    Users
+        roles
+        purchase points (used for rewards)
+            purchase price x 10, for premium its purchase price x 25
+            5000 point consumed for 30% off for any ticket
+            10,000 points redeemed for 50% off any ticket OR a free ticket from a set list
+
+    roles
+        User role
+        premium user role
+            Seat assignment
+            Upon ticket availability only premium users can buy for a certain amount of time
+        admin role
+
+    Ticket specification
+        Name of event
+        Date of event
+        Description of event
+        Seat choice (PREMIUM ONLY)
+
+
+
+
+
+
+
+
+
+
+Extra stuff.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
