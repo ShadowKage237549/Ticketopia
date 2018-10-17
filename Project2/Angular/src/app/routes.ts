@@ -1,6 +1,6 @@
 import { HomeComponent } from './Components/home/home.component';
 import { ForumComponent } from './Components/forum/forum.component';
-import { Routes } from "@angular/router";
+import { Routes } from '@angular/router';
 import { StoreComponent } from './Components/store/store.component';
 import { LoginComponent } from './Components/login/login.component';
 
@@ -11,6 +11,10 @@ export const appRoutes: Routes = [
     },
     {
         path: 'store',
+        component: StoreComponent
+    },
+    {
+        path: 'home/store',
         component: StoreComponent
     },
     {
@@ -27,7 +31,7 @@ export const appRoutes: Routes = [
     },
     {
         path: '**',
-        redirectTo:'home',
+        redirectTo: 'home',
         pathMatch: 'full'
     }
 ];
