@@ -6,6 +6,8 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HomeComponent } from './Components/home/home.component';
 import { ForumComponent } from './Components/forum/forum.component';
 import { StoreComponent } from './Components/store/store.component';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './Components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -13,10 +15,12 @@ import { StoreComponent } from './Components/store/store.component';
     NavbarComponent,
     HomeComponent,
     ForumComponent,
-    StoreComponent
+    StoreComponent,
+    LoginComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
