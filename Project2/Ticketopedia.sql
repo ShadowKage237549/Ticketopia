@@ -14,7 +14,7 @@ DROP TABLE Forum CASCADE CONSTRAINTS;
 DROP TABLE Topic CASCADE CONSTRAINTS;
 DROP TABLE Posts CASCADE CONSTRAINTS;
 DROP TABLE Comments CASCADE CONSTRAINTS;
-
+DROP TABLE Partners CASCADE CONSTRAINTS;
 
 CREATE TABLE CustomerInformation( 
  userId Number(6), -- pk
@@ -67,6 +67,10 @@ topicId NUMBER (10),
 topicName VARCHAR2 (100)
 );
 
+CREATE TABLE Partners (
+partnerId NUMBER (6),
+partnerName VARCHAR2(100)
+);
 
  CREATE TABLE Tickets (
  ticketId NUMBER(6), --pk
@@ -130,12 +134,10 @@ userId NUMBER (6),
 post TIMESTAMP
 );
 
-CREATE TABLE Partners (
-partnerId NUMBER (6),
-partnerName VARCHAR2(100)
-);
+
 
 --PL SQL Section Below 
+--Add drop sequences prior to creating sequences 
 
 CREATE SEQUENCE CustomerInformation_seq
     START WITH 0
@@ -148,51 +150,6 @@ FOR EACH ROW
 BEGIN
     IF :new.userId IS NULL THEN
         SELECT CustomerInformation_seq.NEXTVAL INTO :new.userId FROM Dual;
-    END IF;
-END;
-/
-
-CREATE SEQUENCE Credentials_seq
-    START WITH 0
-    INCREMENT BY 1;
-/
-
-CREATE OR REPLACE TRIGGER Credentials_auto_inc
-BEFORE INSERT ON Credentials
-FOR EACH ROW
-BEGIN
-    IF :new.userId IS NULL THEN
-        SELECT Credentials_seq.NEXTVAL INTO :new.userId FROM Dual;
-    END IF;
-END;
-/
-
-CREATE SEQUENCE PaymentInfo_seq
-    START WITH 0
-    INCREMENT BY 1;
-/
-
-CREATE OR REPLACE TRIGGER PaymentInfo_auto_inc
-BEFORE INSERT ON PaymentInfo
-FOR EACH ROW
-BEGIN
-    IF :new.userId IS NULL THEN
-        SELECT PaymentInfo_seq.NEXTVAL INTO :new.userId FROM Dual;
-    END IF;
-END;
-/
-
-CREATE SEQUENCE UserType_seq
-    START WITH 0
-    INCREMENT BY 1;
-/
-
-CREATE OR REPLACE TRIGGER UserType_auto_inc
-BEFORE INSERT ON UserType
-FOR EACH ROW
-BEGIN
-    IF :new.roleId IS NULL THEN
-        SELECT UserType_seq.NEXTVAL INTO :new.roleId FROM Dual;
     END IF;
 END;
 /
@@ -238,21 +195,6 @@ FOR EACH ROW
 BEGIN
     IF :new.userId IS NULL THEN
         SELECT Comments_seq.NEXTVAL INTO :new.userId FROM Dual;
-    END IF;
-END;
-/
-
-CREATE SEQUENCE FreeTickets_seq
-    START WITH 0
-    INCREMENT BY 1;
-/
-
-CREATE OR REPLACE TRIGGER FreeTickets_auto_inc
-BEFORE INSERT ON FreeTickets
-FOR EACH ROW
-BEGIN
-    IF :new.ticketId IS NULL THEN
-        SELECT FreeTickets_seq.NEXTVAL INTO :new.ticketId FROM Dual;
     END IF;
 END;
 /
