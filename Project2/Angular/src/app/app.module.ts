@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './Components/login/login.component';
 import { ForumtopicComponent } from './Components/forumtopic/forumtopic.component';
 import { ForumpostComponent } from './Components/forumpost/forumpost.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,9 @@ import { ForumpostComponent } from './Components/forumpost/forumpost.component';
     HttpClientModule,
     RouterModule.forRoot(appRoutes, { useHash:true })
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
