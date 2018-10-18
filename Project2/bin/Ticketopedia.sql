@@ -17,22 +17,22 @@ DROP TABLE Comments CASCADE CONSTRAINTS;
 DROP TABLE Partners CASCADE CONSTRAINTS;
 
 CREATE TABLE CustomerInformation( 
- userId Number(6), -- pk
+ customerEmail VARCHAR2 (100),
  displayName VARCHAR2(100),
  userFName VARCHAR2(100),
  userLName VARCHAR2(100),
  accumulatedPoints NUMBER(8),
  userType NUMBER(6), --This is replacing role since ROLE is a keyword in SQL, fk points to usertype table
  customerAddress VARCHAR2(100),
- customerEmail VARCHAR2 (100),
- CONSTRAINT CustomerInformation_pk PRIMARY KEY (userId)
+ 
+ CONSTRAINT CustomerInformation_pk PRIMARY KEY (customerEmail)
  );
  
  CREATE TABLE Credentials (
- userId NUMBER (6), --fk points to customerinfo userid
+ customerEmail NUMBER (6), --fk points to customerinfo userid
  userPass VARCHAR2(100),
- CONSTRAINT Credentials_fk FOREIGN KEY (userId)
- REFERENCES CustomerInformation (userId)
+ CONSTRAINT Credentials_fk FOREIGN KEY (customerEmail)
+ REFERENCES CustomerInformation (customerEmail)
  );
  
  CREATE TABLE PaymentInfo (
