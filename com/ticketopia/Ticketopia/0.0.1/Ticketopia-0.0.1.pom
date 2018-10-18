@@ -27,6 +27,8 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<github.global.server>github</github.global.server>
+		<angular.project.location>Angular</angular.project.location>
+		<angular.project.nodeinstallation>node_installation</angular.project.nodeinstallation>
 	</properties>
 
 	<dependencies>
@@ -47,6 +49,8 @@
 			<artifactId>ojdbc7</artifactId>
 			<groupId>com.oracle</groupId>
 			<version>12.1.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/resources/ojdbc7-12.1.0.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -94,6 +98,81 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.0</version>
+				<configuration>
+					<workingDirectory>${angular.project.location}</workingDirectory>
+					<installDirectory>${angular.project.nodeinstallation}</installDirectory>
+				</configuration>
+				<executions>
+					<!-- It will install nodejs and npm -->
+					<execution>
+						<id>install node and npm</id>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<nodeVersion>v6.10.0</nodeVersion>
+							<npmVersion>3.10.10</npmVersion>
+						</configuration>
+					</execution>
+
+					<!-- It will execute command "npm install" inside "/e2e-angular2" directory -->
+					<execution>
+						<id>npm install</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+					<!-- It will execute command "npm build" inside "/e2e-angular2" directory 
+						to clean and create "/dist" directory -->
+					<execution>
+						<id>npm build</id>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>build</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- Plugin to copy the content of /angular/dist/ directory to output 
+				directory (ie/ /target/transactionManager-1.0/) -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4.2</version>
+				<executions>
+					<execution>
+						<id>default-copy-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<overwrite>true</overwrite>
+							<!-- This folder is the folder where your angular files will be copied 
+								to. It must match the resulting war-file name. So if you have customized 
+								the name of war-file for ex. as "app.war" then below value should be ${project.build.directory}/app/ 
+								Value given below is as per default war-file name -->
+							<outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}/</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/${angular.project.location}/dist</directory>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 </project>
