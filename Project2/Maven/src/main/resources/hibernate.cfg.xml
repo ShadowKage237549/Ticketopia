@@ -55,14 +55,17 @@
 			update
 		</property>
 
-		<mapping resource="candy.hbm.xml" />
-		<mapping class="com.revature.beans.Family" />
-		<mapping class="com.revature.beans.Member" />
-		<mapping class="com.revature.beans.Status"/>
-		<mapping class="com.revature.beans.Task"/>
-		<mapping class="com.revature.beans.TaskStatus"/>
-
-		<mapping class="com.revature.beans.Rank" />
+		<mapping resource="ticketopia.hbm.xml" />
+		<mapping class="com.ticketopia.beans.Comments" />
+		<mapping class="com.ticketopia.beans.CustomerInfo" />
+		<mapping class="com.ticketopia.beans.EventTypes" />
+		<mapping class="com.ticketopia.beans.ForumPosts" />
+		<mapping class="com.ticketopia.beans.FreeTickets" />
+		<mapping class="com.ticketopia.beans.Partners" />
+		<mapping class="com.ticketopia.beans.PaymentInfo" />
+		<mapping class="com.ticketopia.beans.Tickets" />
+		<mapping class="com.ticketopia.beans.Topics" />
+		<mapping class="com.ticketopia.beans.UserRoles" />
 
 
 	</session-factory>
