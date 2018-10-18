@@ -2,18 +2,18 @@
 --This table will eventually be integrated into a more dynamic table using Hibernate. 
 
 --DDL Section
-DROP TABLE CustomerInformation;
-DROP TABLE Credentials;
-DROP TABLE PaymentInfo;
-DROP TABLE UserType;
-DROP TABLE EventTypes;
-DROP TABLE Tickets;
-DROP TABLE Comments;
-DROP TABLE FreeTickets;
-DROP TABLE Forum;
-DROP TABLE Topic;
-DROP TABLE Posts;
-DROP TABLE Comments;
+DROP TABLE CustomerInformation CASCADE CONSTRAINTS;
+DROP TABLE Credentials CASCADE CONSTRAINTS;
+DROP TABLE PaymentInfo CASCADE CONSTRAINTS;
+DROP TABLE UserType CASCADE CONSTRAINTS;
+DROP TABLE EventTypes CASCADE CONSTRAINTS;
+DROP TABLE Tickets CASCADE CONSTRAINTS;
+DROP TABLE Comments CASCADE CONSTRAINTS;
+DROP TABLE FreeTickets CASCADE CONSTRAINTS;
+DROP TABLE Forum CASCADE CONSTRAINTS;
+DROP TABLE Topic CASCADE CONSTRAINTS;
+DROP TABLE Posts CASCADE CONSTRAINTS;
+DROP TABLE Comments CASCADE CONSTRAINTS;
 
 
 CREATE TABLE CustomerInformation( 
@@ -21,7 +21,7 @@ CREATE TABLE CustomerInformation(
  displayName VARCHAR2(100),
  userFName VARCHAR2(100),
  userLName VARCHAR2(100),
- accumulatedPoints NUMBER(8,2),
+ accumulatedPoints NUMBER(8),
  userType NUMBER(6), --This is replacing role since ROLE is a keyword in SQL, fk points to usertype table
  customerAddress VARCHAR2(100),
  customerEmail VARCHAR2 (100),
@@ -61,11 +61,17 @@ eventTypeId NUMBER (6), --pk
 eventType VARCHAR2 (100),
 CONSTRAINT EventTypes_pk PRIMARY KEY (eventTypeId)
 );
- 
+
+CREATE TABLE Topics(
+topicId NUMBER (10),
+topicName VARCHAR2 (100)
+);
+
+
  CREATE TABLE Tickets (
  ticketId NUMBER(6), --pk
  ticketType VARCHAR2 (100),
- topic VARCHAR2(100), --fk points to topics table
+ topic NUMBER (10), --fk points to topics table
  eventTypeId NUMBER(6), --fk points to eventtypes
  ticketPrice NUMBER (8,2),
  eventDescription VARCHAR2(1000),
@@ -73,11 +79,12 @@ CONSTRAINT EventTypes_pk PRIMARY KEY (eventTypeId)
  eventCity VARCHAR2 (50),
  eventState VARCHAR2 (2),
  eventZip NUMBER (5),
- seat NUMBER(6),
+ seat VARCHAR2(6),
+ partnerId NUMBER (6),
  CONSTRAINT Tickets_pk PRIMARY KEY (ticketId),
  CONSTRAINT topic_fk FOREIGN KEY (topic)
     REFERENCES Topics (topicId), --[Phil] Not 100% sure if this is setup correctly.
-CONSTRAINT eventTypeId_fk FOREIGN KEY (eventTypeId)
+ CONSTRAINT eventTypeId_fk FOREIGN KEY (eventTypeId)
     REFERENCES EventTypes (eventTypeId) --[Phil] This will need to be looked at too.
  );
  
@@ -102,13 +109,9 @@ CONSTRAINT FreeTickets_fk FOREIGN KEY (ticketId)
 CREATE TABLE Forum (
 userId NUMBER(6),
 message VARCHAR2(4000),
-postId NUMBEr (10)
+postId NUMBER (10)
 );
 
-CREATE TABLE Topics(
-topicId NUMBER (10),
-topicName VARCHAR2 (100)
-);
 
 CREATE TABLE Posts (
 postId NUMBER (10),
@@ -127,9 +130,10 @@ userId NUMBER (6),
 post TIMESTAMP
 );
 
-
-
-
+CREATE TABLE Partners (
+partnerId NUMBER (6),
+partnerName VARCHAR2(100)
+);
 
 --PL SQL Section Below 
 
