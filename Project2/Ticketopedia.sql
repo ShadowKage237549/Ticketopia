@@ -11,6 +11,9 @@ DROP TABLE Tickets;
 DROP TABLE Comments;
 DROP TABLE FreeTickets;
 DROP TABLE Forum;
+DROP TABLE Topic;
+DROP TABLE Posts;
+DROP TABLE Comments;
 
 
 CREATE TABLE CustomerInformation( 
@@ -98,13 +101,36 @@ CONSTRAINT FreeTickets_fk FOREIGN KEY (ticketId)
 
 CREATE TABLE Forum (
 userId NUMBER(6),
-message VARCHAR2(4000)
+message VARCHAR2(4000),
+postId NUMBEr (10)
 );
 
 CREATE TABLE Topics(
-topicId NUMBER (100),
+topicId NUMBER (10),
 topicName VARCHAR2 (100)
 );
+
+CREATE TABLE Posts (
+postId NUMBER (10),
+postTitle VARCHAR2(50),
+postContent VARCHAR2 (500),
+topicId NUMBER (10), --fk
+userId NUMBER(6),
+post TIMESTAMP
+);
+
+CREATE TABLE Comments (
+commentId NUMBER (10),
+commentContent VARCHAR2 (1000),
+postId NUMBER (10),
+userId NUMBER (6),
+post TIMESTAMP
+);
+
+
+
+
+
 --PL SQL Section Below 
 
 CREATE SEQUENCE CustomerInformation_seq

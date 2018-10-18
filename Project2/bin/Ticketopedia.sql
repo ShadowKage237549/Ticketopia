@@ -11,6 +11,9 @@ DROP TABLE Tickets;
 DROP TABLE Comments;
 DROP TABLE FreeTickets;
 DROP TABLE Forum;
+DROP TABLE Topic;
+DROP TABLE Posts;
+DROP TABLE Comments;
 
 
 CREATE TABLE CustomerInformation( 
@@ -98,12 +101,171 @@ CONSTRAINT FreeTickets_fk FOREIGN KEY (ticketId)
 
 CREATE TABLE Forum (
 userId NUMBER(6),
-message VARCHAR2(4000)
+message VARCHAR2(4000),
+postId NUMBEr (10)
 );
 
 CREATE TABLE Topics(
-topicId NUMBER (100),
+topicId NUMBER (10),
 topicName VARCHAR2 (100)
 );
+
+CREATE TABLE Posts (
+postId NUMBER (10),
+postTitle VARCHAR2(50),
+postContent VARCHAR2 (500),
+topicId NUMBER (10), --fk
+userId NUMBER(6),
+post TIMESTAMP
+);
+
+CREATE TABLE Comments (
+commentId NUMBER (10),
+commentContent VARCHAR2 (1000),
+postId NUMBER (10),
+userId NUMBER (6),
+post TIMESTAMP
+);
+
+
+
+
+
 --PL SQL Section Below 
+
+CREATE SEQUENCE CustomerInformation_seq
+    START WITH 0
+    INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER CustomerInformation_auto_inc
+BEFORE INSERT ON CustomerInformation
+FOR EACH ROW
+BEGIN
+    IF :new.userId IS NULL THEN
+        SELECT CustomerInformation_seq.NEXTVAL INTO :new.userId FROM Dual;
+    END IF;
+END;
+/
+
+CREATE SEQUENCE Credentials_seq
+    START WITH 0
+    INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER Credentials_auto_inc
+BEFORE INSERT ON Credentials
+FOR EACH ROW
+BEGIN
+    IF :new.userId IS NULL THEN
+        SELECT Credentials_seq.NEXTVAL INTO :new.userId FROM Dual;
+    END IF;
+END;
+/
+
+CREATE SEQUENCE PaymentInfo_seq
+    START WITH 0
+    INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER PaymentInfo_auto_inc
+BEFORE INSERT ON PaymentInfo
+FOR EACH ROW
+BEGIN
+    IF :new.userId IS NULL THEN
+        SELECT PaymentInfo_seq.NEXTVAL INTO :new.userId FROM Dual;
+    END IF;
+END;
+/
+
+CREATE SEQUENCE UserType_seq
+    START WITH 0
+    INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER UserType_auto_inc
+BEFORE INSERT ON UserType
+FOR EACH ROW
+BEGIN
+    IF :new.roleId IS NULL THEN
+        SELECT UserType_seq.NEXTVAL INTO :new.roleId FROM Dual;
+    END IF;
+END;
+/
+
+CREATE SEQUENCE EventTypes_seq
+    START WITH 0
+    INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER EventTypes_auto_inc
+BEFORE INSERT ON EventTypes
+FOR EACH ROW
+BEGIN
+    IF :new.eventTypeId IS NULL THEN
+        SELECT EventTypes_seq.NEXTVAL INTO :new.eventTypeId FROM Dual;
+    END IF;
+END;
+/
+
+CREATE SEQUENCE Tickets_seq
+    START WITH 0
+    INCREMENT BY 1;
+/
+    
+CREATE OR REPLACE TRIGGER Tickets_auto_inc
+BEFORE INSERT ON Tickets
+FOR EACH ROW
+BEGIN
+    IF :new.ticketId IS NULL THEN
+        SELECT Tickets_seq.NEXTVAL INTO :new.ticketId FROM Dual;
+    END IF;
+END;
+/
+
+CREATE SEQUENCE Comments_seq
+    START WITH 0
+    INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER Comments_auto_inc
+BEFORE INSERT ON Comments
+FOR EACH ROW
+BEGIN
+    IF :new.userId IS NULL THEN
+        SELECT Comments_seq.NEXTVAL INTO :new.userId FROM Dual;
+    END IF;
+END;
+/
+
+CREATE SEQUENCE FreeTickets_seq
+    START WITH 0
+    INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER FreeTickets_auto_inc
+BEFORE INSERT ON FreeTickets
+FOR EACH ROW
+BEGIN
+    IF :new.ticketId IS NULL THEN
+        SELECT FreeTickets_seq.NEXTVAL INTO :new.ticketId FROM Dual;
+    END IF;
+END;
+/
+
+CREATE SEQUENCE Forum_seq
+    START WITH 0
+    INCREMENT BY 1;
+/
+
+CREATE OR REPLACE TRIGGER Forum_auto_inc
+BEFORE INSERT ON Forum
+FOR EACH ROW
+BEGIN
+    IF :new.userId IS NULL THEN
+        SELECT Forum_seq.NEXTVAL INTO :new.userId FROM Dual;
+    END IF;
+END;
+/
+    
 commit;
