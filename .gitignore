@@ -20,7 +20,7 @@
 **/.recommenders/**
 **/Servers
 **/.springBeans
-
+**/node_installation
 #IDEA
 **/.idea/
 **/*.iml
