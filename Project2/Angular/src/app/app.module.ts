@@ -27,7 +27,7 @@ import { ForumpostComponent } from './Components/forumpost/forumpost.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, { useHash:true })
   ],
   providers: [],
   bootstrap: [AppComponent]

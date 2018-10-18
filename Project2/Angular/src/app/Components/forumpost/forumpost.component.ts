@@ -1,3 +1,5 @@
+import { ForumPost } from './post/ForumPost';
+import { ForumComment } from './comment/ForumComment';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,8 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class ForumpostComponent implements OnInit {
 
   constructor() { }
-  post:string = "forumPostname";
-  postId:number;
+  selectedPost:ForumPost = new ForumPost(1,"Post Title 1", "Post Content");
+  forumComments:ForumComment[] = [new ForumComment(2,"commentContent")];
+  postId:number = this.selectedPost.postId;
+  postContent:string = this.selectedPost.postContent;
+  postTitle:string = this.selectedPost.postTitle;
 
   ngOnInit() {
   }
