@@ -5,7 +5,7 @@ public class Tickets {
 	private String ticketType;
 	private Integer topicId;
 	private Integer eventTypeId;
-	private Integer ticketPrice;
+	private Double ticketPrice;
 	private String eventDescription;
 	private String eventAddress;
 	private String eventCity;
@@ -37,10 +37,10 @@ public class Tickets {
 	public void setEventTypeId(Integer eventTypeId) {
 		this.eventTypeId = eventTypeId;
 	}
-	public Integer getTicketPrice() {
+	public Double getTicketPrice() {
 		return ticketPrice;
 	}
-	public void setTicketPrice(Integer ticketPrice) {
+	public void setTicketPrice(Double ticketPrice) {
 		this.ticketPrice = ticketPrice;
 	}
 	public String getEventDescription() {
@@ -92,7 +92,7 @@ public class Tickets {
 				+ eventDescription + ", eventAddress=" + eventAddress + ", eventCity=" + eventCity + ", eventState="
 				+ eventState + ", eventZip=" + eventZip + ", seat=" + seat + ", partnerId=" + partnerId + "]";
 	}
-	public Tickets(Integer ticketId, String ticketType, Integer topicId, Integer eventTypeId, Integer ticketPrice,
+	public Tickets(Integer ticketId, String ticketType, Integer topicId, Integer eventTypeId, Double ticketPrice,
 			String eventDescription, String eventAddress, String eventCity, String eventState, Integer eventZip,
 			String seat, Integer partnerId) {
 		super();
@@ -109,7 +109,7 @@ public class Tickets {
 		this.seat = seat;
 		this.partnerId = partnerId;
 	}
-	public Tickets(String ticketType, Integer topicId, Integer eventTypeId, Integer ticketPrice,
+	public Tickets(String ticketType, Integer topicId, Integer eventTypeId, Double ticketPrice,
 			String eventDescription, String eventAddress, String eventCity, String eventState, Integer eventZip,
 			String seat, Integer partnerId) {
 		super();

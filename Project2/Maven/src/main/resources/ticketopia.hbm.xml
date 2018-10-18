@@ -46,7 +46,100 @@
 		<property name="displayName" type="string" />
 		<property name="message" type="string" />
 		<property name="commentTimeStamp" type="string" />
+	</class>
+	<class name="com.ticketopia.beans.EventTypes" table="EventTypes">
+		<meta attribute="class-description">
+			A class containing types of events
+		</meta>
+		<id name="eventTypeId" type="int" column="eventTypeId">
+			<generator class="native">
+				<param name="sequence">EventTypes_seq</param>
+			</generator>
+		</id>
 		
+		<property name="eventType" type="string" />
+	</class>
+	<class name="com.ticketopia.beans.ForumPosts" table="Posts">
+		<meta attribute="class-description">
+			A class containing posts about topics
+		</meta>
+		<id name="postId" type="int" column="postId">
+			<generator class="native">
+				<param name="sequence">Forum_seq</param>
+			</generator>
+		</id>
+		
+		<property name="postTitle" type="string" />
+		<property name="postContent" type="string" />
+		<property name="topicId" type="int" />
+		<property name="displayName" type="string" />
+		<property name="postTimeStamp" type="string" />
+	</class>
+	<class name="com.ticketopia.beans.FreeTickets" table="FreeTickets">
+		<meta attribute="class-description">
+			A class containing a list of free tickets
+		</meta>
+		<id name="ticketId" type="int" column="ticketId"></id>
+	</class>
+	<class name="com.ticketopia.beans.Partners" table="Partners">
+		<meta attribute="class-description">
+			A class containing the partners
+		</meta>
+		<id name="partnerId" type="int" column="partnerId"></id>
+		
+		<property name="partnerName" type="string" />
+	</class>
+	<class name="com.ticketopia.beans.PaymentInfo" table="PaymentInfo">
+		<meta attribute="class-description">
+			A class containing valuable credit card information
+		</meta>
+		<id name="userEmail" type="string" column="customerEmail"></id>
+		
+		<property name="cardNumber" type="int" />
+		<property name="securityCode" type="int" />
+		<property name="expirationDate" type="string" />
+		<property name="billingAddress" type="string" />
+		<property name="billingCity" type="string" />
+		<property name="billingState" type="string" />
+		<property name="billingZip" type="int" />
+	</class>
+	<class name="com.ticketopia.beans.Tickets" table="Tickets">
+		<meta attribute="class-description">
+			A class containing ticket information
+		</meta>
+		<id name="ticketId" type="int" column="ticketId">
+			<generator class="native">
+				<param name="sequence">Tickets_seq</param>
+			</generator>
+		</id>
+		
+		<property name="ticketType" type="int" />
+		<property name="topicId" type="int" />
+		<property name="eventTypeId" type="int" />
+		<property name="ticketPrice" type="double" />
+		<property name="eventDescription" type="string" />
+		<property name="eventAddress" type="string" />
+		<property name="eventCity" type="string" />
+		<property name="eventState" type="string" />
+		<property name="eventZip" type="int" />
+		<property name="seat" type="string" />
+		<property name="partnerId" type="int" />
+	</class>
+	<class name="com.ticketopia.beans.Topics" table="Topics">
+		<meta attribute="class-description">
+			A class containing all of the topics
+		</meta>
+		<id name="topicId" type="int" column="topicId"></id>
+		
+		<property name="topicName" type="string" />
+	</class>
+	<class name="com.ticketopia.beans.UserRoles" table="UserType">
+		<meta attribute="class-description">
+			A class containing all of the types of users
+		</meta>
+		<id name="roleId" type="int" column="roleId"></id>
+		
+		<property name="role" type="string" />
 	</class>
 	
 	
