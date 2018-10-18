@@ -47,6 +47,8 @@
 			<artifactId>ojdbc7</artifactId>
 			<groupId>com.oracle</groupId>
 			<version>12.1.0</version>
+			 <scope>system</scope>
+    		<systemPath>${project.basedir}/resources/ojdbc7-12.1.0.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
