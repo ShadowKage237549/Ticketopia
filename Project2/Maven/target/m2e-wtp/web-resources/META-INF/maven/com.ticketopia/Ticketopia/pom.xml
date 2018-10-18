@@ -4,10 +4,20 @@
   <artifactId>Ticketopia</artifactId>
   <version>0.0.1</version>
   <packaging>war</packaging>
-  
+
+<distributionManagement>
+    <repository>
+        <id>internal.repo</id>
+        <name>Temporary Staging Repository</name>
+        <url>https://github.com/ShadowKage237549/MavenRepository</url>
+    </repository>
+</distributionManagement>
+
+
   <properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
+
 	</properties>
 
 	<dependencies>
@@ -39,5 +49,14 @@
 				<directory>src</directory>
 			</resource>
 		</resources>
+		<plugins>
+    <plugin>
+        <artifactId>maven-package-plugin</artifactId>
+        <version>2.8.1</version>
+        <configuration>
+            <altDeploymentRepository>internal.repo::default::https://github.com/ShadowKage237549/MavenRepository</altDeploymentRepository>
+        </configuration>
+    </plugin>
+</plugins>
 	</build>
 </project>
