@@ -114,6 +114,7 @@ CONSTRAINT FreeTickets_fk FOREIGN KEY (ticketId)
     REFERENCES Tickets (ticketId)
 );
 
+
 CREATE TABLE Forum (
 userId NUMBER(6),
 message VARCHAR2(4000),
@@ -127,8 +128,11 @@ postTitle VARCHAR2(50),
 postContent VARCHAR2 (500),
 topicId NUMBER (10), --fk
 userId NUMBER(6),
-post TIMESTAMP
+post TIMESTAMP,
+CONSTRAINT Posts_fk FOREIGN KEY (topicId)
+    REFERENCES Topic (topicId)
 );
+
 
 
 --PL SQL Section Below 
@@ -208,5 +212,9 @@ BEGIN
     END IF;
 END;
 /
+
+
+
+
 
 commit;
