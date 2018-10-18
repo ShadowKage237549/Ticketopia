@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!-- Root tag of a hibernate main configuration file -->
+<hibernate-configuration>
+
+	<!-- This tag begins configuration detail for the hibernate app -->
+
+	<session-factory>
+		<!-- This is like the jdbc class.forName() -->
+		<property name="hibernate.connection.driver_class">
+			oracle.jdbc.OracleDriver
+		</property>
+
+		<!-- This configures the database engine we intend to use. If you ever 
+			change languages, this property MUST change as well. -->
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.Oracle10gDialect
+		</property>
+
+		<property name="hibernate.connection.url">
+			jdbc:oracle:thin:@localhost:1521:xe
+		</property>
+
+		<property name="hibernate.connection.username">
+			local_180910
+		</property>
+
+		<property name="hibernate.connection.password">
+			admin
+		</property>
+
+		<!-- This determines how many connections a single user can have to the 
+			datbase at a given moment. Allowing many allows for faster transactions. 
+			But allowing many means 50 users could make 500 connections in a pool size 
+			of 10. Considering free tier RDS' cap at 50 connections, I don't recommend 
+			it -->
+		<property name="hibernate.connection.pool_size">
+			3
+		</property>
+
+		<!-- syso all generated SQL for us to see. -->
+		<property name="show_sql">
+			true
+		</property>
+
+		<!-- hbm2ddl, or, hibernate mapping to data definition language, is the 
+			resource that lets us create entire databases from simply running the application. 
+			There are FOUR states that we can set it to: create: destroys, then creates 
+			an entire database from scratch update: uses existing database validate: 
+			Creates the schema, destroying old data create-drop: database is created 
+			from scratch, then promptly destroyed once server is shutdown. -->
+
+		<property name="hibernate.hbm2ddl.auto">
+			update
+		</property>
+
+		<mapping resource="candy.hbm.xml" />
+		<mapping class="com.revature.beans.Family" />
+		<mapping class="com.revature.beans.Member" />
+		<mapping class="com.revature.beans.Status"/>
+		<mapping class="com.revature.beans.Task"/>
+		<mapping class="com.revature.beans.TaskStatus"/>
+
+		<mapping class="com.revature.beans.Rank" />
+
+
+	</session-factory>
+
+
+</hibernate-configuration>
