@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class ForumComponent implements OnInit {
 
   constructor(private hClient:HttpClient) { }
+  topic:string = "didneylen";
 
   ngOnInit() {
   }
