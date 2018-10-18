@@ -25,23 +25,28 @@
 		<property name="accumulatedPoints" type="int" />
 		<property name="role" type="int" />
 		<property name="userAddress" type="string" />
+		<property name="userCity" type="string" />
+		<property name="userState" type="string" />
+		<property name="userZip" type="int" />
 		<property name="password" type="string" />
 		<!-- type is optional, but do you REALLY want to trust
 			a framework to figure it out? -->
 	</class>
-	<class name="com.ticketopia.beans.CustomerInfo" table="CustomerInformation">
+	<class name="com.ticketopia.beans.Comments" table="Comments">
 		<meta attribute="class-description">
-			A class containing customer information
+			A class containing comments on posts about topics
 		</meta>
-		<id name="id" type="int" column="p_id">
+		<id name="commentId" type="int" column="commentId">
 			<generator class="native">
-				<param name="sequence">MY_SEQ</param>
+				<param name="sequence">CustomerInformation_seq</param>
 			</generator>
 		</id>
 		
-		<property name="name" type="string" />
-		<property name="sugar" type="int" />
-		<property name="flavor"/>
+		<property name="postId" type="int" />
+		<property name="displayName" type="string" />
+		<property name="message" type="string" />
+		<property name="commentTimeStamp" type="string" />
+		
 	</class>
 	
 	
