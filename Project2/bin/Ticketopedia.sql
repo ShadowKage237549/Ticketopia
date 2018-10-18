@@ -98,6 +98,10 @@ topic VARCHAR2 (100), --fk points to topics table
 userId NUMBER (6), --fk points to users table
 message VARCHAR2(100), 
 commentTimeStamp NUMBER(6),
+commentId NUMBER (10),
+commentContent VARCHAR2 (1000),
+postId NUMBER (10),
+post TIMESTAMP,
 CONSTRAINT Comments_fk FOREIGN KEY (topic)
     REFERENCES Topics (topicId),
 CONSTRAINT userId_fk FOREIGN KEY (userId)
@@ -125,15 +129,6 @@ topicId NUMBER (10), --fk
 userId NUMBER(6),
 post TIMESTAMP
 );
-
-CREATE TABLE Comments (
-commentId NUMBER (10),
-commentContent VARCHAR2 (1000),
-postId NUMBER (10),
-userId NUMBER (6),
-post TIMESTAMP
-);
-
 
 
 --PL SQL Section Below 
@@ -213,5 +208,5 @@ BEGIN
     END IF;
 END;
 /
-    
+
 commit;
