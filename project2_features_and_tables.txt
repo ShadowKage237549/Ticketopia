@@ -1,0 +1,78 @@
+users
+-userId
+-displayName
+-userFName
+-userLName
+-points
+-role
+-address
+-email
+
+credentials
+-userId
+-password
+
+payment info
+-userId
+-card number
+-security code
+-expiration
+-billing address
+
+role
+-basic
+-premium
+-admin
+
+tickets
+-ticketId
+-ticketType
+-topic
+-eventTypeId
+-ticketPrice
+-event description
+-eventLocation
+-seat
+
+event types
+-event type id
+-event type
+
+comments
+-topic
+-userId
+-content
+-comentTimeStamp
+
+free list
+-ticketId
+
+
+=================FEATURES=========================
+-basic users
+	-login
+	-buy tickets
+	-earn points
+	-point thresholds with rewards
+	-upgrade to premium
+	-save payment info or not
+-premium users
+	-login
+	-buy tickets
+	-earn points
+	-point thresholds with rewards
+	-downgrade to basic
+	-must save payment info
+	-early access
+-admin
+	-add new tickets
+	-adjust the free list
+	-moderate comment sections
+
+app features
+	-get points based on price of tickets
+	-at 5000 points get 30% off any ticket
+	-at 10000 points get 50% off any ticket or a free ticket from the free list
+	-create an account
+	-comment sections on ticket pages
+	-
