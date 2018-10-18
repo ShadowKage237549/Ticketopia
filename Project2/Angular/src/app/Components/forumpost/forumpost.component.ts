@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class ForumpostComponent implements OnInit {
 
   constructor() { }
+  post:string = "forumPostname";
+  postId:number;
 
   ngOnInit() {
   }
