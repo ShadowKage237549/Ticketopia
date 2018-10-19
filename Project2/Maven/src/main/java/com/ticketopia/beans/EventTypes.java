@@ -1,7 +1,23 @@
 package com.ticketopia.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity //Marks the class as a persistent class
+@Table(name="EventTypes")
 public class EventTypes {
+	@Id
+	@Column(name="eventTypeId")
+	@SequenceGenerator(sequenceName="Event_Seq", name="EventTypes_seq")
+	@GeneratedValue(generator="EventTypes_seq", strategy=GenerationType.SEQUENCE)
 	private Integer eventTypeId;
+	
+	@Column(name="eventType")
 	private String eventType;
 	public Integer getEventTypeId() {
 		return eventTypeId;

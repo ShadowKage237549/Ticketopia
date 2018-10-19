@@ -1,13 +1,36 @@
 package com.ticketopia.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="PaymentInfo")
 public class PaymentInfo {
+	@Id
+	@Column(name="customerEmail")
 	private String userEmail;
+	
+	@Column(name="cardNumber")
 	private Integer cardNumber;
+	
+	@Column(name="securityCode")
 	private Integer securityCode;
+	
+	@Column(name="expirationDate")
 	private String expirationDate;
+	
+	@Column(name="billingAddress")
 	private String billingAddress;
+	
+	@Column(name="billingCity")
 	private String billingCity;
+	
+	@Column(name="billingState")
 	private String billingState;
+	
+	@Column(name="billingZip")
 	private Integer billingZip;
 	public String getUserEmail() {
 		return userEmail;

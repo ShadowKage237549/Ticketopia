@@ -1,11 +1,35 @@
 package com.ticketopia.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Posts")
 public class ForumPosts {
+	@Id
+	@Column(name="postId")
+	@SequenceGenerator(sequenceName="Post_Seq", name="Post_Seq")
+	@GeneratedValue(generator="Post_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer postId;
+	
+	@Column(name="postTitle")
 	private String postTitle;
+	
+	@Column(name="postContent")
 	private String postContent;
+	
+	@Column(name="topicId")
 	private Integer topicId;
+	
+	@Column(name="displayName")
 	private Integer displayName;
+	
+	@Column(name="post")
 	private String postTimeStamp;
 	public Integer getPostId() {
 		return postId;

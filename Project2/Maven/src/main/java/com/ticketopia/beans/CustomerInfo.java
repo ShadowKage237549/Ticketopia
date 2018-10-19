@@ -1,16 +1,45 @@
 package com.ticketopia.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity //Marks the class as a persistent class
+@Table(name="CustomerInformation")
 public class CustomerInfo {
+	@Id //Marks as a primary key
+	@Column(name="customerEmail")
 	private String userEmail;
+	
+	@Column(name="displayName")
 	private String displayName;
+	
+	@Column(name="userFName")
 	private String userFName;
+	
+	@Column(name="userLName")
 	private String userLName;
+	
+	@Column(name="accumulatedPoints")
 	private Integer accumulatedPoints;
+	
+	@Column(name="userType")
 	private Integer role;
+	
+	@Column(name="customerAddress")
 	private String userAddress;
+	
+	@Column(name="customerCity")
 	private String userCity;
+	
+	@Column(name="customerState")
 	private String userState;
+	
+	@Column(name="customerZip")
 	private Integer userZip;
+	
+	@Column(name="customerPassword")
 	private String password;
 	public String getUserEmail() {
 		return userEmail;

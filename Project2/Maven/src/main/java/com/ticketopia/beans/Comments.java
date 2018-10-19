@@ -1,10 +1,32 @@
 package com.ticketopia.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity //Marks the class as a persistent class
+@Table(name="Comments")
 public class Comments {
+	@Id //Marks as a primary key
+	@Column(name="commentId")
+	@SequenceGenerator(sequenceName="MY_SEQ", name="Comments_seq")
+	@GeneratedValue(generator="Comments_seq", strategy=GenerationType.SEQUENCE)
 	private Integer commentId;
+	
+	@Column(name="postId")
 	private Integer postId;
+	
+	@Column(name="displayName")
 	private String displayName;
+	
+	@Column(name="message")
 	private String message;
+	
+	@Column(name="post")
 	private String commentTimeStamp;
 	public Integer getCommentId() {
 		return commentId;

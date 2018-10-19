@@ -1,7 +1,23 @@
 package com.ticketopia.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Partners")
 public class Partners {
+	@Id
+	@Column(name="partnerId")
+	@SequenceGenerator(sequenceName="Partner_Seq", name="Partner_Seq")
+	@GeneratedValue(generator="Partner_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer partnerId;
+	
+	@Column(name="partnerName")
 	private String partnerName;
 	public Integer getPartnerId() {
 		return partnerId;

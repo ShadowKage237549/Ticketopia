@@ -1,7 +1,21 @@
 package com.ticketopia.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity //Marks the class as a persistent class
+@Table(name="UserTypes")
 public class UserRoles {
+	@Id //Marks as a primary key
+	@Column(name="roleId")
 	private Integer roleId;
+	
+	@Column(name="roleName")
 	private String role;
 	public Integer getRoleId() {
 		return roleId;
