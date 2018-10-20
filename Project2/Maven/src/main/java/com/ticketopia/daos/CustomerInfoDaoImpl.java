@@ -97,11 +97,38 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		}
 	}
 	
-	public boolean removePaymentMethod(String email, UserRoles role) {
-		return false;
+	public boolean removePaymentMethod(PaymentInfo payment) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try {
+			tx = session.beginTransaction();
+			session.delete(payment); //Returns the id of the fresh insert
+			tx.commit();
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+			return false;
+		} finally {
+			session.close();
+		}
 	}
 	
-	public void applyPoints(Double points) {
+	public void applyPoints(CustomerInfo customer, Integer points) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
 		
+		try {
+			customer.setAccumulatedPoints(points);
+			tx = session.beginTransaction();
+			session.save(customer); //Returns the id of the fresh insert
+			tx.commit();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
 	}
 }

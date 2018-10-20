@@ -40,10 +40,10 @@ public interface CustomerInfoDao {
 		// remove payment method
 			// if premium user, must downgrade
 			// removes payment method from database
-	public boolean removePaymentMethod(String email, UserRoles role);
+	public boolean removePaymentMethod(PaymentInfo payment);
 	
 	// apply points
 		// should take in the price of the ticket
 		// apply points to users account
-	public void applyPoints(Double points);
+	public void applyPoints(CustomerInfo customer, Integer points);
 }
