@@ -9,15 +9,15 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity //Marks the class as a persistent class
-@Table(name="EventTypes")
+@Table(name="event_types")
 public class EventTypes {
 	@Id
-	@Column(name="eventTypeId")
+	@Column(name="event_type_id")
 	@SequenceGenerator(sequenceName="Event_Seq", name="EventTypes_seq")
 	@GeneratedValue(generator="EventTypes_seq", strategy=GenerationType.SEQUENCE)
 	private Integer eventTypeId;
 	
-	@Column(name="eventType")
+	@Column(name="event_type")
 	private String eventType;
 	public Integer getEventTypeId() {
 		return eventTypeId;

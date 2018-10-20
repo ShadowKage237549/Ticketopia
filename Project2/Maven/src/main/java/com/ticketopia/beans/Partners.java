@@ -9,15 +9,15 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Partners")
+@Table(name="partners")
 public class Partners {
 	@Id
-	@Column(name="partnerId")
+	@Column(name="partner_id")
 	@SequenceGenerator(sequenceName="Partner_Seq", name="Partner_Seq")
 	@GeneratedValue(generator="Partner_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer partnerId;
 	
-	@Column(name="partnerName")
+	@Column(name="partner_name")
 	private String partnerName;
 	public Integer getPartnerId() {
 		return partnerId;

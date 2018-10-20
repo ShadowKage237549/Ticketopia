@@ -9,13 +9,13 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity //Marks the class as a persistent class
-@Table(name="UserTypes")
+@Table(name="user_type")
 public class UserRoles {
 	@Id //Marks as a primary key
-	@Column(name="roleId")
+	@Column(name="role_id")
 	private Integer roleId;
 	
-	@Column(name="roleName")
+	@Column(name="role_name")
 	private String role;
 	public Integer getRoleId() {
 		return roleId;

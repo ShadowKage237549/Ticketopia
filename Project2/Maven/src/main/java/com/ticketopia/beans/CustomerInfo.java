@@ -6,40 +6,40 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity //Marks the class as a persistent class
-@Table(name="CustomerInformation")
+@Table(name="customer_information")
 public class CustomerInfo {
 	@Id //Marks as a primary key
-	@Column(name="customerEmail")
+	@Column(name="customer_email")
 	private String userEmail;
 	
-	@Column(name="displayName")
+	@Column(name="display_name")
 	private String displayName;
 	
-	@Column(name="userFName")
+	@Column(name="user_fname")
 	private String userFName;
 	
-	@Column(name="userLName")
+	@Column(name="user_lname")
 	private String userLName;
 	
-	@Column(name="accumulatedPoints")
+	@Column(name="accumulated_points")
 	private Integer accumulatedPoints;
 	
-	@Column(name="userType")
+	@Column(name="user_type")
 	private Integer role;
 	
-	@Column(name="customerAddress")
+	@Column(name="customer_address")
 	private String userAddress;
 	
-	@Column(name="customerCity")
+	@Column(name="customer_city")
 	private String userCity;
 	
-	@Column(name="customerState")
+	@Column(name="customer_state")
 	private String userState;
 	
-	@Column(name="customerZip")
+	@Column(name="customer_zip")
 	private Integer userZip;
 	
-	@Column(name="customerPassword")
+	@Column(name="customer_password")
 	private String password;
 	public String getUserEmail() {
 		return userEmail;

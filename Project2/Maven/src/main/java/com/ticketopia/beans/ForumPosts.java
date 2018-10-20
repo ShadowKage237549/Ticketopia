@@ -9,27 +9,27 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Posts")
+@Table(name="posts")
 public class ForumPosts {
 	@Id
-	@Column(name="postId")
+	@Column(name="post_id")
 	@SequenceGenerator(sequenceName="Post_Seq", name="Post_Seq")
 	@GeneratedValue(generator="Post_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer postId;
 	
-	@Column(name="postTitle")
+	@Column(name="post_title")
 	private String postTitle;
 	
-	@Column(name="postContent")
+	@Column(name="post_content")
 	private String postContent;
 	
-	@Column(name="topicId")
+	@Column(name="topic_id")
 	private Integer topicId;
 	
-	@Column(name="displayName")
+	@Column(name="display_name")
 	private Integer displayName;
 	
-	@Column(name="post")
+	@Column(name="post_timestamp")
 	private String postTimeStamp;
 	public Integer getPostId() {
 		return postId;

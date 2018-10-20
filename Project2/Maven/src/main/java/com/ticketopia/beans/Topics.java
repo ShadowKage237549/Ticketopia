@@ -1,7 +1,18 @@
 package com.ticketopia.beans;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="topics")
 public class Topics {
+	@Id
+	@Column(name="topic_id")
 	private Integer topicId;
+	
+	@Column(name="topic_name")
 	private String topicName;
 	public Integer getTopicId() {
 		return topicId;

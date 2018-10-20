@@ -68,25 +68,20 @@ CONSTRAINT event_types_pk PRIMARY KEY (event_type_id)
 
  CREATE TABLE posts (
 post_id NUMBER (10), --pk
-topic_id NUMBER (10), --fk
-display_name VARCHAR2(20), --fk
 post_title VARCHAR2(50),
 post_content VARCHAR2 (500),
+topic_id NUMBER (10), --fk
+display_name VARCHAR2(20), --fk
 post_timestamp TIMESTAMP,
 CONSTRAINT post_pk PRIMARY KEY (post_id),
 CONSTRAINT post_topic_fk FOREIGN KEY (topic_id) REFERENCES topics (topic_id),
 CONSTRAINT post_user_fk FOREIGN KEY (display_name) REFERENCES customer_information (display_name)
 );
 
-
-
-
-
-
  CREATE TABLE tickets (
  ticket_id NUMBER(6), --pk
  ticket_type VARCHAR2 (100),
- topic NUMBER (10), --fk points to topics table
+ topic_id NUMBER (10), --fk points to topics table
  event_type_id NUMBER(6), --fk points to eventtypes
  ticket_price NUMBER (8,2),
  event_description VARCHAR2(1000),
@@ -97,7 +92,7 @@ CONSTRAINT post_user_fk FOREIGN KEY (display_name) REFERENCES customer_informati
  seat VARCHAR2(6),
  partner_id NUMBER (6), --fk
  CONSTRAINT Tickets_pk PRIMARY KEY (ticket_id),
- CONSTRAINT ticket_topic_fk FOREIGN KEY (topic) REFERENCES Topics (topic_id), 
+ CONSTRAINT ticket_topic_fk FOREIGN KEY (topic_id) REFERENCES Topics (topic_id), 
  CONSTRAINT ticket_event_type_fk FOREIGN KEY (event_type_id) REFERENCES event_types (event_type_id) 
  );
  
@@ -106,15 +101,15 @@ CREATE TABLE comments (
 comment_id NUMBER (10), --pk
 post_id NUMBER (10), --fk
 display_name VARCHAR2(20), --fk points to users table
-comment_time_stamp TIMESTAMP,
 comment_content VARCHAR2 (1000),
+comment_time_stamp TIMESTAMP,
 CONSTRAINT comments_pk PRIMARY KEY (comment_id),
 CONSTRAINT comment_post_fk FOREIGN KEY (post_id) REFERENCES posts (post_id),
 CONSTRAINT userId_fk FOREIGN KEY (display_name) REFERENCES customer_information (display_name)
 );
 
 CREATE TABLE free_tickets (
-ticket_id NUMBER (6), --fk points to tickets table
+ticket_id NUMBER(6) UNIQUE, --fk points to tickets table
 CONSTRAINT free_tickets_fk FOREIGN KEY (ticket_id) REFERENCES tickets (ticket_id)
 );
 

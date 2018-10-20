@@ -5,9 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="FreeTickets")
+@Table(name="free_tickets")
 public class FreeTickets {
-	@Column(name="ticketId")
+	@Column(name="ticket_id")
 	private Integer ticketId;
 
 	public Integer getTicketId() {

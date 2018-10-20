@@ -12,21 +12,21 @@ import javax.persistence.Table;
 @Table(name="Comments")
 public class Comments {
 	@Id //Marks as a primary key
-	@Column(name="commentId")
+	@Column(name="comment_id")
 	@SequenceGenerator(sequenceName="MY_SEQ", name="Comments_seq")
 	@GeneratedValue(generator="Comments_seq", strategy=GenerationType.SEQUENCE)
 	private Integer commentId;
 	
-	@Column(name="postId")
+	@Column(name="post_id")
 	private Integer postId;
 	
-	@Column(name="displayName")
+	@Column(name="display_name")
 	private String displayName;
 	
-	@Column(name="message")
-	private String message;
+	@Column(name="comment_content")
+	private String commentContent;
 	
-	@Column(name="post")
+	@Column(name="comment_time_stamp")
 	private String commentTimeStamp;
 	public Integer getCommentId() {
 		return commentId;
@@ -46,11 +46,11 @@ public class Comments {
 	public void setDisplayName(String displayName) {
 		this.displayName = displayName;
 	}
-	public String getMessage() {
-		return message;
+	public String getCommentContent() {
+		return commentContent;
 	}
-	public void setMessage(String message) {
-		this.message = message;
+	public void setCommentContent(String commentContent) {
+		this.commentContent = commentContent;
 	}
 	public String getCommentTimeStamp() {
 		return commentTimeStamp;
@@ -60,22 +60,22 @@ public class Comments {
 	}
 	@Override
 	public String toString() {
-		return "Comments [commentId=" + commentId + ", postId=" + postId + ", displayName=" + displayName + ", message="
-				+ message + ", commentTimeStamp=" + commentTimeStamp + "]";
+		return "Comments [commentId=" + commentId + ", postId=" + postId + ", displayName=" + displayName + ", commentContent="
+				+ commentContent + ", commentTimeStamp=" + commentTimeStamp + "]";
 	}
-	public Comments(Integer commentId, Integer postId, String displayName, String message, String commentTimeStamp) {
+	public Comments(Integer commentId, Integer postId, String displayName, String commentContent, String commentTimeStamp) {
 		super();
 		this.commentId = commentId;
 		this.postId = postId;
 		this.displayName = displayName;
-		this.message = message;
+		this.commentContent = commentContent;
 		this.commentTimeStamp = commentTimeStamp;
 	}
-	public Comments(Integer postId, String displayName, String message, String commentTimeStamp) {
+	public Comments(Integer postId, String displayName, String commentContent, String commentTimeStamp) {
 		super();
 		this.postId = postId;
 		this.displayName = displayName;
-		this.message = message;
+		this.commentContent = commentContent;
 		this.commentTimeStamp = commentTimeStamp;
 	}
 	public Comments() {

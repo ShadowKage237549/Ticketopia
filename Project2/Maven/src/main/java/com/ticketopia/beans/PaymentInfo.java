@@ -6,31 +6,31 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="PaymentInfo")
+@Table(name="payment_info")
 public class PaymentInfo {
 	@Id
-	@Column(name="customerEmail")
+	@Column(name="customer_email")
 	private String userEmail;
 	
-	@Column(name="cardNumber")
+	@Column(name="card_number")
 	private Integer cardNumber;
 	
-	@Column(name="securityCode")
+	@Column(name="security_number")
 	private Integer securityCode;
 	
-	@Column(name="expirationDate")
+	@Column(name="expiration_date")
 	private String expirationDate;
 	
-	@Column(name="billingAddress")
+	@Column(name="billing_address")
 	private String billingAddress;
 	
-	@Column(name="billingCity")
+	@Column(name="billing_city")
 	private String billingCity;
 	
-	@Column(name="billingState")
+	@Column(name="billing_state")
 	private String billingState;
 	
-	@Column(name="billingZip")
+	@Column(name="billing_zip")
 	private Integer billingZip;
 	public String getUserEmail() {
 		return userEmail;
