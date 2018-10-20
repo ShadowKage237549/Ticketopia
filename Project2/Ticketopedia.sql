@@ -7,7 +7,6 @@ DROP TABLE payment_info CASCADE CONSTRAINTS;
 DROP TABLE user_type CASCADE CONSTRAINTS;
 DROP TABLE event_types CASCADE CONSTRAINTS;
 DROP TABLE tickets CASCADE CONSTRAINTS;
-DROP TABLE free_tickets CASCADE CONSTRAINTS;
 DROP TABLE topics CASCADE CONSTRAINTS;
 DROP TABLE posts CASCADE CONSTRAINTS;
 DROP TABLE comments CASCADE CONSTRAINTS;
@@ -96,6 +95,7 @@ CONSTRAINT post_user_fk FOREIGN KEY (display_name) REFERENCES customer_informati
  event_zip NUMBER (5),
  seat VARCHAR2(6),
  partner_id NUMBER (6), --fk
+ free_flag VARCHAR(1),
  CONSTRAINT Tickets_pk PRIMARY KEY (ticket_id),
  CONSTRAINT ticket_topic_fk FOREIGN KEY (topic) REFERENCES Topics (topic_id), 
  CONSTRAINT ticket_event_type_fk FOREIGN KEY (event_type_id) REFERENCES event_types (event_type_id) 
@@ -112,11 +112,5 @@ CONSTRAINT comments_pk PRIMARY KEY (comment_id),
 CONSTRAINT comment_post_fk FOREIGN KEY (post_id) REFERENCES posts (post_id),
 CONSTRAINT userId_fk FOREIGN KEY (display_name) REFERENCES customer_information (display_name)
 );
-
-CREATE TABLE free_tickets (
-ticket_id NUMBER (6), --fk points to tickets table
-CONSTRAINT free_tickets_fk FOREIGN KEY (ticket_id) REFERENCES tickets (ticket_id)
-);
-
 
 commit;

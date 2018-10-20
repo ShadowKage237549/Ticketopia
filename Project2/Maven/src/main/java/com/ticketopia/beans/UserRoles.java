@@ -13,6 +13,8 @@ import javax.persistence.Table;
 public class UserRoles {
 	@Id //Marks as a primary key
 	@Column(name="role_id")
+	@SequenceGenerator(sequenceName="Role_Generator", name="Role_Id")
+	@GeneratedValue(generator="Role_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer roleId;
 	
 	@Column(name="role_name")

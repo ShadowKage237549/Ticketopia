@@ -54,6 +54,9 @@ public class Tickets {
 	@ManyToOne
 	@JoinColumn(name = "partner_id")
 	private Partners partner;
+	
+	@Column(name="free_flag")
+	private Character freeList;
 
 	public Integer getTicketId() {
 		return ticketId;
@@ -151,17 +154,25 @@ public class Tickets {
 		this.partner = partner;
 	}
 
+	public Character getFreeList() {
+		return freeList;
+	}
+
+	public void setFreeList(Character freeList) {
+		this.freeList = freeList;
+	}
+
 	@Override
 	public String toString() {
 		return "Tickets [ticketId=" + ticketId + ", ticketType=" + ticketType + ", topic=" + topic + ", eventType="
 				+ eventType + ", ticketPrice=" + ticketPrice + ", eventDescription=" + eventDescription
 				+ ", eventAddress=" + eventAddress + ", eventCity=" + eventCity + ", eventState=" + eventState
-				+ ", eventZip=" + eventZip + ", seat=" + seat + ", partner=" + partner + "]";
+				+ ", eventZip=" + eventZip + ", seat=" + seat + ", partner=" + partner + ", freeList=" + freeList + "]";
 	}
 
 	public Tickets(Integer ticketId, String ticketType, Topics topic, EventTypes eventType, Double ticketPrice,
 			String eventDescription, String eventAddress, String eventCity, String eventState, Integer eventZip,
-			String seat, Partners partner) {
+			String seat, Partners partner, Character freeList) {
 		super();
 		this.ticketId = ticketId;
 		this.ticketType = ticketType;
@@ -175,10 +186,12 @@ public class Tickets {
 		this.eventZip = eventZip;
 		this.seat = seat;
 		this.partner = partner;
+		this.freeList = freeList;
 	}
 
 	public Tickets(String ticketType, Topics topic, EventTypes eventType, Double ticketPrice, String eventDescription,
-			String eventAddress, String eventCity, String eventState, Integer eventZip, String seat, Partners partner) {
+			String eventAddress, String eventCity, String eventState, Integer eventZip, String seat, Partners partner,
+			Character freeList) {
 		super();
 		this.ticketType = ticketType;
 		this.topic = topic;
@@ -191,6 +204,7 @@ public class Tickets {
 		this.eventZip = eventZip;
 		this.seat = seat;
 		this.partner = partner;
+		this.freeList = freeList;
 	}
 
 	public Tickets() {

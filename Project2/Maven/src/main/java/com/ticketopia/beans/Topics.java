@@ -2,7 +2,10 @@ package com.ticketopia.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -10,6 +13,8 @@ import javax.persistence.Table;
 public class Topics {
 	@Id
 	@Column(name="topic_id")
+	@SequenceGenerator(sequenceName="Topic_Generator", name="Topic_Id")
+	@GeneratedValue(generator="Topic_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer topicId;
 	
 	@Column(name="topic_name")
