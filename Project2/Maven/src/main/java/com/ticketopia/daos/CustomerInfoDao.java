@@ -2,7 +2,7 @@ package com.ticketopia.daos;
 
 import com.ticketopia.beans.UserRoles;
 
-public interface UserDao {
+public interface CustomerInfoDao {
 	// create account
 			// takes in:
 				// display name
@@ -54,4 +54,9 @@ public interface UserDao {
 			// if premium user, must downgrade
 			// removes payment method from database
 	public boolean removePaymentMethod(String email, UserRoles role);
+	
+	// apply points
+		// should take in the price of the ticket
+		// apply points to users account
+	public void applyPoints(Double points);
 }
