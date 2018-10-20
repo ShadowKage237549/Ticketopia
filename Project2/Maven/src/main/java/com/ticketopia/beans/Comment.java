@@ -5,72 +5,93 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity //Marks the class as a persistent class
 @Table(name="Comments")
-public class Comment {
+public class Comments {
 	@Id //Marks as a primary key
 	@Column(name="comment_id")
-	@SequenceGenerator(sequenceName="MY_SEQ", name="Comments_seq")
-	@GeneratedValue(generator="Comments_seq", strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(sequenceName="Comment_Generator", name="Comment_Id")
+	@GeneratedValue(generator="Comment_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer commentId;
 	
-	@Column(name="post_id")
-	private Integer postId;
+	@ManyToOne
+	@JoinColumn(name="post_id")
+	private ForumPosts post;
 	
-	@Column(name="display_name")
-	private String displayName;
+	@ManyToOne
+	@JoinColumn(name="display_name")
+	private CustomerInfo displayName;
 	
 	@Column(name="comment_content")
 	private String commentContent;
 	
 	@Column(name="comment_time_stamp")
 	private String commentTimeStamp;
+
 	public Integer getCommentId() {
 		return commentId;
 	}
+
 	public void setCommentId(Integer commentId) {
 		this.commentId = commentId;
 	}
-	public Integer getPostId() {
-		return postId;
+
+	public ForumPosts getPost() {
+		return post;
 	}
-	public void setPostId(Integer postId) {
-		this.postId = postId;
+
+	public void setPost(ForumPosts post) {
+		this.post = post;
 	}
-	public String getDisplayName() {
+
+	public CustomerInfo getDisplayName() {
 		return displayName;
 	}
-	public void setDisplayName(String displayName) {
+
+	public void setDisplayName(CustomerInfo displayName) {
 		this.displayName = displayName;
 	}
+
 	public String getCommentContent() {
 		return commentContent;
 	}
+
 	public void setCommentContent(String commentContent) {
 		this.commentContent = commentContent;
 	}
+
 	public String getCommentTimeStamp() {
 		return commentTimeStamp;
 	}
+
 	public void setCommentTimeStamp(String commentTimeStamp) {
 		this.commentTimeStamp = commentTimeStamp;
 	}
+
 	@Override
 	public String toString() {
-		return "Comments [commentId=" + commentId + ", postId=" + postId + ", displayName=" + displayName + ", commentContent="
-				+ commentContent + ", commentTimeStamp=" + commentTimeStamp + "]";
+		return "Comments [commentId=" + commentId + ", post=" + post + ", displayName=" + displayName
+				+ ", commentContent=" + commentContent + ", commentTimeStamp=" + commentTimeStamp + "]";
 	}
-	public Comment(Integer commentId, Integer postId, String displayName, String commentContent, String commentTimeStamp) {
+
+	public Comments(Integer commentId, ForumPosts post, CustomerInfo displayName, String commentContent,
+			String commentTimeStamp) {
+		super();
 		this.commentId = commentId;
-		this.postId = postId;
+		this.post = post;
 		this.displayName = displayName;
 		this.commentContent = commentContent;
 		this.commentTimeStamp = commentTimeStamp;
 	}
-	public Comment() {
+
+	public Comments() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 }

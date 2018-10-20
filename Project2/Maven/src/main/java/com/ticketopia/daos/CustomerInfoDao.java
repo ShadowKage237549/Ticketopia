@@ -2,7 +2,6 @@ package com.ticketopia.daos;
 
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.PaymentInfo;
-import com.ticketopia.beans.UserRoles;
 
 public interface CustomerInfoDao {
 	// create account

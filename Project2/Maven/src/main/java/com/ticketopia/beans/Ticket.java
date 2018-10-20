@@ -172,6 +172,7 @@ public class Ticket {
 		this.partner = partner;
 	}
 
+<<<<<<< HEAD:Project2/Maven/src/main/java/com/ticketopia/beans/Ticket.java
 	public Ticket(String ticketType, Topic topic, EventType eventType, Double ticketPrice, String eventDescription,
 			String eventAddress, String eventCity, String eventState, Integer eventZip, String seat, Partner partner) {
 		super();
@@ -189,6 +190,9 @@ public class Ticket {
 	}
 
 	public Ticket() {
+=======
+	public Tickets() {
+>>>>>>> b2582ba956cc61d72f80d104f0b8e7c172b0c92f:Project2/Maven/src/main/java/com/ticketopia/beans/Tickets.java
 		super();
 		// TODO Auto-generated constructor stub
 	}

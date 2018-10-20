@@ -82,6 +82,7 @@ public class ForumPost {
 		this.displayName = displayName;
 		this.postTimeStamp = postTimeStamp;
 	}
+<<<<<<< HEAD:Project2/Maven/src/main/java/com/ticketopia/beans/ForumPost.java
 	public ForumPost(String postTitle, String postContent, Integer topicId, Integer displayName,
 			String postTimeStamp) {
 		super();
@@ -92,6 +93,10 @@ public class ForumPost {
 		this.postTimeStamp = postTimeStamp;
 	}
 	public ForumPost() {
+=======
+
+	public ForumPosts() {
+>>>>>>> b2582ba956cc61d72f80d104f0b8e7c172b0c92f:Project2/Maven/src/main/java/com/ticketopia/beans/ForumPosts.java
 		super();
 		// TODO Auto-generated constructor stub
 	}

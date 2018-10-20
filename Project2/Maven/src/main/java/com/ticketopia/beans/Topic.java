@@ -35,11 +35,15 @@ public class Topic {
 		this.topicId = topicId;
 		this.topicName = topicName;
 	}
+<<<<<<< HEAD:Project2/Maven/src/main/java/com/ticketopia/beans/Topic.java
 	public Topic(String topicName) {
 		super();
 		this.topicName = topicName;
 	}
 	public Topic() {
+=======
+	public Topics() {
+>>>>>>> b2582ba956cc61d72f80d104f0b8e7c172b0c92f:Project2/Maven/src/main/java/com/ticketopia/beans/Topics.java
 		super();
 		// TODO Auto-generated constructor stub
 	}
