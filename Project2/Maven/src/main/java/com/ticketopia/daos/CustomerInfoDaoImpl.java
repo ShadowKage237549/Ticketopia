@@ -1,6 +1,9 @@
 package com.ticketopia.daos;
 
+
+
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -46,17 +49,24 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		}
 	}
 	
-	public boolean adjustUserRole(CustomerInfo customer) {
-		/*Session session = HibernateUtil.getSession();
+	public boolean adjustUserRole(CustomerInfo customer, Integer newRole) {
+		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
-		
-		
+		Query query;
+		String hql = null;	
+		UserRoles role = null;
 		
 		try {
+			hql = "FROM user_type WHERE role_id=:id";
+			query = session.createQuery(hql);
+			query.setParameter("id", newRole);
+			
+			role = (UserRoles)query.uniqueResult();
+			
+			customer.setRole(role);
+			
 			tx = session.beginTransaction();
-			UserRoles role =UserRoles (UserRoles)session.get()
-			if (customer.getRole() == )
-			session.save(payment); //Returns the id of the fresh insert
+			session.save(customer); //Returns the id of the fresh insert
 			tx.commit();
 			return true;
 		} catch (HibernateException e) {
@@ -65,8 +75,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			return false;
 		} finally {
 			session.close();
-		}*/
-		return false;
+		}
 	}
 	
 	public boolean changePassword(String email, String oldPassword) {

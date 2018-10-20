@@ -30,7 +30,7 @@ public interface CustomerInfoDao {
 			// takes in email and desired role
 			// if upgrading, make sure there is payment info on file
 			// if downgrading, simply adjust role
-	public boolean adjustUserRole(CustomerInfo customer);
+	public boolean adjustUserRole(CustomerInfo customer, Integer newRole);
 		
 		// change password
 			// verify password first
