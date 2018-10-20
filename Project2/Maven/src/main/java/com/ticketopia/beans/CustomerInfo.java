@@ -21,7 +21,7 @@ public class CustomerInfo {
 	@Column(name="user_lname")
 	private String userLName;
 	
-	@Column(name="accumulated_points")
+	@Column(name="accumulated_points") 
 	private Integer accumulatedPoints;
 	
 	@Column(name="user_type")
