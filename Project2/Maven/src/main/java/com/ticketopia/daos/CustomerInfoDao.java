@@ -1,6 +1,7 @@
 package com.ticketopia.daos;
 
 import com.ticketopia.beans.CustomerInfo;
+import com.ticketopia.beans.PaymentInfo;
 import com.ticketopia.beans.UserRoles;
 
 public interface CustomerInfoDao {
@@ -23,20 +24,13 @@ public interface CustomerInfoDao {
 				// expiration
 				// billing address
 			//adds this to database
-	public boolean createPaymentMethod(String email, 
-								Integer cardNumber,
-								Integer securityCode,
-								String expirationDate,
-								String billingAddress,
-								String billingCity,
-								String billingState,
-								Integer billingZip);
+	public boolean createPaymentMethod(PaymentInfo payment);
 		
 		// adjust role
 			// takes in email and desired role
 			// if upgrading, make sure there is payment info on file
 			// if downgrading, simply adjust role
-	public boolean adjustUserRole(String email, UserRoles role);
+	public boolean adjustUserRole(CustomerInfo customer);
 		
 		// change password
 			// verify password first
