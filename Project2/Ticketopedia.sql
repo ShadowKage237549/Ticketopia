@@ -18,6 +18,18 @@ CREATE TABLE user_type (
 	role_name VARCHAR2(100),
 	CONSTRAINT role_id_pk PRIMARY KEY ( role_id )
 );
+INSERT INTO user_type VALUES (
+	1,
+	'basic'
+);
+INSERT INTO user_type VALUES (
+	2,
+	'premium'
+);
+INSERT INTO user_type VALUES (
+	3,
+	'admin'
+);
 CREATE TABLE topics (
 	topic_id NUMBER(10),
      --pk
