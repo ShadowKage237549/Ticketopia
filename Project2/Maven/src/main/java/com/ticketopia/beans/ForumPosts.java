@@ -101,16 +101,6 @@ public class ForumPosts {
 		this.postTimeStamp = postTimeStamp;
 	}
 
-	public ForumPosts(String postTitle, String postContent, Topics topic, CustomerInfo displayName,
-			String postTimeStamp) {
-		super();
-		this.postTitle = postTitle;
-		this.postContent = postContent;
-		this.topic = topic;
-		this.displayName = displayName;
-		this.postTimeStamp = postTimeStamp;
-	}
-
 	public ForumPosts() {
 		super();
 		// TODO Auto-generated constructor stub

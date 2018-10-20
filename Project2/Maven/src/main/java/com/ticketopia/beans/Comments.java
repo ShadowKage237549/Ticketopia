@@ -89,14 +89,6 @@ public class Comments {
 		this.commentTimeStamp = commentTimeStamp;
 	}
 
-	public Comments(ForumPosts post, CustomerInfo displayName, String commentContent, String commentTimeStamp) {
-		super();
-		this.post = post;
-		this.displayName = displayName;
-		this.commentContent = commentContent;
-		this.commentTimeStamp = commentTimeStamp;
-	}
-
 	public Comments() {
 		super();
 		// TODO Auto-generated constructor stub

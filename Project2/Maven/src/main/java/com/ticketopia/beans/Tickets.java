@@ -189,24 +189,6 @@ public class Tickets {
 		this.freeList = freeList;
 	}
 
-	public Tickets(String ticketType, Topics topic, EventTypes eventType, Double ticketPrice, String eventDescription,
-			String eventAddress, String eventCity, String eventState, Integer eventZip, String seat, Partners partner,
-			Character freeList) {
-		super();
-		this.ticketType = ticketType;
-		this.topic = topic;
-		this.eventType = eventType;
-		this.ticketPrice = ticketPrice;
-		this.eventDescription = eventDescription;
-		this.eventAddress = eventAddress;
-		this.eventCity = eventCity;
-		this.eventState = eventState;
-		this.eventZip = eventZip;
-		this.seat = seat;
-		this.partner = partner;
-		this.freeList = freeList;
-	}
-
 	public Tickets() {
 		super();
 		// TODO Auto-generated constructor stub

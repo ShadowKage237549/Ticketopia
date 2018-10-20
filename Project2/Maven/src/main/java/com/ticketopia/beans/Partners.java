@@ -40,10 +40,6 @@ public class Partners {
 		this.partnerId = partnerId;
 		this.partnerName = partnerName;
 	}
-	public Partners(String partnerName) {
-		super();
-		this.partnerName = partnerName;
-	}
 	public Partners() {
 		super();
 		// TODO Auto-generated constructor stub

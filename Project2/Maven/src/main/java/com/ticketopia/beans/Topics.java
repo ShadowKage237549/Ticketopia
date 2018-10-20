@@ -40,10 +40,6 @@ public class Topics {
 		this.topicId = topicId;
 		this.topicName = topicName;
 	}
-	public Topics(String topicName) {
-		super();
-		this.topicName = topicName;
-	}
 	public Topics() {
 		super();
 		// TODO Auto-generated constructor stub

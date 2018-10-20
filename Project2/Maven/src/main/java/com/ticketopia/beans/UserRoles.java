@@ -40,10 +40,6 @@ public class UserRoles {
 		this.roleId = roleId;
 		this.role = role;
 	}
-	public UserRoles(String role) {
-		super();
-		this.role = role;
-	}
 	public UserRoles() {
 		super();
 		// TODO Auto-generated constructor stub

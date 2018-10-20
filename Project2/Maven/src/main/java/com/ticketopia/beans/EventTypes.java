@@ -40,10 +40,6 @@ public class EventTypes {
 		this.eventTypeId = eventTypeId;
 		this.eventType = eventType;
 	}
-	public EventTypes(String eventType) {
-		super();
-		this.eventType = eventType;
-	}
 	public EventTypes() {
 		super();
 		// TODO Auto-generated constructor stub
