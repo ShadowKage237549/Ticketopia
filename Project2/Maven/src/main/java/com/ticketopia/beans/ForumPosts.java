@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class ForumPosts {
 	@Id
 	@Column(name="post_id")
-	@SequenceGenerator(sequenceName="Post_Seq", name="Post_Seq")
+	@SequenceGenerator(sequenceName="Post_Generator", name="Post_Id")
 	@GeneratedValue(generator="Post_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer postId;
 	
@@ -23,8 +23,8 @@ public class ForumPosts {
 	@Column(name="post_content")
 	private String postContent;
 	
-	@Column(name="topic_id")
-	private Integer topicId;
+	@
+	private Topics topic;
 	
 	@Column(name="display_name")
 	private Integer displayName;

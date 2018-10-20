@@ -1,31 +1,33 @@
 package com.ticketopia.beans;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="free_tickets")
 public class FreeTickets {
-	@Column(name="ticket_id")
-	private Integer ticketId;
+	@OneToOne
+	@JoinColumn(name = "ticket_id")
+	private Tickets ticket;
 
-	public Integer getTicketId() {
-		return ticketId;
+	public Tickets getTicket() {
+		return ticket;
 	}
 
-	public void setTicketId(Integer ticketId) {
-		this.ticketId = ticketId;
+	public void setTicket(Tickets ticket) {
+		this.ticket = ticket;
 	}
 
 	@Override
 	public String toString() {
-		return "FreeTickets [ticketId=" + ticketId + "]";
+		return "FreeTickets [ticket=" + ticket + "]";
 	}
 
-	public FreeTickets(Integer ticketId) {
+	public FreeTickets(Tickets ticket) {
 		super();
-		this.ticketId = ticketId;
+		this.ticket = ticket;
 	}
 
 	public FreeTickets() {

@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class Partners {
 	@Id
 	@Column(name="partner_id")
-	@SequenceGenerator(sequenceName="Partner_Seq", name="Partner_Seq")
+	@SequenceGenerator(sequenceName="Partner_Generator", name="Partner_Id")
 	@GeneratedValue(generator="Partner_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer partnerId;
 	

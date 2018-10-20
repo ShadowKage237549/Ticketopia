@@ -2,9 +2,12 @@ package com.ticketopia.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -12,6 +15,8 @@ import javax.persistence.Table;
 public class Tickets {
 	@Id
 	@Column(name="ticket_id")
+	@SequenceGenerator(sequenceName="Ticket_Generator", name="Ticket_Id")
+	@GeneratedValue(generator="Ticket_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer ticketId;
 	
 	@Column(name="ticket_type")
