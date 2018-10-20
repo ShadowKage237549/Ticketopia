@@ -10,8 +10,12 @@
           <li class="nav-item">
               <a class="nav-link" routerLinkActive="active" routerLink="store">Store</a>
             </li>
-          <li class="nav-item">
+            
+          <li class="nav-item" *ngIf="!loggedIn">
             <a class="nav-link" routerLinkActive="active" routerLink="login">Login</a>
+          </li>
+          <li class="nav-item" *ngIf="loggedIn">
+            <a class="nav-link" routerLinkActive="active" routerLink="account">{{login.username}}</a>
           </li>
         </ul>
 </nav>

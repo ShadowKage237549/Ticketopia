@@ -4,9 +4,9 @@
 <div class="row mx-3 my-5">
   <div class="col-12">
     <form class="form-inline">
-      <input type="text" class="form-control mx-2" placeholder="username" id="username">
-      <input type="password" class="form-control mx-2" placeholder="password" id="password">
-      <button type="submit" class="btn btn-info mx-2 px-5">Login</button>
+      <input type="text" class="form-control mx-2" placeholder="username" [(ngModel)]="login.email" name="email">
+      <input type="password" class="form-control mx-2" placeholder="password" [(ngModel)]="login.password" name="password">
+      <button type="submit" class="btn btn-info mx-2 px-5" (click)="logMeIn()">Login</button>
     </form>
     <hr>
   </div>
