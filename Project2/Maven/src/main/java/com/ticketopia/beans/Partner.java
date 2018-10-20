@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="partners")
-public class Partners {
+public class Partner {
 	@Id
 	@Column(name="partner_id")
 	@SequenceGenerator(sequenceName="Partner_Generator", name="Partner_Id")
@@ -35,12 +35,12 @@ public class Partners {
 	public String toString() {
 		return "Partners [partnerId=" + partnerId + ", partnerName=" + partnerName + "]";
 	}
-	public Partners(Integer partnerId, String partnerName) {
+	public Partner(Integer partnerId, String partnerName) {
 		super();
 		this.partnerId = partnerId;
 		this.partnerName = partnerName;
 	}
-	public Partners() {
+	public Partner() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

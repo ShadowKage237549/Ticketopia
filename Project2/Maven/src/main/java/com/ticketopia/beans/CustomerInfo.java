@@ -28,7 +28,7 @@ public class CustomerInfo {
 	
 	@ManyToOne
 	@JoinColumn(name = "role_id")
-	private UserRoles role;
+	private UserType role;
 	
 	@Column(name="customer_address")
 	private String userAddress;
@@ -85,11 +85,11 @@ public class CustomerInfo {
 		this.accumulatedPoints = accumulatedPoints;
 	}
 
-	public UserRoles getRole() {
+	public UserType getRole() {
 		return role;
 	}
 
-	public void setRole(UserRoles role) {
+	public void setRole(UserType role) {
 		this.role = role;
 	}
 
@@ -142,7 +142,7 @@ public class CustomerInfo {
 	}
 
 	public CustomerInfo(String userEmail, String displayName, String userFName, String userLName,
-			Integer accumulatedPoints, UserRoles role, String userAddress, String userCity, String userState,
+			Integer accumulatedPoints, UserType role, String userAddress, String userCity, String userState,
 			Integer userZip, String password) {
 		super();
 		this.userEmail = userEmail;

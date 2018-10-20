@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity //Marks the class as a persistent class
 @Table(name="event_types")
-public class EventTypes {
+public class EventType {
 	@Id
 	@Column(name="event_type_id")
 	@SequenceGenerator(sequenceName="Event_Seq", name="EventTypes_seq")
@@ -35,12 +35,12 @@ public class EventTypes {
 	public String toString() {
 		return "EventTypes [eventTypeId=" + eventTypeId + ", eventType=" + eventType + "]";
 	}
-	public EventTypes(Integer eventTypeId, String eventType) {
+	public EventType(Integer eventTypeId, String eventType) {
 		super();
 		this.eventTypeId = eventTypeId;
 		this.eventType = eventType;
 	}
-	public EventTypes() {
+	public EventType() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

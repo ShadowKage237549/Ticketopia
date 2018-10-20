@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="posts")
-public class ForumPosts {
+public class Post {
 	@Id
 	@Column(name="post_id")
 	@SequenceGenerator(sequenceName="Post_Generator", name="Post_Id")
@@ -27,7 +27,7 @@ public class ForumPosts {
 	
 	@ManyToOne // foreign key
 	@JoinColumn(name = "topic_id")
-	private Topics topic;
+	private Topic topic;
 	
 	@ManyToOne
 	@JoinColumn(name="display_name")
@@ -60,11 +60,11 @@ public class ForumPosts {
 		this.postContent = postContent;
 	}
 
-	public Topics getTopic() {
+	public Topic getTopic() {
 		return topic;
 	}
 
-	public void setTopic(Topics topic) {
+	public void setTopic(Topic topic) {
 		this.topic = topic;
 	}
 
@@ -90,7 +90,7 @@ public class ForumPosts {
 				+ topic + ", displayName=" + displayName + ", postTimeStamp=" + postTimeStamp + "]";
 	}
 
-	public ForumPosts(Integer postId, String postTitle, String postContent, Topics topic, CustomerInfo displayName,
+	public Post(Integer postId, String postTitle, String postContent, Topic topic, CustomerInfo displayName,
 			String postTimeStamp) {
 		super();
 		this.postId = postId;
@@ -101,7 +101,7 @@ public class ForumPosts {
 		this.postTimeStamp = postTimeStamp;
 	}
 
-	public ForumPosts() {
+	public Post() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
