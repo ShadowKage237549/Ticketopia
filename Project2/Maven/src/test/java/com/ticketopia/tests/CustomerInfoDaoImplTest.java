@@ -25,7 +25,6 @@ public class CustomerInfoDaoImplTest {
 		ci = mock(CustomerInfo.class);
 		cid = (CustomerInfoDao) mock(CustomerInfoDaoImpl.class);
 		when(cid.createCustomer(ci)).thenReturn(true);
-		System.out.println(ci);
 	}
 
 	@AfterClass
