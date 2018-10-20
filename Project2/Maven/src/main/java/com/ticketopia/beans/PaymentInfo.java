@@ -2,15 +2,16 @@ package com.ticketopia.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="payment_info")
 public class PaymentInfo {
-	@Id
-	@Column(name="customer_email")
-	private String userEmail;
+	@ManyToOne
+	@JoinColumn(name = "customer_email")
+	private CustomerInfo customerInfo;
 	
 	@Column(name="card_number")
 	private Integer cardNumber;
@@ -32,64 +33,83 @@ public class PaymentInfo {
 	
 	@Column(name="billing_zip")
 	private Integer billingZip;
-	public String getUserEmail() {
-		return userEmail;
+
+	public CustomerInfo getCustomerInfo() {
+		return customerInfo;
 	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
+
+	public void setCustomerInfo(CustomerInfo customerInfo) {
+		this.customerInfo = customerInfo;
 	}
+
 	public Integer getCardNumber() {
 		return cardNumber;
 	}
+
 	public void setCardNumber(Integer cardNumber) {
 		this.cardNumber = cardNumber;
 	}
+
 	public Integer getSecurityCode() {
 		return securityCode;
 	}
+
 	public void setSecurityCode(Integer securityCode) {
 		this.securityCode = securityCode;
 	}
+
 	public String getExpirationDate() {
 		return expirationDate;
 	}
+
 	public void setExpirationDate(String expirationDate) {
 		this.expirationDate = expirationDate;
 	}
+
 	public String getBillingAddress() {
 		return billingAddress;
 	}
+
 	public void setBillingAddress(String billingAddress) {
 		this.billingAddress = billingAddress;
 	}
+
 	public String getBillingCity() {
 		return billingCity;
 	}
+
 	public void setBillingCity(String billingCity) {
 		this.billingCity = billingCity;
 	}
+
 	public String getBillingState() {
 		return billingState;
 	}
+
 	public void setBillingState(String billingState) {
 		this.billingState = billingState;
 	}
+
 	public Integer getBillingZip() {
 		return billingZip;
 	}
+
 	public void setBillingZip(Integer billingZip) {
 		this.billingZip = billingZip;
 	}
+
 	@Override
 	public String toString() {
-		return "PaymentInfo [userEmail=" + userEmail + ", cardNumber=" + cardNumber + ", securityCode=" + securityCode
-				+ ", expirationDate=" + expirationDate + ", billingAddress=" + billingAddress + ", billingCity="
-				+ billingCity + ", billingState=" + billingState + ", billingZip=" + billingZip + "]";
+		return "PaymentInfo [customerInfo=" + customerInfo + ", cardNumber=" + cardNumber + ", securityCode="
+				+ securityCode + ", expirationDate=" + expirationDate + ", billingAddress=" + billingAddress
+				+ ", billingCity=" + billingCity + ", billingState=" + billingState + ", billingZip=" + billingZip
+				+ "]";
 	}
-	public PaymentInfo(String userEmail, Integer cardNumber, Integer securityCode, String expirationDate,
+
+	public PaymentInfo(CustomerInfo customerInfo, Integer cardNumber, Integer securityCode, String expirationDate,
 			String billingAddress, String billingCity, String billingState, Integer billingZip) {
 		super();
-		this.userEmail = userEmail;
+		this.customerInfo = customerInfo;
 		this.cardNumber = cardNumber;
 		this.securityCode = securityCode;
 		this.expirationDate = expirationDate;
@@ -98,6 +118,7 @@ public class PaymentInfo {
 		this.billingState = billingState;
 		this.billingZip = billingZip;
 	}
+
 	public PaymentInfo() {
 		super();
 		// TODO Auto-generated constructor stub
