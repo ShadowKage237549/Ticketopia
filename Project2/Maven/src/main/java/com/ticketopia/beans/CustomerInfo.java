@@ -117,7 +117,6 @@ public class CustomerInfo {
 	public CustomerInfo(String userEmail, String displayName, String userFName, String userLName,
 			Integer accumulatedPoints, Integer role, String userAddress, String userCity, String userState,
 			Integer userZip, String password) {
-		super();
 		this.userEmail = userEmail;
 		this.displayName = displayName;
 		this.userFName = userFName;
@@ -130,23 +129,7 @@ public class CustomerInfo {
 		this.userZip = userZip;
 		this.password = password;
 	}
-	public CustomerInfo(String displayName, String userFName, String userLName, Integer accumulatedPoints, Integer role,
-			String userAddress, String userCity, String userState, Integer userZip, String password) {
-		super();
-		this.displayName = displayName;
-		this.userFName = userFName;
-		this.userLName = userLName;
-		this.accumulatedPoints = accumulatedPoints;
-		this.role = role;
-		this.userAddress = userAddress;
-		this.userCity = userCity;
-		this.userState = userState;
-		this.userZip = userZip;
-		this.password = password;
-	}
 	public CustomerInfo() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 }

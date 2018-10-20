@@ -1,7 +1,7 @@
 package com.ticketopia.daos;
 
 import com.ticketopia.beans.CustomerInfo;
-import com.ticketopia.beans.UserRoles;
+import com.ticketopia.beans.UserRole;
 
 public interface CustomerInfoDao {
 	// create account
@@ -36,7 +36,7 @@ public interface CustomerInfoDao {
 			// takes in email and desired role
 			// if upgrading, make sure there is payment info on file
 			// if downgrading, simply adjust role
-	public boolean adjustUserRole(String email, UserRoles role);
+	public boolean adjustUserRole(String email, UserRole role);
 		
 		// change password
 			// verify password first
@@ -46,7 +46,7 @@ public interface CustomerInfoDao {
 		// remove payment method
 			// if premium user, must downgrade
 			// removes payment method from database
-	public boolean removePaymentMethod(String email, UserRoles role);
+	public boolean removePaymentMethod(String email, UserRole role);
 	
 	// apply points
 		// should take in the price of the ticket

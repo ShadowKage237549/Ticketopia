@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="posts")
-public class ForumPosts {
+public class ForumPost {
 	@Id
 	@Column(name="post_id")
 	@SequenceGenerator(sequenceName="Post_Seq", name="Post_Seq")
@@ -72,7 +72,7 @@ public class ForumPosts {
 		return "ForumPosts [postId=" + postId + ", postTitle=" + postTitle + ", postContent=" + postContent
 				+ ", topicId=" + topicId + ", displayName=" + displayName + ", postTimeStamp=" + postTimeStamp + "]";
 	}
-	public ForumPosts(Integer postId, String postTitle, String postContent, Integer topicId, Integer displayName,
+	public ForumPost(Integer postId, String postTitle, String postContent, Integer topicId, Integer displayName,
 			String postTimeStamp) {
 		super();
 		this.postId = postId;
@@ -82,7 +82,7 @@ public class ForumPosts {
 		this.displayName = displayName;
 		this.postTimeStamp = postTimeStamp;
 	}
-	public ForumPosts(String postTitle, String postContent, Integer topicId, Integer displayName,
+	public ForumPost(String postTitle, String postContent, Integer topicId, Integer displayName,
 			String postTimeStamp) {
 		super();
 		this.postTitle = postTitle;
@@ -91,7 +91,7 @@ public class ForumPosts {
 		this.displayName = displayName;
 		this.postTimeStamp = postTimeStamp;
 	}
-	public ForumPosts() {
+	public ForumPost() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

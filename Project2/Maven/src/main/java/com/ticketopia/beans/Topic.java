@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="topics")
-public class Topics {
+public class Topic {
 	@Id
 	@Column(name="topic_id")
 	private Integer topicId;
@@ -30,16 +30,16 @@ public class Topics {
 	public String toString() {
 		return "Topics [topicId=" + topicId + ", topicName=" + topicName + "]";
 	}
-	public Topics(Integer topicId, String topicName) {
+	public Topic(Integer topicId, String topicName) {
 		super();
 		this.topicId = topicId;
 		this.topicName = topicName;
 	}
-	public Topics(String topicName) {
+	public Topic(String topicName) {
 		super();
 		this.topicName = topicName;
 	}
-	public Topics() {
+	public Topic() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

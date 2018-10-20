@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity //Marks the class as a persistent class
 @Table(name="Comments")
-public class Comments {
+public class Comment {
 	@Id //Marks as a primary key
 	@Column(name="comment_id")
 	@SequenceGenerator(sequenceName="MY_SEQ", name="Comments_seq")
@@ -63,24 +63,14 @@ public class Comments {
 		return "Comments [commentId=" + commentId + ", postId=" + postId + ", displayName=" + displayName + ", commentContent="
 				+ commentContent + ", commentTimeStamp=" + commentTimeStamp + "]";
 	}
-	public Comments(Integer commentId, Integer postId, String displayName, String commentContent, String commentTimeStamp) {
-		super();
+	public Comment(Integer commentId, Integer postId, String displayName, String commentContent, String commentTimeStamp) {
 		this.commentId = commentId;
 		this.postId = postId;
 		this.displayName = displayName;
 		this.commentContent = commentContent;
 		this.commentTimeStamp = commentTimeStamp;
 	}
-	public Comments(Integer postId, String displayName, String commentContent, String commentTimeStamp) {
-		super();
-		this.postId = postId;
-		this.displayName = displayName;
-		this.commentContent = commentContent;
-		this.commentTimeStamp = commentTimeStamp;
-	}
-	public Comments() {
-		super();
-		// TODO Auto-generated constructor stub
+	public Comment() {
 	}
 	
 }

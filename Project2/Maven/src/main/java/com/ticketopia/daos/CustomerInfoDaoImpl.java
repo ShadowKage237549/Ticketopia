@@ -5,7 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.ticketopia.beans.CustomerInfo;
-import com.ticketopia.beans.UserRoles;
+import com.ticketopia.beans.UserRole;
 import com.ticketopia.util.HibernateUtil;
 
 public class CustomerInfoDaoImpl implements CustomerInfoDao {
@@ -38,7 +38,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		return false;
 	}
 	
-	public boolean adjustUserRole(String email, UserRoles role) {
+	public boolean adjustUserRole(String email, UserRole role) {
 		return false;
 	}
 	
@@ -46,7 +46,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		return false;
 	}
 	
-	public boolean removePaymentMethod(String email, UserRoles role) {
+	public boolean removePaymentMethod(String email, UserRole role) {
 		return false;
 	}
 	

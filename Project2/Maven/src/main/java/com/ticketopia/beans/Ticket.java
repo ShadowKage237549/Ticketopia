@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="tickets")
-public class Tickets {
+public class Ticket {
 	@Id
 	@Column(name="ticket_id")
 	private Integer ticketId;
@@ -19,11 +19,11 @@ public class Tickets {
 	
 	@ManyToOne
 	@JoinColumn(name = "topic_id")
-	private Topics topic;
+	private Topic topic;
 	
 	@ManyToOne
 	@JoinColumn(name = "event_type_id")
-	private EventTypes eventType;
+	private EventType eventType;
 	
 	@Column(name="ticket_price")
 	private Double ticketPrice;
@@ -48,7 +48,7 @@ public class Tickets {
 	
 	@ManyToOne
 	@JoinColumn(name = "partner_id")
-	private Partners partner;
+	private Partner partner;
 
 	public Integer getTicketId() {
 		return ticketId;
@@ -66,19 +66,19 @@ public class Tickets {
 		this.ticketType = ticketType;
 	}
 
-	public Topics getTopic() {
+	public Topic getTopic() {
 		return topic;
 	}
 
-	public void setTopic(Topics topic) {
+	public void setTopic(Topic topic) {
 		this.topic = topic;
 	}
 
-	public EventTypes getEventType() {
+	public EventType getEventType() {
 		return eventType;
 	}
 
-	public void setEventType(EventTypes eventType) {
+	public void setEventType(EventType eventType) {
 		this.eventType = eventType;
 	}
 
@@ -138,11 +138,11 @@ public class Tickets {
 		this.seat = seat;
 	}
 
-	public Partners getPartner() {
+	public Partner getPartner() {
 		return partner;
 	}
 
-	public void setPartner(Partners partner) {
+	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
 
@@ -154,9 +154,9 @@ public class Tickets {
 				+ ", eventZip=" + eventZip + ", seat=" + seat + ", partner=" + partner + "]";
 	}
 
-	public Tickets(Integer ticketId, String ticketType, Topics topic, EventTypes eventType, Double ticketPrice,
+	public Ticket(Integer ticketId, String ticketType, Topic topic, EventType eventType, Double ticketPrice,
 			String eventDescription, String eventAddress, String eventCity, String eventState, Integer eventZip,
-			String seat, Partners partner) {
+			String seat, Partner partner) {
 		super();
 		this.ticketId = ticketId;
 		this.ticketType = ticketType;
@@ -172,8 +172,8 @@ public class Tickets {
 		this.partner = partner;
 	}
 
-	public Tickets(String ticketType, Topics topic, EventTypes eventType, Double ticketPrice, String eventDescription,
-			String eventAddress, String eventCity, String eventState, Integer eventZip, String seat, Partners partner) {
+	public Ticket(String ticketType, Topic topic, EventType eventType, Double ticketPrice, String eventDescription,
+			String eventAddress, String eventCity, String eventState, Integer eventZip, String seat, Partner partner) {
 		super();
 		this.ticketType = ticketType;
 		this.topic = topic;
@@ -188,7 +188,7 @@ public class Tickets {
 		this.partner = partner;
 	}
 
-	public Tickets() {
+	public Ticket() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
