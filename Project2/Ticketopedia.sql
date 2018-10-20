@@ -2,136 +2,118 @@
 --This table will eventually be integrated into a more dynamic table using Hibernate. 
 
 --DDL Section
-DROP TABLE CustomerInformation CASCADE CONSTRAINTS;
-DROP TABLE Credentials CASCADE CONSTRAINTS;
-DROP TABLE PaymentInfo CASCADE CONSTRAINTS;
-DROP TABLE UserType CASCADE CONSTRAINTS;
-DROP TABLE EventTypes CASCADE CONSTRAINTS;
-DROP TABLE Tickets CASCADE CONSTRAINTS;
-DROP TABLE Comments CASCADE CONSTRAINTS;
-DROP TABLE FreeTickets CASCADE CONSTRAINTS;
-DROP TABLE Forum CASCADE CONSTRAINTS;
-DROP TABLE Topic CASCADE CONSTRAINTS;
-DROP TABLE Posts CASCADE CONSTRAINTS;
-DROP TABLE Comments CASCADE CONSTRAINTS;
-DROP TABLE Partners CASCADE CONSTRAINTS;
+DROP TABLE customer_information CASCADE CONSTRAINTS;
+DROP TABLE payment_info CASCADE CONSTRAINTS;
+DROP TABLE user_type CASCADE CONSTRAINTS;
+DROP TABLE event_types CASCADE CONSTRAINTS;
+DROP TABLE tickets CASCADE CONSTRAINTS;
+DROP TABLE free_tickets CASCADE CONSTRAINTS;
+DROP TABLE topics CASCADE CONSTRAINTS;
+DROP TABLE posts CASCADE CONSTRAINTS;
+DROP TABLE comments CASCADE CONSTRAINTS;
+DROP TABLE partners CASCADE CONSTRAINTS;
 
-CREATE TABLE CustomerInformation( 
- customerEmail VARCHAR2 (100),
- displayName VARCHAR2(100),
- userFName VARCHAR2(100),
- userLName VARCHAR2(100),
- accumulatedPoints NUMBER(8),
- userType NUMBER(6), --This is replacing role since ROLE is a keyword in SQL, fk points to usertype table
- customerAddress VARCHAR2(100),
- 
- CONSTRAINT CustomerInformation_pk PRIMARY KEY (customerEmail)
+CREATE TABLE user_type (
+role_id NUMBER (6), --pk
+role_name VARCHAR2(100),
+CONSTRAINT role_id_pk PRIMARY KEY (role_id)
  );
  
- CREATE TABLE Credentials (
- customerEmail NUMBER (6), --fk points to customerinfo userid
- userPass VARCHAR2(100),
- CONSTRAINT Credentials_fk FOREIGN KEY (customerEmail)
- REFERENCES CustomerInformation (customerEmail)
- );
- 
- CREATE TABLE PaymentInfo (
- userId NUMBER(6), --fk points to customerinfo userid
- cardNumber NUMBER (16), --unique
- securityNumber NUMBER(3),
- expirationDate DATE, --Phil is Unsure if this is right. 
- billingAddress VARCHAR2(100),
- billingCity VARCHAR2 (50),
- billingState VARCHAR2 (2),
- billingZip NUMBER (5),
- CONSTRAINT PaymentInfo_fk FOREIGN KEY (userId)
- REFERENCES CustomerInformation (userId) -- [Phil] Not sure if this is what we want this FK to Ref
- );
- 
- CREATE TABLE UserType (
-roleId NUMBER (6), 
-roleName VARCHAR2(100),
-
-CONSTRAINT role_Id_pk PRIMARY KEY (roleId)
-
- );
- 
-CREATE TABLE EventTypes(
-eventTypeId NUMBER (6), --pk
-eventType VARCHAR2 (100),
-CONSTRAINT EventTypes_pk PRIMARY KEY (eventTypeId)
+ CREATE TABLE topics(
+topic_id NUMBER (10), --pk
+topic_name VARCHAR2 (100),
+CONSTRAINT topic_pk PRIMARY KEY (topic_id)
 );
 
-CREATE TABLE Topics(
-topicId NUMBER (10),
-topicName VARCHAR2 (100)
+CREATE TABLE partners (
+partner_id NUMBER (6), --pk
+partner_name VARCHAR2(100),
+CONSTRAINT partner_pk PRIMARY KEY (partner_id)
+);
+ 
+CREATE TABLE customer_information( 
+ customer_email VARCHAR2 (100), --pk
+ display_name VARCHAR2(100) UNIQUE, 
+ user_fname VARCHAR2(100),
+ user_lname VARCHAR2(100),
+ accumulated_points NUMBER(8),
+ user_type NUMBER(6), --fk
+ customer_address VARCHAR2(100),
+ customer_city VARCHAR2(100),
+ customer_state VARCHAR2(2),
+ customer_zip NUMBER(10),
+ customer_password VARCHAR2(50),
+ CONSTRAINT CustomerInformation_pk PRIMARY KEY (customer_email),
+ CONSTRAINT customer_role_fk FOREIGN KEY (user_type) REFERENCES user_type (role_id)
+ );
+ 
+ CREATE TABLE event_types(
+event_type_id NUMBER (6), --pk
+event_type VARCHAR2 (100),
+CONSTRAINT event_types_pk PRIMARY KEY (event_type_id)
+);
+ 
+ CREATE TABLE payment_info (
+ customer_email VARCHAR2(100), --fk 
+ card_number NUMBER (16), 
+ security_number NUMBER(3),
+ expiration_date DATE, --needs formatting either here or in java. 
+ billing_address VARCHAR2(100),
+ billing_city VARCHAR2 (50),
+ billing_state VARCHAR2 (2),
+ billing_zip NUMBER (5),
+ CONSTRAINT payment_email_fk FOREIGN KEY (customer_email) REFERENCES customer_information (customer_email)
+ );
+ 
+
+ CREATE TABLE posts (
+post_id NUMBER (10), --pk
+post_title VARCHAR2(50),
+post_content VARCHAR2 (500),
+topic_id NUMBER (10), --fk
+display_name VARCHAR2(20), --fk
+post_timestamp TIMESTAMP,
+CONSTRAINT post_pk PRIMARY KEY (post_id),
+CONSTRAINT post_topic_fk FOREIGN KEY (topic_id) REFERENCES topics (topic_id),
+CONSTRAINT post_user_fk FOREIGN KEY (display_name) REFERENCES customer_information (display_name)
 );
 
-CREATE TABLE Partners (
-partnerId NUMBER (6),
-partnerName VARCHAR2(100)
-);
-
- CREATE TABLE Tickets (
- ticketId NUMBER(6), --pk
- ticketType VARCHAR2 (100),
- topic NUMBER (10), --fk points to topics table
- eventTypeId NUMBER(6), --fk points to eventtypes
- ticketPrice NUMBER (8,2),
- eventDescription VARCHAR2(1000),
- eventAddress VARCHAR2 (100),
- eventCity VARCHAR2 (50),
- eventState VARCHAR2 (2),
- eventZip NUMBER (5),
+ CREATE TABLE tickets (
+ ticket_id NUMBER(6), --pk
+ ticket_type VARCHAR2 (100),
+ topic_id NUMBER (10), --fk points to topics table
+ event_type_id NUMBER(6), --fk points to eventtypes
+ ticket_price NUMBER (8,2),
+ event_description VARCHAR2(1000),
+ event_address VARCHAR2 (100),
+ event_city VARCHAR2 (50),
+ event_state VARCHAR2 (2),
+ event_zip NUMBER (5),
  seat VARCHAR2(6),
- partnerId NUMBER (6),
- CONSTRAINT Tickets_pk PRIMARY KEY (ticketId),
- CONSTRAINT topic_fk FOREIGN KEY (topic)
-    REFERENCES Topics (topicId), --[Phil] Not 100% sure if this is setup correctly.
- CONSTRAINT eventTypeId_fk FOREIGN KEY (eventTypeId)
-    REFERENCES EventTypes (eventTypeId) --[Phil] This will need to be looked at too.
+ partner_id NUMBER (6), --fk
+ CONSTRAINT Tickets_pk PRIMARY KEY (ticket_id),
+ CONSTRAINT ticket_topic_fk FOREIGN KEY (topic_id) REFERENCES Topics (topic_id), 
+ CONSTRAINT ticket_event_type_fk FOREIGN KEY (event_type_id) REFERENCES event_types (event_type_id) 
  );
  
 
-CREATE TABLE Comments (
-topic VARCHAR2 (100), --fk points to topics table
-userId NUMBER (6), --fk points to users table
-message VARCHAR2(100), 
-commentTimeStamp NUMBER(6),
-commentId NUMBER (10),
-commentContent VARCHAR2 (1000),
-postId NUMBER (10),
-post TIMESTAMP,
-CONSTRAINT Comments_fk FOREIGN KEY (topic)
-    REFERENCES Topics (topicId),
-CONSTRAINT userId_fk FOREIGN KEY (userId)
-    REFERENCES CustomerInformation (userId)
+CREATE TABLE comments (
+comment_id NUMBER (10), --pk
+post_id NUMBER (10), --fk
+display_name VARCHAR2(20), --fk points to users table
+comment_content VARCHAR2 (1000),
+comment_time_stamp TIMESTAMP,
+CONSTRAINT comments_pk PRIMARY KEY (comment_id),
+CONSTRAINT comment_post_fk FOREIGN KEY (post_id) REFERENCES posts (post_id),
+CONSTRAINT userId_fk FOREIGN KEY (display_name) REFERENCES customer_information (display_name)
 );
 
-CREATE TABLE FreeTickets (
-ticketId NUMBER (6), --fk points to tickets table
-CONSTRAINT FreeTickets_fk FOREIGN KEY (ticketId)
-    REFERENCES Tickets (ticketId)
+CREATE TABLE free_tickets (
+ticket_id NUMBER(6) UNIQUE, --fk points to tickets table
+CONSTRAINT free_tickets_fk FOREIGN KEY (ticket_id) REFERENCES tickets (ticket_id)
 );
 
 
-CREATE TABLE Forum (
-userId NUMBER(6),
-message VARCHAR2(4000),
-postId NUMBER (10)
-);
-
-
-CREATE TABLE Posts (
-postId NUMBER (10),
-postTitle VARCHAR2(50),
-postContent VARCHAR2 (500),
-topicId NUMBER (10), --fk
-userId NUMBER(6),
-post TIMESTAMP,
-CONSTRAINT Posts_fk FOREIGN KEY (topicId)
-    REFERENCES Topic (topicId)
-);
 
 
 
