@@ -2,6 +2,7 @@ package com.ticketopia.daos;
 
 import java.util.List;
 
+import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.EventTypes;
 import com.ticketopia.beans.Partners;
 import com.ticketopia.beans.Tickets;
@@ -46,26 +47,21 @@ public interface TicketDao {
 		
 		// get free tickets
 			// returns the tickets whose id is in the free table
-		
-		// get tickets by seat
-			// should be passed in a list of tickets and a seat
-			// finds the seat and returns that ticket
+	public List<Tickets> getFreeTickets();
 	
 	// buy tickets
 				// remove this ticket id from the database
-			
-			// apply points
-				// should take in the price of the ticket
-				// apply points to users account
+	public Boolean buyTickets(Tickets ticket);
 			
 			// apply discount
 				// takes in number of points
 				// removes ticket from database
 				// modifies the price then charges user
 				// removes points from user account
-					// this might get moved to a different method
+	public Boolean buyDiscountTicket(Tickets ticket, CustomerInfo customer, Integer discountChoice);
 			
 			// get free ticket
 				// gets passed a ticket
 				// removes it from database without charging user
+	
 }

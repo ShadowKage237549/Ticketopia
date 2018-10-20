@@ -1,5 +1,6 @@
 package com.ticketopia.daos;
 
+import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.UserRoles;
 
 public interface CustomerInfoDao {
@@ -12,15 +13,7 @@ public interface CustomerInfoDao {
 				// email
 				// password
 			// adds this to database
-	public boolean createUser(String email, 
-						String displayName, 
-						String fName, 
-						String lName, 
-						String address,
-						String city,
-						String state,
-						Integer zip,
-						String password);
+	public boolean createCustomer(CustomerInfo customer);
 		
 		// add payment method
 			// takes in:
