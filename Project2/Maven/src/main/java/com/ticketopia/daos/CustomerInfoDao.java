@@ -12,7 +12,7 @@ public interface CustomerInfoDao {
 				// email
 				// password
 			// adds this to database
-	public boolean createUser(String email, 
+	public boolean createCustomer(String email, 
 						String displayName, 
 						String fName, 
 						String lName, 
