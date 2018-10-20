@@ -24,6 +24,7 @@ public class CustomerInfoDaoImplTest {
 	public static void setUpBeforeClass() throws Exception {
 		ci = mock(CustomerInfo.class);
 		cid = (CustomerInfoDao) mock(CustomerInfoDaoImpl.class);
+		when(cid.createCustomer(ci)).thenReturn(true);
 	}
 
 	@AfterClass
