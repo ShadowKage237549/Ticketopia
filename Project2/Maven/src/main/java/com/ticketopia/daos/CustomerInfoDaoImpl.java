@@ -78,8 +78,23 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		}
 	}
 	
-	public boolean changePassword(String email, String oldPassword) {
-		return false;
+	public boolean changePassword(CustomerInfo customer, String newPassword) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		
+		try {
+			customer.setPassword(newPassword);
+			tx = session.beginTransaction();
+			session.save(customer); //Returns the id of the fresh insert
+			tx.commit();
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+			return false;
+		} finally {
+			session.close();
+		}
 	}
 	
 	public boolean removePaymentMethod(String email, UserRoles role) {

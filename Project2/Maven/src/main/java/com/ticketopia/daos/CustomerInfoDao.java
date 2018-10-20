@@ -35,7 +35,7 @@ public interface CustomerInfoDao {
 		// change password
 			// verify password first
 			// save new password to the database
-	public boolean changePassword(String email, String oldPassword);
+	public boolean changePassword(CustomerInfo customer, String newPassword);
 		
 		// remove payment method
 			// if premium user, must downgrade
