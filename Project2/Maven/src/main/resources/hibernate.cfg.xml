@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!-- Root tag of a hibernate main configuration file -->
+<hibernate-configuration>
+
+	<!-- This tag begins configuration detail for the hibernate app -->
+
+	<session-factory>
+		<!-- This is like the jdbc class.forName() -->
+		<property name="hibernate.connection.driver_class">
+			oracle.jdbc.OracleDriver
+		</property>
+
+		<!-- This configures the database engine we intend to use. If you ever 
+			change languages, this property MUST change as well. -->
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.Oracle10gDialect
+		</property>
+
+		<property name="hibernate.connection.url">
+			jdbc:oracle:thin:@system.cgtesvcgs8pi.us-east-2.rds.amazonaws.com:1521:ORCL
+		</property>
+
+		<property name="hibernate.connection.username">
+			Shadow237549
+		</property>
+
+		<property name="hibernate.connection.password">
+			Shadow!123
+		</property>
+
+		<!-- This determines how many connections a single user can have to the 
+			datbase at a given moment. Allowing many allows for faster transactions. 
+			But allowing many means 50 users could make 500 connections in a pool size 
+			of 10. Considering free tier RDS' cap at 50 connections, I don't recommend 
+			it -->
+		<property name="hibernate.connection.pool_size">
+			3
+		</property>
+
+		<!-- syso all generated SQL for us to see. -->
+		<property name="show_sql">
+			true
+		</property>
+
+		<!-- hbm2ddl, or, hibernate mapping to data definition language, is the 
+			resource that lets us create entire databases from simply running the application. 
+			There are FOUR states that we can set it to: create: destroys, then creates 
+			an entire database from scratch update: uses existing database validate: 
+			Creates the schema, destroying old data create-drop: database is created 
+			from scratch, then promptly destroyed once server is shutdown. -->
+
+		<property name="hibernate.hbm2ddl.auto">
+			update
+		</property>
+
+		<mapping class="com.ticketopia.beans.Comment" />
+		<mapping class="com.ticketopia.beans.CustomerInfo" />
+		<mapping class="com.ticketopia.beans.EventType" />
+		<mapping class="com.ticketopia.beans.ForumPost" />
+		<mapping class="com.ticketopia.beans.Partner" />
+		<mapping class="com.ticketopia.beans.PaymentInfo" />
+		<mapping class="com.ticketopia.beans.Ticket" />
+		<mapping class="com.ticketopia.beans.Topic" />
+		<mapping class="com.ticketopia.beans.UserRole" />
+
+
+	</session-factory>
+
+
+</hibernate-configuration>

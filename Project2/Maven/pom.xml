@@ -6,36 +6,21 @@
 	<artifactId>Ticketopia</artifactId>
 	<version>0.0.1</version>
 	<packaging>war</packaging>
-	<distributionManagement>
-		<repository>
-			<id>internal.repo</id>
-			<name>Repository</name>
-			<url>file://${project.build.directory}/mvn-repo</url>
-		</repository>
-	</distributionManagement>
-	<repositories>
-		<repository>
-			<id>Ticketopia-mvn-repo</id>
-			<url>https://raw.github.com/ShadowKage237549/Ticketopia/mvn-repo</url>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
+
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<github.global.server>github</github.global.server>
 	</properties>
 
 	<dependencies>
 
+
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
 		<dependency>
-			<groupId>com.github.github</groupId>
-			<artifactId>site-maven-plugin</artifactId>
-			<version>0.12</version>
-			<type>maven-plugin</type>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.21.0</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -47,13 +32,28 @@
 			<artifactId>ojdbc7</artifactId>
 			<groupId>com.oracle</groupId>
 			<version>12.1.0</version>
-			 <scope>system</scope>
-    		<systemPath>${project.basedir}/resources/ojdbc7-12.1.0.jar</systemPath>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/resources/ojdbc7-12.1.0.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.11.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.3.11.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>4.3.11.Final</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -61,41 +61,7 @@
 			<resource>
 				<directory>src</directory>
 			</resource>
+			<resource><directory>src/main/resources</directory></resource>
 		</resources>
-		<plugins>
-			<plugin>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>2.8.1</version>
-				<configuration>
-					<altDeploymentRepository>internal.repo::default::file://${project.build.directory}/mvn-repo</altDeploymentRepository>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>site-maven-plugin</artifactId>
-				<version>0.12</version>
-				<configuration>
-					<message>Maven artifacts</message>  <!-- git commit message -->
-					<noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
-					<outputDirectory>${project.build.directory}/mvn-repo</outputDirectory> <!-- matches distribution management repository url above -->
-					<branch>refs/heads/mvn-repo</branch>                       <!-- remote branch name -->
-					<includes>
-						<include>**/*</include>
-					</includes>
-					<repositoryName>Ticketopia</repositoryName>      <!-- github repo name -->
-					<repositoryOwner>ShadowKage237549</repositoryOwner>    <!-- github username -->
-				</configuration>
-				<executions>
-					<!-- run site-maven-plugin's 'site' target as part of the build's normal 
-						'deploy' phase -->
-					<execution>
-						<goals>
-							<goal>site</goal>
-						</goals>
-						<phase>deploy</phase>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
 	</build>
 </project>
