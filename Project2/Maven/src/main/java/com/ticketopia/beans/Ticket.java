@@ -2,9 +2,12 @@ package com.ticketopia.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -12,6 +15,8 @@ import javax.persistence.Table;
 public class Ticket {
 	@Id
 	@Column(name="ticket_id")
+	@SequenceGenerator(sequenceName="Ticket_Generator", name="Ticket_Id")
+	@GeneratedValue(generator="Ticket_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer ticketId;
 	
 	@Column(name="ticket_type")
@@ -49,6 +54,9 @@ public class Ticket {
 	@ManyToOne
 	@JoinColumn(name = "partner_id")
 	private Partner partner;
+	
+	@Column(name="free_flag")
+	private Character freeList;
 
 	public Integer getTicketId() {
 		return ticketId;
@@ -146,17 +154,25 @@ public class Ticket {
 		this.partner = partner;
 	}
 
+	public Character getFreeList() {
+		return freeList;
+	}
+
+	public void setFreeList(Character freeList) {
+		this.freeList = freeList;
+	}
+
 	@Override
 	public String toString() {
 		return "Tickets [ticketId=" + ticketId + ", ticketType=" + ticketType + ", topic=" + topic + ", eventType="
 				+ eventType + ", ticketPrice=" + ticketPrice + ", eventDescription=" + eventDescription
 				+ ", eventAddress=" + eventAddress + ", eventCity=" + eventCity + ", eventState=" + eventState
-				+ ", eventZip=" + eventZip + ", seat=" + seat + ", partner=" + partner + "]";
+				+ ", eventZip=" + eventZip + ", seat=" + seat + ", partner=" + partner + ", freeList=" + freeList + "]";
 	}
 
 	public Ticket(Integer ticketId, String ticketType, Topic topic, EventType eventType, Double ticketPrice,
 			String eventDescription, String eventAddress, String eventCity, String eventState, Integer eventZip,
-			String seat, Partner partner) {
+			String seat, Partner partner, Character freeList) {
 		super();
 		this.ticketId = ticketId;
 		this.ticketType = ticketType;
@@ -170,29 +186,10 @@ public class Ticket {
 		this.eventZip = eventZip;
 		this.seat = seat;
 		this.partner = partner;
-	}
-
-<<<<<<< HEAD:Project2/Maven/src/main/java/com/ticketopia/beans/Ticket.java
-	public Ticket(String ticketType, Topic topic, EventType eventType, Double ticketPrice, String eventDescription,
-			String eventAddress, String eventCity, String eventState, Integer eventZip, String seat, Partner partner) {
-		super();
-		this.ticketType = ticketType;
-		this.topic = topic;
-		this.eventType = eventType;
-		this.ticketPrice = ticketPrice;
-		this.eventDescription = eventDescription;
-		this.eventAddress = eventAddress;
-		this.eventCity = eventCity;
-		this.eventState = eventState;
-		this.eventZip = eventZip;
-		this.seat = seat;
-		this.partner = partner;
+		this.freeList = freeList;
 	}
 
 	public Ticket() {
-=======
-	public Tickets() {
->>>>>>> b2582ba956cc61d72f80d104f0b8e7c172b0c92f:Project2/Maven/src/main/java/com/ticketopia/beans/Tickets.java
 		super();
 		// TODO Auto-generated constructor stub
 	}

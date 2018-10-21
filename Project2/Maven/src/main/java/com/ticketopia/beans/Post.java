@@ -5,15 +5,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="posts")
-public class ForumPost {
+public class Post {
 	@Id
 	@Column(name="post_id")
-	@SequenceGenerator(sequenceName="Post_Seq", name="Post_Seq")
+	@SequenceGenerator(sequenceName="Post_Generator", name="Post_Id")
 	@GeneratedValue(generator="Post_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer postId;
 	
@@ -23,66 +25,83 @@ public class ForumPost {
 	@Column(name="post_content")
 	private String postContent;
 	
-	@Column(name="topic_id")
-	private Integer topicId;
+	@ManyToOne // foreign key
+	@JoinColumn(name = "topic_id")
+	private Topic topic;
 	
-	@Column(name="display_name")
-	private Integer displayName;
+	@ManyToOne
+	@JoinColumn(name="display_name")
+	private CustomerInfo displayName;
 	
 	@Column(name="post_timestamp")
 	private String postTimeStamp;
+
 	public Integer getPostId() {
 		return postId;
 	}
+
 	public void setPostId(Integer postId) {
 		this.postId = postId;
 	}
+
 	public String getPostTitle() {
 		return postTitle;
 	}
+
 	public void setPostTitle(String postTitle) {
 		this.postTitle = postTitle;
 	}
+
 	public String getPostContent() {
 		return postContent;
 	}
+
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
 	}
-	public Integer getTopicId() {
-		return topicId;
+
+	public Topic getTopic() {
+		return topic;
 	}
-	public void setTopicId(Integer topicId) {
-		this.topicId = topicId;
+
+	public void setTopic(Topic topic) {
+		this.topic = topic;
 	}
-	public Integer getDisplayName() {
+
+	public CustomerInfo getDisplayName() {
 		return displayName;
 	}
-	public void setDisplayName(Integer displayName) {
+
+	public void setDisplayName(CustomerInfo displayName) {
 		this.displayName = displayName;
 	}
+
 	public String getPostTimeStamp() {
 		return postTimeStamp;
 	}
+
 	public void setPostTimeStamp(String postTimeStamp) {
 		this.postTimeStamp = postTimeStamp;
 	}
+
 	@Override
 	public String toString() {
-		return "ForumPosts [postId=" + postId + ", postTitle=" + postTitle + ", postContent=" + postContent
-				+ ", topicId=" + topicId + ", displayName=" + displayName + ", postTimeStamp=" + postTimeStamp + "]";
+		return "ForumPosts [postId=" + postId + ", postTitle=" + postTitle + ", postContent=" + postContent + ", topic="
+				+ topic + ", displayName=" + displayName + ", postTimeStamp=" + postTimeStamp + "]";
 	}
-	public ForumPost(Integer postId, String postTitle, String postContent, Integer topicId, Integer displayName,
+
+	public Post(Integer postId, String postTitle, String postContent, Topic topic, CustomerInfo displayName,
 			String postTimeStamp) {
 		super();
 		this.postId = postId;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
-		this.topicId = topicId;
+		this.topic = topic;
 		this.displayName = displayName;
 		this.postTimeStamp = postTimeStamp;
 	}
-	public ForumPost() {
+
+	public Post() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

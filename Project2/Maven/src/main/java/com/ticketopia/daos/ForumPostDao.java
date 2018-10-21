@@ -3,7 +3,7 @@ package com.ticketopia.daos;
 import java.util.List;
 
 import com.ticketopia.beans.CustomerInfo;
-import com.ticketopia.beans.ForumPost;
+import com.ticketopia.beans.Post;
 import com.ticketopia.beans.Topic;
 
 public interface ForumPostDao {
@@ -19,6 +19,6 @@ public interface ForumPostDao {
 		
 		// get all posts
 			// returns a list of all the posts
-	public List<ForumPost> getPosts(Topic topic);
+	public List<Post> getPosts(Topic topic);
 	
 }
