@@ -17,6 +17,7 @@ import com.ticketopia.beans.UserType;
 import com.ticketopia.util.HibernateUtil;
 
 public class TicketDaoImpl implements TicketDao {
+	@Override
 	public List<Ticket> getAllTickets() {
 		Session session = HibernateUtil.getSession();
 		List<Ticket> tickets = null;
@@ -31,6 +32,7 @@ public class TicketDaoImpl implements TicketDao {
 		return tickets;
 	}
 	
+	@Override
 	public List<Ticket> getTicketByEvent(EventType event) {
 		Session session = HibernateUtil.getSession();
 		Query query;
@@ -50,24 +52,28 @@ public class TicketDaoImpl implements TicketDao {
 		return tickets;
 	}
 	
+	@Override
 	public List<Ticket> getTicketByLocation(String address, String city, String state, Integer zip) {
 		List<Ticket> tickets = new ArrayList<Ticket>();
 		
 		return tickets;
 	}
 	
+	@Override
 	public List<Ticket> getTicketByPrice(Integer lowPrice, Integer highPrice) {
 		List<Ticket> tickets = new ArrayList<Ticket>();
 		
 		return tickets;
 	}
 	
+	@Override
 	public List<Ticket> getTicketByPrice(Integer price) {
 		List<Ticket> tickets = new ArrayList<Ticket>();
 		
 		return tickets;
 	}
 	
+	@Override
 	public boolean addTicket(String ticketType,
 			Topic topic,
 			EventType eventType,
@@ -83,17 +89,15 @@ public class TicketDaoImpl implements TicketDao {
 		return false;
 	}
 	
+	@Override
 	public List<Ticket> getFreeTickets() {
 		List<Ticket> tickets = new ArrayList<Ticket>();
 		
 		return tickets;
 	}
 	
+	@Override
 	public Boolean buyTickets(Ticket ticket) {
-		return false;
-	}
-	
-	public Boolean buyDiscountTicket(Ticket ticket, CustomerInfo customer, Integer discountChoice) {
 		return false;
 	}
 }

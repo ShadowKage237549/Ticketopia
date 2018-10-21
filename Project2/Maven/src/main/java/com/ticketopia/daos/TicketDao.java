@@ -58,10 +58,4 @@ public interface TicketDao {
 				// removes ticket from database
 				// modifies the price then charges user
 				// removes points from user account
-	public Boolean buyDiscountTicket(Ticket ticket, CustomerInfo customer, Integer discountChoice);
-			
-			// get free ticket
-				// gets passed a ticket
-				// removes it from database without charging user
-	
 }
