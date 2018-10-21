@@ -6,7 +6,7 @@ import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.Post;
 import com.ticketopia.beans.Topic;
 
-public interface ForumPostDao {
+public interface PostDao {
 	// create post
 			// takes in topic
 			// adds post to database

@@ -1,6 +1,6 @@
 package com.ticketopia.daos;
 
-public interface ForumCommentDao {
+public interface CommentDao {
 	// create new comment
 			// takes in topic and post
 			// sends these along with comment and timestamp to database
