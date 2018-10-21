@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms"
-import { appRoutes } from './routes';
+import { AppRoutingModule } from './routes';
 
-import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -13,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './Components/login/login.component';
 import { ForumtopicComponent } from './Components/forumtopic/forumtopic.component';
 import { ForumpostComponent } from './Components/forumpost/forumpost.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -30,10 +28,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, { useHash:true })
-  ],
-  providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    AppRoutingModule
   ],
   bootstrap: [AppComponent]
 })

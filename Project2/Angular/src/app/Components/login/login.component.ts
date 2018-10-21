@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit {
 
   logMeIn(){
     this.login = this.auth.login(this.login);
-    console.log(this.login);
   }
 
 }
