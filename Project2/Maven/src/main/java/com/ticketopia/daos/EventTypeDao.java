@@ -12,5 +12,7 @@ public interface EventTypeDao {
 	public EventType[] selectAllEventTypes();
 	//Return a single EventType by its ID
 	public EventType selectEventType(EventType eventType);
+	//Remove EventType by ID
+	public boolean removeEventTypeById(Integer id);
 	
 }
