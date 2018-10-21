@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # git ls-files --others --exclude-from=.git/info/exclude
 # Lines that start with '#' are comments.
 # For a project mostly in C, the following would be a good set of
@@ -10,11 +9,9 @@
 **/pull_request_template.md
 **/issue_template.md
 **/target/
-**/target
-**/target/**
-**target/
 **/bin/
 **/META-INF/**
+**/node_installation
 
 #Eclipse
 **/.metadata
@@ -76,85 +73,4 @@ yarn-error.log
 
 # System Files
 .DS_Store
-=======
-# git ls-files --others --exclude-from=.git/info/exclude
-# Lines that start with '#' are comments.
-# For a project mostly in C, the following would be a good set of
-# exclude patterns (uncomment them if you want to use them):
-# *.[oa]
-# *~
-# .git/info/exclude
-
-**/pull_request_template.md
-**/issue_template.md
-**/target/
-**/target
-**/target/**
-**target/
-**/bin/
-**/META-INF/**
-
-#Eclipse
-**/.metadata
-**/.project
-**/.settings/
-**/.classpath
-**/.recommenders/**
-**/Servers
-**/.springBeans
-**/node_installation
-#MAVEN
-**/*.properties
-#IDEA
-**/.idea/
-**/*.iml
-**/test-output/
-#AngularJS
-**/.tern-project
-
-#Mac
-.DS_Store
-/.recommenders/
-
-# compiled output
-/dist
-/tmp
-/out-tsc
-
-# dependencies
-/node_modules
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-testem.log
-/typings
-yarn-error.log
-
-# e2e
-/e2e/*.js
-/e2e/*.map
-
-# System Files
-.DS_Store
->>>>>>> branch 'DAOImpl' of https://github.com/ShadowKage237549/Ticketopia.git
 Thumbs.db

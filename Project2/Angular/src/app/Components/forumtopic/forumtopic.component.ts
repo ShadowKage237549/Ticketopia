@@ -8,8 +8,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forumtopic.component.css']
 })
 export class ForumtopicComponent implements OnInit {
-  //ForumtopicComponent is the page which displays all posts within a given forum topic.
-  //Each post links to ForumpostComponent
+
   constructor() { }
   selectedTopic: Topic = new Topic(1, "topic 1", "topic 1 description of the topic");
   topicCategory: string = this.selectedTopic.topicName;
@@ -17,15 +16,15 @@ export class ForumtopicComponent implements OnInit {
   postTitle: string = "Post title";
 
   posts: ForumPost[] = [
-    new ForumPost(1, "Post Title x", "Post Description of Post Title x"),
-    new ForumPost(2, "Post Title x", "Post Description of Post Title x"),
-    new ForumPost(3, "Post Title x", "Post Description of Post Title x"),
-    new ForumPost(4, "Post Title x", "Post Description of Post Title x"),
-    new ForumPost(5, "Post Title x", "Post Description of Post Title x"),
-    new ForumPost(6, "Post Title x", "Post Description of Post Title x"),
-    new ForumPost(7, "Post Title x", "Post Description of Post Title x"),
-    new ForumPost(8, "Post Title x", "Post Description of Post Title x"),
-    new ForumPost(9, "Post Title x", "Post Description of Post Title x")];
+    new ForumPost(1,"Post Title x", "Post Description of Post Title x"),
+    new ForumPost(2,"Post Title x", "Post Description of Post Title x"),
+    new ForumPost(3,"Post Title x", "Post Description of Post Title x"),
+    new ForumPost(4,"Post Title x", "Post Description of Post Title x"),
+    new ForumPost(5,"Post Title x", "Post Description of Post Title x"),
+    new ForumPost(6,"Post Title x", "Post Description of Post Title x"),
+    new ForumPost(7,"Post Title x", "Post Description of Post Title x"),
+    new ForumPost(8,"Post Title x", "Post Description of Post Title x"),
+    new ForumPost(9,"Post Title x", "Post Description of Post Title x")];
   postDescription: String = "the first 100 characters of the post content";
   postContent: string;
 

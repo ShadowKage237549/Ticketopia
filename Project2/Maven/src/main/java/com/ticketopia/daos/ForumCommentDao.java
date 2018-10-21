@@ -1,5 +1,10 @@
 package com.ticketopia.daos;
 
+import java.util.List;
+
+import com.ticketopia.beans.Comment;
+import com.ticketopia.beans.Post;
+
 public interface ForumCommentDao {
 	// create new comment
 			// takes in topic and post
@@ -9,4 +14,15 @@ public interface ForumCommentDao {
 		// get comments
 			// is sent a topic and a post
 			// returns a list of comments under those categories
+	
+	public List <Comment> getPost(Post post);
+	
+	public boolean NewComment(
+			
+			int postId,
+			String displayName,
+			String timeStamp,
+			String commentContent
+			);
+	
 }
