@@ -1,39 +1,46 @@
 package com.ticketopia.daos;
 
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.hql.internal.ast.tree.Statement;
+import org.hibernate.Transaction;
 
 import com.ticketopia.beans.Comment;
-import com.ticketopia.beans.Comments;
-import com.ticketopia.beans.ForumPosts;
+import com.ticketopia.beans.Post;
 import com.ticketopia.util.HibernateUtil;
 
 public class ForumCommentDaoImpl implements ForumCommentDao {
 /*
- * This will handle the implemenation for the ForumCommentDao.
+ * This will handle the implementation for the ForumCommentDao.
  */
 	
-	private final static Logger logger = Logger.getLogger(Comments.class);
+	private final static Logger logger = Logger.getLogger(Comment.class);
 	
-	public List<Comment> getPostComments(){
-		
-		Statement stmt = null;
-		ResultSet rs = null;
-		List<Comment> comments = new ArrayList<>();
-		
-		Comment com = null;
+	public List<Comment> getPostComments(Post post){
 		Session session = HibernateUtil.getSession();
+		List<Comment> comments = null;
+		Query query;
+		
+		try {
+			String Hql = "FROM Comments WHERE post_id = :id"; //This is how we do HQL Phil
+			query = session.createQuery(Hql);
+			query.setParameter("id",post.getPostId());
+			comments = query.list();
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
 		return comments;
 		
 	}
 
 	@Override
-	public List<Comment> getPostComments(ForumPost post) {
+	public List<Comment> getPost(Post post) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -43,6 +50,5 @@ public class ForumCommentDaoImpl implements ForumCommentDao {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
+
 }
