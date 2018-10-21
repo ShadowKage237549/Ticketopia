@@ -31,23 +31,6 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		}
 	}
 	
-	public boolean createPaymentMethod(PaymentInfo payment) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		
-		try {
-			tx = session.beginTransaction();
-			session.save(payment); //Returns the id of the fresh insert
-			tx.commit();
-			return true;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			tx.rollback();
-			return false;
-		} finally {
-			session.close();
-		}
-	}
 	
 	public boolean adjustUserRole(CustomerInfo customer, Integer newRole) {
 		Session session = HibernateUtil.getSession();
@@ -86,24 +69,6 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			customer.setPassword(newPassword);
 			tx = session.beginTransaction();
 			session.save(customer); //Returns the id of the fresh insert
-			tx.commit();
-			return true;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			tx.rollback();
-			return false;
-		} finally {
-			session.close();
-		}
-	}
-	
-	public boolean removePaymentMethod(PaymentInfo payment) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		
-		try {
-			tx = session.beginTransaction();
-			session.delete(payment); //Returns the id of the fresh insert
 			tx.commit();
 			return true;
 		} catch (HibernateException e) {
