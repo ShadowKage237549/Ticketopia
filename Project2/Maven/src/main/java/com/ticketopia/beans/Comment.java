@@ -12,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity //Marks the class as a persistent class
 @Table(name="Comments")
-public class Comments {
+public class Comment {
 	@Id //Marks as a primary key
 	@Column(name="comment_id")
 	@SequenceGenerator(sequenceName="Comment_Generator", name="Comment_Id")
@@ -21,7 +21,7 @@ public class Comments {
 	
 	@ManyToOne
 	@JoinColumn(name="post_id")
-	private ForumPosts post;
+	private Post post;
 	
 	@ManyToOne
 	@JoinColumn(name="display_name")
@@ -41,11 +41,11 @@ public class Comments {
 		this.commentId = commentId;
 	}
 
-	public ForumPosts getPost() {
+	public Post getPost() {
 		return post;
 	}
 
-	public void setPost(ForumPosts post) {
+	public void setPost(Post post) {
 		this.post = post;
 	}
 
@@ -79,7 +79,7 @@ public class Comments {
 				+ ", commentContent=" + commentContent + ", commentTimeStamp=" + commentTimeStamp + "]";
 	}
 
-	public Comments(Integer commentId, ForumPosts post, CustomerInfo displayName, String commentContent,
+	public Comment(Integer commentId, Post post, CustomerInfo displayName, String commentContent,
 			String commentTimeStamp) {
 		super();
 		this.commentId = commentId;
@@ -89,15 +89,7 @@ public class Comments {
 		this.commentTimeStamp = commentTimeStamp;
 	}
 
-	public Comments(ForumPosts post, CustomerInfo displayName, String commentContent, String commentTimeStamp) {
-		super();
-		this.post = post;
-		this.displayName = displayName;
-		this.commentContent = commentContent;
-		this.commentTimeStamp = commentTimeStamp;
-	}
-
-	public Comments() {
+	public Comment() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity //Marks the class as a persistent class
 @Table(name="user_type")
-public class UserRoles {
+public class UserType {
 	@Id //Marks as a primary key
 	@Column(name="role_id")
 	@SequenceGenerator(sequenceName="Role_Generator", name="Role_Id")
@@ -35,16 +35,12 @@ public class UserRoles {
 	public String toString() {
 		return "UserRoles [roleId=" + roleId + ", role=" + role + "]";
 	}
-	public UserRoles(Integer roleId, String role) {
+	public UserType(Integer roleId, String role) {
 		super();
 		this.roleId = roleId;
 		this.role = role;
 	}
-	public UserRoles(String role) {
-		super();
-		this.role = role;
-	}
-	public UserRoles() {
+	public UserType() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
