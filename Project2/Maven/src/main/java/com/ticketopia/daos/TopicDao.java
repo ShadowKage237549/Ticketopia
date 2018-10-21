@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.ticketopia.beans.Topic;
 
-public interface ForumTopicDao {
+public interface TopicDao {
 	// get all topics
 			// returns a list of all topics
 	public List<Topic> getAllTopics();
