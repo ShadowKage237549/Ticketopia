@@ -47,7 +47,7 @@ public interface TicketDao {
 		
 		// get free tickets
 			// returns the tickets whose id is in the free table
-	public List<Ticket> getFreeTickets();
+	public List<Ticket> getFreeTickets(); // KEEP THIS
 	
 	// buy tickets
 				// remove this ticket id from the database

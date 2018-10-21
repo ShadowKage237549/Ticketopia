@@ -15,7 +15,7 @@ public interface CommentDao {
 		public boolean getAllCommentsByPost(Post post);
 		
 		//Delete the comment by the ID
-		public boolean RemoveCommentById(Integer id);
+		public boolean RemoveComment(Comment comment);
 		
 		//Update Comment
 		public boolean updateComment(Comment comment);

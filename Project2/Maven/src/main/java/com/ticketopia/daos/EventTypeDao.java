@@ -11,6 +11,6 @@ public interface EventTypeDao {
 	//Return an array of eventTypes
 	public EventType[] selectAllEventTypes();
 	//Return a single EventType by its ID
-	public EventType selectEventTypeById(Integer id);
+	public EventType selectEventType(EventType eventType);
 	
 }

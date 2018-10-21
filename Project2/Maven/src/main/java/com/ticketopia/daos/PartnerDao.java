@@ -8,7 +8,7 @@ public interface PartnerDao {
 	public boolean insertNewPartner(Partner partner);
 	
 	//Remove a partner from the database
-	public boolean removePartnerById(Integer id);
+	public boolean removePartner(Partner partner);
 	
 	//Update a partner in the database
 	public boolean updatePartner(Partner partner);
