@@ -21,6 +21,10 @@
 **/Servers
 **/.springBeans
 **/node_installation
+
+#MAVEN
+*.properties
+
 #IDEA
 **/.idea/
 **/*.iml
