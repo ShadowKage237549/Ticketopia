@@ -32,8 +32,21 @@ public class TicketDaoImpl implements TicketDao {
 	}
 	
 	public List<Ticket> getTicketByEvent(EventType event) {
+		Session session = HibernateUtil.getSession();
+		Query query;
+		String hql;
 		List<Ticket> tickets = new ArrayList<Ticket>();
 		
+		try {			
+			hql = "FROM EventType WHERE eventTypeId = :id";
+			query = session.createQuery(hql);
+			query.setParameter("id", event.getEventTypeId());
+			tickets = query.list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 		return tickets;
 	}
 	

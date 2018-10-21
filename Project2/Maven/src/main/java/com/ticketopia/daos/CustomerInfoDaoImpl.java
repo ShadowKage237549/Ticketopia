@@ -57,7 +57,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		UserType role = null;
 		
 		try {
-			hql = "FROM user_type WHERE role_id=:id";
+			hql = "FROM UserType WHERE roleId=:id";
 			query = session.createQuery(hql);
 			query.setParameter("id", newRole);
 			
