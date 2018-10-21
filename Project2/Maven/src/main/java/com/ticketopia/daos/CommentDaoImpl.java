@@ -25,7 +25,7 @@ public class CommentDaoImpl implements CommentDao {
 		Query query;
 		
 		try {
-			String Hql = "FROM Comment WHERE postId = :id"; //This is how we do HQL Phil
+			String Hql = "FROM Comments WHERE post_id = :id"; //This is how we do HQL Phil
 			query = session.createQuery(Hql);
 			query.setParameter("id",post.getPostId());
 			comments = query.list();
@@ -39,11 +39,13 @@ public class CommentDaoImpl implements CommentDao {
 		
 	}
 
+	@Override
 	public List<Comment> getPost(Post post) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public boolean NewComment(int postId, String displayName, String timeStamp, String commentContent) {
 		// TODO Auto-generated method stub
 		return false;
