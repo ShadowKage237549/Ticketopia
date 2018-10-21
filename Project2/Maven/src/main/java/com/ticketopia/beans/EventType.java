@@ -36,16 +36,13 @@ public class EventType {
 		return "EventTypes [eventTypeId=" + eventTypeId + ", eventType=" + eventType + "]";
 	}
 	public EventType(Integer eventTypeId, String eventType) {
+		super();
 		this.eventTypeId = eventTypeId;
 		this.eventType = eventType;
 	}
-<<<<<<< HEAD:Project2/Maven/src/main/java/com/ticketopia/beans/EventType.java
 	public EventType() {
-=======
-	public EventTypes() {
 		super();
 		// TODO Auto-generated constructor stub
->>>>>>> b2582ba956cc61d72f80d104f0b8e7c172b0c92f:Project2/Maven/src/main/java/com/ticketopia/beans/EventTypes.java
 	}
 	
 }

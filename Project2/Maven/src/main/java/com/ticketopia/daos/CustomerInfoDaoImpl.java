@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.PaymentInfo;
-import com.ticketopia.beans.UserRole;
+import com.ticketopia.beans.UserType;
 import com.ticketopia.util.HibernateUtil;
 
 public class CustomerInfoDaoImpl implements CustomerInfoDao {
@@ -54,14 +54,14 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		Transaction tx = null;
 		Query query;
 		String hql = null;	
-		UserRole role = null;
+		UserType role = null;
 		
 		try {
 			hql = "FROM user_type WHERE role_id=:id";
 			query = session.createQuery(hql);
 			query.setParameter("id", newRole);
 			
-			role = (UserRole)query.uniqueResult();
+			role = (UserType)query.uniqueResult();
 			
 			customer.setRole(role);
 			

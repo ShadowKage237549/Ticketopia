@@ -2,7 +2,10 @@ package com.ticketopia.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -10,6 +13,8 @@ import javax.persistence.Table;
 public class Topic {
 	@Id
 	@Column(name="topic_id")
+	@SequenceGenerator(sequenceName="Topic_Generator", name="Topic_Id")
+	@GeneratedValue(generator="Topic_Seq", strategy=GenerationType.SEQUENCE)
 	private Integer topicId;
 	
 	@Column(name="topic_name")
@@ -35,15 +40,7 @@ public class Topic {
 		this.topicId = topicId;
 		this.topicName = topicName;
 	}
-<<<<<<< HEAD:Project2/Maven/src/main/java/com/ticketopia/beans/Topic.java
-	public Topic(String topicName) {
-		super();
-		this.topicName = topicName;
-	}
 	public Topic() {
-=======
-	public Topics() {
->>>>>>> b2582ba956cc61d72f80d104f0b8e7c172b0c92f:Project2/Maven/src/main/java/com/ticketopia/beans/Topics.java
 		super();
 		// TODO Auto-generated constructor stub
 	}
