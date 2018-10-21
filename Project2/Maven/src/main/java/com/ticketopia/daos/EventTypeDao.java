@@ -2,7 +2,7 @@ package com.ticketopia.daos;
 
 import com.ticketopia.beans.EventType;
 
-public interface EventTypesDao {
+public interface EventTypeDao {
 	
 	//Create new eventType
 	public boolean createEventType(EventType eventType);
