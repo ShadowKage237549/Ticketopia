@@ -5,7 +5,7 @@ import java.util.List;
 import com.ticketopia.beans.Comment;
 import com.ticketopia.beans.Post;
 
-public interface ForumCommentDao {
+public interface CommentDao {
 	// create new comment
 			// takes in topic and post
 			// sends these along with comment and timestamp to database
