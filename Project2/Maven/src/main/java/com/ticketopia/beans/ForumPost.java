@@ -82,8 +82,9 @@ public class ForumPost {
 		this.displayName = displayName;
 		this.postTimeStamp = postTimeStamp;
 	}
-
 	public ForumPost() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	
 }
