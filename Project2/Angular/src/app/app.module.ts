@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from "@angular/forms"
+import { FormsModule } from '@angular/forms'
 import { AppRoutingModule } from './routes';
 
 import { AppComponent } from './app.component';
@@ -14,22 +14,22 @@ import { ForumtopicComponent } from './Components/forumtopic/forumtopic.componen
 import { ForumpostComponent } from './Components/forumpost/forumpost.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    HomeComponent,
-    ForumComponent,
-    StoreComponent,
-    LoginComponent,
-    ForumtopicComponent,
-    ForumpostComponent
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    AppRoutingModule
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        NavbarComponent,
+        HomeComponent,
+        ForumComponent,
+        StoreComponent,
+        LoginComponent,
+        ForumtopicComponent,
+        ForumpostComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpClientModule,
+        AppRoutingModule
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
