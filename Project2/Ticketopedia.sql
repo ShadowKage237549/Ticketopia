@@ -94,15 +94,11 @@ CREATE TABLE tickets (
 CREATE TABLE posts (
 	post_id NUMBER(10),
      --pk
-	ticket_id NUMBER(6),
-     --fk
 	display_name VARCHAR2(20),
      --fk
 	post_content VARCHAR2(500),
 	post_timestamp TIMESTAMP,
 	CONSTRAINT post_pk PRIMARY KEY ( post_id ),
-	CONSTRAINT post_topic_fk FOREIGN KEY ( ticket_id )
-		REFERENCES tickets ( ticket_id ),
 	CONSTRAINT post_user_fk FOREIGN KEY ( display_name )
 		REFERENCES customer_information ( display_name )
 );
