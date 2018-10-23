@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './Components/login/login.component';
 import { ForumtopicComponent } from './Components/forumtopic/forumtopic.component';
 import { ForumpostComponent } from './Components/forumpost/forumpost.component';
+import { TicketComponent } from './Components/ticket/ticket.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { ForumpostComponent } from './Components/forumpost/forumpost.component';
         StoreComponent,
         LoginComponent,
         ForumtopicComponent,
-        ForumpostComponent
+        ForumpostComponent,
+        TicketComponent
     ],
     imports: [
         BrowserModule,

@@ -1,4 +1,4 @@
-import { AuthenticationService } from './../../Services/authentication.service';
+import { AuthenticationService } from '../../Services/Authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from './user/User';
 

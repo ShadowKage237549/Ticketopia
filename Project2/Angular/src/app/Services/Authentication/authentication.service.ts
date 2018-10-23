@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { User } from './../Components/login/user/User';
+import { User } from '../../Components/login/user/User';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';

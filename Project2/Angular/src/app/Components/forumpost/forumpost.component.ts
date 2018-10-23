@@ -18,6 +18,6 @@ export class ForumpostComponent implements OnInit {
   postTitle:string = this.selectedPost.postTitle;
 
   ngOnInit() {
-  }
 
+  }
 }
