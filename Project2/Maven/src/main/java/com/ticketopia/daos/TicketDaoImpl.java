@@ -33,71 +33,60 @@ public class TicketDaoImpl implements TicketDao {
 	}
 	
 	@Override
-	public List<Ticket> getTicketByEvent(EventType event) {
+	public Integer addTicket(Ticket ticket) {
 		Session session = HibernateUtil.getSession();
-		Query query;
-		String hql;
-		List<Ticket> tickets = new ArrayList<Ticket>();
+		Transaction tx = null;
+		Integer id = null;
 		
-		try {			
-			hql = "FROM EventType WHERE eventTypeId = :id";
-			query = session.createQuery(hql);
-			query.setParameter("id", event.getEventTypeId());
-			tickets = query.list();
-		} catch (HibernateException e) {
+		try {
+			tx = session.beginTransaction();
+			id = (Integer)session.save(ticket);
+			tx.commit();
+		} catch(HibernateException e) {
 			e.printStackTrace();
+			tx.rollback();
 		} finally {
 			session.close();
 		}
-		return tickets;
+		return id;
 	}
 	
 	@Override
-	public List<Ticket> getTicketByLocation(String address, String city, String state, Integer zip) {
-		List<Ticket> tickets = new ArrayList<Ticket>();
+	public Boolean removeTicket(Ticket ticket) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
 		
-		return tickets;
-	}
-	
-	@Override
-	public List<Ticket> getTicketByPrice(Integer lowPrice, Integer highPrice) {
-		List<Ticket> tickets = new ArrayList<Ticket>();
-		
-		return tickets;
-	}
-	
-	@Override
-	public List<Ticket> getTicketByPrice(Integer price) {
-		List<Ticket> tickets = new ArrayList<Ticket>();
-		
-		return tickets;
-	}
-	
-	@Override
-	public boolean addTicket(String ticketType,
-			Topic topic,
-			EventType eventType,
-			Double ticketPrice,
-			String eventDescription,
-			String eventAddress,
-			String eventCity,
-			String eventState,
-			Integer eventZip,
-			String seat,
-			Partner partner,
-			Character freeList) {
+		try {
+			tx = session.beginTransaction();
+			session.delete(ticket);
+			tx.commit();
+			return true;
+		} catch(HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
 		return false;
 	}
 	
 	@Override
-	public List<Ticket> getFreeTickets() {
-		List<Ticket> tickets = new ArrayList<Ticket>();
+	public Boolean updateTicket(Ticket ticket) {
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		Integer id = null;
 		
-		return tickets;
-	}
-	
-	@Override
-	public Boolean buyTickets(Ticket ticket) {
+		try {
+			tx = session.beginTransaction();
+			session.update(ticket);
+			tx.commit();
+			return true;
+		} catch(HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
 		return false;
 	}
 }
