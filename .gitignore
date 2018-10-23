@@ -9,9 +9,11 @@
 **/pull_request_template.md
 **/issue_template.md
 **/target/
+**/target
+**/target/**
+**target/
 **/bin/
 **/META-INF/**
-**/node_installation
 
 #Eclipse
 **/.metadata
@@ -22,6 +24,8 @@
 **/Servers
 **/.springBeans
 **/node_installation
+#MAVEN
+**/*.properties
 #IDEA
 **/.idea/
 **/*.iml
