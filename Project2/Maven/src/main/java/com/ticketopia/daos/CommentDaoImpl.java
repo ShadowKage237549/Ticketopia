@@ -19,6 +19,7 @@ public class CommentDaoImpl implements CommentDao {
 	
 	private final static Logger logger = Logger.getLogger(Comment.class);
 	
+	@Override
 	public List<Comment> getPostComments(Post post){
 		Session session = HibernateUtil.getSession();
 		List<Comment> comments = null;
@@ -39,8 +40,9 @@ public class CommentDaoImpl implements CommentDao {
 		
 	}
 
+	//Get the post linked to the comment
 	@Override
-	public List<Comment> getPost(Post post) {
+	public Post getPost(Integer postId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
