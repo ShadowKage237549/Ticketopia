@@ -7,10 +7,7 @@ DROP TABLE payment_info CASCADE CONSTRAINTS;
 DROP TABLE user_type CASCADE CONSTRAINTS;
 DROP TABLE event_types CASCADE CONSTRAINTS;
 DROP TABLE tickets CASCADE CONSTRAINTS;
-DROP TABLE free_tickets CASCADE CONSTRAINTS;
-DROP TABLE topics CASCADE CONSTRAINTS;
 DROP TABLE posts CASCADE CONSTRAINTS;
-DROP TABLE comments CASCADE CONSTRAINTS;
 DROP TABLE partners CASCADE CONSTRAINTS;
 CREATE TABLE user_type (
 	role_id NUMBER(6),
@@ -29,12 +26,6 @@ INSERT INTO user_type VALUES (
 INSERT INTO user_type VALUES (
 	3,
 	'admin'
-);
-CREATE TABLE topics (
-	topic_id NUMBER(10),
-     --pk
-	topic_name VARCHAR2(100),
-	CONSTRAINT topic_pk PRIMARY KEY ( topic_id )
 );
 CREATE TABLE partners (
 	partner_id NUMBER(6),
@@ -80,28 +71,10 @@ CREATE TABLE payment_info (
 	CONSTRAINT payment_email_fk FOREIGN KEY ( customer_email )
 		REFERENCES customer_information ( customer_email )
 );
-CREATE TABLE posts (
-	post_id NUMBER(10),
-     --pk
-	topic_id NUMBER(10),
-     --fk
-	display_name VARCHAR2(20),
-     --fk
-	post_title VARCHAR2(50),
-	post_content VARCHAR2(500),
-	post_timestamp TIMESTAMP,
-	CONSTRAINT post_pk PRIMARY KEY ( post_id ),
-	CONSTRAINT post_topic_fk FOREIGN KEY ( topic_id )
-		REFERENCES topics ( topic_id ),
-	CONSTRAINT post_user_fk FOREIGN KEY ( display_name )
-		REFERENCES customer_information ( display_name )
-);
 CREATE TABLE tickets (
 	ticket_id NUMBER(6),
      --pk
 	ticket_type VARCHAR2(100),
-	topic NUMBER(10),
-     --fk points to topics table
 	event_type_id NUMBER(6),
      --fk points to eventtypes
 	ticket_price NUMBER(8, 2),
@@ -113,31 +86,32 @@ CREATE TABLE tickets (
 	seat VARCHAR2(6),
 	partner_id NUMBER(6),
      --fk
+	free_flag NUMBER(1),
 	CONSTRAINT Tickets_pk PRIMARY KEY ( ticket_id ),
-	CONSTRAINT ticket_topic_fk FOREIGN KEY ( topic )
-		REFERENCES Topics ( topic_id ),
 	CONSTRAINT ticket_event_type_fk FOREIGN KEY ( event_type_id )
 		REFERENCES event_types ( event_type_id )
 );
-CREATE TABLE comments (
-	comment_id NUMBER(10),
-     --pk
+CREATE TABLE posts_title (
+	post_title_id NUMBER(6),
+	post_title VARCHAR2(50),
+	ticket_id NUMBER(6),
+	CONSTRAINT post_title_pk PRIMARY KEY ( post_title_id ),
+	CONSTRAINT post_title_fk FOREIGN KEY ( ticket_id )
+		REFERENCES tickets ( ticket_id )
+);
+CREATE TABLE posts (
 	post_id NUMBER(10),
+     --pk
+	ticket_id NUMBER(6),
      --fk
 	display_name VARCHAR2(20),
-     --fk points to users table
-	comment_time_stamp TIMESTAMP,
-	comment_content VARCHAR2(1000),
-	CONSTRAINT comments_pk PRIMARY KEY ( comment_id ),
-	CONSTRAINT comment_post_fk FOREIGN KEY ( post_id )
-		REFERENCES posts ( post_id ),
-	CONSTRAINT userId_fk FOREIGN KEY ( display_name )
+     --fk
+	post_content VARCHAR2(500),
+	post_timestamp TIMESTAMP,
+	CONSTRAINT post_pk PRIMARY KEY ( post_id ),
+	CONSTRAINT post_topic_fk FOREIGN KEY ( ticket_id )
+		REFERENCES tickets ( ticket_id ),
+	CONSTRAINT post_user_fk FOREIGN KEY ( display_name )
 		REFERENCES customer_information ( display_name )
-);
-CREATE TABLE free_tickets (
-	ticket_id NUMBER(6),
-     --fk points to tickets table
-	CONSTRAINT free_tickets_fk FOREIGN KEY ( ticket_id )
-		REFERENCES tickets ( ticket_id )
 );
 COMMIT;
