@@ -8,7 +8,6 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.ticketopia.beans.CustomerInfo;
-import com.ticketopia.beans.PaymentInfo;
 import com.ticketopia.beans.UserType;
 import com.ticketopia.util.HibernateUtil;
 
