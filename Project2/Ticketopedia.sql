@@ -103,7 +103,7 @@ CREATE TABLE posts (
 	CONSTRAINT post_user_fk FOREIGN KEY ( display_name )
 		REFERENCES customer_information ( display_name )
 );
-CREATE TABLE posts_title (
+CREATE TABLE post_title (
 	post_title_id NUMBER(6),
 	post_id NUMBER(10),
 	post_title VARCHAR2(50),
