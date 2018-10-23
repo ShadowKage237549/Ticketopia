@@ -1,3 +1,4 @@
+import { TicketComponent } from './Components/ticket/ticket.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
@@ -16,6 +17,10 @@ const appRoutes: Routes = [
     {
         path: 'store',
         component: StoreComponent
+    },
+    {
+        path: 'store/ticket/:ticketId',
+        component: TicketComponent
     },
     {
         path: 'home/store',
@@ -50,12 +55,9 @@ const appRoutes: Routes = [
 
 @NgModule({
     imports:[
-    RouterModule.forRoot(appRoutes, { useHash:true }
+    RouterModule.forRoot(appRoutes,
         )
     ],
-    providers: [
-        { provide: LocationStrategy, useClass: HashLocationStrategy },
-      ],
     exports: [
         RouterModule
     ],
