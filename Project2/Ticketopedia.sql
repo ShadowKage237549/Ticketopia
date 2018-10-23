@@ -91,14 +91,6 @@ CREATE TABLE tickets (
 	CONSTRAINT ticket_event_type_fk FOREIGN KEY ( event_type_id )
 		REFERENCES event_types ( event_type_id )
 );
-CREATE TABLE posts_title (
-	post_title_id NUMBER(6),
-	post_title VARCHAR2(50),
-	ticket_id NUMBER(6),
-	CONSTRAINT post_title_pk PRIMARY KEY ( post_title_id ),
-	CONSTRAINT post_title_fk FOREIGN KEY ( ticket_id )
-		REFERENCES tickets ( ticket_id )
-);
 CREATE TABLE posts (
 	post_id NUMBER(10),
      --pk
@@ -113,5 +105,16 @@ CREATE TABLE posts (
 		REFERENCES tickets ( ticket_id ),
 	CONSTRAINT post_user_fk FOREIGN KEY ( display_name )
 		REFERENCES customer_information ( display_name )
+);
+CREATE TABLE posts_title (
+	post_title_id NUMBER(6),
+	post_id NUMBER(10),
+	post_title VARCHAR2(50),
+	ticket_id NUMBER(6),
+	CONSTRAINT post_title_pk PRIMARY KEY ( post_title_id ),
+	CONSTRAINT post_title_fk FOREIGN KEY ( ticket_id )
+		REFERENCES tickets ( ticket_id ),
+	CONSTRAINT post_title_fk2 FOREIGN KEY ( post_id )
+		REFERENCES posts ( post_id )
 );
 COMMIT;
