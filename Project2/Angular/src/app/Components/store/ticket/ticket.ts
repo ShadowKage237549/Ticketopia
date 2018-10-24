@@ -11,5 +11,6 @@ export class Ticket {
         public eventState:string,
         public eventZip:number,
         public partnerName:string,
+        public topicId:number,
         public freeFlag:boolean){}
 }

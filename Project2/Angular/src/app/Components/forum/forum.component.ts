@@ -1,6 +1,8 @@
+
 import { Topic } from './../forumtopic/topic/topic';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { TopicService } from '../../Services/Forumtopic/topic.service';
 
 @Component({
   selector: 'app-forum',
@@ -9,15 +11,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ForumComponent implements OnInit {
 
-  constructor(private hClient:HttpClient) { }
+  constructor(private topicService:TopicService) { }
   //Each topic is an anchor which leads to the forumtopic.component
   
-  topicCategories:Topic[] = [
-    new Topic(1,"topic 1","topic 1 description of the topic"),
-    new Topic(2,"topic 2","topic 2 description of the topic")
-  ];
+  topics:Topic[] = this.topicService.topics;
+  selectForumtopic(topic:Topic){
+    this.topicService.selectedTopic = topic;
+  }
 
   ngOnInit() {
   }
 
 }
+

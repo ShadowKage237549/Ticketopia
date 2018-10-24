@@ -1,15 +1,22 @@
-<div class="row mx-3 my-5">
-  <h1>Ticketopia Forum</h1>
-</div>
-<div class="row mx-3">
-  <div class="col-12 mx-3">
-    <h3>{{topicCategory}}</h3>
+
+<div *ngIf="topic?.topicId; else noTopic" class="row mx-3 my-5">
+  <div class="col">
+    <h1>{{topic?.topicName}}</h1>
     <hr>
   </div>
   <div class="col-12 mx-3" *ngFor="let post of posts">
-    <a class="row mx-3 forum rounded" routerLinkActive="active" routerLink="{{post.postId}}">
-      <p class="col-4">{{post.postTitle}}</p>
-      <p class="col-8">{{post.postContent}}</p>
+    <a class="row mx-3 forum rounded" routerLinkActive="active" routerLink="/forum/{{topic?.topicId}}/{{post?.postId}}">
+      <p class="col-4">{{post?.postTitle}}</p>
+      <p class="col-8">{{post?.postContent}}</p>
     </a>
   </div>
 </div>
+<ng-template #noTopic>
+  <div class="row">
+    <div class="col">
+      <p>No topic</p>
+      <hr>
+    </div>
+  </div>
+</ng-template>
+
