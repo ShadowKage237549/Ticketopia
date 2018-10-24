@@ -43,8 +43,27 @@ public class CommentDaoImpl implements CommentDao {
 	//Get the post linked to the comment
 	@Override
 	public Post getPost(Integer postId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		Session session = HibernateUtil.getSession();
+		Transaction tx = null;
+		Query query;
+		String hql = null;
+		Post post = null;
+		
+		
+		try {
+			hql = "FROM posts WHERE post_id = :postId";
+			query = session.createQuery(hql);
+			//look at the notes from ryan on how to get a resultset in hibernate
+			//fill out then return the post object
+			post = new Post();
+			
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			
+		}
+		return post;
 	}
 
 	@Override
