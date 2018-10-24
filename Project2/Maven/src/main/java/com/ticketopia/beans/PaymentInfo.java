@@ -2,6 +2,7 @@ package com.ticketopia.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -9,6 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="payment_info")
 public class PaymentInfo {
+	@Id
 	@ManyToOne
 	@JoinColumn(name = "customer_email")
 	private CustomerInfo customerInfo;
