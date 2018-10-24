@@ -45,6 +45,6 @@
 			<attribute name="m2e-apt" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/GitHub/Project2/Maven/resources/ojdbc7-12.1.0.jar"/>
+	<classpathentry kind="lib" path="D:/GitHub/Project2/Maven/resources/ojdbc6-11.2.0.3.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
