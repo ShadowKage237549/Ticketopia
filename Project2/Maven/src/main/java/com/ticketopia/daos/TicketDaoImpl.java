@@ -11,6 +11,7 @@ import com.ticketopia.util.HibernateUtil;
 
 public class TicketDaoImpl implements TicketDao {
 	@SuppressWarnings("unchecked")
+
 	@Override
 	public List<Ticket> getAllTickets() {
 		Session session = HibernateUtil.getSession();

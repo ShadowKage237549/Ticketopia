@@ -20,4 +20,6 @@ public interface TicketDao {
 	public Boolean removeTicket(Ticket ticket);
 	
 	public Boolean updateTicket(Ticket ticket);
+
 }
+

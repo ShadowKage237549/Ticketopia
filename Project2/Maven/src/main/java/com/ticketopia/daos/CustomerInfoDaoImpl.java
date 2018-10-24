@@ -13,6 +13,7 @@ import com.ticketopia.beans.UserType;
 import com.ticketopia.util.HibernateUtil;
 
 public class CustomerInfoDaoImpl implements CustomerInfoDao {
+	@Override
 	public boolean createCustomer(CustomerInfo customer) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
@@ -31,7 +32,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		}
 	}
 	
-	
+	@Override
 	public boolean adjustUserRole(CustomerInfo customer, Integer newRole) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
@@ -61,6 +62,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		}
 	}
 	
+	@Override
 	public boolean changePassword(CustomerInfo customer, String newPassword) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
@@ -80,6 +82,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		}
 	}
 	
+	@Override
 	public void applyPoints(CustomerInfo customer, Integer points) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
