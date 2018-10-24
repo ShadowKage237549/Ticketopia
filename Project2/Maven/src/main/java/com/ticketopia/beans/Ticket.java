@@ -51,8 +51,8 @@ public class Ticket {
 	@JoinColumn(name = "partner_id")
 	private Partner partner;
 	@ManyToOne
-	@JoinColumn(name = "post_title_id")
-	private Integer postTitleId;
+	@JoinColumn(name = "topic_title_id")
+	private Topic topic;
 	@Column(name="free_flag")
 	private boolean free;
 	public Integer getTicketId() {
@@ -121,11 +121,11 @@ public class Ticket {
 	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
-	public Integer getPostTitleId() {
-		return postTitleId;
+	public Topic getTopic() {
+		return topic;
 	}
-	public void setPostTitleId(Integer postTitleId) {
-		this.postTitleId = postTitleId;
+	public void setTopic(Topic topic) {
+		this.topic = topic;
 	}
 	public boolean isFree() {
 		return free;
@@ -136,11 +136,11 @@ public class Ticket {
 	@Override
 	public String toString() {
 		return "Ticket [ticketId=" + ticketId + ", ticketType=" + ticketType + ", eventType=" + eventType + ", ticketPrice=" + ticketPrice + ", eventDescription=" + eventDescription
-				+ ", eventAddress=" + eventAddress + ", eventCity=" + eventCity + ", eventState=" + eventState + ", eventZip=" + eventZip + ", seat=" + seat + ", partner=" + partner + ", postTitleId="
-				+ postTitleId + ", free=" + free + "]";
+				+ ", eventAddress=" + eventAddress + ", eventCity=" + eventCity + ", eventState=" + eventState + ", eventZip=" + eventZip + ", seat=" + seat + ", partner=" + partner + ", topic="
+				+ topic + ", free=" + free + "]";
 	}
 	public Ticket(Integer ticketId, String ticketType, EventType eventType, Double ticketPrice, String eventDescription, String eventAddress, String eventCity, String eventState, Integer eventZip,
-			String seat, Partner partner, Integer postTitleId, boolean free) {
+			String seat, Partner partner, Topic topic, boolean free) {
 		super();
 		this.ticketId = ticketId;
 		this.ticketType = ticketType;
@@ -153,7 +153,7 @@ public class Ticket {
 		this.eventZip = eventZip;
 		this.seat = seat;
 		this.partner = partner;
-		this.postTitleId = postTitleId;
+		this.topic = topic;
 		this.free = free;
 	}
 	public Ticket() {
