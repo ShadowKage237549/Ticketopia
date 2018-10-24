@@ -1,3 +1,38 @@
-<p>
-  store works!
-</p>
+<div class="row mx-3 my-5">
+  <h1>STORE</h1>
+</div>
+<div class="row mx-3">
+  <div class="col-4" *ngFor="let ticket of tickets">
+    <div class="row">
+      <!--TODO replace with add to card -->
+      <button class="card" (click)="selectStoreTicket(ticket)" routerLinkActive="active" routerLink="ticket/{{ticket.ticketId}}">
+        <div class="card-body">
+          <div class="card-text">
+            Ticket ID: {{ticket.ticketId}}<br>
+            Ticket Type: {{ticket.ticketType}}<br>
+            <div *ngIf="ticket.freeFlag; else notFree">
+              Ticket Price: ${{ticket.ticketPrice}} 
+            </div>
+            <ng-template #notFree >
+              Ticket Price: <s>${{ticket.ticketPrice}}</s> FREE!
+            </ng-template>
+          </div>
+          <div class="card-text">
+            Event Type: {{ticket.eventType}}<br>
+            Event Description: {{ticket.eventDescription}}
+          </div>
+          <div class="card-text">
+            Address: {{ticket.eventAddress}}<br>
+            City: {{ticket.eventCity}}<br>
+            State: {{ticket.eventState}}<br>
+            Zipcode: {{ticket.eventZip}}
+          </div>
+          <div class="card-text">
+            Partner Name: {{ticket.partnerName}}<br>
+            Free: {{ticket.freeFlag}}
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

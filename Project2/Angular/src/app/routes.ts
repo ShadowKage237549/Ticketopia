@@ -1,12 +1,15 @@
-import { Routes } from '@angular/router';
+import { TicketComponent } from './Components/ticket/ticket.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
 import { ForumComponent } from './Components/forum/forum.component';
 import { ForumtopicComponent } from './Components/forumtopic/forumtopic.component';
 import { StoreComponent } from './Components/store/store.component';
 import { LoginComponent } from './Components/login/login.component';
 import { ForumpostComponent } from './Components/forumpost/forumpost.component';
+import { NgModule } from '@angular/core';
 
-export const appRoutes: Routes = [
+const appRoutes: Routes = [
     {
         path: 'login',
         component: LoginComponent
@@ -14,6 +17,10 @@ export const appRoutes: Routes = [
     {
         path: 'store',
         component: StoreComponent
+    },
+    {
+        path: 'store/ticket/:ticketId',
+        component: TicketComponent
     },
     {
         path: 'home/store',
@@ -45,3 +52,14 @@ export const appRoutes: Routes = [
         pathMatch: 'full'
     }
 ];
+
+@NgModule({
+    imports:[
+    RouterModule.forRoot(appRoutes,
+        )
+    ],
+    exports: [
+        RouterModule
+    ],
+})
+export class AppRoutingModule {}

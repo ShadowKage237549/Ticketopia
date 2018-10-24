@@ -13,12 +13,13 @@ import javax.persistence.Table;
 public class Partner {
 	@Id
 	@Column(name="partner_id")
-	@SequenceGenerator(sequenceName="Partner_Seq", name="Partner_Seq")
-	@GeneratedValue(generator="Partner_Seq", strategy=GenerationType.SEQUENCE)
+	@SequenceGenerator(sequenceName="Partner_Generator", name="Partner_Id")
+	@GeneratedValue(generator="Partner_Id", strategy=GenerationType.SEQUENCE)
 	private Integer partnerId;
 	
 	@Column(name="partner_name")
 	private String partnerName;
+	
 	public Integer getPartnerId() {
 		return partnerId;
 	}
@@ -40,15 +41,7 @@ public class Partner {
 		this.partnerId = partnerId;
 		this.partnerName = partnerName;
 	}
-<<<<<<< HEAD:Project2/Maven/src/main/java/com/ticketopia/beans/Partner.java
-	public Partner(String partnerName) {
-		super();
-		this.partnerName = partnerName;
-	}
 	public Partner() {
-=======
-	public Partners() {
->>>>>>> b2582ba956cc61d72f80d104f0b8e7c172b0c92f:Project2/Maven/src/main/java/com/ticketopia/beans/Partners.java
 		super();
 		// TODO Auto-generated constructor stub
 	}

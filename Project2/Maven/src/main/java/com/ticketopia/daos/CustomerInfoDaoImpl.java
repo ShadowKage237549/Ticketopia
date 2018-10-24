@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.PaymentInfo;
-import com.ticketopia.beans.UserRole;
+import com.ticketopia.beans.UserType;
 import com.ticketopia.util.HibernateUtil;
 
 public class CustomerInfoDaoImpl implements CustomerInfoDao {
@@ -31,37 +31,20 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		}
 	}
 	
-	public boolean createPaymentMethod(PaymentInfo payment) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		
-		try {
-			tx = session.beginTransaction();
-			session.save(payment); //Returns the id of the fresh insert
-			tx.commit();
-			return true;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			tx.rollback();
-			return false;
-		} finally {
-			session.close();
-		}
-	}
 	
 	public boolean adjustUserRole(CustomerInfo customer, Integer newRole) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		Query query;
 		String hql = null;	
-		UserRole role = null;
+		UserType role = null;
 		
 		try {
-			hql = "FROM user_type WHERE role_id=:id";
+			hql = "FROM UserType WHERE roleId=:id";
 			query = session.createQuery(hql);
 			query.setParameter("id", newRole);
 			
-			role = (UserRole)query.uniqueResult();
+			role = (UserType)query.uniqueResult();
 			
 			customer.setRole(role);
 			
@@ -97,24 +80,6 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		}
 	}
 	
-	public boolean removePaymentMethod(PaymentInfo payment) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		
-		try {
-			tx = session.beginTransaction();
-			session.delete(payment); //Returns the id of the fresh insert
-			tx.commit();
-			return true;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			tx.rollback();
-			return false;
-		} finally {
-			session.close();
-		}
-	}
-	
 	public void applyPoints(CustomerInfo customer, Integer points) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
@@ -130,5 +95,26 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		} finally {
 			session.close();
 		}
+	}
+
+
+	@Override
+	public CustomerInfo getCustomerByEmail(String email) {
+		Query query = null;
+		Session session = null;
+		String hql = "FROM CustomerInfo WHERE userEmail = :email";
+		CustomerInfo customer = null;
+		try
+		{
+			session = HibernateUtil.getSession();
+			query = session.createQuery(hql);
+			query.setParameter("email", email);
+			customer = (CustomerInfo)query.uniqueResult();
+		}catch(HibernateException e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return customer;
 	}
 }
