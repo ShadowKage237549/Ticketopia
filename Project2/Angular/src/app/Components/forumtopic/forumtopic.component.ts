@@ -2,19 +2,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ForumPost } from './../forumpost/post/ForumPost';
 import { Topic } from './topic/topic';
 import { Component, OnInit } from '@angular/core';
+import { TopicService } from '../../Services/Forumtopic/topic.service';
 
 @Component({
   selector: 'app-forumtopic',
   templateUrl: './forumtopic.component.html',
-  styleUrls: ['./forumtopic.component.css']
+  styleUrls: ['./../forum/forum.component.css']
 })
 export class ForumtopicComponent implements OnInit {
   //ForumtopicComponent is the page which displays all posts within a given forum topic.
   //Each post links to ForumpostComponent
-
-  selectedTopic: Topic = new Topic(1, "topic 1", "topic 1 description of the topic");
-  topicCategory: string = this.selectedTopic.topicName;
-  topicId: number = this.selectedTopic.topicId;
+  topicId:number = Number.parseInt(this.activatedRoute.snapshot.url[1].path);
+  topic:Topic = this.getTopicById(this.topicId);
+  //posts:ForumPost = this.postService.getPosts();
   postTitle: string = "Post title";
   posts: ForumPost[] = [
     new ForumPost(1, "Post Title x", "Post Description of Post Title x"),
@@ -29,14 +29,33 @@ export class ForumtopicComponent implements OnInit {
   postDescription: String = "the first 100 characters of the post content";
   postContent: string;
 
-  constructor(private activatedRoute:ActivatedRoute, private router:Router) { }
-
+  constructor(private activatedRoute: ActivatedRoute, private topicService: TopicService) { }
+  
   ngOnInit() {
-    console.log(this.activatedRoute.snapshot.url[2].path);
+    if(Number.parseInt(this.activatedRoute.snapshot.url[1].path)){
+      this.topicId = Number.parseInt(this.activatedRoute.snapshot.url[1].path);
+      console.log(1);
+    }
+    else if(Number.parseInt(this.activatedRoute.snapshot.url[2].path)){
+      this.topicId = Number.parseInt(this.activatedRoute.snapshot.url[2].path);
+      console.log(2);
+    }
+    this.topic = this.getTopicById(this.topicId);
   }
 
+  getTopicById(id:number){
+    if(this.topicService.selectedTopic != null){
+      if(id == this.topicService.selectedTopic.topicId){
+        this.topic = this.topicService.selectedTopic;
+      }}else 
+      if(this.topicService.selectedTopic == null) {
+        this.topic = this.topicService.getTopicById(id);
+      }
+      return this.topic;
+    }
 
 
- 
+
+
 
 }

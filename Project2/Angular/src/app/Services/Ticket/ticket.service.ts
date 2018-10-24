@@ -62,11 +62,12 @@ export class TicketService {
       "State",
       123456,
       "myPartnerName",
+      1,
       true),
-    new Ticket(2, "", 10, "", "", "", "", "", 123456, "", false),
-    new Ticket(3, "", 10, "", "", "", "", "", 123456, "", false),
-    new Ticket(4, "", 10, "", "", "", "", "", 123456, "", false),
-    new Ticket(5, "", 10, "", "", "", "", "", 123456, "", false),
-    new Ticket(6, "", 50, "", "", "", "", "", 123456, "", false)];
+    new Ticket(2, "", 10, "", "", "", "", "", 123456, "",2, false),
+    new Ticket(3, "", 10, "", "", "", "", "", 123456, "",3, false),
+    new Ticket(4, "", 10, "", "", "", "", "", 123456, "",4, false),
+    new Ticket(5, "", 10, "", "", "", "", "", 123456, "",5, false),
+    new Ticket(6, "", 50, "", "", "", "", "", 123456, "",6, false)];
   }
 }
