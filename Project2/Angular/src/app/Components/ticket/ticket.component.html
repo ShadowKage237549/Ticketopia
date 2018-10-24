@@ -1,39 +1,53 @@
 <div class="row py-3">
-  <h1 class="mx-auto">{{ticket?.eventType}}</h1>
+  <h1 class="ml-3">{{ticket?.eventType}}</h1>
 </div>
-<div class="row mx-3">
-  <div class="col-8 card">
-    <div class="pt-3">
-      Ticket ID: {{ticket?.ticketId}} <br>
-      Ticket Type: {{ticket.ticketType}}
-      <div *ngIf="ticket.freeFlag; else notFree">
-        Ticket Price: ${{ticket.ticketPrice}}
+<div *ngIf="ticket; else noTicket" class="row mx-3">
+  <div class="col-10 card">
+    <div class="pt-3 row">
+      <div class="col-4">
+        Ticket-ID {{ticket?.ticketId}}
       </div>
-      <ng-template #notFree>
-        Ticket Price: <s>${{ticket.ticketPrice}}</s> FREE!
-      </ng-template><br>
-      Event Description: {{ticket.eventDescription}}<br>
+      <div class="col-4">
+        Ticket-Type: {{ticket?.ticketType}}
+      </div>
+      <div class="col-4">
+
+        <div *ngIf="ticket.freeFlag; else notFree">
+          Ticket-Price: ${{ticket?.ticketPrice}}
+        </div>
+        <ng-template #notFree>
+          Ticket-Price: <s>${{ticket?.ticketPrice}}</s> FREE!
+        </ng-template>
+      </div>
+      <div class="col-12">
+        Event Description: {{ticket?.eventDescription}}
+      </div>
     </div>
     <hr>
-    <div class="py-3">
-      <div class="text-center bg-dark text-light">Event Location Info</div>
-      <br>
-      Address: {{ticket.eventAddress}}<br>
-      City: {{ticket.eventCity}}<br>
-      State: {{ticket.eventState}}<br>
-      Zipcode: {{ticket.eventZip}}<br>
-      <hr>
-      <div class="py-3">
-        Partner: {{ticket.partnerName}}
+    <div class="py-3 row">
+      <div class="col-12">
+        <div class="text-center bg-dark text-light">Event Location Info</div>
+      </div>
+      
+      <div class="col-12 py-3">
+        Address: {{ticket?.eventAddress}}<br>
+        City: {{ticket?.eventCity}}<br>
+        State: {{ticket?.eventState}}<br>
+        Zipcode: {{ticket?.eventZip}}<br>
+        <hr>
+        <div class="">
+          Partner: {{ticket?.partnerName}}
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-4 mr-auto">
+  <div class="col-2 mr-auto">
     <button class="btn btn-info float-right">
       Add to cart
     </button>
   </div>
 </div>
+<ng-template #noTicket><p>No Ticket</p></ng-template>
 <div class="row mx-3 pt-5">
   <div class="col-12"><app-forumtopic></app-forumtopic></div>
 </div>
