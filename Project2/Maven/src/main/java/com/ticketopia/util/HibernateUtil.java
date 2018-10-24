@@ -14,10 +14,11 @@ public class HibernateUtil {
 	public static Session getSession(){
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
+			return sessionFactory.openSession();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return sessionFactory.openSession();
+		return null;
 	}
 }
