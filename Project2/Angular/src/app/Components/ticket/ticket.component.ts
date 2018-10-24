@@ -24,12 +24,9 @@ export class TicketComponent implements OnInit {
       if(id == this.ticketService.selectedStoreTicket.ticketId){
         this.ticket = this.ticketService.selectedStoreTicket;
       } else {
-        //TODO get the ticket from service by its ID
         this.ticket = this.ticketService.getTicketById(id);
       }
       return this.ticket;
     }
-    
-
   }
 }

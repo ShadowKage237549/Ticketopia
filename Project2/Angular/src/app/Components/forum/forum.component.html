@@ -7,10 +7,10 @@
     <p class="mx-3">Discuss upcoming events</p>
     <hr>
   </div>
-  <div class="col-12 mx-3" *ngFor="let topic of topicCategories">
-    <a class="row mx-3 forum rounded shadow-sm" routerLinkActive="active" routerLink="{{topic.topicId}}">
+  <div class="col-12 mx-3" *ngFor="let topic of topics">
+    <button (click)="selectForumtopic(topic)" class="btn-block row mx-3 forum rounded shadow-sm" routerLinkActive="active" routerLink="{{topic.topicId}}">
       <p class="col-4">{{topic.topicName}}</p>
       <p class="col-8">{{topic.topicDescription}}</p>
-    </a>
+    </button>
   </div>
 </div>
