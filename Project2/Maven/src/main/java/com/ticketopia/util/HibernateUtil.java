@@ -13,8 +13,11 @@ public class HibernateUtil {
 
 	public static Session getSession() {
 		try {
+			System.out.println("failed");
 			Class.forName("oracle.jdbc.driver.OracleDriver");
+			System.out.println("failed");
 			SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
+			System.out.println("failed");
 			return sessionFactory.openSession();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
