@@ -7,10 +7,6 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
-
-	
-	
-
 	public static Session getSession() {
 		SessionFactory sessionFactory = null;
 		sessionFactory = new Configuration().configure().buildSessionFactory();

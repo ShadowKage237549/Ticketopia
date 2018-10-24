@@ -115,9 +115,8 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			customer = (CustomerInfo)query.uniqueResult();
 		}catch(HibernateException e) {
 			e.printStackTrace();
-		}finally {
-			session.close();
 		}
+		session.close();
 		return customer;
 	}
 }
