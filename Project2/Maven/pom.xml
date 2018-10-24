@@ -36,11 +36,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<artifactId>ojdbc7</artifactId>
+			<artifactId>ojdbc6</artifactId>
 			<groupId>com.oracle</groupId>
-			<version>12.1.0</version>
+			<version>12.1.0.2</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/resources/ojdbc7-12.1.0.jar</systemPath>
+			<systemPath>${project.basedir}/resources/ojdbc6-12.1.0.2.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
