@@ -7,6 +7,12 @@
 	<version>0.0.1</version>
 	<packaging>war</packaging>
 
+	<repositories>
+        <repository>
+            <id>codelds</id>
+            <url>https://code.lds.org/nexus/content/groups/main-repo</url>
+        </repository>
+    </repositories>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -38,9 +44,7 @@
 		<dependency>
 			<artifactId>ojdbc6</artifactId>
 			<groupId>com.oracle</groupId>
-			<version>11.2.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/resources/ojdbc6-11.2.0.3.jar</systemPath>
+			<version>11.2.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -61,13 +65,7 @@
 	<build>
 		<resources>
 			<resource>
-				<directory>src</directory>
-			</resource>
-			<resource>
 				<directory>src/main/resources</directory>
-			</resource>
-			<resource>
-				<directory>resources</directory>
 			</resource>
 		</resources>
 	</build>
