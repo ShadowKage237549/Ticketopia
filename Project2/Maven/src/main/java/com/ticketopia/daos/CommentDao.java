@@ -15,7 +15,7 @@ public interface CommentDao {
 			// is sent a topic and a post
 			// returns a list of comments under those categories
 	
-	public List <Comment> getPost(Post post);
+	public Post getPost(Integer postId);
 	
 	public boolean NewComment(
 			
@@ -24,5 +24,7 @@ public interface CommentDao {
 			String timeStamp,
 			String commentContent
 			);
+
+	List<Comment> getPostComments(Post post);
 	
 }
