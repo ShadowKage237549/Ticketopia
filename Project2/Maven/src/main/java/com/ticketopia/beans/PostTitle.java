@@ -20,7 +20,7 @@ public class PostTitle {
 	
 	@ManyToOne
 	@JoinColumn(name="topic_id")
-	private Integer topicId;
+	private Topic topicId;
 	
 	@Column(name="post_title")
 	private String postTitle;
@@ -33,11 +33,11 @@ public class PostTitle {
 		Id = id;
 	}
 
-	public Integer getTopicId() {
+	public Topic getTopicId() {
 		return topicId;
 	}
 
-	public void setTopicId(Integer topicId) {
+	public void setTopicId(Topic topicId) {
 		this.topicId = topicId;
 	}
 
@@ -49,7 +49,7 @@ public class PostTitle {
 		this.postTitle = postTitle;
 	}
 
-	public PostTitle(Integer id, Integer topicId, String postTitle) {
+	public PostTitle(Integer id, Topic topicId, String postTitle) {
 		super();
 		Id = id;
 		this.topicId = topicId;
