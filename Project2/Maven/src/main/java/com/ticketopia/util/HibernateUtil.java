@@ -13,13 +13,7 @@ public class HibernateUtil {
 
 	public static Session getSession() {
 		SessionFactory sessionFactory = null;
-		try {
-			//Class.forName("oracle.jdbc.driver.OracleDriver");
-			sessionFactory = new Configuration().configure().buildSessionFactory();
-			
-		} catch (HibernateException e) {
-			e.printStackTrace();
-		}
+		sessionFactory = new Configuration().configure().buildSessionFactory();
 		return sessionFactory.openSession();
 	}
 }
