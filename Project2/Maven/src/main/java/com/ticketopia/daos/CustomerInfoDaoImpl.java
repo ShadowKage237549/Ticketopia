@@ -116,7 +116,6 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		}catch(HibernateException e) {
 			e.printStackTrace();
 		}finally {
-			if(session != null)
 			session.close();
 		}
 		return customer;
