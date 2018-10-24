@@ -19,8 +19,8 @@ public class PostTitle {
 	private Integer Id;
 	
 	@ManyToOne
-	@JoinColumn(name="post_id")
-	private Integer postId;
+	@JoinColumn(name="topic_id")
+	private Integer topicId;
 	
 	@Column(name="post_title")
 	private String postTitle;
@@ -33,12 +33,12 @@ public class PostTitle {
 		Id = id;
 	}
 
-	public Integer getPostId() {
-		return postId;
+	public Integer getTopicId() {
+		return topicId;
 	}
 
-	public void setPostId(Integer postId) {
-		this.postId = postId;
+	public void setTopicId(Integer topicId) {
+		this.topicId = topicId;
 	}
 
 	public String getPostTitle() {
@@ -49,9 +49,11 @@ public class PostTitle {
 		this.postTitle = postTitle;
 	}
 
-	@Override
-	public String toString() {
-		return "PostTitle [Id=" + Id + ", postId=" + postId + ", postTitle=" + postTitle + "]";
+	public PostTitle(Integer id, Integer topicId, String postTitle) {
+		super();
+		Id = id;
+		this.topicId = topicId;
+		this.postTitle = postTitle;
 	}
 
 	public PostTitle() {
@@ -59,12 +61,10 @@ public class PostTitle {
 		// TODO Auto-generated constructor stub
 	}
 
-	public PostTitle(Integer id, Integer postId, String postTitle) {
-		super();
-		Id = id;
-		this.postId = postId;
-		this.postTitle = postTitle;
+	@Override
+	public String toString() {
+		return "PostTitle [Id=" + Id + ", topicId=" + topicId + ", postTitle=" + postTitle + "]";
 	}
-	
-	
+
+
 }
