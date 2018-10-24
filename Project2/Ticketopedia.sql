@@ -70,12 +70,69 @@ INSERT INTO customer_information VALUES(
 'Bobson',
 98765432,
 2,
-'100 Killer Rd'
+'100 Killer Rd',
 'Heart Broken Town',
 'MN',
 99999,
 'password'
 );
+
+INSERT INTO customer information VALUES
+'CBroadwell@admin.net',
+'Cory Broadwell',
+'Cory',
+'Broadwell',
+56789053,
+3,
+'111 Anime Street',
+'The Great Tomb of Nazarick',
+'Yggdrasil',
+77777,
+admin1
+);
+
+INSERT INTO customer information VALUES
+'CGomez@admin.net',
+'Courie Gomez',
+'Courie',
+'Gomez',
+34567,
+3,
+'123 19th Ave',
+'That one City We Do Not Name',
+'Nothingness',
+86753,
+admin2
+);
+
+INSERT INTO customer information VALUES
+'BSlappey@admin.net',
+'Ben Slappey',
+'Ben',
+'Slappey',
+4567890,
+3,
+'555 Slappin ln',
+'Slapsville',
+'Slaphio',
+88888,
+admin3
+);
+
+INSERT INTO customer information VALUES
+'PPrososki@admin.net',
+'Philip Prososki',
+'Phil',
+'Prososki',
+9876543,
+3,
+'651 Soul Reaper Ln',
+'Soul Society',
+'Otherside',
+21212,
+admin4
+);
+
 
 CREATE TABLE event_types (
 	event_type_id NUMBER(6),
