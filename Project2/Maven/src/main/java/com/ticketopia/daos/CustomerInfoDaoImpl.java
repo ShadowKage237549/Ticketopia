@@ -107,15 +107,12 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		Session session = null;
 		String hql = "FROM CustomerInfo WHERE userEmail = :email";
 		CustomerInfo customer = null;
-		try
-		{
+
 			session = HibernateUtil.getSession();
 			query = session.createQuery(hql);
 			query.setParameter("email", email);
 			customer = (CustomerInfo)query.uniqueResult();
-		}catch(HibernateException e) {
-			e.printStackTrace();
-		}
+
 		session.close();
 		return customer;
 	}
