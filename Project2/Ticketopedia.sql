@@ -99,7 +99,7 @@ CREATE TABLE topics(
 	CONSTRAINT topics_pk PRIMARY KEY (topic_id),
 	CONSTRAINT topic_ticket_fk FOREIGN KEY ( ticket_id )
 		REFERENCES tickets ( ticket_id )
-	);
+);
 CREATE TABLE posts_title (
 	post_title_id NUMBER(6),
 	post_title VARCHAR2(50),
