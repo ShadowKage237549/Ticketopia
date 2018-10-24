@@ -51,6 +51,10 @@ public class DispactherServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("/LogoutServlet");
 			rd.forward(request, response);
 			break;
+		case "tickets":
+			rd = request.getRequestDispatcher("/TicketServlet");
+			rd.forward(request, response);
+			break;
 		default:
 			response.sendError(404);
 			break;
