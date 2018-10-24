@@ -16,18 +16,11 @@ public class Post {
 	@Id
 	@Column(name="post_id")
 	@SequenceGenerator(sequenceName="Post_Generator", name="Post_Id")
-	@GeneratedValue(generator="Post_Seq", strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(generator="Post_Id", strategy=GenerationType.SEQUENCE)
 	private Integer postId;
-	
-	@Column(name="post_title")
-	private String postTitle;
 	
 	@Column(name="post_content")
 	private String postContent;
-	
-	@ManyToOne // foreign key
-	@JoinColumn(name = "topic_id")
-	private Topic topic;
 	
 	@ManyToOne
 	@JoinColumn(name="display_name")
@@ -44,28 +37,12 @@ public class Post {
 		this.postId = postId;
 	}
 
-	public String getPostTitle() {
-		return postTitle;
-	}
-
-	public void setPostTitle(String postTitle) {
-		this.postTitle = postTitle;
-	}
-
 	public String getPostContent() {
 		return postContent;
 	}
 
 	public void setPostContent(String postContent) {
 		this.postContent = postContent;
-	}
-
-	public Topic getTopic() {
-		return topic;
-	}
-
-	public void setTopic(Topic topic) {
-		this.topic = topic;
 	}
 
 	public CustomerInfo getDisplayName() {
@@ -86,17 +63,13 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "ForumPosts [postId=" + postId + ", postTitle=" + postTitle + ", postContent=" + postContent + ", topic="
-				+ topic + ", displayName=" + displayName + ", postTimeStamp=" + postTimeStamp + "]";
+		return "Post [postId=" + postId + ", postContent=" + postContent + ", displayName=" + displayName + ", postTimeStamp=" + postTimeStamp + "]";
 	}
 
-	public Post(Integer postId, String postTitle, String postContent, Topic topic, CustomerInfo displayName,
-			String postTimeStamp) {
+	public Post(Integer postId, String postContent, CustomerInfo displayName, String postTimeStamp) {
 		super();
 		this.postId = postId;
-		this.postTitle = postTitle;
 		this.postContent = postContent;
-		this.topic = topic;
 		this.displayName = displayName;
 		this.postTimeStamp = postTimeStamp;
 	}
@@ -105,5 +78,6 @@ public class Post {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
 	
 }

@@ -14,11 +14,12 @@ public class Partner {
 	@Id
 	@Column(name="partner_id")
 	@SequenceGenerator(sequenceName="Partner_Generator", name="Partner_Id")
-	@GeneratedValue(generator="Partner_Seq", strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(generator="Partner_Id", strategy=GenerationType.SEQUENCE)
 	private Integer partnerId;
 	
 	@Column(name="partner_name")
 	private String partnerName;
+	
 	public Integer getPartnerId() {
 		return partnerId;
 	}

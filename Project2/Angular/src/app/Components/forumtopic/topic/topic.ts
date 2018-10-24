@@ -1,3 +1,4 @@
+
 export class Topic{
     
     constructor(
@@ -5,4 +6,5 @@ export class Topic{
         public topicName:string,
         public topicDescription:string
         ){}
+
 }

@@ -1,3 +1,4 @@
+
 import { Topic } from './../forumtopic/topic/topic';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -22,3 +23,4 @@ export class ForumComponent implements OnInit {
   }
 
 }
+

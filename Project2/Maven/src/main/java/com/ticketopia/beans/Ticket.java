@@ -16,15 +16,11 @@ public class Ticket {
 	@Id
 	@Column(name="ticket_id")
 	@SequenceGenerator(sequenceName="Ticket_Generator", name="Ticket_Id")
-	@GeneratedValue(generator="Ticket_Seq", strategy=GenerationType.SEQUENCE)
+	@GeneratedValue(generator="Ticket_Id", strategy=GenerationType.SEQUENCE)
 	private Integer ticketId;
 	
 	@Column(name="ticket_type")
 	private String ticketType;
-	
-	@ManyToOne
-	@JoinColumn(name = "topic_id")
-	private Topic topic;
 	
 	@ManyToOne
 	@JoinColumn(name = "event_type_id")
@@ -54,129 +50,100 @@ public class Ticket {
 	@ManyToOne
 	@JoinColumn(name = "partner_id")
 	private Partner partner;
-	
+	@ManyToOne
+	@JoinColumn(name = "post_title_id")
+	private Integer postTitleId;
 	@Column(name="free_flag")
-	private Character freeList;
-
+	private boolean free;
 	public Integer getTicketId() {
 		return ticketId;
 	}
-
 	public void setTicketId(Integer ticketId) {
 		this.ticketId = ticketId;
 	}
-
 	public String getTicketType() {
 		return ticketType;
 	}
-
 	public void setTicketType(String ticketType) {
 		this.ticketType = ticketType;
 	}
-
-	public Topic getTopic() {
-		return topic;
-	}
-
-	public void setTopic(Topic topic) {
-		this.topic = topic;
-	}
-
 	public EventType getEventType() {
 		return eventType;
 	}
-
 	public void setEventType(EventType eventType) {
 		this.eventType = eventType;
 	}
-
 	public Double getTicketPrice() {
 		return ticketPrice;
 	}
-
 	public void setTicketPrice(Double ticketPrice) {
 		this.ticketPrice = ticketPrice;
 	}
-
 	public String getEventDescription() {
 		return eventDescription;
 	}
-
 	public void setEventDescription(String eventDescription) {
 		this.eventDescription = eventDescription;
 	}
-
 	public String getEventAddress() {
 		return eventAddress;
 	}
-
 	public void setEventAddress(String eventAddress) {
 		this.eventAddress = eventAddress;
 	}
-
 	public String getEventCity() {
 		return eventCity;
 	}
-
 	public void setEventCity(String eventCity) {
 		this.eventCity = eventCity;
 	}
-
 	public String getEventState() {
 		return eventState;
 	}
-
 	public void setEventState(String eventState) {
 		this.eventState = eventState;
 	}
-
 	public Integer getEventZip() {
 		return eventZip;
 	}
-
 	public void setEventZip(Integer eventZip) {
 		this.eventZip = eventZip;
 	}
-
 	public String getSeat() {
 		return seat;
 	}
-
 	public void setSeat(String seat) {
 		this.seat = seat;
 	}
-
 	public Partner getPartner() {
 		return partner;
 	}
-
 	public void setPartner(Partner partner) {
 		this.partner = partner;
 	}
-
-	public Character getFreeList() {
-		return freeList;
+	public Integer getPostTitleId() {
+		return postTitleId;
 	}
-
-	public void setFreeList(Character freeList) {
-		this.freeList = freeList;
+	public void setPostTitleId(Integer postTitleId) {
+		this.postTitleId = postTitleId;
 	}
-
+	public boolean isFree() {
+		return free;
+	}
+	public void setFree(boolean free) {
+		this.free = free;
+	}
 	@Override
 	public String toString() {
-		return "Tickets [ticketId=" + ticketId + ", ticketType=" + ticketType + ", topic=" + topic + ", eventType="
-				+ eventType + ", ticketPrice=" + ticketPrice + ", eventDescription=" + eventDescription
-				+ ", eventAddress=" + eventAddress + ", eventCity=" + eventCity + ", eventState=" + eventState
-				+ ", eventZip=" + eventZip + ", seat=" + seat + ", partner=" + partner + ", freeList=" + freeList + "]";
+		return "Ticket [ticketId=" + ticketId + ", ticketType=" + ticketType + ", eventType=" + eventType + ", ticketPrice=" + ticketPrice + ", eventDescription=" + eventDescription
+				+ ", eventAddress=" + eventAddress + ", eventCity=" + eventCity + ", eventState=" + eventState + ", eventZip=" + eventZip + ", seat=" + seat + ", partner=" + partner + ", postTitleId="
+				+ postTitleId + ", free=" + free + "]";
 	}
-
-	public Ticket(Integer ticketId, String ticketType, Topic topic, EventType eventType, Double ticketPrice,
-			String eventDescription, String eventAddress, String eventCity, String eventState, Integer eventZip,
-			String seat, Partner partner, Character freeList) {
+	public Ticket(Integer ticketId, String ticketType, EventType eventType, Double ticketPrice, String eventDescription, String eventAddress, String eventCity, String eventState, Integer eventZip,
+			String seat, Partner partner, Integer postTitleId, boolean free) {
 		super();
 		this.ticketId = ticketId;
 		this.ticketType = ticketType;
-		this.topic = topic;
 		this.eventType = eventType;
 		this.ticketPrice = ticketPrice;
 		this.eventDescription = eventDescription;
@@ -186,12 +153,14 @@ public class Ticket {
 		this.eventZip = eventZip;
 		this.seat = seat;
 		this.partner = partner;
-		this.freeList = freeList;
+		this.postTitleId = postTitleId;
+		this.free = free;
 	}
-
 	public Ticket() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
 	
 }
