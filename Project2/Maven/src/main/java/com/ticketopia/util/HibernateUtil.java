@@ -5,9 +5,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
-	public static Session getSession() throws ClassNotFoundException {
+	public static Session getSession() {
 		SessionFactory sessionFactory = null;
-		Class.forName("oracle.jdbc.driver.OracleDriver");
 		sessionFactory = new Configuration().configure().buildSessionFactory();
 		return sessionFactory.openSession();
 	}

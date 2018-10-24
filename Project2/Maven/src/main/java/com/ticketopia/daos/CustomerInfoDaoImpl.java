@@ -15,11 +15,10 @@ import com.ticketopia.util.HibernateUtil;
 public class CustomerInfoDaoImpl implements CustomerInfoDao {
 	@Override
 	public boolean createCustomer(CustomerInfo customer) {
-		Session session = null;
+		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		
 		try {
-			session =  HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			session.save(customer); //Returns the id of the fresh insert
 			tx.commit();
@@ -27,26 +26,21 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			tx.rollback();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return false;
 		} finally {
 			session.close();
 		}
-		return false;
-
 	}
 	
 	@Override
 	public boolean adjustUserRole(CustomerInfo customer, Integer newRole) {
-		Session session = null;
+		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		Query query;
 		String hql = null;	
 		UserType role = null;
 		
 		try {
-			session = HibernateUtil.getSession();
 			hql = "FROM UserType WHERE roleId=:id";
 			query = session.createQuery(hql);
 			query.setParameter("id", newRole);
@@ -62,23 +56,18 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			tx.rollback();
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return false;
 		} finally {
 			session.close();
 		}
-		return false;
 	}
 	
 	@Override
 	public boolean changePassword(CustomerInfo customer, String newPassword) {
-		Session session = null;
+		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		
 		try {
-			session = HibernateUtil.getSession();
 			customer.setPassword(newPassword);
 			tx = session.beginTransaction();
 			session.save(customer); //Returns the id of the fresh insert
@@ -87,23 +76,18 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			tx.rollback();
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return false;
 		} finally {
 			session.close();
 		}
-		return false;
 	}
 	
 	@Override
 	public void applyPoints(CustomerInfo customer, Integer points) {
-		Session session = null;
+		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
 		
 		try {
-			session = HibernateUtil.getSession();
 			customer.setAccumulatedPoints(points);
 			tx = session.beginTransaction();
 			session.save(customer); //Returns the id of the fresh insert
@@ -111,9 +95,6 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			tx.rollback();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} finally {
 			session.close();
 		}
@@ -134,10 +115,8 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			customer = (CustomerInfo)query.uniqueResult();
 		}catch(HibernateException e) {
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}finally {
+			if(session != null)
 			session.close();
 		}
 		return customer;
