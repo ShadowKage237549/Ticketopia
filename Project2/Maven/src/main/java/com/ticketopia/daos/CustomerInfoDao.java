@@ -12,6 +12,7 @@ public interface CustomerInfoDao {
 				// email
 				// password
 			// adds this to database
+	public CustomerInfo getCustomerByEmail(String email);
 	public boolean createCustomer(CustomerInfo customer);
 		
 		// adjust role
