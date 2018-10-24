@@ -9,7 +9,7 @@
 	<session-factory>
 		<!-- This is like the jdbc class.forName() -->
 		<property name="hibernate.connection.driver_class">
-			oracle.jdbc.driver.OracleDriver
+			oracle.jdbc.OracleDriver
 		</property>
 
 		<!-- This configures the database engine we intend to use. If you ever 
