@@ -9,7 +9,6 @@ DROP TABLE event_types CASCADE CONSTRAINTS;
 DROP TABLE tickets CASCADE CONSTRAINTS;
 DROP TABLE posts CASCADE CONSTRAINTS;
 DROP TABLE partners CASCADE CONSTRAINTS;
-DROP TABLE post_title CASCADE CONSTRAINTS;
 CREATE TABLE user_type (
 	role_id NUMBER(6),
      --pk
@@ -34,6 +33,17 @@ CREATE TABLE partners (
 	partner_name VARCHAR2(100),
 	CONSTRAINT partner_pk PRIMARY KEY ( partner_id )
 );
+
+INSERT INTO partners VALUES (
+1,
+'Smokey Music Ltd'
+);
+
+INSERT INTO partners VALUES (
+2, 
+'Regression films Ltd'
+);
+
 CREATE TABLE customer_information (
 	customer_email VARCHAR2(100),
      --pk
@@ -52,6 +62,21 @@ CREATE TABLE customer_information (
 	CONSTRAINT customer_role_fk FOREIGN KEY ( user_type )
 		REFERENCES user_type ( role_id )
 );
+
+INSERT INTO customer_information VALUES(
+'Bob.Bobson@mafia.net',
+'Mafia Master',
+'Bob',
+'Bobson',
+98765432,
+2,
+'100 Killer Rd'
+'Heart Broken Town',
+'MN',
+99999,
+'password'
+);
+
 CREATE TABLE event_types (
 	event_type_id NUMBER(6),
      --pk
@@ -92,26 +117,36 @@ CREATE TABLE tickets (
 	CONSTRAINT ticket_event_type_fk FOREIGN KEY ( event_type_id )
 		REFERENCES event_types ( event_type_id )
 );
+CREATE TABLE topics(
+	topic_id NUMBER(6),
+	ticket_id NUMBER(6),
+	topic_name VARCHAR2(100),
+	topic_desc VARCHAR2(200),
+	CONSTRAINT topics_pk PRIMARY KEY (topic_id),
+	CONSTRAINT topic_ticket_fk FOREIGN KEY ( ticket_id )
+		REFERENCES tickets ( ticket_id )
+);
+CREATE TABLE posts_title (
+	post_title_id NUMBER(6),
+	post_title VARCHAR2(50),
+	topic_id NUMBER(6),
+	CONSTRAINT post_title_pk PRIMARY KEY ( post_title_id ),
+	CONSTRAINT post_title_fk FOREIGN KEY ( topic_id )
+		REFERENCES topics ( topic_id )
+);
 CREATE TABLE posts (
 	post_id NUMBER(10),
      --pk
+	ticket_id NUMBER(6),
+     --fk
 	display_name VARCHAR2(20),
      --fk
 	post_content VARCHAR2(500),
 	post_timestamp TIMESTAMP,
 	CONSTRAINT post_pk PRIMARY KEY ( post_id ),
+	CONSTRAINT post_topic_fk FOREIGN KEY ( ticket_id )
+		REFERENCES tickets ( ticket_id ),
 	CONSTRAINT post_user_fk FOREIGN KEY ( display_name )
 		REFERENCES customer_information ( display_name )
-);
-CREATE TABLE post_title (
-	post_title_id NUMBER(6),
-	post_id NUMBER(10),
-	post_title VARCHAR2(50),
-	ticket_id NUMBER(6),
-	CONSTRAINT post_title_pk PRIMARY KEY ( post_title_id ),
-	CONSTRAINT post_title_fk FOREIGN KEY ( ticket_id )
-		REFERENCES tickets ( ticket_id ),
-	CONSTRAINT post_title_fk2 FOREIGN KEY ( post_id )
-		REFERENCES posts ( post_id )
 );
 COMMIT;
