@@ -55,17 +55,15 @@
 			update
 		</property>
 
-		<mapping resource="ticketopia.hbm.xml" />
-		<mapping class="com.ticketopia.beans.Comments" />
 		<mapping class="com.ticketopia.beans.CustomerInfo" />
-		<mapping class="com.ticketopia.beans.EventTypes" />
-		<mapping class="com.ticketopia.beans.ForumPosts" />
-		<mapping class="com.ticketopia.beans.FreeTickets" />
-		<mapping class="com.ticketopia.beans.Partners" />
+		<mapping class="com.ticketopia.beans.EventType" />
+		<mapping class="com.ticketopia.beans.Partner" />
 		<mapping class="com.ticketopia.beans.PaymentInfo" />
-		<mapping class="com.ticketopia.beans.Tickets" />
-		<mapping class="com.ticketopia.beans.Topics" />
-		<mapping class="com.ticketopia.beans.UserRoles" />
+		<mapping class="com.ticketopia.beans.Post" />
+		<mapping class="com.ticketopia.beans.PostTitle" />
+		<mapping class="com.ticketopia.beans.Ticket" />
+		<mapping class="com.ticketopia.beans.Topic" />
+		<mapping class="com.ticketopia.beans.UserType" />
 
 
 	</session-factory>
