@@ -11,19 +11,10 @@ import { UserType } from './user/UserType';
 })
 export class LoginComponent implements OnInit {
 
-    login: CustomerInfo = {
-        userEmail:"empty",
-        displayName:"empty",
-        userFName:"empty",
-        userLName:"empty",
-        accumulatedPoints:0,
-        role: new UserType(0,"basic"),
-        userAddress:"empty",
-        userCity:"empty",
-        userState:"empty",
-        userZip:123456,
-        password:"empty",
-    };
+    token:any = "";
+    email:string = "";
+    password:string = "";
+
     constructor(private auth: AuthenticationService) {
     }
 
@@ -31,7 +22,9 @@ export class LoginComponent implements OnInit {
     }
 
     logMeIn() {
-        this.login = this.auth.login(this.login);
+        this.token = this.auth.login(this.email, this.password);
+        this.password = null;
+        this.email = null;
     }
 
 }
