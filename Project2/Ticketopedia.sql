@@ -31,17 +31,20 @@ CREATE TABLE partners (
 	partner_id NUMBER(6),
      --pk
 	partner_name VARCHAR2(100),
+    partner_description VARCHAR2(250),
 	CONSTRAINT partner_pk PRIMARY KEY ( partner_id )
 );
 
 INSERT INTO partners VALUES (
 1,
-'Smokey Music Ltd'
+'Smokey Music Ltd',
+'Smokey Music Ltd, has been working with various bands and private musicians to provide discount tickets.'
 );
 
 INSERT INTO partners VALUES (
-2, 
-'Regression films Ltd'
+2,
+'Regression films Ltd',
+'Regression films aims to sell discounted tickets by directly working with movie producers.'
 );
 
 CREATE TABLE customer_information (
@@ -441,6 +444,38 @@ CREATE TABLE tickets (
 	CONSTRAINT ticket_event_type_fk FOREIGN KEY ( event_type_id )
 		REFERENCES event_types ( event_type_id )
 );
+
+INSERT INTO tickets VALUES (
+1,
+'Movie Ticket',
+1,
+99,
+'Back Row seating for Venom with beer, popcorn, and ices included',
+'777 Zmax Blvd',
+'Reston',
+'Virginia',
+86943,
+'Z-1',
+1,
+0
+);
+
+INSERT INTO tickets VALUES (
+2,
+'Concert Ticket',
+2,
+1000,
+'Meet and Greet with dinner included with Members of Disturbed',
+'1800 North University Drive',
+'Fargo',
+'North Dakota',
+58102,
+'Front-Row',
+2,
+0
+);
+
+
 CREATE TABLE topics(
 	topic_id NUMBER(6),
 	ticket_id NUMBER(6),
@@ -450,6 +485,21 @@ CREATE TABLE topics(
 	CONSTRAINT topic_ticket_fk FOREIGN KEY ( ticket_id )
 		REFERENCES tickets ( ticket_id )
 );
+
+INSERT INTO topics VALUES (
+1,
+1,
+'Venom the Movie!',
+'This movie was great. How the actor transformed into Venom had me all MIND=BLOWN!!!!',
+);
+
+INSERT INTO topics VALUES (
+2,
+2,
+'Disturbed. . . Legends possibly?',
+'I got to meet David Draimen, nicest guy ever. He even signed my Disturbed Tattoo and wished me well! CANNOT WAIT TO SEE THEM AGAIN!'
+);
+
 CREATE TABLE posts_title (
 	post_title_id NUMBER(6),
 	post_title VARCHAR2(50),
