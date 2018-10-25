@@ -1,6 +1,7 @@
 import { AuthenticationService } from '../../Services/Authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from './user/User';
+import { CustomerInfo } from './user/CustomerInfo';
+import { UserType } from './user/UserType';
 
 @Component({
     selector: 'app-login',
@@ -10,10 +11,18 @@ import { User } from './user/User';
 })
 export class LoginComponent implements OnInit {
 
-    login: User = {
-        email: '',
-        password: '',
-        points: 0
+    login: CustomerInfo = {
+        userEmail:"empty",
+        displayName:"empty",
+        userFName:"empty",
+        userLName:"empty",
+        accumulatedPoints:0,
+        role: new UserType(0,"basic"),
+        userAddress:"empty",
+        userCity:"empty",
+        userState:"empty",
+        userZip:123456,
+        password:"empty",
     };
     constructor(private auth: AuthenticationService) {
     }
