@@ -90,7 +90,7 @@ INSERT INTO customer_information VALUES (
 '111 Cloud Ln',
 'St. Cloud',
 'Mn',
-55319
+55319,
 'DJDoe'
 );
 
@@ -105,7 +105,7 @@ INSERT INTO customer_information VALUES (
 'Hampton',
 'Ohio',
 40281,
-'swords',
+'swords'
 );
 
 INSERT INTO customer_information VALUES (
@@ -119,7 +119,7 @@ INSERT INTO customer_information VALUES (
 'Mankato',
 'Kentucky',
 66666,
-'Starbucks',
+'Starbucks'
 );
 
 INSERT INTO customer_information VALUES
@@ -133,7 +133,7 @@ INSERT INTO customer_information VALUES
 'Bullhead Citay',
 'Arizona',
 53296,
-'ChevyMan1234',
+'ChevyMan1234'
 );
 
 INSERT INTO customer_information VALUES (
@@ -147,7 +147,7 @@ INSERT INTO customer_information VALUES (
 'Millerton',
 'California',
 99999,
-'ILoveMiller',
+'ILoveMiller'
 );
 
 INSERT INTO customer_information VALUES (
@@ -161,7 +161,7 @@ INSERT INTO customer_information VALUES (
 'Palmerville',
 'Minnesota',
 55320
-'Vinnymyboy',
+'Vinnymyboy'
 );
 
 INSERT INTO customer_information VALUES (
@@ -175,7 +175,7 @@ INSERT INTO customer_information VALUES (
 'The Grove',
 12409,
 2,
-'CapitalOneRocks',
+'CapitalOneRocks'
 );
 
 INSERT INTO customer_information VALUES (
@@ -189,7 +189,7 @@ INSERT INTO customer_information VALUES (
 'Maple Grove',
 'AK',
 98765,
-'admin5547',
+'admin5547'
 );
 
 INSERT INTO customer_information VALUES (
@@ -203,7 +203,7 @@ INSERT INTO customer_information VALUES (
 'Pinnacle Lakes',
 'WI'
 17384,
-'HanselandGrettle',
+'HanselandGrettle'
 );
 --Basic users
 INSERT INTO customer_information VALUES (
@@ -217,7 +217,7 @@ INSERT INTO customer_information VALUES (
 'Isolation Island',
 'Hawaii',
 44444,
-'Hexadecimal',
+'Hexadecimal'
 );
 
 INSERT INTO customer_information VALUES (
@@ -231,7 +231,7 @@ INSERT INTO customer_information VALUES (
 'Tampa Bay',
 'Florida',
 98642,
-'Porsche',
+'Porsche'
 );
 
 INSERT INTO customer_information VALUES (
@@ -245,7 +245,7 @@ INSERT INTO customer_information VALUES (
 'The Bay',
 'MA',
 09707,
-'Gophers',
+'Gophers'
 ); 
 
 INSERT INTO customer_information VALUES (
@@ -259,7 +259,7 @@ INSERT INTO customer_information VALUES (
 'Middleton',
 'New Jersey',
 98765,
-'BusterSword',
+'BusterSword'
 );
 
 INSERT INTO customer_information VALUES (
@@ -287,7 +287,7 @@ INSERT INTO customer_information VALUES (
 'Wyoming',
 'Kentucky',
 10410,
-'ILikeTurtles',
+'ILikeTurtles'
 );
 
 INSERT INTO customer_information VALUES (
@@ -301,7 +301,7 @@ INSERT INTO customer_information VALUES (
 'San Antonio',
 'Texas',
 76013,
-'OwlsAreSoCute!',
+'OwlsAreSoCute!'
 );
 
 INSERT INTO customer_information VALUES (
@@ -315,7 +315,7 @@ INSERT INTO customer_information VALUES (
 'Portland',
 'Oregon',
 68429,
-'SereneSkies',
+'SereneSkies'
 );
 
 INSERT INTO customer_information VALUES (
@@ -329,7 +329,7 @@ INSERT INTO customer_information VALUES (
 'Holland',
 'Minnesota',
 56055,
-'Vaporeon',
+'Vaporeon'
 );
 
 
@@ -346,7 +346,7 @@ INSERT INTO customer_information VALUES (
 'The Great Tomb of Nazarick',
 'Yggdrasil',
 77777,
-'admin1',
+'admin1'
 );
 
 INSERT INTO customer_information VALUES (
@@ -360,7 +360,7 @@ INSERT INTO customer_information VALUES (
 'That one City We Do Not Name',
 'Nothingness',
 86753,
-'admin2',
+'admin2'
 );
 
 INSERT INTO customer_information VALUES (
@@ -374,7 +374,7 @@ INSERT INTO customer_information VALUES (
 'Slapsville',
 'Slaphio',
 88888,
-'admin3',
+'admin3'
 );
 
 INSERT INTO customer_information VALUES(
@@ -388,7 +388,7 @@ INSERT INTO customer_information VALUES(
 'Soul Society',
 'Otherside',
 21212,
-'admin4',
+'admin4'
 );
 
 
