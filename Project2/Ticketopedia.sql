@@ -33,6 +33,17 @@ CREATE TABLE partners (
 	partner_name VARCHAR2(100),
 	CONSTRAINT partner_pk PRIMARY KEY ( partner_id )
 );
+
+INSERT INTO partners VALUES (
+1,
+'Smokey Music Ltd'
+);
+
+INSERT INTO partners VALUES (
+2, 
+'Regression films Ltd'
+);
+
 CREATE TABLE customer_information (
 	customer_email VARCHAR2(100),
      --pk
@@ -51,12 +62,351 @@ CREATE TABLE customer_information (
 	CONSTRAINT customer_role_fk FOREIGN KEY ( user_type )
 		REFERENCES user_type ( role_id )
 );
+
+INSERT INTO customer_information VALUES(
+'Bob.Bobson@mafia.net',
+'Mafia Master',
+'Bob',
+'Bobson',
+98765432,
+2,
+'100 Killer Rd',
+'Heart Broken Town',
+'MN',
+99999,
+'password'
+);
+
+INSERT INTO customer_information VALUES (
+'JohnDoe@.yahoo.com',
+'JDoe',
+'John',
+'Doe',
+10000,
+2,
+'111 Cloud Ln',
+'St. Cloud',
+'Mn',
+55319
+'DJDoe'
+);
+
+INSERT INTO customer_information VALUES (
+'Hamurai@hotmail.com',
+'Hamurai',
+'Ham',
+'Urai',
+4000,
+2,
+'111 Ham Way',
+'Hampton',
+'Ohio',
+40281,
+'swords',
+);
+
+INSERT INTO customer_information VALUES (
+'Destiny.A@gmail.com',
+'TheDestiny',
+'Destiny',
+'Adams',
+7500,
+2,
+'2342 Destined Rd',
+'Mankato',
+'Kentucky',
+66666,
+'Starbucks',
+);
+
+INSERT INTO customer_information VALUES
+'TWilson@gmail.com',
+'TheWilsonator',
+'Todd',
+'Wilson',
+100,
+2,
+'9675307 Fairie Rd',
+'Bullhead Citay',
+'Arizona',
+53296,
+'ChevyMan1234',
+);
+
+INSERT INTO customer_information VALUES (
+'GMiller@aol.com',
+'Glenninator',
+'Glenn',
+'Miller',
+9876,
+2,
+'555 Miller Way',
+'Millerton',
+'California',
+99999,
+'ILoveMiller',
+);
+
+INSERT INTO customer_information VALUES (
+'TDawgy09@hotmail.com',
+'Travalanche',
+'Travis',
+'Eid',
+98216,
+2,
+'703 W Prairie Rd',
+'Palmerville',
+'Minnesota',
+55320
+'Vinnymyboy',
+);
+
+INSERT INTO customer_information VALUES (
+'BirdoTheGreat@bln.com',
+'Birdo',
+'Brandon',
+'Eid',
+7777,
+2,
+'21407 Hilltop Cres',
+'The Grove',
+12409,
+2,
+'CapitalOneRocks',
+);
+
+INSERT INTO customer_information VALUES (
+'RPrososki@prososki.net',
+'PrososkiR',
+'Rachel',
+'Prososki',
+8888,
+2,
+'4321 Sunfish Rd',
+'Maple Grove',
+'AK',
+98765,
+'admin5547',
+);
+
+INSERT INTO customer_information VALUES (
+'GBriggs@briggs.com',
+'CatchinGretchen',
+'Gretchen',
+'Briggs',
+500,
+2,
+'328 Ferry St',
+'Pinnacle Lakes',
+'WI'
+17384,
+'HanselandGrettle',
+);
+--Basic users
+INSERT INTO customer_information VALUES (
+'SRussel@russel.com',
+'Mr.Russel',
+'Shane',
+'Russel',
+0,
+1,
+'17 Shady Way',
+'Isolation Island',
+'Hawaii',
+44444,
+'Hexadecimal',
+);
+
+INSERT INTO customer_information VALUES (
+'CLane@lanes.net',
+'ExpertRacer',
+'Carmani',
+'Lane',
+0,
+1,
+'1800 Racer Valley',
+'Tampa Bay',
+'Florida',
+98642,
+'Porsche',
+);
+
+INSERT INTO customer_information VALUES (
+'GBriggs@outlook.com',
+'General Briggs',
+'Greg',
+'Briggs',
+0,
+1,
+'42342 Brigadier Lane',
+'The Bay',
+'MA',
+09707,
+'Gophers',
+); 
+
+INSERT INTO customer_information VALUES (
+'CStrife@strifeforce.com',
+'Ex-SOLDIER',
+'Cloud',
+'Strife',
+0,
+1,
+'465748 7th Ave',
+'Middleton',
+'New Jersey',
+98765,
+'BusterSword',
+);
+
+INSERT INTO customer_information VALUES (
+'OttM@otttech.net',
+'Kane',
+'Michael',
+'Ott',
+0,
+1,
+'100 Presidential Ave',
+'Capital Hill',
+'D.C.',
+62341,
+'TheUndertaker'
+);
+
+INSERT INTO customer_information VALUES (
+'Jjohnson@aol.com',
+'JjBoombox',
+'Jordan',
+'Johnson',
+0,
+1,
+'1857 Chidori Cir'
+'Wyoming',
+'Kentucky',
+10410,
+'ILikeTurtles',
+);
+
+INSERT INTO customer_information VALUES (
+'MsOwl@owly.com',
+'OliviatheOwl',
+'Olivia',
+'Owllette',
+0,
+1,
+'6415 Joker blvd',
+'San Antonio',
+'Texas',
+76013,
+'OwlsAreSoCute!',
+);
+
+INSERT INTO customer_information VALUES (
+'Srenity@yahoo.com',
+'Ms.Renity',
+'Serenity',
+'Smith',
+0,
+1,
+'7654 Elm St',
+'Portland',
+'Oregon',
+68429,
+'SereneSkies',
+);
+
+INSERT INTO customer_information VALUES (
+'Zprososki@prososki.net',
+'PrincessZ',
+'Zariah',
+'Prososki',
+0,
+1,
+'101 1st St',
+'Holland',
+'Minnesota',
+56055,
+'Vaporeon',
+);
+
+
+--admin below
+
+INSERT INTO customer_information VALUES (
+'CBroadwell@admin.net',
+'Cory Broadwell',
+'Cory',
+'Broadwell',
+56789053,
+3,
+'111 Anime Street',
+'The Great Tomb of Nazarick',
+'Yggdrasil',
+77777,
+'admin1',
+);
+
+INSERT INTO customer_information VALUES (
+'CGomez@admin.net',
+'Courie Gomez',
+'Courie',
+'Gomez',
+34567,
+3,
+'123 19th Ave',
+'That one City We Do Not Name',
+'Nothingness',
+86753,
+'admin2',
+);
+
+INSERT INTO customer_information VALUES (
+'BSlappey@admin.net',
+'Ben Slappey',
+'Ben',
+'Slappey',
+4567890,
+3,
+'555 Slappin ln',
+'Slapsville',
+'Slaphio',
+88888,
+'admin3',
+);
+
+INSERT INTO customer_information VALUES(
+'PPrososki@admin.net',
+'Philip Prososki',
+'Phil',
+'Prososki',
+9876543,
+3,
+'651 Soul Reaper Ln',
+'Soul Society',
+'Otherside',
+21212,
+'admin4',
+);
+
+
 CREATE TABLE event_types (
 	event_type_id NUMBER(6),
      --pk
 	event_type VARCHAR2(100),
 	CONSTRAINT event_types_pk PRIMARY KEY ( event_type_id )
 );
+
+INSERT INTO event_types VALUES (
+1,
+'Venom at Zmax'
+);
+
+INSERT INTO event_types VALUES (
+2,
+'Disturbed in Concert - Fargo Dome'
+);
+
+
 CREATE TABLE payment_info (
 	customer_email VARCHAR2(100),
      --fk 
