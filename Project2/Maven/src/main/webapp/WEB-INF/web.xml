@@ -84,4 +84,14 @@
     <servlet-name>PostTitlesServlet</servlet-name>
     <url-pattern>/PostTitlesServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PartnerServlet</display-name>
+    <servlet-name>PartnerServlet</servlet-name>
+    <servlet-class>com.ticketopia.servlets.PartnerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PartnerServlet</servlet-name>
+    <url-pattern>/PartnerServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
