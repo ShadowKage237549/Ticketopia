@@ -77,7 +77,234 @@ INSERT INTO customer_information VALUES(
 'password'
 );
 
-INSERT INTO customer information VALUES
+INSERT INTO customer_information VALUES (
+'JohnDoe@.yahoo.com',
+'JDoe',
+'John',
+'Doe',
+10000,
+2,
+'111 Cloud Ln',
+'St. Cloud',
+'Mn',
+55319
+'DJDoe'
+);
+
+INSERT INTO customer_information VALUES (
+'Hamurai@hotmail.com',
+'Hamurai',
+'Ham',
+'Urai',
+4000,
+2,
+'111 Ham Way',
+'Hampton',
+'Ohio',
+40281,
+'swords',
+);
+
+INSERT INTO customer_information VALUES (
+'Destiny.A@gmail.com',
+'TheDestiny',
+'Destiny',
+'Adams',
+7500,
+2,
+'2342 Destined Rd',
+'Mankato',
+'Kentucky',
+66666,
+'Starbucks',
+);
+
+INSERT INTO customer_information VALUES
+'TWilson@gmail.com',
+'TheWilsonator',
+'Todd',
+'Wilson',
+100,
+2,
+'9675307 Fairie Rd',
+'Bullhead Citay',
+'Arizona',
+53296,
+'ChevyMan1234',
+);
+
+INSERT INTO customer_information VALUES (
+'GMiller@aol.com',
+'Glenninator',
+'Glenn',
+'Miller',
+9876,
+2,
+'555 Miller Way',
+'Millerton',
+'California',
+99999,
+'ILoveMiller',
+);
+
+INSERT INTO customer_information VALUES (
+'TDawgy09@hotmail.com',
+'Travalanche',
+'Travis',
+'Eid',
+98216,
+2,
+'703 W Prairie Rd',
+'Palmerville',
+'Minnesota',
+55320
+'Vinnymyboy',
+);
+
+INSERT INTO customer_information VALUES (
+'BirdoTheGreat@bln.com',
+'Birdo',
+'Brandon',
+'Eid',
+7777,
+2,
+'21407 Hilltop Cres',
+'The Grove',
+12409,
+2,
+'CapitalOneRocks',
+);
+
+INSERT INTO customer_information VALUES (
+'RPrososki@prososki.net',
+'PrososkiR',
+'Rachel',
+'Prososki',
+8888,
+2,
+'4321 Sunfish Rd',
+'Maple Grove',
+'AK',
+98765,
+'admin5547',
+);
+
+INSERT INTO customer_information VALUES (
+'GBriggs@briggs.com',
+'CatchinGretchen',
+'Gretchen',
+'Briggs',
+500,
+2,
+'328 Ferry St',
+'Pinnacle Lakes',
+'WI'
+17384,
+'HanselandGrettle',
+);
+--Basic users
+INSERT INTO customer_information VALUES (
+'SRussel@russel.com',
+'Mr.Russel',
+'Shane',
+'Russel',
+0,
+1,
+'17 Shady Way',
+'Isolation Island',
+'Hawaii',
+44444,
+'Hexadecimal',
+);
+
+INSERT INTO customer_information VALUES (
+'CLane@lanes.net',
+'ExpertRacer',
+'Carmani',
+'Lane',
+0,
+1,
+'1800 Racer Valley',
+'Tampa Bay',
+'Florida',
+98642,
+'Porsche',
+);
+
+INSERT INTO customer_information VALUES (
+'GBriggs@outlook.com',
+'General Briggs',
+'Greg',
+'Briggs',
+0,
+1,
+'42342 Brigadier Lane',
+'The Bay',
+'MA',
+09707,
+'Gophers',
+); 
+
+INSERT INTO customer_information VALUES (
+'CStrife@strifeforce.com',
+'Ex-SOLDIER',
+'Cloud',
+'Strife',
+0,
+1,
+'465748 7th Ave',
+'Middleton',
+'New Jersey',
+98765,
+'BusterSword',
+);
+
+INSERT INTO customer_information VALUES (
+'OttM@otttech.net',
+'Kane',
+'Michael',
+'Ott',
+0,
+1,
+'100 Presidential Ave',
+'Capital Hill',
+'D.C.',
+62341,
+'TheUndertaker'
+);
+
+INSERT INTO customer_information VALUES (
+'Jjohnson@aol.com',
+'JjBoombox',
+'Jordan',
+'Johnson',
+0,
+1,
+'1857 Chidori Cir'
+'Wyoming',
+'Kentucky',
+10410,
+'ILikeTurtles',
+);
+
+INSERT INTO customer_information VALUES (
+'MsOwl@owly.com',
+'OliviatheOwl',
+'Olivia',
+'Owllette',
+0,
+1,
+'6415 Joker blvd',
+'San Antonio',
+'Texas',
+76013,
+'OwlsAreSoCute!',
+);
+
+
+--admin below
+
+INSERT INTO customer_information VALUES
 'CBroadwell@admin.net',
 'Cory Broadwell',
 'Cory',
@@ -88,10 +315,10 @@ INSERT INTO customer information VALUES
 'The Great Tomb of Nazarick',
 'Yggdrasil',
 77777,
-admin1
+'admin1',
 );
 
-INSERT INTO customer information VALUES
+INSERT INTO customer_information VALUES
 'CGomez@admin.net',
 'Courie Gomez',
 'Courie',
@@ -102,10 +329,10 @@ INSERT INTO customer information VALUES
 'That one City We Do Not Name',
 'Nothingness',
 86753,
-admin2
+'admin2',
 );
 
-INSERT INTO customer information VALUES
+INSERT INTO customer_information VALUES
 'BSlappey@admin.net',
 'Ben Slappey',
 'Ben',
@@ -116,10 +343,10 @@ INSERT INTO customer information VALUES
 'Slapsville',
 'Slaphio',
 88888,
-admin3
+'admin3',
 );
 
-INSERT INTO customer information VALUES
+INSERT INTO customer_information VALUES
 'PPrososki@admin.net',
 'Philip Prososki',
 'Phil',
@@ -130,7 +357,7 @@ INSERT INTO customer information VALUES
 'Soul Society',
 'Otherside',
 21212,
-admin4
+'admin4',
 );
 
 
