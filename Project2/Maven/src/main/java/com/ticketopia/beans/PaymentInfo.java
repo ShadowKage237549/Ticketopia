@@ -1,14 +1,23 @@
 package com.ticketopia.beans;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="payment_info")
-public class PaymentInfo {
+public class PaymentInfo implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
 	@ManyToOne
 	@JoinColumn(name = "customer_email")
 	private CustomerInfo customerInfo;

@@ -1,0 +1,15 @@
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.1">
+
+    <deployment>
+
+        <!-- This allows you to define additional dependencies, it is the same as using the Dependencies: manifest attribute -->
+
+        <dependencies>
+
+            <module name="org.hibernate" />
+
+        </dependencies>
+
+    </deployment>
+
+</jboss-deployment-structure>
