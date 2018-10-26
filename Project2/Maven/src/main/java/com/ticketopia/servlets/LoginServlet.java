@@ -38,9 +38,8 @@ public class LoginServlet extends HttpServlet {
 		email = request.getParameter("email");
 		password = request.getParameter("password");
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		CustomerInfo loggingInUser = null;
-		loggingInUser = cid.getCustomerByEmail(email.toLowerCase());
-		if(!(loggingInUser == null)) {
+		CustomerInfo loggingInUser = cid.getCustomerByEmail(email.toLowerCase());
+		if(loggingInUser != null) {
 			if(loggingInUser.getPassword().equals(password)) {
 				Algorithm algorithmHS = Algorithm.HMAC256("secretPassword123");
 				String token = JWT.create().withIssuer("Shadow").withClaim("userEmail", loggingInUser.getUserEmail())
@@ -59,6 +58,11 @@ public class LoginServlet extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("");
 				rd.forward(request, response);
 				return;
+			} else {
+				response.setContentType("application/json");
+				PrintWriter out = response.getWriter();
+				ObjectMapper om = new ObjectMapper();
+				out.print(om.writeValueAsString("wrong info"));
 			}
 		}
 		
