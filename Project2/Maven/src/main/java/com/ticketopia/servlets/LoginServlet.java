@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.daos.CustomerInfoDao;
 import com.ticketopia.daos.CustomerInfoDaoImpl;
@@ -40,10 +41,21 @@ public class LoginServlet extends HttpServlet {
 		loggingInUser = cid.getCustomerByEmail(email);
 		if(!(loggingInUser == null)) {
 			if(loggingInUser.getPassword().equals(password)) {
-				ObjectMapper om = new ObjectMapper();
+				Algorithm algorithmHS = Algorithm.HMAC256("secretPassword123");
+				String token = JWT.create().withIssuer("Shadow").withClaim("userEmail", loggingInUser.getUserEmail())
+						.withClaim("displayName", loggingInUser.getDisplayName())
+						.withClaim("userFName", loggingInUser.getUserFName())
+						.withClaim("userLName", loggingInUser.getUserLName())
+						.withClaim("accumulatedPoints", loggingInUser.getAccumulatedPoints())
+						.withClaim("role", loggingInUser.getRole().toString())
+						.withClaim("userAddress", loggingInUser.getUserAddress())
+						.withClaim("userCity", loggingInUser.getUserCity())
+						.withClaim("userState", loggingInUser.getUserState())
+						.withClaim("userZip", loggingInUser.getUserZip())
+						.sign(algorithmHS);
 				response.setContentType("application/json");
 				PrintWriter out = response.getWriter();
-				out.println(om.writeValueAsString(loggingInUser));
+				out.print(token);
 				RequestDispatcher rd = request.getRequestDispatcher("");
 				rd.forward(request, response);
 				return;

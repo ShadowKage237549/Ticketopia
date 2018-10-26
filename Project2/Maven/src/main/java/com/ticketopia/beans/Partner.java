@@ -16,7 +16,8 @@ public class Partner {
 	@SequenceGenerator(sequenceName="Partner_Generator", name="Partner_Id")
 	@GeneratedValue(generator="Partner_Id", strategy=GenerationType.SEQUENCE)
 	private Integer partnerId;
-	
+	@Column(name="partner_description")
+	private String partnerDesc;
 	@Column(name="partner_name")
 	private String partnerName;
 	
