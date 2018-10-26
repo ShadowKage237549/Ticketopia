@@ -23,10 +23,7 @@ export class AuthenticationService {
         );
         body = body.set('email', email);
         body = body.set('password', password);
-
-        return this.http.post(this.url + 'LoginServlet',
-            body,
-            { headers: headers }).subscribe(data => this.token = data);
+        this.http.post(this.url + 'LoginServlet', body, { headers: headers }).subscribe(data => this.token = data);
     }
     storeToken(token: any) {
         localStorage.setItem("token", this.token);
