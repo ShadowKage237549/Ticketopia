@@ -14,5 +14,5 @@ public interface PostDao {
 		// get all posts
 			// returns a list of all the posts
 	public List<Post> getPosts();
-	public boolean updatePost(Post post);
+	public boolean updatePost(Post post, String postContent);
 }

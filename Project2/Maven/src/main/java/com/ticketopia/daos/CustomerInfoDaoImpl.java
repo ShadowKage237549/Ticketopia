@@ -253,7 +253,8 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.delete(customer);
+			CustomerInfo ci = (CustomerInfo) session.get(CustomerInfo.class, customer.getUserEmail());
+			session.delete(ci);
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {

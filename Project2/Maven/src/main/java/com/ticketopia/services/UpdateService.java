@@ -1,5 +1,6 @@
 package com.ticketopia.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.ticketopia.beans.CustomerInfo;
@@ -25,7 +26,20 @@ public class UpdateService {
 	//update email
 	public Boolean updateEmail(CustomerInfo customer, String email) {
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		return cid.updateCustomerEmail(customer, email);
+		PaymentInfoDao pid = new PaymentInfoDaoImpl();
+		List<PaymentInfo> payments = pid.getPayments();
+		PaymentInfo payment = null;
+		
+		for(PaymentInfo p: payments) {
+			if(customer.getUserEmail().equals(p.getCustomerInfo().getUserEmail())) {
+				payment = p;
+				break;
+			}
+		}
+		
+		
+		return cid.updateCustomerEmail(customer, email) &
+				pid.updatePaymentEmail(payment, customer);
 	}
 	
 	//update payment
@@ -46,7 +60,11 @@ public class UpdateService {
 		payment.setBillingState(billingState);
 		payment.setBillingZip(billingZip);
 		
-		return pid.updatePaymentInfo(payment);
+		return pid.updatePaymentCardNumber(payment, cardNumber) 
+				& pid.updatePaymentSecurityCode(payment, securityCode)
+				& pid.updatePaymentExpirationDate(payment, expirationDate) 
+				& pid.updatePaymentBillingAddress(payment, billingAddress, billingCity,
+						billingState, billingZip);
 	}
 	
 	//update points
@@ -126,7 +144,7 @@ public class UpdateService {
 	public boolean updatePost(Post post, String postContent) {
 		PostDao pd = new PostDaoImpl();
 		
-		return pd.updatePost(post);
+		return pd.updatePost(post, postContent);
 	}
 	
 	//update ticket price
@@ -142,8 +160,6 @@ public class UpdateService {
 	public boolean updatePostTitle(PostTitle postTitle, String newTitle) {
 		PostTitleDao ptd = new PostTitleDaoImpl();
 		
-		postTitle.setPostTitle(newTitle);
-		
-		return ptd.updatePostTitle(postTitle);
+		return ptd.updatePostTitle(postTitle, newTitle);
 	}
 }

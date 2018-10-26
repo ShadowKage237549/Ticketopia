@@ -7,5 +7,5 @@ import com.ticketopia.beans.PostTitle;
 public interface PostTitleDao {
 	public boolean createPostTitle(PostTitle postTitle);
 	public List<PostTitle> getPostTitles();
-	public boolean updatePostTitle(PostTitle postTitle);
+	public boolean updatePostTitle(PostTitle postTitle, String newTitle);
 }
