@@ -114,14 +114,15 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			query = session.createQuery(hql);
 			query.setParameter("email", email);
 			List<CustomerInfo> list = query.list();
+			session.close();
 			if(list.size() > 0) {
 				customer = list.get(0);
 			}
 		}catch(HibernateException e) {
 			e.printStackTrace();
-		}finally {
-			session.close();
 		}
+			
+
 		System.out.println(customer);
 		return customer;
 	}

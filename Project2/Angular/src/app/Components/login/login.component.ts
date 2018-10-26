@@ -19,14 +19,13 @@ export class LoginComponent implements OnInit {
     }
 
     logMeIn() {
-       this.auth.login(this.email, this.password);
-       if (this.auth.getToken() === 'wrong info') {
+        this.auth.login(this.email, this.password);
+        if (this.auth.getToken() == null) {
             //route to err page
-            
-    } else {
-        //route to home page
-        this.auth.requestCustomerData();
-    }
+        } else {
+            //route to home page
+            this.auth.requestCustomerData();
+        }
     }
 
 }
