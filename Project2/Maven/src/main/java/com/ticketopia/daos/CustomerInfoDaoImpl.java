@@ -2,13 +2,14 @@ package com.ticketopia.daos;
 
 
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.ticketopia.beans.CustomerInfo;
-import com.ticketopia.beans.PaymentInfo;
 import com.ticketopia.beans.UserType;
 import com.ticketopia.util.HibernateUtil;
 
@@ -47,7 +48,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			
 			role = (UserType)query.uniqueResult();
 			
-			customer.setRole(role);
+			customer.setRole(role.getRoleId());
 			
 			tx = session.beginTransaction();
 			session.save(customer); //Returns the id of the fresh insert
@@ -105,15 +106,23 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 	public CustomerInfo getCustomerByEmail(String email) {
 		Session session = null;
 		CustomerInfo customer = null;
+		Query query = null;
+		String hql = "FROM CustomerInfo WHERE userEmail = :email";
 		try
 		{
 			session = HibernateUtil.getSession();
-			customer = (CustomerInfo)session.get(CustomerInfo.class, email);
+			query = session.createQuery(hql);
+			query.setParameter("email", email);
+			List<CustomerInfo> list = query.list();
+			if(list.size() > 0) {
+				customer = list.get(0);
+			}
 		}catch(HibernateException e) {
 			e.printStackTrace();
 		}finally {
 			session.close();
 		}
+		System.out.println(customer);
 		return customer;
 	}
 }

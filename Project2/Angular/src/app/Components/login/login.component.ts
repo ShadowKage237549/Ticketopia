@@ -24,7 +24,8 @@ export class LoginComponent implements OnInit {
 
     logMeIn() {
         console.log(this.email + this.password);
-        this.token = this.auth.login(this.email, this.password);
+        this.token = this.auth.login(this.email, this.password).subscribe();
+        console.log(this.token);
     }
 
 }

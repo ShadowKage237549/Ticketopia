@@ -2,16 +2,19 @@ package com.ticketopia.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity //Marks the class as a persistent class
-@Table(name="customer_information")
+@Table(name="customer_information",schema = "orcl")
 public class CustomerInfo {
 	@Id //Marks as a primary key
 	@Column(name="customer_email")
+	@SequenceGenerator(sequenceName="ci_seq", name="ci_seq")
+	@GeneratedValue(generator="ci_seq", strategy=GenerationType.SEQUENCE)
 	private String userEmail;
 	
 	@Column(name="display_name")
@@ -26,9 +29,8 @@ public class CustomerInfo {
 	@Column(name="accumulated_points") 
 	private Integer accumulatedPoints;
 	
-	@ManyToOne
-	@JoinColumn(name = "role_id")
-	private UserType role;
+	@Column(name = "user_type")
+	private Integer role;
 	
 	@Column(name="customer_address")
 	private String userAddress;
@@ -85,11 +87,11 @@ public class CustomerInfo {
 		this.accumulatedPoints = accumulatedPoints;
 	}
 
-	public UserType getRole() {
+	public Integer getRole() {
 		return role;
 	}
 
-	public void setRole(UserType role) {
+	public void setRole(Integer role) {
 		this.role = role;
 	}
 
@@ -142,7 +144,7 @@ public class CustomerInfo {
 	}
 
 	public CustomerInfo(String userEmail, String displayName, String userFName, String userLName,
-			Integer accumulatedPoints, UserType role, String userAddress, String userCity, String userState,
+			Integer accumulatedPoints, Integer role, String userAddress, String userCity, String userState,
 			Integer userZip, String password) {
 		super();
 		this.userEmail = userEmail;

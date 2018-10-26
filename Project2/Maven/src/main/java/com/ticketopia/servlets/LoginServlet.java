@@ -38,6 +38,7 @@ public class LoginServlet extends HttpServlet {
 		email = request.getParameter("email");
 		password = request.getParameter("password");
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
+		System.out.println(email + password);
 		CustomerInfo loggingInUser = cid.getCustomerByEmail(email.toLowerCase());
 		if(loggingInUser != null) {
 			if(loggingInUser.getPassword().equals(password)) {
@@ -52,11 +53,12 @@ public class LoginServlet extends HttpServlet {
 						.withClaim("userState", loggingInUser.getUserState())
 						.withClaim("userZip", loggingInUser.getUserZip())
 						.sign(algorithmHS);
-				response.setContentType("application/json");
+				response.setContentType("text/html");
 				PrintWriter out = response.getWriter();
 				out.print(token);
-				RequestDispatcher rd = request.getRequestDispatcher("");
-				rd.forward(request, response);
+				System.out.println(token);
+				//RequestDispatcher rd = request.getRequestDispatcher("");
+				//rd.forward(request, response);
 				return;
 			} else {
 				response.setContentType("application/json");
@@ -70,7 +72,6 @@ public class LoginServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		ObjectMapper om = new ObjectMapper();
 		out.print(om.writeValueAsString(loggingInUser));
-		
 	}
 
 	/**
