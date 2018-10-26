@@ -540,13 +540,13 @@ INSERT INTO topics VALUES (
 2,
 2,
 'Avengers: Infinity War Pt 2',
-'Ticket for one person to watching Avengers: Infinity War 2',
+'Ticket for one person to watching Avengers: Infinity War 2'
 );
 
 INSERT INTO topics VALUES (
 3,
 3,
-'Disturbed live at Fargo Dome'
+'Disturbed live at Fargo Dome',
 'Back stage passes to meet Disturbed the band.'
 );
 
@@ -569,7 +569,7 @@ CREATE TABLE posts_title (
 
 INSERT INTO posts_title VALUES (
 1,
-'DID YOU SEE HOW VENOM TRANSFORMED?!!!@#'
+'DID YOU SEE HOW VENOM TRANSFORMED?!!!@#',
 1
 );
 
@@ -612,7 +612,7 @@ INSERT INTO posts VALUES (
 1,
 1,
 'TheDestiny',
-'Venom was amazing! The way he transformed... his style, he is my FAVORITE VILLAIN!!! AHHH'
+'Venom was amazing! The way he transformed... his style, he is my FAVORITE VILLAIN!!! AHHH',
 SYSTIMESTAMP
 );
 
@@ -620,7 +620,7 @@ INSERT INTO posts VALUES (
 2,
 2,
 'JDoe'
-'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!'
+'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!',
 SYSTIMESTAMP
 );
 
@@ -628,7 +628,7 @@ INSERT INTO posts VALUES (
 3,
 3,
 'CatchinGretchen',
-'I got caught up in the moshpit during the Disturbed concert... I got knocked out and they had to stop the concert because of me... as an apology I got to meet the Band! It was so fun!'
+'I got caught up in the moshpit during the Disturbed concert... I got knocked out and they had to stop the concert because of me... as an apology I got to meet the Band! It was so fun!',
 SYSTIMESTAMP
 );
 
@@ -636,7 +636,7 @@ INSERT INTO posts VALUES (
 4,
 4,
 'Mr.Russell',
-'I got to see Eminem in concert, I'm such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!'
+'I got to see Eminem in concert, I'm such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!',
 SYSTIMESTAMP
 );
 
