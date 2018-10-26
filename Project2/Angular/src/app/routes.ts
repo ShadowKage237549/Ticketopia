@@ -1,3 +1,4 @@
+import { PaymentinfoComponent } from './Components/paymentinfo/paymentinfo.component';
 import { TicketComponent } from './Components/ticket/ticket.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,6 +18,10 @@ const appRoutes: Routes = [
     {
         path: 'Ticketopia/store',
         component: StoreComponent
+    },
+    {
+        path: 'Ticketopia/paymentinfo',
+        component: PaymentinfoComponent
     },
     {
         path: 'Ticketopia/store/ticket/:ticketId',
