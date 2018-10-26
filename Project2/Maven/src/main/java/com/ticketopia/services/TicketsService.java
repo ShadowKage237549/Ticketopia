@@ -9,7 +9,7 @@ import com.ticketopia.beans.Ticket;
 
 public class TicketsService {
 	// get ticket by price
-	public List<Ticket> getTicketByPrice(List<Ticket> tickets, Double maxPrice) {
+	public static List<Ticket> getTicketByPrice(List<Ticket> tickets, Double maxPrice) {
 		List<Ticket> pTickets = new ArrayList<>();
 		for(Ticket ticket: tickets) {
 			if(ticket.getTicketPrice() <= maxPrice) {
@@ -20,7 +20,7 @@ public class TicketsService {
 	}
 	
 	// get ticket by location
-	public List<Ticket> getTicketByLocation(List<Ticket> tickets, String city) {
+	public static List<Ticket> getTicketByLocation(List<Ticket> tickets, String city) {
 		List<Ticket> lTickets = new ArrayList<>();
 		for(Ticket ticket: tickets) {
 			if(ticket.getEventCity().equals(city)) {
@@ -31,7 +31,7 @@ public class TicketsService {
 	}
 	
 	// get ticket by event type
-	public List<Ticket> getTicketByEventType(List<Ticket> tickets, EventType event) {
+	public static List<Ticket> getTicketByEventType(List<Ticket> tickets, EventType event) {
 		List<Ticket> eTickets = new ArrayList<>();
 		for(Ticket ticket: tickets) {
 			if(ticket.getEventType().equals(event)) {
@@ -42,7 +42,7 @@ public class TicketsService {
 	}
 	
 	// get ticket by partner
-	public List<Ticket> getTicketByPartner(List<Ticket> tickets, Partner partner) {
+	public static List<Ticket> getTicketByPartner(List<Ticket> tickets, Partner partner) {
 		List<Ticket> pTickets = new ArrayList<>();
 		for(Ticket ticket: tickets) {
 			if(ticket.getPartner().equals(partner)) {
