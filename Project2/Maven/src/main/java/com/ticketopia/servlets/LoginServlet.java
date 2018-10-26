@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
 		password = request.getParameter("password");
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
 		CustomerInfo loggingInUser = null;
-		loggingInUser = cid.getCustomerByEmail(email);
+		loggingInUser = cid.getCustomerByEmail(email.toLowerCase());
 		if(!(loggingInUser == null)) {
 			if(loggingInUser.getPassword().equals(password)) {
 				Algorithm algorithmHS = Algorithm.HMAC256("secretPassword123");
