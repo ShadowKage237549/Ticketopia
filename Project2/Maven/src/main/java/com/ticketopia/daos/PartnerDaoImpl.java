@@ -37,7 +37,8 @@ public class PartnerDaoImpl implements PartnerDao {
 		
 		try {
 			tx = session.beginTransaction();
-			session.delete(partner);
+			Partner p = (Partner) session.get(Partner.class, partner.getPartnerId());
+			session.delete(p);
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {

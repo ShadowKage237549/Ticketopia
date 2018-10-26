@@ -57,7 +57,8 @@ public class TicketDaoImpl implements TicketDao {
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.delete(ticket);
+			Ticket t = (Ticket) session.get(Ticket.class, ticket.getTicketId());
+			session.delete(t);
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
