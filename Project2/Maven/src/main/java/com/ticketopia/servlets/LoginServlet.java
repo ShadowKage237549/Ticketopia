@@ -55,6 +55,7 @@ public class LoginServlet extends HttpServlet {
 				response.setContentType("text/html");
 				PrintWriter out = response.getWriter();
 				ObjectMapper om = new ObjectMapper();
+				System.out.println(om.writeValueAsString(token));
 				out.print(om.writeValueAsString(token));
 				return;
 			} else {

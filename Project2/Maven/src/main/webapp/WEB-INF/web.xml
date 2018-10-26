@@ -6,16 +6,6 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>DispactherServlet</display-name>
-    <servlet-name>DispactherServlet</servlet-name>
-    <servlet-class>com.ticketopia.servlets.DispactherServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DispactherServlet</servlet-name>
-    <url-pattern>*.do</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>LoginServlet</display-name>
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.ticketopia.servlets.LoginServlet</servlet-class>
@@ -93,5 +83,15 @@
   <servlet-mapping>
     <servlet-name>CustomerServlet</servlet-name>
     <url-pattern>/CustomerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DispatcherServlet</display-name>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <servlet-class>com.ticketopia.servlets.DispatcherServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DispatcherServlet</servlet-name>
+    <url-pattern>*.do</url-pattern>
   </servlet-mapping>
 </web-app>
