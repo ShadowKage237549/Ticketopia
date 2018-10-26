@@ -19,15 +19,15 @@
 		</property>
 
 		<property name="hibernate.connection.url">
-			jdbc:oracle:thin:@system.cgtesvcgs8pi.us-east-2.rds.amazonaws.com:1521:ORCL
+			jdbc:oracle:thin:@localhost:1521:xe
 		</property>
 
 		<property name="hibernate.connection.username">
-			Shadow237549
+			orcl
 		</property>
 
 		<property name="hibernate.connection.password">
-			Shadow!123
+			orcl
 		</property>
 
 		<!-- This determines how many connections a single user can have to the 
@@ -36,7 +36,7 @@
 			of 10. Considering free tier RDS' cap at 50 connections, I don't recommend 
 			it -->
 		<property name="hibernate.connection.pool_size">
-			3
+			1
 		</property>
 
 		<!-- syso all generated SQL for us to see. -->

@@ -9,15 +9,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class DispactherServlet
+ * Servlet implementation class DispatcherServlet
  */
-public class DispactherServlet extends HttpServlet {
+public class DispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public DispactherServlet() {
+    public DispatcherServlet() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -25,7 +26,7 @@ public class DispactherServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		StringBuffer url = request.getRequestURL();
 		System.out.println(url.toString());
 		String uri = request.getRequestURI();
