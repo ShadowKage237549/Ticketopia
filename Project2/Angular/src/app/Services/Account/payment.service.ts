@@ -13,8 +13,8 @@ export class PaymentService {
 
 
 
-  updatePayment(pInfos: Payment[]): any {
-    this.http.post(this.authService.url + "updatePayment.do", pInfos);
+  updatePayment(payment: Payment) {
+    return this.http.post<Payment[]>(this.authService.url + "updatePayment.do", payment);
   }
 
 

@@ -16,18 +16,21 @@ export class PaymentinfoComponent implements OnInit {
     new Payment(null,"1234123412341234",123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
     new Payment(null,"1234123412341234",123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345)
   ];
-  registerPayment:Payment = new Payment(null,null,null,null,null,null,null,null);
+  regPay:Payment = new Payment(null,null,null,null,null,null,null,null);
 
   constructor(private paymentService:PaymentService) { }
 
   ngOnInit() {
   }
 
+  updateExistingPayment(payment:Payment){
+    if(payment != null){
+      this.paymentService.updatePayment(this.regPay).subscribe((data:Payment[]) => this.pInfos);
+    }
+  }
   registerNewPayment(){
-    if(this.registerPayment != null){
-      //this.pInfos.push(this.registerPayment);
-      //this.paymentService.updatePayment(this.pInfos);
-      console.log(this.registerPayment);
+    if(this.regPay != null){
+      this.paymentService.updatePayment(this.regPay).subscribe((data:Payment[]) => this.pInfos);
     }
 
   }

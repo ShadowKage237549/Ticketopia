@@ -23,13 +23,13 @@
   <div class="col-6">
     <h1 class="mx-4">Add a new payment info</h1>
     <form #registerPaymentForm="ngForm" class="form-group">
-      <input type="text" class="form-control m-3" placeholder="16 Digit Card Number" name="registerCardNumber" ([ngModel])="registerPayment.cardNumber">
-      <input type="text" class="form-control m-3" placeholder="SecurityCode" name="registerSecurityCode" ([ngModel])="registerPayment.SecurityCode">
-      <input type="text" class="form-control m-3" placeholder="ExpirationDate" name="registerExpirationDate" ([ngModel])="registerPayment.expirationDate">
-      <input type="text" class="form-control m-3" placeholder="Address" name="registerBillingAddress" ([ngModel])="registerPayment.billingAddress">
-      <input type="text" class="form-control m-3" placeholder="City" name="registerBillingCity" ([ngModel])="registerPayment.billingCity">
-      <input type="text" class="form-control m-3" placeholder="State" name="registerBillingState" ([ngModel])="registerPayment.billingState">
-      <input type="text" class="form-control m-3" placeholder="Zipcode" name="registerBillingZip" ([ngModel])="registerPayment.billingZip">
+      <input type="text" class="form-control m-3" placeholder="16 Digit Card Number" name="registerCardNumber" [(ngModel)]="regPay.cardNumber" >
+      <input type="text" class="form-control m-3" placeholder="SecurityCode" name="registerSecurityCode" [(ngModel)]="regPay.SecurityCode" >
+      <input type="text" class="form-control m-3" placeholder="ExpirationDate" name="registerExpirationDate" [(ngModel)]="regPay.expirationDate" >
+      <input type="text" class="form-control m-3" placeholder="Address" name="registerBillingAddress" [(ngModel)]="regPay.billingAddress" >
+      <input type="text" class="form-control m-3" placeholder="City" name="registerBillingCity" [(ngModel)]="regPay.billingCity" >
+      <input type="text" class="form-control m-3" placeholder="State" name="registerBillingState" [(ngModel)]="regPay.billingState" >
+      <input type="text" class="form-control m-3" placeholder="Zipcode" name="registerBillingZip" [(ngModel)]="regPay.billingZip" >
       <input type="submit" class="btn btn-info m-3 px-5" (click)="registerNewPayment()" name="registerNewPayment">
     </form>
   </div>

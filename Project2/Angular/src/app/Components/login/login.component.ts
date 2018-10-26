@@ -10,8 +10,6 @@ import { UserType } from './user/UserType';
     providers: [AuthenticationService]
 })
 export class LoginComponent implements OnInit {
-
-    token: any = "";
     email: string;
     password: string;
 
@@ -23,8 +21,7 @@ export class LoginComponent implements OnInit {
     }
 
     logMeIn() {
-        console.log(this.email + this.password);
-        this.token = this.auth.login(this.email, this.password);
+        this.auth.login(this.email, this.password);
     }
 
 }
