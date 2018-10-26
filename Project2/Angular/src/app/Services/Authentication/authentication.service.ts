@@ -32,17 +32,10 @@ export class AuthenticationService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
-<<<<<<< HEAD
-    login(email:string, password:string) {
-        
-        this.http.post("http://18.222.219.232:8085/Ticketopia/login.do", "email=" + email + "&password=" + password)
-            .subscribe((data:string) => this.token = data);
-=======
     login(email: string, password: string) {
 
-        this.http.post("http://18.222.219.232:8085/Ticketopia/login.do", "email=" + email + "&password=" + password)
+        this.http.post("http://18.222.219.232:8085/Ticketopia/login.do", "?email=" + email + "&password=" + password)
             .subscribe((data: string) => this.token = data);
->>>>>>> 0532c10f2850c1675f93781c0abac8858a0366c3
         return this.token;
     }
     logout() {
