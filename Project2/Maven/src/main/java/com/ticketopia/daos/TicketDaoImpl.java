@@ -18,7 +18,7 @@ public class TicketDaoImpl implements TicketDao {
 		List<Ticket> tickets = null;
 		
 		try {			
-			tickets = (List<Ticket>)session.createQuery("FROM tickets").list();
+			tickets = (List<Ticket>)session.createQuery("FROM Ticket").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
