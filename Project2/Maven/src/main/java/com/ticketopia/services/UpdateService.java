@@ -1,5 +1,7 @@
 package com.ticketopia.services;
 
+import java.util.List;
+
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.PaymentInfo;
 import com.ticketopia.beans.Ticket;
@@ -8,6 +10,8 @@ import com.ticketopia.daos.CustomerInfoDao;
 import com.ticketopia.daos.CustomerInfoDaoImpl;
 import com.ticketopia.daos.PaymentInfoDao;
 import com.ticketopia.daos.PaymentInfoDaoImpl;
+import com.ticketopia.daos.UserTypeDao;
+import com.ticketopia.daos.UserTypeDaoImpl;
 
 public class UpdateService {
 	//update email
@@ -34,6 +38,7 @@ public class UpdateService {
 		payment.setBillingCity(billingCity);
 		payment.setBillingState(billingState);
 		payment.setBillingZip(billingZip);
+		
 		return pid.updatePaymentInfo(payment);
 	}
 	
@@ -57,11 +62,69 @@ public class UpdateService {
 		}
 		return cid.updateCustomerInfo(customer);
 	}
+	
 	//update role
+	public static boolean updateRole(CustomerInfo customer, Integer roleId) {
+		UserTypeDao utd = new UserTypeDaoImpl();
+		CustomerInfoDao cid = new CustomerInfoDaoImpl();
+		List<UserType> roles = utd.getUserTypes();
+		UserType userType = null;
+		
+		for(UserType role: roles) {
+			if (role.getRoleId() == roleId) {
+				userType = role;
+				break;
+			}
+		}
+		
+		customer.setRole(userType);
+		
+		return cid.updateCustomerInfo(customer);
+	}
+	
 	//update address
+	public static boolean updateAddress(CustomerInfo customer,
+										String address,
+										String city,
+										String state,
+										Integer zip) {
+		CustomerInfoDao cid = new CustomerInfoDaoImpl();
+		
+		customer.setUserAddress(address);
+		customer.setUserCity(city);
+		customer.setUserState(state);
+		customer.setUserZip(zip);
+		
+		return cid.updateCustomerInfo(customer);
+	}
+	
 	//update password
+	public static boolean updatePassword(CustomerInfo customer, String password) {
+		CustomerInfoDao cid = new CustomerInfoDaoImpl();
+		
+		customer.setPassword(password);
+		
+		return cid.updateCustomerInfo(customer);
+	}
+	
 	//update display name
+	public static boolean updateDisplayName(CustomerInfo customer, String displayName) {
+		CustomerInfoDao cid = new CustomerInfoDaoImpl();
+		
+		customer.setDisplayName(displayName);
+		
+		return cid.updateCustomerInfo(customer);
+	}
+	
 	//update name
+	public static boolean updateCustomerName(CustomerInfo customer, String fName, String lName) {
+		CustomerInfoDao cid = new CustomerInfoDaoImpl();
+		
+		customer.setUserFName(fName);
+		customer.setUserLName(lName);
+		
+		return cid.updateCustomerInfo(customer);
+	}
 	//update post
 	//update ticket price
 	//update post title
