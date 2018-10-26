@@ -9,6 +9,8 @@ DROP TABLE event_types CASCADE CONSTRAINTS;
 DROP TABLE tickets CASCADE CONSTRAINTS;
 DROP TABLE posts CASCADE CONSTRAINTS;
 DROP TABLE partners CASCADE CONSTRAINTS;
+DROP TABLE topics CASCADE CONSTRAINTS;
+DROP TABLE posts_title CASCADE CONSTRAINTS;
 
 
 CREATE TABLE user_type (
@@ -422,7 +424,7 @@ CREATE TABLE payment_info (
 	billing_address VARCHAR2(100),
 	billing_city VARCHAR2(50),
 	billing_state VARCHAR2(20),
-	billing_zip NUMBER(5),
+	billing_zip NUMBER(6),
 	CONSTRAINT payment_email_fk FOREIGN KEY ( customer_email )
 		REFERENCES customer_information ( customer_email )
 );
@@ -451,18 +453,18 @@ CREATE TABLE tickets (
 	event_address VARCHAR2(100),
 	event_city VARCHAR2(50),
 	event_state VARCHAR2(20),
-	event_zip NUMBER(5),
-	seat VARCHAR2(6),
+	event_zip NUMBER(6),
+	seat VARCHAR2(600),
 	partner_id NUMBER(6),
      --fk
 	free_flag NUMBER(1),
-	CONSTRAINT Tickets_pk PRIMARY KEY ( ticket_id ),
+	CONSTRAINT tickets_pk PRIMARY KEY ( ticket_id ),
 	CONSTRAINT ticket_event_type_fk FOREIGN KEY ( event_type_id )
 		REFERENCES event_types ( event_type_id )
 );
 
 INSERT INTO tickets VALUES (
-1,
+555,
 'Movie Ticket',
 1,
 99,
@@ -501,7 +503,7 @@ INSERT INTO tickets VALUES (
 'Fargo',
 'North Dakota',
 581052,
-'Front-Row',
+'A-1',
 2,
 0
 );
@@ -511,7 +513,7 @@ INSERT INTO tickets VALUES (
 'Concert Ticket',
 2,
 350,
-'Back stage passes to Unleash the Archers',
+'Back stage passes to Eminem',
 '888 Grover Street',
 'Los Angelos',
 'Rhode Island',
@@ -562,7 +564,7 @@ INSERT INTO topics VALUES (
 
 CREATE TABLE posts_title (
 	post_title_id NUMBER(6),
-	post_title VARCHAR2(50),
+	post_title VARCHAR2(100),
 	topic_id NUMBER(6),
 	CONSTRAINT post_title_pk PRIMARY KEY ( post_title_id ),
 	CONSTRAINT post_title_fk FOREIGN KEY ( topic_id )
@@ -621,7 +623,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 2,
 2,
-'JDoe'
+'JDoe',
 'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!',
 SYSTIMESTAMP
 );
