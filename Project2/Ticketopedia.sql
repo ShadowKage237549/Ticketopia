@@ -419,11 +419,25 @@ CREATE TABLE payment_info (
      --needs formatting either here or in java. 
 	billing_address VARCHAR2(100),
 	billing_city VARCHAR2(50),
-	billing_state VARCHAR2(2),
+	billing_state VARCHAR2(20),
 	billing_zip NUMBER(5),
 	CONSTRAINT payment_email_fk FOREIGN KEY ( customer_email )
 		REFERENCES customer_information ( customer_email )
 );
+
+INSERT INTO payment_info VALUES (
+'bob.bobson@mafia.net',
+0000555577777888,
+000,
+01/99,
+'111 Killer Rd',
+'Heart Broken Town',
+'Mn',
+543876
+);
+
+--Have 5 shots of rum and start making up CC numbers 
+
 CREATE TABLE tickets (
 	ticket_id NUMBER(6),
      --pk
@@ -509,7 +523,7 @@ CREATE TABLE topics(
 	topic_id NUMBER(6),
 	ticket_id NUMBER(6),
 	topic_name VARCHAR2(100),
-	topic_desc VARCHAR2(200),
+	topic_desc VARCHAR2(200), --Description on the ticket
 	CONSTRAINT topics_pk PRIMARY KEY (topic_id),
 	CONSTRAINT topic_ticket_fk FOREIGN KEY ( ticket_id )
 		REFERENCES tickets ( ticket_id )
@@ -519,15 +533,30 @@ INSERT INTO topics VALUES (
 1,
 1,
 'Venom the Movie!',
-'This movie was great. How the actor transformed into Venom had me all MIND=BLOWN!!!!'
+'Ticket admitting entrance to the movie Venom'
 );
 
 INSERT INTO topics VALUES (
 2,
 2,
-'Disturbed. . . Legends possibly?',
-'I got to meet David Draimen, nicest guy ever. He even signed my Disturbed Tattoo and wished me well! CANNOT WAIT TO SEE THEM AGAIN!'
+'Avengers: Infinity War Pt 2',
+'Ticket for one person to watching Avengers: Infinity War 2',
 );
+
+INSERT INTO topics VALUES (
+3,
+3,
+'Disturbed live at Fargo Dome'
+'Back stage passes to meet Disturbed the band.'
+);
+
+INSERT INTO topics VALUES (
+4,
+4,
+'Eminem live in Detroit Michigan',
+'Meet and Greet with the Rap God himiself: Marshall Mathers'
+);
+
 
 CREATE TABLE posts_title (
 	post_title_id NUMBER(6),
@@ -537,6 +566,31 @@ CREATE TABLE posts_title (
 	CONSTRAINT post_title_fk FOREIGN KEY ( topic_id )
 		REFERENCES topics ( topic_id )
 );
+
+INSERT INTO posts_title VALUES (
+1,
+'DID YOU SEE HOW VENOM TRANSFORMED?!!!@#'
+1
+);
+
+INSERT INTO posts_title VALUES (
+2,
+'INFINITY WAR PT 2 HYPEEEEEE!$!@$!$@!$@!$@',
+2
+);
+
+INSERT INTO posts_title VALUES (
+3,
+'The fire shooting out from the stage during the concert... made me almost pass out!',
+3
+);
+
+INSERT INTO posts_title VALUES (
+4,
+'How should I dress for an Eminem Concert?',
+4
+);
+
 
 
 CREATE TABLE posts (
