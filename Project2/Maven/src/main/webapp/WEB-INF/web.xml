@@ -26,16 +26,6 @@
   </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>LogoutServlet</display-name>
-    <servlet-name>LogoutServlet</servlet-name>
-    <servlet-class>com.ticketopia.servlets.LogoutServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>LogoutServlet</servlet-name>
-    <url-pattern>/LogoutServlet</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
     <display-name>RegisterServlet</display-name>
     <servlet-name>RegisterServlet</servlet-name>
     <servlet-class>com.ticketopia.servlets.RegisterServlet</servlet-class>
@@ -93,5 +83,15 @@
   <servlet-mapping>
     <servlet-name>PartnerServlet</servlet-name>
     <url-pattern>/PartnerServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CustomerServlet</display-name>
+    <servlet-name>CustomerServlet</servlet-name>
+    <servlet-class>com.ticketopia.servlets.CustomerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerServlet</servlet-name>
+    <url-pattern>/CustomerServlet</url-pattern>
   </servlet-mapping>
 </web-app>
