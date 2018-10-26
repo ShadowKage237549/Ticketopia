@@ -23,8 +23,6 @@ export class LoginComponent implements OnInit {
 
     logMeIn() {
         this.token = this.auth.login(this.email, this.password);
-        this.password = null;
-        this.email = null;
     }
 
 }

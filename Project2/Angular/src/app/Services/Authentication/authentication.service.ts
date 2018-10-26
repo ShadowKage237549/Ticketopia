@@ -33,17 +33,10 @@ export class AuthenticationService {
     constructor(private http: HttpClient, private router: Router) { }
 
     login(email:string, password:string) {
-        // TODO get token from API
-        // return this.http.post<User>('/api/login',{email,password});
-        console.log(this.http.post("localhost:8085/Ticketopia/login.do", "email=" + email + "&password=" + password).subscribe());
-        if (email === this.testuser.userEmail) {
-            this.loggedIn.next(true);
-            //this.token = sign({ exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24), data: this.testuser.userEmail },
-                //'secretPassword');
-            //console.log(this.token);
-            return this.token;
-        }
-        return null;
+        
+        this.http.post("localhost:8085/Ticketopia/login.do", "email=" + email + "&password=" + password)
+            .subscribe((data:string) => this.token = data);
+        return this.token;
     }
     logout() {
         this.loggedIn.next(false);
