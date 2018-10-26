@@ -29,13 +29,42 @@ public class PaymentInfoDaoImpl implements PaymentInfoDao{
 	}
 
 	@Override
-	public boolean removePaymentInfoById(PaymentInfo paymentInfo, Integer id) {
+	public boolean removePaymentInfo(PaymentInfo paymentInfo) {
+		Session session = null;
+		Transaction tx = null;
+		
+		try {
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			session.delete(paymentInfo);
+			tx.commit();
+			return true;
+		} catch(HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean updatePaymentInfo(PaymentInfo paymentInfo) {
-		// TODO Auto-generated method stub
+		Session session = null;
+		Transaction tx = null;
+		
+		try { 
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			session.update(paymentInfo);
+			tx.commit();
+			return true;
+		} catch(HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
 		return false;
 	}
 

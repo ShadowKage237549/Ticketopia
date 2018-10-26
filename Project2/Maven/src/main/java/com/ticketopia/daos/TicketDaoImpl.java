@@ -14,10 +14,11 @@ public class TicketDaoImpl implements TicketDao {
 
 	@Override
 	public List<Ticket> getAllTickets() {
-		Session session = HibernateUtil.getSession();
+		Session session = null;
 		List<Ticket> tickets = null;
 		
 		try {			
+			session = HibernateUtil.getSession();
 			tickets = (List<Ticket>)session.createQuery("FROM Ticket").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
@@ -29,11 +30,12 @@ public class TicketDaoImpl implements TicketDao {
 	
 	@Override
 	public Integer addTicket(Ticket ticket) {
-		Session session = HibernateUtil.getSession();
+		Session session = null;
 		Transaction tx = null;
 		Integer id = null;
 		
 		try {
+			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			id = (Integer)session.save(ticket);
 			tx.commit();
@@ -48,10 +50,11 @@ public class TicketDaoImpl implements TicketDao {
 	
 	@Override
 	public Boolean removeTicket(Ticket ticket) {
-		Session session = HibernateUtil.getSession();
+		Session session = null;
 		Transaction tx = null;
 		
 		try {
+			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			session.delete(ticket);
 			tx.commit();
@@ -67,10 +70,11 @@ public class TicketDaoImpl implements TicketDao {
 	
 	@Override
 	public Boolean updateTicket(Ticket ticket) {
-		Session session = HibernateUtil.getSession();
+		Session session = null;
 		Transaction tx = null;
 		
-		try {
+		try { 
+			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			session.update(ticket);
 			tx.commit();

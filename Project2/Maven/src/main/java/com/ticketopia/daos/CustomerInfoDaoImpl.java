@@ -2,6 +2,8 @@ package com.ticketopia.daos;
 
 
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -9,16 +11,18 @@ import org.hibernate.Transaction;
 
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.PaymentInfo;
+import com.ticketopia.beans.Ticket;
 import com.ticketopia.beans.UserType;
 import com.ticketopia.util.HibernateUtil;
 
 public class CustomerInfoDaoImpl implements CustomerInfoDao {
 	@Override
 	public boolean createCustomer(CustomerInfo customer) {
-		Session session = HibernateUtil.getSession();
+		Session session = null;
 		Transaction tx = null;
 		
 		try {
+			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			session.save(customer); //Returns the id of the fresh insert
 			tx.commit();
@@ -33,90 +37,58 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 	}
 	
 	@Override
-	public boolean adjustUserRole(CustomerInfo customer, Integer newRole) {
-		Session session = HibernateUtil.getSession();
+	public boolean updateCustomerInfo(CustomerInfo customerInfo) {
+		Session session = null;
 		Transaction tx = null;
-		Query query;
-		String hql = null;	
-		UserType role = null;
 		
-		try {
-			hql = "FROM UserType WHERE roleId=:id";
-			query = session.createQuery(hql);
-			query.setParameter("id", newRole);
-			
-			role = (UserType)query.uniqueResult();
-			
-			customer.setRole(role);
-			
+		try { 
+			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.save(customer); //Returns the id of the fresh insert
+			session.update(customerInfo);
 			tx.commit();
 			return true;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			tx.rollback();
-			return false;
-		} finally {
-			session.close();
-		}
-	}
-	
-	@Override
-	public boolean changePassword(CustomerInfo customer, String newPassword) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		
-		try {
-			customer.setPassword(newPassword);
-			tx = session.beginTransaction();
-			session.save(customer); //Returns the id of the fresh insert
-			tx.commit();
-			return true;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			tx.rollback();
-			return false;
-		} finally {
-			session.close();
-		}
-	}
-	
-	@Override
-	public void applyPoints(CustomerInfo customer, Integer points) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		
-		try {
-			customer.setAccumulatedPoints(points);
-			tx = session.beginTransaction();
-			session.save(customer); //Returns the id of the fresh insert
-			tx.commit();
-		} catch (HibernateException e) {
+		} catch(HibernateException e) {
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
 			session.close();
 		}
+		return false;
 	}
 
-
 	@Override
-	public CustomerInfo getCustomerByEmail(String email) {
-		Query query = null;
-		Session session = HibernateUtil.getSession();
-		String hql = "FROM CustomerInfo WHERE userEmail = :email";
-		CustomerInfo customer = null;
-		try
-		{
-			query = session.createQuery(hql);
-			query.setParameter("email", email);
-			customer = (CustomerInfo)query.uniqueResult();
-		}catch(HibernateException e) {
+	public List<CustomerInfo> getCustomerInfo() {
+		Session session = null;
+		List<CustomerInfo> customers = null;
+		
+		try {			
+			session = HibernateUtil.getSession();
+			customers = (List<CustomerInfo>)session.createQuery("FROM Ticket").list();
+		} catch (HibernateException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			session.close();
 		}
-		return customer;
+		return customers;
+	}
+	
+	@Override
+	public Boolean removeCustomerInfo(CustomerInfo customer) {
+		Session session = null;
+		Transaction tx = null;
+		
+		try {
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			session.delete(customer);
+			tx.commit();
+			return true;
+		} catch(HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+		return false;
 	}
 }

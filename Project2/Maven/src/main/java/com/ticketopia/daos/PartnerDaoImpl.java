@@ -11,7 +11,7 @@ import com.ticketopia.beans.Partner;
 import com.ticketopia.util.HibernateUtil;
 
 public class PartnerDaoImpl implements PartnerDao {
-	
+	@Override
 	public boolean insertNewPartner(Partner partner) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
@@ -30,6 +30,7 @@ public class PartnerDaoImpl implements PartnerDao {
 		return false;
 	}
 	
+	@Override
 	public boolean removePartnerById(Partner partner) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
@@ -48,6 +49,7 @@ public class PartnerDaoImpl implements PartnerDao {
 		return false;
 	}
 	
+	@Override
 	public boolean updatePartner(Partner partner) {
 		Session session = HibernateUtil.getSession();
 		Transaction tx = null;
@@ -66,6 +68,7 @@ public class PartnerDaoImpl implements PartnerDao {
 		return false;
 	}
 	
+	@Override
 	public List<Partner> getAllPartner() {
 		Session session = HibernateUtil.getSession();
 		List<Partner> partners = null;
@@ -73,7 +76,7 @@ public class PartnerDaoImpl implements PartnerDao {
 		Query query;
 		
 		try {
-			hql = "FROM partners";
+			hql = "FROM Partner";
 			query = session.createQuery(hql);
 			partners = query.list();
 		} catch(HibernateException e) {
