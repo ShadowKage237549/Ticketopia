@@ -10,6 +10,10 @@ import { sign } from 'jsonwebtoken';
 })
 export class AuthenticationService {
 
+    public url: string = "http://18.222.219.232:8085/Ticketopia/";
+    password: string = "1";
+    token: any = null;
+
     constructor(private http: HttpClient, private router: Router) { }
 
     login(email: string, password: string) {
@@ -25,9 +29,9 @@ export class AuthenticationService {
             { headers: headers }).subscribe(data => this.token = data);
     }
     storeToken(token: any) {
-        localStorage.setItem("token",this.token);
+        localStorage.setItem("token", this.token);
         console.log(localStorage.getItem("token"));
-
+    }
     logout() {
         this.token = null;
     }
