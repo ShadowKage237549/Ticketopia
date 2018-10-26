@@ -9,19 +9,6 @@ import { sign } from 'jsonwebtoken';
     providedIn: 'root'
 })
 export class AuthenticationService {
-    testuser: CustomerInfo = {
-        userEmail: 'bobbert',
-        accumulatedPoints: 15,
-        displayName: "notbobbert93",
-        userFName: "empty",
-        userLName: "empty",
-        role: new UserType(0, "basic"),
-        userAddress: "empty",
-        userCity: "empty",
-        userState: "empty",
-        userZip: 123456,
-    };
-    password: string = "1";
 
     private loggedIn = new BehaviorSubject<boolean>(false);
     get isLoggedIn() {
@@ -42,7 +29,7 @@ export class AuthenticationService {
 
         return this.http.post("http://localhost:8085/Ticketopia/LoginServlet",
             body,
-            { headers: headers });
+            { headers: headers }).subscribe(data => this.token = data);
     }
     logout() {
         this.loggedIn.next(false);

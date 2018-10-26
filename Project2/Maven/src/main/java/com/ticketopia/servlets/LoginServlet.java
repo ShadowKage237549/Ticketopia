@@ -3,7 +3,6 @@ package com.ticketopia.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,23 +54,18 @@ public class LoginServlet extends HttpServlet {
 						.sign(algorithmHS);
 				response.setContentType("text/html");
 				PrintWriter out = response.getWriter();
-				out.print(token);
-				System.out.println(token);
-				//RequestDispatcher rd = request.getRequestDispatcher("");
-				//rd.forward(request, response);
+				ObjectMapper om = new ObjectMapper();
+				out.print(om.writeValueAsString(token));
 				return;
 			} else {
-				response.setContentType("application/json");
-				PrintWriter out = response.getWriter();
-				ObjectMapper om = new ObjectMapper();
-				out.print(om.writeValueAsString("wrong info"));
+				
 			}
 		}
 		
-		response.setContentType("application/json");
+		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		ObjectMapper om = new ObjectMapper();
-		out.print(om.writeValueAsString(loggingInUser));
+		out.print(om.writeValueAsString("wrong info"));
 	}
 
 	/**

@@ -23,9 +23,14 @@ export class LoginComponent implements OnInit {
     }
 
     logMeIn() {
-        console.log(this.email + this.password);
-        this.token = this.auth.login(this.email, this.password).subscribe();
-        console.log(this.token);
+        this.auth.login(this.email, this.password);
+        console.log(this.auth.token);
+        if (this.auth.token === 'wrong info') {
+            this.auth.token = null;
+            //put in routing to error page
+        } else {
+            //route to home page
+        }
     }
 
 }
