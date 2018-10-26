@@ -31,15 +31,16 @@ export class AuthenticationService {
     constructor(private http: HttpClient, private router: Router) { }
 
     login(email: string, password: string) {
-        //TODO delete this code before pushing
-        if(email == "bob" && password == "1"){
-            this.token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjdXN0b21lckluZm8iOiJDdXN0b21lckluZm9PYmplY3QiLCJjYXJkTnVtYmVyIjoiMTIzNCIsInNlY3VyaXR5Q29kZSI6MTIzLCJleHBpcmF0aW9uRGF0ZSI6IjE5LTMwIiwiYmlsbGluZ0FkZHJlc3MiOiIxMjNsbiIsImJpbGxpbmdDaXR5IjoiYmlsbGMiLCJiaWxsaW5nU3RhdGUiOiJiaWxscyIsImJpbGxpbmdaaXAiOiJiaWxseiJ9.Yii4UglR6ssDCIU92Z6igr_inz3bG73TuQ9Zu3Ui2EE";
-            this.storeToken(this.token);
-        }
+        let body = new HttpParams();
+        let headers = new HttpHeaders().set(
+            'Content-Type', 'application/x-www-form-urlencoded'
+        );
+        body = body.set('email', email);
+        body = body.set('password', password);
 
-        // TODO enable this code before pushing
-        // this.http.post(this.url +"login.do?email=" + email + "&password=" + password, {})
-        //     .subscribe((data: string) => this.token = data);
+        return this.http.post("http://localhost:8085/Ticketopia/LoginServlet",
+            body,
+            { headers: headers }).subscribe(data => this.token = data);
     }
     storeToken(token: any) {
         localStorage.setItem("token",this.token);
