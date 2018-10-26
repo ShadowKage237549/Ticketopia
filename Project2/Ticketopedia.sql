@@ -58,7 +58,7 @@ CREATE TABLE customer_information (
      --fk
 	customer_address VARCHAR2(100),
 	customer_city VARCHAR2(100),
-	customer_state VARCHAR2(2),
+	customer_state VARCHAR2(20),
 	customer_zip NUMBER(10),
 	customer_password VARCHAR2(50),
 	CONSTRAINT CustomerInformation_pk PRIMARY KEY ( customer_email ),
@@ -122,7 +122,7 @@ INSERT INTO customer_information VALUES (
 'Starbucks'
 );
 
-INSERT INTO customer_information VALUES
+INSERT INTO customer_information VALUES (
 'TWilson@gmail.com',
 'TheWilsonator',
 'Todd',
@@ -160,7 +160,7 @@ INSERT INTO customer_information VALUES (
 '703 W Prairie Rd',
 'Palmerville',
 'Minnesota',
-55320
+55320,
 'Vinnymyboy'
 );
 
@@ -201,7 +201,7 @@ INSERT INTO customer_information VALUES (
 2,
 '328 Ferry St',
 'Pinnacle Lakes',
-'WI'
+'WI',
 17384,
 'HanselandGrettle'
 );
@@ -283,7 +283,7 @@ INSERT INTO customer_information VALUES (
 'Johnson',
 0,
 1,
-'1857 Chidori Cir'
+'1857 Chidori Cir',
 'Wyoming',
 'Kentucky',
 10410,
@@ -434,7 +434,7 @@ CREATE TABLE tickets (
 	event_description VARCHAR2(1000),
 	event_address VARCHAR2(100),
 	event_city VARCHAR2(50),
-	event_state VARCHAR2(2),
+	event_state VARCHAR2(20),
 	event_zip NUMBER(5),
 	seat VARCHAR2(6),
 	partner_id NUMBER(6),
@@ -490,7 +490,7 @@ INSERT INTO topics VALUES (
 1,
 1,
 'Venom the Movie!',
-'This movie was great. How the actor transformed into Venom had me all MIND=BLOWN!!!!',
+'This movie was great. How the actor transformed into Venom had me all MIND=BLOWN!!!!'
 );
 
 INSERT INTO topics VALUES (
