@@ -55,6 +55,10 @@ public class DispactherServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("/TicketServlet");
 			rd.forward(request, response);
 			break;
+		case "partner":
+			rd = request.getRequestDispatcher("/PartnerServlet");
+			rd.forward(request, response);
+			break;
 		default:
 			response.sendError(404);
 			break;

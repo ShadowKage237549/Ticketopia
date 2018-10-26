@@ -1,5 +1,5 @@
 import { AuthenticationService } from '../../Services/Authentication/authentication.service';
-import { User } from './../login/user/User';
+import { CustomerInfo } from '../login/user/CustomerInfo';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';

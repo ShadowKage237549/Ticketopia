@@ -7,6 +7,12 @@
 	<version>0.0.1</version>
 	<packaging>war</packaging>
 
+	<repositories>
+		<repository>
+			<id>codelds</id>
+			<url>https://code.lds.org/nexus/content/groups/main-repo</url>
+		</repository>
+	</repositories>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -36,11 +42,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<artifactId>ojdbc7</artifactId>
+			<artifactId>ojdbc6</artifactId>
 			<groupId>com.oracle</groupId>
-			<version>12.1.0</version>
-			<scope>system</scope>
-			<systemPath>${project.basedir}/resources/ojdbc7-12.1.0.jar</systemPath>
+			<version>11.2.0.3</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -58,15 +62,15 @@
 			<version>4.3.11.Final</version>
 		</dependency>
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-ehcache</artifactId>
-			<version>4.3.11.Final</version>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>3.4.1</version>
 		</dependency>
 	</dependencies>
 	<build>
 		<resources>
 			<resource>
-				<directory>src</directory>
+				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
 	</build>

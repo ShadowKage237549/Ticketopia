@@ -1,6 +1,7 @@
 import { AuthenticationService } from '../../Services/Authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from './user/User';
+import { CustomerInfo } from './user/CustomerInfo';
+import { UserType } from './user/UserType';
 
 @Component({
     selector: 'app-login',
@@ -10,11 +11,10 @@ import { User } from './user/User';
 })
 export class LoginComponent implements OnInit {
 
-    login: User = {
-        email: '',
-        password: '',
-        points: 0
-    };
+    token:any = "";
+    email:string = "";
+    password:string = "";
+
     constructor(private auth: AuthenticationService) {
     }
 
@@ -22,7 +22,9 @@ export class LoginComponent implements OnInit {
     }
 
     logMeIn() {
-        this.login = this.auth.login(this.login);
+        this.token = this.auth.login(this.email, this.password);
+        this.password = null;
+        this.email = null;
     }
 
 }

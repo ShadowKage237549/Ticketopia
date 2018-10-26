@@ -4,7 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,9 +13,9 @@ public class Topic {
 	@Id
 	private Integer id;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name="ticket_id")
-	private Integer ticketId;
+	private Ticket ticketId;
 	
 	@Column(name="topic_name")
 	private String topicName;
@@ -31,11 +31,11 @@ public class Topic {
 		this.id = id;
 	}
 
-	public Integer getTicketId() {
+	public Ticket getTicketId() {
 		return ticketId;
 	}
 
-	public void setTicketId(Integer ticketId) {
+	public void setTicketId(Ticket ticketId) {
 		this.ticketId = ticketId;
 	}
 
@@ -60,10 +60,20 @@ public class Topic {
 		return "Topic [id=" + id + ", ticketId=" + ticketId + ", topicName=" + topicName + ", topicDescription=" + topicDescription + "]";
 	}
 
+	public Topic(Integer id, Ticket ticketId, String topicName, String topicDescription) {
+		super();
+		this.id = id;
+		this.ticketId = ticketId;
+		this.topicName = topicName;
+		this.topicDescription = topicDescription;
+	}
+
 	public Topic() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+
+	
 	
 	
 }
