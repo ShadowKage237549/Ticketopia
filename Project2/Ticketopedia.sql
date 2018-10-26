@@ -9,6 +9,8 @@ DROP TABLE event_types CASCADE CONSTRAINTS;
 DROP TABLE tickets CASCADE CONSTRAINTS;
 DROP TABLE posts CASCADE CONSTRAINTS;
 DROP TABLE partners CASCADE CONSTRAINTS;
+
+
 CREATE TABLE user_type (
 	role_id NUMBER(6),
      --pk
@@ -636,7 +638,7 @@ INSERT INTO posts VALUES (
 4,
 4,
 'Mr.Russell',
-'I got to see Eminem in concert, I'm such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!',
+'I got to see Eminem in concert, Im such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!',
 SYSTIMESTAMP
 );
 
