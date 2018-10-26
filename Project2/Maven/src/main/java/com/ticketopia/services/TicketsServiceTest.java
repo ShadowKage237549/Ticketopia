@@ -1,7 +1,7 @@
 package com.ticketopia.services;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,12 +15,8 @@ import org.junit.Test;
 import com.ticketopia.beans.EventType;
 import com.ticketopia.beans.Partner;
 import com.ticketopia.beans.Ticket;
-import com.ticketopia.daos.TicketDao;
-import com.ticketopia.daos.TicketDaoImpl;
 
 public class TicketsServiceTest {
-	//private static TicketDao td = new TicketDaoImpl();
-	//private static Ticket ticket = mock(Ticket.class);
 	private static EventType eventType1 = new EventType(1, "concert");
 	private static EventType eventType2 = new EventType(2, "movie");
 	private static EventType eventType3 = new EventType(3, "festival");
@@ -45,7 +41,6 @@ public class TicketsServiceTest {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		//when(td.addTicket(ticket)).thenReturn(1);
 		tickets.add(ticket1);
 		tickets.add(ticket2);
 		tickets.add(ticket3);

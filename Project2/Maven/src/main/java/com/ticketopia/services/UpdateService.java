@@ -23,14 +23,13 @@ import com.ticketopia.daos.UserTypeDaoImpl;
 
 public class UpdateService {
 	//update email
-	public static Boolean updateEmail(CustomerInfo customer, String email) {
+	public Boolean updateEmail(CustomerInfo customer, String email) {
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		customer.setUserEmail(email);
-		return cid.updateCustomerInfo(customer);
+		return cid.updateCustomerEmail(customer, email);
 	}
 	
 	//update payment
-	public static Boolean updatePayment(PaymentInfo payment,
+	public Boolean updatePayment(PaymentInfo payment,
 										Long cardNumber,
 										Integer securityCode,
 										String expirationDate,
@@ -51,28 +50,29 @@ public class UpdateService {
 	}
 	
 	//update points
-	public static Boolean updatePoints(CustomerInfo customer, Ticket ticket, 
+	public Boolean updatePoints(CustomerInfo customer, Ticket ticket, 
 										Boolean smallDiscount, Boolean bigDiscount) {
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
 		UserType userType = customer.getRole();
 		Double price = Math.floor(ticket.getTicketPrice());
+		int points = customer.getAccumulatedPoints();
 		if (smallDiscount) {
-			customer.setAccumulatedPoints(customer.getAccumulatedPoints()-5000);
+			points = customer.getAccumulatedPoints()-5000;
 		} else if (bigDiscount) {
-			customer.setAccumulatedPoints(customer.getAccumulatedPoints()-10000);
+			points = customer.getAccumulatedPoints()-10000;
 		} else {
 			if (userType.getRoleId() == 1) {
-				customer.setAccumulatedPoints(customer.getAccumulatedPoints()+(int)(price*10));
+				points = customer.getAccumulatedPoints()+(int)(price*10);
 			} else if (userType.getRoleId() == 2) {
-				customer.setAccumulatedPoints(customer.getAccumulatedPoints()+(int)(price*25));
+				points = customer.getAccumulatedPoints()+(int)(price*25);
 			}
 			
 		}
-		return cid.updateCustomerInfo(customer);
+		return cid.updateCustomerAccumulatedPoints(customer, points);
 	}
 	
 	//update role
-	public static boolean updateRole(CustomerInfo customer, Integer roleId) {
+	public boolean updateRole(CustomerInfo customer, Integer roleId) {
 		UserTypeDao utd = new UserTypeDaoImpl();
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
 		List<UserType> roles = utd.getUserTypes();
@@ -85,66 +85,52 @@ public class UpdateService {
 			}
 		}
 		
-		customer.setRole(userType);
 		
-		return cid.updateCustomerInfo(customer);
+		return cid.updateCustomerUserType(customer, userType);
 	}
 	
 	//update address
-	public static boolean updateAddress(CustomerInfo customer,
+	public boolean updateAddress(CustomerInfo customer,
 										String address,
 										String city,
 										String state,
 										Integer zip) {
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
 		
-		customer.setUserAddress(address);
-		customer.setUserCity(city);
-		customer.setUserState(state);
-		customer.setUserZip(zip);
-		
-		return cid.updateCustomerInfo(customer);
+		return cid.updateCustomerAddress(customer, address, city, state, zip);
 	}
 	
 	//update password
-	public static boolean updatePassword(CustomerInfo customer, String password) {
+	public boolean updatePassword(CustomerInfo customer, String password) {
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
 		
-		customer.setPassword(password);
-		
-		return cid.updateCustomerInfo(customer);
+		return cid.updateCustomerPassword(customer, password);
 	}
 	
 	//update display name
-	public static boolean updateDisplayName(CustomerInfo customer, String displayName) {
+	public boolean updateDisplayName(CustomerInfo customer, String displayName) {
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
 		
-		customer.setDisplayName(displayName);
-		
-		return cid.updateCustomerInfo(customer);
+		return cid.updateCustomerDisplayName(customer, displayName);
 	}
 	
 	//update name
-	public static boolean updateCustomerName(CustomerInfo customer, String fName, String lName) {
+	public boolean updateCustomerName(CustomerInfo customer, String fName, String lName) {
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
 		
-		customer.setUserFName(fName);
-		customer.setUserLName(lName);
-		
-		return cid.updateCustomerInfo(customer);
+		cid.updateCustomerFName(customer, fName);
+		return cid.updateCustomerLName(customer, lName);
 	}
 	
 	//update post
-	public static boolean updatePost(Post post, String postContent) {
+	public boolean updatePost(Post post, String postContent) {
 		PostDao pd = new PostDaoImpl();
-		
-		post.setPostContent(postContent);
 		
 		return pd.updatePost(post);
 	}
 	
 	//update ticket price
-	public static boolean updateTicketPrice(Ticket ticket, Double price) {
+	public boolean updateTicketPrice(Ticket ticket, Double price) {
 		TicketDao td = new TicketDaoImpl();
 		
 		ticket.setTicketPrice(price);
@@ -153,7 +139,7 @@ public class UpdateService {
 	}
 	
 	//update post title
-	public static boolean updatePostTitle(PostTitle postTitle, String newTitle) {
+	public boolean updatePostTitle(PostTitle postTitle, String newTitle) {
 		PostTitleDao ptd = new PostTitleDaoImpl();
 		
 		postTitle.setPostTitle(newTitle);
