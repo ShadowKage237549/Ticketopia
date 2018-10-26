@@ -3,6 +3,8 @@ package com.ticketopia.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ticketopia.beans.EventType;
+import com.ticketopia.beans.Partner;
 import com.ticketopia.beans.Ticket;
 
 public class TicketsService {
@@ -27,7 +29,27 @@ public class TicketsService {
 		}
 		return lTickets;
 	}
+	
 	// get ticket by event type
+	public List<Ticket> getTicketByEventType(List<Ticket> tickets, EventType event) {
+		List<Ticket> eTickets = new ArrayList<>();
+		for(Ticket ticket: tickets) {
+			if(ticket.getEventType().equals(event)) {
+				eTickets.add(ticket);
+			}
+		}
+		return eTickets;
+	}
+	
 	// get ticket by partner
+	public List<Ticket> getTicketByPartner(List<Ticket> tickets, Partner partner) {
+		List<Ticket> pTickets = new ArrayList<>();
+		for(Ticket ticket: tickets) {
+			if(ticket.getPartner().equals(partner)) {
+				pTickets.add(ticket);
+			}
+		}
+		return pTickets;
+	}
 	//
 }
