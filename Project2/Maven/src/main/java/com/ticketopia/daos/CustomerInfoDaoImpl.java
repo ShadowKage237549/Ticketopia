@@ -103,15 +103,12 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 
 	@Override
 	public CustomerInfo getCustomerByEmail(String email) {
-		Query query = null;
-		Session session = HibernateUtil.getSession();
-		String hql = "FROM CustomerInfo WHERE userEmail = :email";
+		Session session = null;
 		CustomerInfo customer = null;
 		try
 		{
-			query = session.createQuery(hql);
-			query.setParameter("email", email);
-			customer = (CustomerInfo)query.uniqueResult();
+			session = HibernateUtil.getSession();
+			customer = (CustomerInfo)session.get(CustomerInfo.class, email);
 		}catch(HibernateException e) {
 			e.printStackTrace();
 		}finally {

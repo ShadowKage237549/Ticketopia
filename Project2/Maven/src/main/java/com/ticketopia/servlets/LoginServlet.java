@@ -47,7 +47,6 @@ public class LoginServlet extends HttpServlet {
 						.withClaim("userFName", loggingInUser.getUserFName())
 						.withClaim("userLName", loggingInUser.getUserLName())
 						.withClaim("accumulatedPoints", loggingInUser.getAccumulatedPoints())
-						.withClaim("role", loggingInUser.getRole().toString())
 						.withClaim("userAddress", loggingInUser.getUserAddress())
 						.withClaim("userCity", loggingInUser.getUserCity())
 						.withClaim("userState", loggingInUser.getUserState())

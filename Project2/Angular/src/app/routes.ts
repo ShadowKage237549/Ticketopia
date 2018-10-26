@@ -11,39 +11,39 @@ import { NgModule } from '@angular/core';
 
 const appRoutes: Routes = [
     {
-        path: 'login',
+        path: 'Ticketopia/login',
         component: LoginComponent
     },
     {
-        path: 'store',
+        path: 'Ticketopia/store',
         component: StoreComponent
     },
     {
-        path: 'store/ticket/:ticketId',
+        path: 'Ticketopia/store/ticket/:ticketId',
         component: TicketComponent
     },
     {
-        path: 'home/store',
+        path: 'Ticketopia/home/store',
         component: StoreComponent
     },
     {
-        path: 'forum',
+        path: 'Ticketopia/forum',
         component: ForumComponent
     },
     {
-        path: 'forum/:topic',
+        path: 'Ticketopia/forum/:topic',
         component: ForumtopicComponent
     },
     {
-        path: 'forum/:topic/:post',
+        path: 'Ticketopia/forum/:topic/:post',
         component: ForumpostComponent
     },
     {
-        path: '',
+        path: 'Ticketopia',
         component: HomeComponent
     },
     {
-        path: 'home',
+        path: 'Ticketopia/home',
         component: HomeComponent
     },
     {
@@ -54,12 +54,12 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-    imports:[
-    RouterModule.forRoot(appRoutes,
+    imports: [
+        RouterModule.forRoot(appRoutes,
         )
     ],
     exports: [
         RouterModule
     ],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

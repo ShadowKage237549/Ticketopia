@@ -1,30 +1,30 @@
 <div class="row mx-3 my-5">
-  <h1>Login to Ticketopia</h1>
+    <h1>Login to Ticketopia</h1>
 </div>
 <div class="row mx-3 my-5">
-  <div class="col-12">
-    <form class="form-inline">
-      <input type="email" class="form-control mx-2" placeholder="email" [(ngModel)]="email" id="loginEmail">
-      <input type="password" class="form-control mx-2" placeholder="password" [(ngModel)]="password" id="loginPassword">
-      <button type="submit" class="btn btn-info mx-2 px-5" (click)="logMeIn()" id="loginSubmit">Login</button>
-    </form>
-    <hr>
-  </div>
-  <div class="col-12">
+    <div class="col-12">
+        <form class="form-inline">
+            <input type="email" class="form-control mx-2" placeholder="email" [(ngModel)]="email" name="loginEmail">
+            <input type="password" class="form-control mx-2" placeholder="password" [(ngModel)]="password" name="loginPassword">
+            <button type="submit" class="btn btn-info mx-2 px-5" (click)="logMeIn()" name="loginSubmit">Login</button>
+        </form>
+        <hr>
+    </div>
+    <div class="col-12">
 
-    <form class="form-group">
-      <div class="col-6">
-        <input type="email" class="form-control mx-2" placeholder="email" id="registerEmail">
-        <input type="password" class="form-control mx-2" placeholder="password" id="registerPassword">
-        <input type="text" class="form-control mx-2" placeholder="display name" id="registerDName">
-        <input type="text" class="form-control mx-2" placeholder="fname" id="registerFName">
-        <input type="text" class="form-control mx-2" placeholder="lname" id="registerLName">
-        <input type="text" class="form-control mx-2" placeholder="address" id="registerAddress">
-        <input type="text" class="form-control mx-2" placeholder="city" id="registerCity">
-        <input type="text" class="form-control mx-2" placeholder="state" id="registerState">
-        <input type="text" class="form-control mx-2" placeholder="zipcode" id="registerZipcode">
-        <button type="submit" class="btn btn-info mx-2 px-5" (click)="registerMyAccount()" id="registerSubmit">Register</button>
-      </div>
-    </form>
-  </div>
+        <form class="form-group">
+            <div class="col-6">
+                <input type="email" class="form-control mx-2" placeholder="email" name="registerEmail">
+                <input type="password" class="form-control mx-2" placeholder="password" name="registerPassword">
+                <input type="text" class="form-control mx-2" placeholder="display name" name="registerDName">
+                <input type="text" class="form-control mx-2" placeholder="fname" name="registerFName">
+                <input type="text" class="form-control mx-2" placeholder="lname" name="registerLName">
+                <input type="text" class="form-control mx-2" placeholder="address" name="registerAddress">
+                <input type="text" class="form-control mx-2" placeholder="city" name="registerCity">
+                <input type="text" class="form-control mx-2" placeholder="state" name="registerState">
+                <input type="text" class="form-control mx-2" placeholder="zipcode" name="registerZipcode">
+                <!-- <button type="submit" class="btn btn-info mx-2 px-5" (click)="registerMyAccount()" name="registerSubmit">Register</button> -->
+            </div>
+        </form>
+    </div>
 </div>
