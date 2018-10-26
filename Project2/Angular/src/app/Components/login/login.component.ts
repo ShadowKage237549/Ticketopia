@@ -1,7 +1,5 @@
 import { AuthenticationService } from '../../Services/Authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
-import { CustomerInfo } from './user/CustomerInfo';
-import { UserType } from './user/UserType';
 
 @Component({
     selector: 'app-login',
@@ -22,9 +20,9 @@ export class LoginComponent implements OnInit {
 
     logMeIn() {
        this.auth.login(this.email, this.password);
-       if (this.auth.token === 'wrong info') {
-        this.auth.token = null;
-        //put in routing to error page
+       if (this.auth.getToken() === 'wrong info') {
+            //route to err page
+            
     } else {
         //route to home page
         this.auth.requestCustomerData();

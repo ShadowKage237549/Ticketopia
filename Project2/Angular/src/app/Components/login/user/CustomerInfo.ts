@@ -1,4 +1,3 @@
-import { UserType } from './UserType';
 export class CustomerInfo {
     constructor(
         public userEmail:string,
@@ -7,7 +6,7 @@ export class CustomerInfo {
         public userFName:string,
         public userLName:string,
         public accumulatedPoints:number,
-        public role:UserType,
+        public role:number,
         public userAddress:string,
         public userCity:string,
         public userState:string,

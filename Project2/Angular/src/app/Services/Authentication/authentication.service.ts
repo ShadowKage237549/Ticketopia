@@ -12,7 +12,6 @@ export class AuthenticationService {
 
     public url: string = "http://localhost:8085/Ticketopia/";
     password: string = "1";
-    token: any = null;
     customerinfo:CustomerInfo = null;
     constructor(private http: HttpClient, private router: Router) { }
 
@@ -23,18 +22,19 @@ export class AuthenticationService {
         );
         body = body.set('email', email);
         body = body.set('password', password);
-        this.http.post(this.url + 'LoginServlet', body, { headers: headers }).subscribe(data => this.token = data);
+        this.http.post(this.url + 'LoginServlet', body, { headers: headers }).subscribe(data => this.storeToken(data));
     }
-    storeToken(token: any) {
-        localStorage.setItem("token", this.token);
+    storeToken(token:any) {
+        token = localStorage.setItem("token",token);
         console.log(localStorage.getItem("token"));
     }
     logout() {
-        this.token = null;
+        localStorage.removeItem("token");
     }
     getToken() {
-        if (this.token != null) {
-            return this.token;
+        let token = localStorage.getItem("token");
+        if (token != null) {
+            return token;
         }
     }
     isNotNull(token:any):boolean {
@@ -44,8 +44,9 @@ export class AuthenticationService {
         return false;
     }
     requestCustomerData(){
-        if(this.token!=null){    
-            this.http.get(this.url + "customerInfo.do?token="+this.token).subscribe(data => this.customerinfo);
+        let token = localStorage.getItem("token");
+        if(token!=null){    
+            this.http.get(this.url + "customerInfo.do?token="+token).subscribe((data:CustomerInfo) => this.customerinfo = data);
         }
 
     }
