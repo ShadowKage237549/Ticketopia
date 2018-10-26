@@ -9,4 +9,5 @@ public interface CustomerInfoDao {
 	public boolean updateCustomerInfo(CustomerInfo customerInfo);
 	public List<CustomerInfo> getCustomerInfo();
 	public Boolean removeCustomerInfo(CustomerInfo customer);
+	public CustomerInfo getCustomerByEmail(String email);
 }

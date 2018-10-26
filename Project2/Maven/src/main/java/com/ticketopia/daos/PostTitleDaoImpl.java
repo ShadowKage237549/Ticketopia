@@ -1,6 +1,5 @@
 package com.ticketopia.daos;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -8,19 +7,19 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.ticketopia.beans.Post;
-import com.ticketopia.beans.Ticket;
+import com.ticketopia.beans.PostTitle;
 import com.ticketopia.util.HibernateUtil;
 
-public class PostDaoImpl implements PostDao {
+public class PostTitleDaoImpl implements PostTitleDao {
 	@Override
-	public boolean createPost(Post post) {
+	public boolean createPostTitle(PostTitle postTitle) {
 		Session session = null;
 		Transaction tx = null;
 		
 		try {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.save(post);
+			session.save(postTitle);
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
@@ -33,18 +32,18 @@ public class PostDaoImpl implements PostDao {
 	}
 	
 	@Override
-	public List<Post> getPosts() {
+	public List<PostTitle> getPostTitles() {
 		Session session = null;
-		List<Post> posts = null;
+		List<PostTitle> postTitles = null;
 		
 		try {
 			session = HibernateUtil.getSession();
-			posts = (List<Post>)session.createQuery("FROM Post").list();
+			postTitles = (List<PostTitle>)session.createQuery("FROM PostTitle").list();
 		} catch (HibernateException e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-		return posts;
+		return postTitles;
 	}
 }

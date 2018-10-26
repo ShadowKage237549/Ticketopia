@@ -17,6 +17,22 @@ import com.ticketopia.util.HibernateUtil;
 
 public class CustomerInfoDaoImpl implements CustomerInfoDao {
 	@Override
+	public CustomerInfo getCustomerByEmail(String email) {
+		Session session = null;
+		CustomerInfo customer = null;
+		try
+		{
+			session = HibernateUtil.getSession();
+			customer = (CustomerInfo)session.get(CustomerInfo.class, email);
+		}catch(HibernateException e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return customer;
+	}
+	
+	@Override
 	public boolean createCustomer(CustomerInfo customer) {
 		Session session = null;
 		Transaction tx = null;
