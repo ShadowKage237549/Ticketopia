@@ -9,6 +9,8 @@ DROP TABLE event_types CASCADE CONSTRAINTS;
 DROP TABLE tickets CASCADE CONSTRAINTS;
 DROP TABLE posts CASCADE CONSTRAINTS;
 DROP TABLE partners CASCADE CONSTRAINTS;
+DROP TABLE post_titles CASCADE CONSTRAINTS;
+DROP TABLE topics CASCADE CONSTRAINTS;
 CREATE TABLE user_type (
 	role_id NUMBER(6),
      --pk
@@ -435,8 +437,8 @@ CREATE TABLE tickets (
 	event_address VARCHAR2(100),
 	event_city VARCHAR2(50),
 	event_state VARCHAR2(20),
-	event_zip NUMBER(5),
-	seat VARCHAR2(6),
+	event_zip NUMBER(6),
+	seat VARCHAR2(40),
 	partner_id NUMBER(6),
      --fk
 	free_flag NUMBER(1),
@@ -461,7 +463,7 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-1,
+2,
 'Movie Ticket',
 1,
 700,
@@ -476,7 +478,7 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-2,
+3,
 'Concert Ticket',
 2,
 1000,
@@ -491,7 +493,7 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-2,
+4,
 'Concert Ticket',
 2,
 350,
@@ -529,7 +531,7 @@ INSERT INTO topics VALUES (
 'I got to meet David Draimen, nicest guy ever. He even signed my Disturbed Tattoo and wished me well! CANNOT WAIT TO SEE THEM AGAIN!'
 );
 
-CREATE TABLE posts_title (
+CREATE TABLE post_titles (
 	post_title_id NUMBER(6),
 	post_title VARCHAR2(50),
 	topic_id NUMBER(6),
