@@ -212,7 +212,7 @@ INSERT INTO customer_information VALUES (
 --Basic users
 INSERT INTO customer_information VALUES (
 'srussel@russel.com',
-'Mr.Russel',
+'Mr.Russell',
 'Shane',
 'Russel',
 0,
@@ -419,7 +419,7 @@ CREATE TABLE payment_info (
      --fk 
 	card_number NUMBER(16),
 	security_number NUMBER(3),
-	expiration_date DATE,
+	expiration_date VARCHAR2(45),
      --needs formatting either here or in java. 
 	billing_address VARCHAR2(100),
 	billing_city VARCHAR2(50),
@@ -464,7 +464,7 @@ CREATE TABLE tickets (
 );
 
 INSERT INTO tickets VALUES (
-555,
+7,
 'Movie Ticket',
 1,
 99,
@@ -479,7 +479,7 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-1,
+9,
 'Movie Ticket',
 1,
 700,
@@ -494,7 +494,7 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-2,
+5,
 'Concert Ticket',
 2,
 1000,
@@ -509,7 +509,7 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-2,
+8,
 'Concert Ticket',
 2,
 350,
@@ -532,31 +532,30 @@ CREATE TABLE topics(
 	CONSTRAINT topic_ticket_fk FOREIGN KEY ( ticket_id )
 		REFERENCES tickets ( ticket_id )
 );
-
 INSERT INTO topics VALUES (
 1,
-1,
+7,
 'Venom the Movie!',
 'Ticket admitting entrance to the movie Venom'
 );
 
 INSERT INTO topics VALUES (
 2,
-2,
+9,
 'Avengers: Infinity War Pt 2',
 'Ticket for one person to watching Avengers: Infinity War 2'
 );
 
 INSERT INTO topics VALUES (
 3,
-3,
+5,
 'Disturbed live at Fargo Dome',
 'Back stage passes to meet Disturbed the band.'
 );
 
 INSERT INTO topics VALUES (
 4,
-4,
+8,
 'Eminem live in Detroit Michigan',
 'Meet and Greet with the Rap God himiself: Marshall Mathers'
 );
@@ -592,17 +591,14 @@ INSERT INTO posts_title VALUES (
 INSERT INTO posts_title VALUES (
 4,
 'How should I dress for an Eminem Concert?',
-4
+2
 );
 
 
 CREATE TABLE posts (
-	post_id NUMBER(10),
-     --pk
-	ticket_id NUMBER(6),
-     --fk
-	display_name VARCHAR2(20),
-     --fk
+	post_id NUMBER(10),  --pk
+	ticket_id NUMBER(6),--fk
+	display_name VARCHAR2(20),--fk
 	post_content VARCHAR2(500),
 	post_timestamp TIMESTAMP,
 	CONSTRAINT post_pk PRIMARY KEY ( post_id ),
@@ -614,7 +610,7 @@ CREATE TABLE posts (
 
 INSERT INTO posts VALUES (
 1,
-1,
+7,
 'TheDestiny',
 'Venom was amazing! The way he transformed... his style, he is my FAVORITE VILLAIN!!! AHHH',
 SYSTIMESTAMP
@@ -622,7 +618,7 @@ SYSTIMESTAMP
 
 INSERT INTO posts VALUES (
 2,
-2,
+9,
 'JDoe',
 'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!',
 SYSTIMESTAMP
@@ -630,7 +626,7 @@ SYSTIMESTAMP
 
 INSERT INTO posts VALUES (
 3,
-3,
+5,
 'CatchinGretchen',
 'I got caught up in the moshpit during the Disturbed concert... I got knocked out and they had to stop the concert because of me... as an apology I got to meet the Band! It was so fun!',
 SYSTIMESTAMP
@@ -638,7 +634,7 @@ SYSTIMESTAMP
 
 INSERT INTO posts VALUES (
 4,
-4,
+8,
 'Mr.Russell',
 'I got to see Eminem in concert, Im such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!',
 SYSTIMESTAMP
