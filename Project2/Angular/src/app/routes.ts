@@ -53,7 +53,7 @@ const appRoutes: Routes = [
     },
     {
         path: '**',
-        redirectTo: 'home',
+        redirectTo: 'Ticketopia/home',
         pathMatch: 'full'
     }
 ];
