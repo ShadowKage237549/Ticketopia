@@ -11,7 +11,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="post_title")
+@Table(name="post_titles")
 public class PostTitle {
 	@Id
 	@SequenceGenerator(sequenceName="title_id_sqn", name="title_Id")
