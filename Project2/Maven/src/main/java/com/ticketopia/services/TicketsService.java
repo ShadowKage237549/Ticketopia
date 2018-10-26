@@ -16,7 +16,17 @@ public class TicketsService {
 		}
 		return pTickets;
 	}
+	
 	// get ticket by location
+	public List<Ticket> getTicketByLocation(List<Ticket> tickets, String city) {
+		List<Ticket> lTickets = new ArrayList<>();
+		for(Ticket ticket: tickets) {
+			if(ticket.getEventCity().equals(city)) {
+				lTickets.add(ticket);
+			}
+		}
+		return lTickets;
+	}
 	// get ticket by event type
 	// get ticket by partner
 	//
