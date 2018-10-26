@@ -592,7 +592,6 @@ INSERT INTO posts_title VALUES (
 );
 
 
-
 CREATE TABLE posts (
 	post_id NUMBER(10),
      --pk
@@ -608,4 +607,37 @@ CREATE TABLE posts (
 	CONSTRAINT post_user_fk FOREIGN KEY ( display_name )
 		REFERENCES customer_information ( display_name )
 );
+
+INSERT INTO posts VALUES (
+1,
+1,
+'TheDestiny',
+'Venom was amazing! The way he transformed... his style, he is my FAVORITE VILLAIN!!! AHHH'
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+2,
+2,
+'JDoe'
+'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!'
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+3,
+3,
+'CatchinGretchen',
+'I got caught up in the moshpit during the Disturbed concert... I got knocked out and they had to stop the concert because of me... as an apology I got to meet the Band! It was so fun!'
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+4,
+4,
+'Mr.Russell',
+'I got to see Eminem in concert, I'm such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!'
+SYSTIMESTAMP
+);
+
 COMMIT;
