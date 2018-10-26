@@ -11,10 +11,10 @@
             <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/store">Store</a>
         </li>
 
-        <li class="nav-item" *ngIf="!loggedIn">
+        <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/login">Login</a>
         </li>
-        <li class="nav-item" *ngIf="loggedIn">
+        <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/account">{{login.username}}</a>
         </li>
     </ul>

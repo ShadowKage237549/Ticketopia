@@ -1,15 +1,21 @@
 import { AuthenticationService } from './../Authentication/authentication.service';
-import { Partner } from './../../Components/home/partner/Partner';
+import { Payment } from './../../Components/paymentinfo/payment/payment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class HomeService {
+export class PaymentService {
+
+
   constructor(private http:HttpClient, private authService:AuthenticationService) { }
 
-  getPartners(){
-    return this.http.get<Partner[]>(this.authService.url + "partner.do");
+
+
+  updatePayment(payment: Payment) {
+    return this.http.post<Payment[]>(this.authService.url + "updatePayment.do", payment);
   }
+
+
 }

@@ -12,14 +12,10 @@ import { Observable } from 'rxjs';
 export class NavbarComponent implements OnInit {
   
   
-  loggedIn:boolean;
 
   constructor(private auth:AuthenticationService) { }
 
   ngOnInit() {
-    //This works, but the navbar does not get updated when changing the value
-    this.auth.isLoggedIn.subscribe(loggedIn => this.loggedIn = loggedIn);
-    console.log("TODO: IMPLEMENT AUTHENTICATION IN NAVBAR");
   }
 
 }
