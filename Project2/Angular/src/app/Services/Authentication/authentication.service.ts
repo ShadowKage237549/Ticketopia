@@ -13,7 +13,7 @@ export class AuthenticationService {
     public url: string = "http://localhost:8085/Ticketopia/";
     password: string = "1";
     token: any = null;
-
+    customerinfo:CustomerInfo = null;
     constructor(private http: HttpClient, private router: Router) { }
 
     login(email: string, password: string) {
@@ -36,5 +36,17 @@ export class AuthenticationService {
         if (this.token != null) {
             return this.token;
         }
+    }
+    isNotNull(token:any):boolean {
+        if(token != null){
+            return true;
+        }
+        return false;
+    }
+    requestCustomerData(){
+        if(this.token!=null){    
+            this.http.get(this.url + "customerInfo.do?token="+this.token).subscribe(data => this.customerinfo);
+        }
+
     }
 }

@@ -13,9 +13,17 @@ export class NavbarComponent implements OnInit {
   
   
 
-  constructor(private auth:AuthenticationService) { }
+  constructor(private authService:AuthenticationService) { }
 
   ngOnInit() {
+  }
+
+  isNotNull(){
+    console.log(this.authService.token);
+    if(this.authService.isNotNull(this.authService.token)){
+      return true;
+    }
+    return false;
   }
 
 }

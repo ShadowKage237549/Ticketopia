@@ -10,12 +10,9 @@
         <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/store">Store</a>
         </li>
-
         <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/login">Login</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/account"></a>
+            <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/login" *ngIf="!isNotNull()">Login</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/paymentinfo" *ngIf="isNotNull()">{{authService.customerInfo.displayName}}</a>
         </li>
     </ul>
 </nav>

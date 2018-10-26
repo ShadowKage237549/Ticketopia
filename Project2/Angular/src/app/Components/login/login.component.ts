@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
         //put in routing to error page
     } else {
         //route to home page
+        this.auth.requestCustomerData();
     }
     }
 
