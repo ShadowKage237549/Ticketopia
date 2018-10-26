@@ -38,7 +38,7 @@ export class AuthenticationService {
         body = body.set('email', email);
         body = body.set('password', password);
 
-        return this.http.post("http://localhost:8085/Ticketopia/LoginServlet",
+        return this.http.post("http://18.222.219.232:8085/Ticketopia/LoginServlet",
             body,
             { headers: headers }).subscribe(data => this.token = data);
     }
