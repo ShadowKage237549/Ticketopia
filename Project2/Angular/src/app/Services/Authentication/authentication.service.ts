@@ -34,7 +34,7 @@ export class AuthenticationService {
 
     login(email: string, password: string) {
 
-        this.http.post("http://18.222.219.232:8085/Ticketopia/login.do", "email=" + email + "&password=" + password)
+        this.http.post("http://18.222.219.232:8085/Ticketopia/login.do?email=" + email + "&password=" + password, {})
             .subscribe((data: string) => this.token = data);
         return this.token;
     }

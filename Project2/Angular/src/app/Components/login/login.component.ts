@@ -11,9 +11,10 @@ import { UserType } from './user/UserType';
 })
 export class LoginComponent implements OnInit {
 
-    token:any = "";
-    email:string = "";
-    password:string = "";
+    token: any = "";
+    email: string;
+    password: string;
+
 
     constructor(private auth: AuthenticationService) {
     }
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
     }
 
     logMeIn() {
+        console.log(this.email + this.password);
         this.token = this.auth.login(this.email, this.password);
     }
 
