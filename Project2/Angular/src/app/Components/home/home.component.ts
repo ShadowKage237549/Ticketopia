@@ -13,11 +13,11 @@ export class HomeComponent implements OnInit {
     constructor(private homeService: HomeService) { }
 
     ngOnInit() {
-        // this.subscribeToPartners();
+        this.getPartners();
     }
 
-    subscribeToPartners() {
-        this.homeService.getPartners().subscribe((data: Partner[]) => this.partners = data);
+    getPartners() {
+        this.partners = this.homeService.getPartners();
     }
 
 }

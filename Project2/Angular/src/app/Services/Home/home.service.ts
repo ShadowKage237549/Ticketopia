@@ -10,6 +10,8 @@ export class HomeService {
   constructor(private http:HttpClient, private authService:AuthenticationService) { }
 
   getPartners(){
-    return this.http.get<Partner[]>(this.authService.url + "partner.do");
+    let partners:Partner[];
+    this.http.get<Partner[]>(this.authService.url + "partner.do").subscribe((data: Partner[]) => partners = data);
+    return partners;
   }
 }
