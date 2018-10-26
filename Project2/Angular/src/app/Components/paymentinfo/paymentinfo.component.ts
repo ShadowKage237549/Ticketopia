@@ -1,6 +1,6 @@
+import { PaymentService } from './../../Services/Account/payment.service';
 import { Payment } from './payment/payment';
 import { Component, OnInit } from '@angular/core';
-import { CustomerInfo } from '../login/user/CustomerInfo';
 
 @Component({
   selector: 'app-paymentinfo',
@@ -10,16 +10,26 @@ import { CustomerInfo } from '../login/user/CustomerInfo';
 export class PaymentinfoComponent implements OnInit {
 
   pInfos:Payment[] = [
-    new Payment(null,1234123412341234,123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
-    new Payment(null,1234123412341234,123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
-    new Payment(null,1234123412341234,123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
-    new Payment(null,1234123412341234,123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
-    new Payment(null,1234123412341234,123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345)
+    new Payment(null,"1234123412341234",123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
+    new Payment(null,"1234123412341234",123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
+    new Payment(null,"1234123412341234",123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
+    new Payment(null,"1234123412341234",123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
+    new Payment(null,"1234123412341234",123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345)
   ];
+  registerPayment:Payment = new Payment(null,null,null,null,null,null,null,null);
 
-  constructor() { }
+  constructor(private paymentService:PaymentService) { }
 
   ngOnInit() {
+  }
+
+  registerNewPayment(){
+    if(this.registerPayment != null){
+      //this.pInfos.push(this.registerPayment);
+      //this.paymentService.updatePayment(this.pInfos);
+      console.log(this.registerPayment);
+    }
+
   }
 
 }

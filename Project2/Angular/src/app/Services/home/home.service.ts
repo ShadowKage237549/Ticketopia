@@ -1,3 +1,4 @@
+import { AuthenticationService } from './../Authentication/authentication.service';
 import { Partner } from './../../Components/home/partner/Partner';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -6,10 +7,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class HomeService {
-  url:string = "http://18.222.219.232:8085/Ticketopia/partner.do"
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private authService:AuthenticationService) { }
 
   getPartners(){
-    return this.http.get<Partner[]>(this.url);
+    return this.http.get<Partner[]>(this.authService.url + "partner.do");
   }
 }

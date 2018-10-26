@@ -21,20 +21,21 @@ export class AuthenticationService {
         userState: "empty",
         userZip: 123456,
     };
+    //Use this throughout the angular application.
+    public url:string = "http://18.222.219.232:8085/Ticketopia/";
     password: string = "1";
-
+    token: any;
     private loggedIn = new BehaviorSubject<boolean>(false);
     get isLoggedIn() {
         return this.loggedIn.asObservable();
     }
-    token: any;
+
 
 
     constructor(private http: HttpClient, private router: Router) { }
 
     login(email: string, password: string) {
-
-        this.http.post("http://18.222.219.232:8085/Ticketopia/login.do?email=" + email + "&password=" + password, {})
+        this.http.post(this.url +"login.do?email=" + email + "&password=" + password, {})
             .subscribe((data: string) => this.token = data);
         return this.token;
     }
