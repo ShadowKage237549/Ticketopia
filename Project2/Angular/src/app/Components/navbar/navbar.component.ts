@@ -16,7 +16,6 @@ export class NavbarComponent implements OnInit {
   }
 
   isNotNull(){
-    console.log(localStorage.getItem("token"));
     if(this.authService.isNotNull(localStorage.getItem("token"))){
       return true;
     }

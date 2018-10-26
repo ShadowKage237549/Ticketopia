@@ -27,7 +27,6 @@ export class AuthenticationService {
     storeToken(token: any) {
         if (token != 'wrong info' && token != null) {
             localStorage.setItem("token", token);
-            console.log(localStorage.getItem("token"));
         }
     }
     logout() {
