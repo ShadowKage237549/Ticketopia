@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.daos.CustomerInfoDao;
 import com.ticketopia.daos.CustomerInfoDaoImpl;
@@ -37,9 +38,8 @@ public class LoginServlet extends HttpServlet {
 		email = request.getParameter("email");
 		password = request.getParameter("password");
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		CustomerInfo loggingInUser = null;
-		loggingInUser = cid.getCustomerByEmail(email);
-		if(!(loggingInUser == null)) {
+		CustomerInfo loggingInUser = cid.getCustomerByEmail(email.toLowerCase());
+		if(loggingInUser != null) {
 			if(loggingInUser.getPassword().equals(password)) {
 				Algorithm algorithmHS = Algorithm.HMAC256("secretPassword123");
 				String token = JWT.create().withIssuer("Shadow").withClaim("userEmail", loggingInUser.getUserEmail())
@@ -58,12 +58,18 @@ public class LoginServlet extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("");
 				rd.forward(request, response);
 				return;
+			} else {
+				response.setContentType("application/json");
+				PrintWriter out = response.getWriter();
+				ObjectMapper om = new ObjectMapper();
+				out.print(om.writeValueAsString("wrong info"));
 			}
 		}
 		
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-		out.print("Incorrect Information");
+		ObjectMapper om = new ObjectMapper();
+		out.print(om.writeValueAsString(loggingInUser));
 		
 	}
 
