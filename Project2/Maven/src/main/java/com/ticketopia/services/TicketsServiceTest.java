@@ -19,22 +19,28 @@ import com.ticketopia.daos.TicketDao;
 import com.ticketopia.daos.TicketDaoImpl;
 
 public class TicketsServiceTest {
-	private static TicketDao td = new TicketDaoImpl();
-	private static Ticket ticket = mock(Ticket.class);
-	private static Ticket ticket1 = new Ticket(1, "backstage", new EventType(1, "concert"),
+	//private static TicketDao td = new TicketDaoImpl();
+	//private static Ticket ticket = mock(Ticket.class);
+	private static EventType eventType1 = new EventType(1, "concert");
+	private static EventType eventType2 = new EventType(2, "movie");
+	private static EventType eventType3 = new EventType(3, "festival");
+	private static Partner partner1 = new Partner(1, "Napalm Blast");
+	private static Partner partner2 = new Partner(2, "AMC");
+	private static Partner partner3 = new Partner(3, "Nuclear Records");
+	private static Ticket ticket1 = new Ticket(1, "backstage", eventType1,
 			99.99, "Amon Amarth", "1234 Concert Ln", "Concert City", "Concert State", 67890,
-			"pit", new Partner(1, "Napalm Records"), false);
-	private static Ticket ticket2 = new Ticket(2, "realD", new EventType(2, "movie"), 20.00,
+			"pit", partner1, false);
+	private static Ticket ticket2 = new Ticket(2, "realD", eventType2, 20.00,
 			"Venom Movie", "5678 Movie Str", "Movie City", "Movie State", 12345, "A1",
-			new Partner(2, "AMC"), false);
-	private static Ticket ticket3 = new Ticket(3, "basic", new EventType(1, "concert"), 19.95,
+			partner2, false);
+	private static Ticket ticket3 = new Ticket(3, "basic", eventType1, 19.95,
 			"Unleash the Archers", "1234 Concert Ln", "Concert City", "Concert State", 67890,
-			"pit", new Partner(1, "Napalm Records"), true);
+			"pit", partner1, true);
 	private static List<Ticket> tickets = new ArrayList<>();
 	private static List<Ticket> testTickets = new ArrayList<>();
 	private static String city;
-	private static EventType eventType = null;
-	private static Partner partner = null;
+	
+	
 	private static Double maxPrice;
 	
 	@BeforeClass
@@ -67,7 +73,7 @@ public class TicketsServiceTest {
 	}
 	
 	@Test
-	public void testGetTicketByPrice3() {
+	public void testGetTicketByPrice2() {
 		testTickets.add(ticket1);
 		testTickets.add(ticket2);
 		testTickets.add(ticket3);
@@ -76,9 +82,15 @@ public class TicketsServiceTest {
 	}
 	
 	@Test
-	public void testGetTicketByPrice2() {
+	public void testGetTicketByPrice3() {
 		testTickets.add(ticket3);
 		maxPrice = 19.99;
+		assertEquals(TicketsService.getTicketByPrice(tickets, maxPrice), testTickets);
+	}
+	
+	@Test
+	public void testGetTicketByPrice4() {
+		maxPrice = 15.00;
 		assertEquals(TicketsService.getTicketByPrice(tickets, maxPrice), testTickets);
 	}
 
@@ -96,15 +108,47 @@ public class TicketsServiceTest {
 		city = "Movie City";
 		assertEquals(TicketsService.getTicketByLocation(tickets, city), testTickets);
 	}
+	
+	@Test
+	public void testGetTicketByLocation3() {
+		city = "Movie";
+		assertEquals(TicketsService.getTicketByLocation(tickets, city), testTickets);
+	}
 
 	@Test
 	public void testGetTicketByEventType() {
-		fail("Not yet implemented");
+		testTickets.add(ticket1);
+		testTickets.add(ticket3);
+		assertEquals(TicketsService.getTicketByEventType(tickets, eventType1), testTickets);
+	}
+	
+	@Test
+	public void testGetTicketByEventType2() {
+		testTickets.add(ticket2);
+		assertEquals(TicketsService.getTicketByEventType(tickets, eventType2), testTickets);
+	}
+	
+	@Test
+	public void testGetTicketByEventType3() {
+		assertEquals(TicketsService.getTicketByEventType(tickets, eventType3), testTickets);
 	}
 
 	@Test
 	public void testGetTicketByPartner() {
-		fail("Not yet implemented");
+		testTickets.add(ticket1);
+		testTickets.add(ticket3);
+		assertEquals(TicketsService.getTicketByPartner(tickets, partner1), testTickets);
+	}
+	
+	@Test
+	public void testGetTicketByPartne2() {
+		testTickets.add(ticket2);
+		assertEquals(TicketsService.getTicketByPartner(tickets, partner2), testTickets);
+	}
+	
+	@Test
+	public void testGetTicketByPartner3() {
+		assertEquals(TicketsService.getTicketByPartner(tickets, partner3), testTickets);
 	}
 
 }
