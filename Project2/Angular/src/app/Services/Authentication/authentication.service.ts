@@ -9,19 +9,19 @@ import { sign } from 'jsonwebtoken';
     providedIn: 'root'
 })
 export class AuthenticationService {
-    testuser: CustomerInfo = { 
-        userEmail: 'bobbert', 
+    testuser: CustomerInfo = {
+        userEmail: 'bobbert',
         accumulatedPoints: 15,
-        displayName:"notbobbert93",
-        userFName:"empty",
-        userLName:"empty",
-        role: new UserType(0,"basic"),
-        userAddress:"empty",
-        userCity:"empty",
-        userState:"empty",
-        userZip:123456,
-     };
-     password:string = "1";
+        displayName: "notbobbert93",
+        userFName: "empty",
+        userLName: "empty",
+        role: new UserType(0, "basic"),
+        userAddress: "empty",
+        userCity: "empty",
+        userState: "empty",
+        userZip: 123456,
+    };
+    password: string = "1";
 
     private loggedIn = new BehaviorSubject<boolean>(false);
     get isLoggedIn() {
@@ -32,10 +32,10 @@ export class AuthenticationService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
-    login(email:string, password:string) {
-        
-        this.http.post("localhost:8085/Ticketopia/login.do", "email=" + email + "&password=" + password)
-            .subscribe((data:string) => this.token = data);
+    login(email: string, password: string) {
+
+        this.http.post("http://18.222.219.232:8085/Ticketopia/login.do", "email=" + email + "&password=" + password)
+            .subscribe((data: string) => this.token = data);
         return this.token;
     }
     logout() {
