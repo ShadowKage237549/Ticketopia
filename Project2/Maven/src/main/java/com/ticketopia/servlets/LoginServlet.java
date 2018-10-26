@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet {
 			}
 		}
 		
-		response.setContentType("text/html");
+		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		out.print("Incorrect Information");
 		
