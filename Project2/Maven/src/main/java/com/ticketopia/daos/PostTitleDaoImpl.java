@@ -46,4 +46,20 @@ public class PostTitleDaoImpl implements PostTitleDao {
 		}
 		return postTitles;
 	}
+	
+	@Override
+	public boolean updatePostTitle(PostTitle postTitle) {
+		Session session = null;
+		
+		try {
+			session = HibernateUtil.getSession();
+			session.save(postTitle);
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
 }

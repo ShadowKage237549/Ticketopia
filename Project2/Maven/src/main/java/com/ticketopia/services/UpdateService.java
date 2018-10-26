@@ -4,12 +4,20 @@ import java.util.List;
 
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.PaymentInfo;
+import com.ticketopia.beans.Post;
+import com.ticketopia.beans.PostTitle;
 import com.ticketopia.beans.Ticket;
 import com.ticketopia.beans.UserType;
 import com.ticketopia.daos.CustomerInfoDao;
 import com.ticketopia.daos.CustomerInfoDaoImpl;
 import com.ticketopia.daos.PaymentInfoDao;
 import com.ticketopia.daos.PaymentInfoDaoImpl;
+import com.ticketopia.daos.PostDao;
+import com.ticketopia.daos.PostDaoImpl;
+import com.ticketopia.daos.PostTitleDao;
+import com.ticketopia.daos.PostTitleDaoImpl;
+import com.ticketopia.daos.TicketDao;
+import com.ticketopia.daos.TicketDaoImpl;
 import com.ticketopia.daos.UserTypeDao;
 import com.ticketopia.daos.UserTypeDaoImpl;
 
@@ -125,7 +133,31 @@ public class UpdateService {
 		
 		return cid.updateCustomerInfo(customer);
 	}
+	
 	//update post
+	public static boolean updatePost(Post post, String postContent) {
+		PostDao pd = new PostDaoImpl();
+		
+		post.setPostContent(postContent);
+		
+		return pd.updatePost(post);
+	}
+	
 	//update ticket price
+	public static boolean updateTicketPrice(Ticket ticket, Double price) {
+		TicketDao td = new TicketDaoImpl();
+		
+		ticket.setTicketPrice(price);
+		
+		return td.updateTicket(ticket);
+	}
+	
 	//update post title
+	public static boolean updatePostTitle(PostTitle postTitle, String newTitle) {
+		PostTitleDao ptd = new PostTitleDaoImpl();
+		
+		postTitle.setPostTitle(newTitle);
+		
+		return ptd.updatePostTitle(postTitle);
+	}
 }
