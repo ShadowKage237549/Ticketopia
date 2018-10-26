@@ -50,7 +50,7 @@ public class UpdateServiceTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		when(cid.updateCustomerInfo(customer,email)).thenReturn(true);
+	//	when(cid.updateCustomerInfo(customer,email)).thenReturn(true);
 //		when(pid.updatePaymentInfo(paymentInfo)).thenReturn(true);
 //		when(pd.updatePost(post)).thenReturn(true);
 //		when(td.updateTicket(ticket)).thenReturn(true);
