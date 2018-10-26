@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.daos.CustomerInfoDao;
 import com.ticketopia.daos.CustomerInfoDaoImpl;
@@ -63,7 +64,8 @@ public class LoginServlet extends HttpServlet {
 		
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-		out.print("Incorrect Information");
+		ObjectMapper om = new ObjectMapper();
+		out.print(om.writeValueAsString(loggingInUser));
 		
 	}
 
