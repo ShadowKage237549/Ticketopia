@@ -10,7 +10,7 @@ import { sign } from 'jsonwebtoken';
 })
 export class AuthenticationService {
 
-    public url: string = "http://18.222.219.232:8085/Ticketopia/";
+    public url: string = "http://localhost:8085/Ticketopia/";
     password: string = "1";
     token: any = null;
 
@@ -24,7 +24,7 @@ export class AuthenticationService {
         body = body.set('email', email);
         body = body.set('password', password);
 
-        return this.http.post("http://localhost:8085/Ticketopia/LoginServlet",
+        return this.http.post(this.url + 'LoginServlet',
             body,
             { headers: headers }).subscribe(data => this.token = data);
     }
