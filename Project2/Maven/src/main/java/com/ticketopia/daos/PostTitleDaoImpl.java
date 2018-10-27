@@ -48,7 +48,7 @@ public class PostTitleDaoImpl implements PostTitleDao {
 	}
 	
 	@Override
-	public boolean updatePostTitle(PostTitle postTitle, String newTitle) {
+	public boolean updatePostTitle(PostTitle postTitle) {
 		Session session = null;
 		Transaction tx = null;
 		
@@ -56,8 +56,8 @@ public class PostTitleDaoImpl implements PostTitleDao {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			PostTitle pt = (PostTitle) session.get(PostTitle.class, postTitle.getId());
-			pt.setPostTitle(newTitle);
-			session.update(pt);
+			pt = postTitle;
+			session.merge(pt);
 			return true;
 		} catch (HibernateException e) {
 			e.printStackTrace();

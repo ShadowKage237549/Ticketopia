@@ -80,7 +80,7 @@ public class TicketDaoImpl implements TicketDao {
 			tx = session.beginTransaction();
 			Ticket t = (Ticket) session.get(Ticket.class, ticket.getTicketId());
 			t = ticket;
-			session.update(t);
+			session.merge(t);
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {

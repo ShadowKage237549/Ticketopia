@@ -1,32 +1,3 @@
-
-Skip to content
-
-    Pull requests
-    Issues
-    Marketplace
-    Explore
-
-    @BSlappey
-
-1
-1
-
-    0
-
-ShadowKage237549/Ticketopia
-Code
-Issues 0
-Pull requests 0
-Projects 0
-Wiki
-Insights
-Ticketopia/Project2/Ticketopedia.sql
-5809932 4 hours ago
-@PrososkiP PrososkiP Update Ticketopedia.sql
-@PrososkiP
-@ShadowKage237549
-@BSlappey
-644 lines (583 sloc) 10.4 KB
 --SQL Database to hold the tables for Ticketopia Project. 
 --This table will eventually be integrated into a more dynamic table using Hibernate. 
 
@@ -460,7 +431,7 @@ CREATE TABLE payment_info (
 
 INSERT INTO payment_info VALUES (
 'bob.bobson@mafia.net',
-0000555577777888,
+1000555577777888,
 000,
 01/99,
 '111 Killer Rd',
@@ -469,7 +440,6 @@ INSERT INTO payment_info VALUES (
 543876
 );
 
---Have 5 shots of rum and start making up CC numbers 
 
 CREATE TABLE tickets (
 	ticket_id NUMBER(6),
@@ -497,7 +467,7 @@ INSERT INTO tickets VALUES (
 'Movie Ticket',
 1,
 99,
-'Back Row seating for Venom with beer, popcorn, and ices included',
+'Movie',
 '777 Zmax Blvd',
 'Reston',
 'Virginia',
@@ -512,7 +482,7 @@ INSERT INTO tickets VALUES (
 'Movie Ticket',
 1,
 700,
-'Hunger games 5 with Jennifer Lawrence as your date',
+'Movie',
 '921 HungerGames Lane',
 'Topeka',
 'Kansas',
@@ -527,7 +497,7 @@ INSERT INTO tickets VALUES (
 'Concert Ticket',
 2,
 1000,
-'Meet and Greet with dinner included with Members of Disturbed',
+'Concert',
 '1800 North University Drive',
 'Fargo',
 'North Dakota',
@@ -542,7 +512,7 @@ INSERT INTO tickets VALUES (
 'Concert Ticket',
 2,
 350,
-'Back stage passes to Eminem',
+'Concert',
 '888 Grover Street',
 'Los Angelos',
 'Rhode Island',
@@ -565,28 +535,28 @@ INSERT INTO topics VALUES (
 1,
 7,
 'Venom the Movie!',
-'Ticket admitting entrance to the movie Venom'
+'Venom'
 );
 
 INSERT INTO topics VALUES (
 2,
 9,
 'Avengers: Infinity War Pt 2',
-'Ticket for one person to watching Avengers: Infinity War 2'
+'Avengers: Infinity War 2'
 );
 
 INSERT INTO topics VALUES (
 3,
 5,
 'Disturbed live at Fargo Dome',
-'Back stage passes to meet Disturbed the band.'
+'Thoughts on Disturbed live'
 );
 
 INSERT INTO topics VALUES (
 4,
 8,
 'Eminem live in Detroit Michigan',
-'Meet and Greet with the Rap God himiself: Marshall Mathers'
+'Discussion on Eminem concert history'
 );
 
 
@@ -626,20 +596,20 @@ INSERT INTO posts_title VALUES (
 
 CREATE TABLE posts (
 	post_id NUMBER(10),  --pk
-	ticket_id NUMBER(6),--fk
+	post_title_id NUMBER(6),--fk
 	display_name VARCHAR2(20),--fk
 	post_content VARCHAR2(500),
 	post_timestamp TIMESTAMP,
 	CONSTRAINT post_pk PRIMARY KEY ( post_id ),
-	CONSTRAINT post_topic_fk FOREIGN KEY ( ticket_id )
-		REFERENCES tickets ( ticket_id ),
+	CONSTRAINT post_topic_fk FOREIGN KEY ( post_title_id )
+		REFERENCES posts_title ( post_title_id ),
 	CONSTRAINT post_user_fk FOREIGN KEY ( display_name )
 		REFERENCES customer_information ( display_name )
 );
 
 INSERT INTO posts VALUES (
 1,
-7,
+1,
 'TheDestiny',
 'Venom was amazing! The way he transformed... his style, he is my FAVORITE VILLAIN!!! AHHH',
 SYSTIMESTAMP
@@ -647,7 +617,7 @@ SYSTIMESTAMP
 
 INSERT INTO posts VALUES (
 2,
-9,
+1,
 'JDoe',
 'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!',
 SYSTIMESTAMP
@@ -655,7 +625,7 @@ SYSTIMESTAMP
 
 INSERT INTO posts VALUES (
 3,
-5,
+2,
 'CatchinGretchen',
 'I got caught up in the moshpit during the Disturbed concert... I got knocked out and they had to stop the concert because of me... as an apology I got to meet the Band! It was so fun!',
 SYSTIMESTAMP
@@ -663,7 +633,7 @@ SYSTIMESTAMP
 
 INSERT INTO posts VALUES (
 4,
-8,
+2,
 'Mr.Russell',
 'I got to see Eminem in concert, Im such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!',
 SYSTIMESTAMP
@@ -671,18 +641,5 @@ SYSTIMESTAMP
 
 COMMIT;
 
-    © 2018 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Help
-
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-
-Press h to open a hovercard with more details.
+SELECT * FROM customer_information;
+SELECT * FROM posts;

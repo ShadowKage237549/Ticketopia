@@ -1,7 +1,5 @@
 package com.ticketopia.services;
 
-import java.util.List;
-
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.EventType;
 import com.ticketopia.beans.Partner;
@@ -9,11 +7,9 @@ import com.ticketopia.beans.PaymentInfo;
 import com.ticketopia.beans.Post;
 import com.ticketopia.beans.PostTitle;
 import com.ticketopia.beans.Ticket;
-import com.ticketopia.beans.UserType;
+import com.ticketopia.beans.Topic;
 import com.ticketopia.daos.CustomerInfoDao;
 import com.ticketopia.daos.CustomerInfoDaoImpl;
-import com.ticketopia.daos.EventTypeDao;
-import com.ticketopia.daos.EventTypeDaoImpl;
 import com.ticketopia.daos.PaymentInfoDao;
 import com.ticketopia.daos.PaymentInfoDaoImpl;
 import com.ticketopia.daos.PostDao;
@@ -22,8 +18,8 @@ import com.ticketopia.daos.PostTitleDao;
 import com.ticketopia.daos.PostTitleDaoImpl;
 import com.ticketopia.daos.TicketDao;
 import com.ticketopia.daos.TicketDaoImpl;
-import com.ticketopia.daos.UserTypeDao;
-import com.ticketopia.daos.UserTypeDaoImpl;
+import com.ticketopia.daos.TopicDao;
+import com.ticketopia.daos.TopicDaoImpl;
 
 public class UpdateService {	
 	public boolean updateCustomer(String oldEmail, String newEmail, String displayName, String userFName,
@@ -89,10 +85,30 @@ public class UpdateService {
 	}
 	
 	//update post
-	public boolean updatePost(Post post, String postContent) {
+	public boolean updatePost(Integer postId, PostTitle postTitle, String postContent,
+			CustomerInfo displayName, String postTimeStamp) {
 		PostDao pd = new PostDaoImpl();
+		Post post = new Post();
 		
-		return pd.updatePost(post, postContent);
+		post.setPostId(postId);
+		post.setPostTitle(postTitle);
+		post.setPostContent(postContent);
+		post.setDisplayName(displayName);
+		post.setPostTimeStamp(postTimeStamp);
+		
+		return pd.updatePost(post);
+	}
+	
+	public boolean updateTopic(Integer id, Ticket ticketId, String topicName, String topicDescription) {
+		TopicDao td = new TopicDaoImpl();
+		Topic topic = new Topic();
+		
+		topic.setId(id);
+		topic.setTicketId(ticketId);
+		topic.setTopicName(topicName);
+		topic.setTopicDescription(topicDescription);
+		
+		return td.updateTopic(topic);
 	}
 	
 	public boolean updateTicket(Integer ticketId, String ticketType, EventType eventType, Double ticketPrice,
@@ -118,9 +134,14 @@ public class UpdateService {
 	}
 	
 	//update post title
-	public boolean updatePostTitle(PostTitle postTitle, String newTitle) {
+	public boolean updatePostTitle(Integer id, Topic topic, String newTitle) {
 		PostTitleDao ptd = new PostTitleDaoImpl();
+		PostTitle postTitle = new PostTitle();
 		
-		return ptd.updatePostTitle(postTitle, newTitle);
+		postTitle.setId(id);
+		postTitle.setPostTitle(newTitle);
+		postTitle.setTopicId(topic);
+		
+		return ptd.updatePostTitle(postTitle);
 	}
 }
