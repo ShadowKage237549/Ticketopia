@@ -69,21 +69,22 @@ public class UpdateService {
 	}
 	
 	//update payment
-	public Boolean updatePayment(PaymentInfo payment,
-										Long cardNumber,
-										Integer securityCode,
-										String expirationDate,
-										String billingAddress,
-										String billingCity,
-										String billingState,
-										Integer billingZip) {
+	public Boolean updatePayment(CustomerInfo customer, Long cardNumber, Integer securityCode, 
+							String expirationDate, String billingAddress, String billingCity,
+							String billingState, Integer billingZip) {
 		PaymentInfoDao pid = new PaymentInfoDaoImpl();
+		PaymentInfo payment = new PaymentInfo();
 		
-		return pid.updatePaymentCardNumber(payment, cardNumber) 
-				& pid.updatePaymentSecurityCode(payment, securityCode)
-				& pid.updatePaymentExpirationDate(payment, expirationDate) 
-				& pid.updatePaymentBillingAddress(payment, billingAddress, billingCity,
-						billingState, billingZip);
+		payment.setCustomerInfo(customer);
+		payment.setCardNumber(cardNumber);
+		payment.setSecurityCode(securityCode);
+		payment.setExpirationDate(expirationDate);
+		payment.setBillingAddress(billingAddress);
+		payment.setBillingCity(billingCity);
+		payment.setBillingState(billingState);
+		payment.setBillingZip(billingZip);
+		
+		return pid.updatePaymentInfo(payment);
 	}
 	
 	//update post
