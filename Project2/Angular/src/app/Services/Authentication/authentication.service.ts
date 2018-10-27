@@ -1,13 +1,15 @@
-import { UserType } from './../../Components/login/user/UserType';
 import { Router } from '@angular/router';
 import { CustomerInfo } from '../../Components/login/user/CustomerInfo';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { sign } from 'jsonwebtoken';
+
+async function delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 @Injectable({
     providedIn: 'root'
 })
+
 export class AuthenticationService {
 
     public url: string = "http://localhost:8085/Ticketopia/";
@@ -24,9 +26,20 @@ export class AuthenticationService {
         body = body.set('password', password);
         this.http.post(this.url + 'LoginServlet', body, { headers: headers }).subscribe(data => this.storeToken(data));
     }
+
     storeToken(token: any) {
         if (token != 'wrong info' && token != null) {
-            localStorage.setItem("token", token);
+
+            (async () => {
+                // Do something before delay
+                console.log('before delay')
+                localStorage.setItem("token", token);
+                await delay(2000);
+                this.requestCustomerData();
+                // Do something after
+                console.log('after delay')
+            })();
+
         }
     }
     logout() {
@@ -46,9 +59,10 @@ export class AuthenticationService {
     }
     requestCustomerData() {
         let token = localStorage.getItem("token");
-        if (token != null) {
-            this.http.get(this.url + "customerInfo.do?token=" + token).subscribe((data: CustomerInfo) => this.customerinfo = data);
-        }
+        console.log("calling method");
+        this.http.get(this.url + "customerInfo.do?token=" + token).subscribe((data: CustomerInfo) => this.customerinfo = data);
+        localStorage.setItem("displayName", this.customerinfo.displayName);
+        console.log(this.customerinfo);
 
     }
 }
