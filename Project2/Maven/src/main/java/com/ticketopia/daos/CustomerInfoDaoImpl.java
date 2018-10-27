@@ -5,6 +5,7 @@ package com.ticketopia.daos;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -153,7 +154,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			CustomerInfo ci = (CustomerInfo) session.get(CustomerInfo.class, customerInfo.getUserEmail());
-			ci.setRole(userType);
+			ci.setRole(userType.getRoleId());
 			session.update(ci);
 			tx.commit();
 			return true;
@@ -233,7 +234,8 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			session.close();
 		}
 		return false;
-    
+	}
+	
 	public CustomerInfo getCustomerByEmail(String email) {
 		Session session = null;
 		CustomerInfo customer = null;

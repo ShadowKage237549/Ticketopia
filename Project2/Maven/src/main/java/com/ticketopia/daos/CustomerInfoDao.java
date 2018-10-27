@@ -16,7 +16,6 @@ public interface CustomerInfoDao {
 	public boolean updateCustomerAddress(CustomerInfo customerInfo, String address,
 			String city, String state, Integer zip);
 	public boolean updateCustomerPassword(CustomerInfo customerInfo, String password);
-	public List<CustomerInfo> getCustomerInfo();
 	public Boolean removeCustomerInfo(CustomerInfo customer);
 	public CustomerInfo getCustomerByEmail(String email);
 }
