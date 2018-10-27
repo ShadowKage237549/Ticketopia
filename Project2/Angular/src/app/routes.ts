@@ -10,7 +10,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { ForumpostComponent } from './Components/forumpost/forumpost.component';
 import { NgModule } from '@angular/core';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
     {
         path: 'Ticketopia/login',
         component: LoginComponent
