@@ -14,6 +14,7 @@ import { ForumtopicComponent } from './Components/forumtopic/forumtopic.componen
 import { ForumpostComponent } from './Components/forumpost/forumpost.component';
 import { TicketComponent } from './Components/ticket/ticket.component';
 import { PaymentinfoComponent } from './Components/paymentinfo/paymentinfo.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -29,10 +30,10 @@ import { PaymentinfoComponent } from './Components/paymentinfo/paymentinfo.compo
         PaymentinfoComponent
     ],
     imports: [
+        AppRoutingModule,
         BrowserModule,
         FormsModule,
         HttpClientModule,
-        AppRoutingModule
     ],
     bootstrap: [AppComponent]
 })
