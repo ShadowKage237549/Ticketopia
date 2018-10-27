@@ -24,36 +24,48 @@ import com.ticketopia.daos.TicketDaoImpl;
 import com.ticketopia.daos.UserTypeDao;
 import com.ticketopia.daos.UserTypeDaoImpl;
 
-public class UpdateService {
-	public static CustomerInfoDaoImpl cid;
-	public static PaymentInfoDaoImpl pid;
-	
+public class UpdateService {	
 	public boolean updateCustomer(String oldEmail, String newEmail, String displayName, String userFName,
 			String userLName, Integer accumulatedPoints, Integer role, String userAddress, String userCity,
 			String userState, Integer userZip, String password, Double price, boolean lessPoints,
 			boolean morePoints) {
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
 		PaymentInfoDao pid = new PaymentInfoDaoImpl();
-		return false;
+		CustomerInfo customer = new CustomerInfo();
+		
+		customer.setUserEmail(oldEmail);
+		customer.setDisplayName(displayName);
+		customer.setUserFName(userFName);
+		customer.setUserLName(userLName);
+		if (lessPoints) {
+			customer.setAccumulatedPoints(subtractPoints(5000, accumulatedPoints));
+		} else if (morePoints) {
+			customer.setAccumulatedPoints(subtractPoints(10000, accumulatedPoints));
+		} else {
+			customer.setAccumulatedPoints(addPoints(role, price, accumulatedPoints));
+		}
+		customer.setRole(role);
+		customer.setUserAddress(userAddress);
+		customer.setUserCity(userCity);
+		customer.setUserState(userState);
+		customer.setUserZip(userZip);
+		customer.setPassword(password);
+		return cid.updateCustomerInfo(customer, newEmail);
 	}
 	
-	//update email
-	public Boolean updateEmail(CustomerInfo customer, String email) {
-		//cid = new CustomerInfoDaoImpl();
-		//PaymentInfoDao pid = new PaymentInfoDaoImpl();
-		List<PaymentInfo> payments = pid.getPayments();
-		PaymentInfo payment = null;
-		
-		for(PaymentInfo p: payments) {
-			if(customer.getUserEmail().equals(p.getCustomerInfo().getUserEmail())) {
-				payment = p;
-				break;
-			}
+	public Integer subtractPoints(Integer points, Integer accumulatedPoints) {
+		Integer newPoints = accumulatedPoints = points;
+		return newPoints;
+	}
+	
+	public Integer addPoints(Integer role, Double price, Integer accumulatedPoints) {
+		Integer points = accumulatedPoints;
+		if (role == 1) {
+			points = accumulatedPoints+(int)(price*10);
+		} else if (role == 2) {
+			points = accumulatedPoints+(int)(price*25);
 		}
-		
-		
-		return cid.updateCustomerEmail(customer, email) &
-				pid.updatePaymentEmail(payment, customer);
+		return points;
 	}
 	
 	//update payment
@@ -72,89 +84,6 @@ public class UpdateService {
 				& pid.updatePaymentExpirationDate(payment, expirationDate) 
 				& pid.updatePaymentBillingAddress(payment, billingAddress, billingCity,
 						billingState, billingZip);
-	}
-	
-	//update points
-	public Boolean updatePoints(CustomerInfo customer, Ticket ticket, 
-										Boolean smallDiscount, Boolean bigDiscount) {
-		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		UserType userType = customer.getRole();
-		Double price = Math.floor(ticket.getTicketPrice());
-		int points = customer.getAccumulatedPoints();
-		if (smallDiscount) {
-			points = customer.getAccumulatedPoints()-5000;
-		} else if (bigDiscount) {
-			points = customer.getAccumulatedPoints()-10000;
-		} else {
-			if (userType.getRoleId() == 1) {
-				points = customer.getAccumulatedPoints()+(int)(price*10);
-			} else if (userType.getRoleId() == 2) {
-				points = customer.getAccumulatedPoints()+(int)(price*25);
-			}
-			
-		}
-		customer.setAccumulatedPoints(points);
-		return cid.updateCustomerInfo(customer);
-	}
-	
-	//update role
-	public boolean updateRole(CustomerInfo customer, Integer roleId) {
-		UserTypeDao utd = new UserTypeDaoImpl();
-		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		List<UserType> roles = utd.getUserTypes();
-		UserType userType = null;
-		
-		for(UserType role: roles) {
-			if (role.getRoleId() == roleId) {
-				userType = role;
-				break;
-			}
-		}
-		
-		customer.setRole(userType);
-		return cid.updateCustomerInfo(customer);
-	}
-	
-	//update address
-	public boolean updateAddress(CustomerInfo customer,
-										String address,
-										String city,
-										String state,
-										Integer zip) {
-		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		customer.setUserAddress(address);
-		customer.setUserCity(city);
-		customer.setUserState(state);
-		customer.setUserZip(zip);
-		return cid.updateCustomerInfo(customer);
-	}
-	
-	//update password
-	public boolean updatePassword(CustomerInfo customer, String password) {
-		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		
-		customer.setPassword(password);
-		
-		return cid.updateCustomerInfo(customer);
-	}
-	
-	//update display name
-	public boolean updateDisplayName(CustomerInfo customer, String displayName) {
-		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		
-		customer.setDisplayName(displayName);
-		
-		return cid.updateCustomerInfo(customer);
-	}
-	
-	//update name
-	public boolean updateCustomerName(CustomerInfo customer, String fName, String lName) {
-		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		
-		customer.setUserFName(fName);
-		customer.setUserLName(lName);
-		
-		return cid.updateCustomerInfo(customer);
 	}
 	
 	//update post
