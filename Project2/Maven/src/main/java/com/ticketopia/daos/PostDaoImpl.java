@@ -50,7 +50,7 @@ public class PostDaoImpl implements PostDao {
 	}
 	
 	@Override
-	public boolean updatePost(Post post, String postContent) {
+	public boolean updatePost(Post post) {
 		Session session = null;
 		Transaction tx = null;
 		
@@ -58,8 +58,9 @@ public class PostDaoImpl implements PostDao {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			Post p = (Post) session.get(Post.class, post.getPostId());
-			p.setPostContent(postContent);
-			session.update(p);
+			p = post;
+			session.merge(p);
+			tx.commit();
 			return true;
 		} catch (HibernateException e) {
 			e.printStackTrace();

@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.ticketopia.beans.Post;
 import com.ticketopia.beans.Ticket;
 import com.ticketopia.beans.Topic;
 import com.ticketopia.util.HibernateUtil;
@@ -37,6 +38,48 @@ public class TopicDaoImpl implements TopicDao{
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			session.save(topic);
+			tx.commit();
+			return true;
+		} catch(HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean removeTopic(Topic topic) {
+		Session session = null;
+		Transaction tx = null;
+		
+		try {
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			session.delete(topic);
+			tx.commit();
+			return true;
+		} catch(HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
+	
+	@Override
+	public boolean updateTopic(Topic topic) {
+		Session session = null;
+		Transaction tx = null;
+		
+		try {
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			Topic t = (Topic) session.get(Topic.class, topic.getId());
+			t = topic;
+			session.merge(t);
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {

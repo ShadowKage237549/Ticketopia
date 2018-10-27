@@ -19,6 +19,10 @@ public class Post {
 	@GeneratedValue(generator="Post_Id", strategy=GenerationType.SEQUENCE)
 	private Integer postId;
 	
+	@ManyToOne
+	@JoinColumn(name="post_title_id")
+	private PostTitle postTitle;
+	
 	@Column(name="post_content")
 	private String postContent;
 	
@@ -35,6 +39,14 @@ public class Post {
 
 	public void setPostId(Integer postId) {
 		this.postId = postId;
+	}
+
+	public PostTitle getPostTitle() {
+		return postTitle;
+	}
+
+	public void setPostTitle(PostTitle postTitle) {
+		this.postTitle = postTitle;
 	}
 
 	public String getPostContent() {
@@ -63,12 +75,15 @@ public class Post {
 
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", postContent=" + postContent + ", displayName=" + displayName + ", postTimeStamp=" + postTimeStamp + "]";
+		return "Post [postId=" + postId + ", postTitle=" + postTitle + ", postContent=" + postContent + ", displayName="
+				+ displayName + ", postTimeStamp=" + postTimeStamp + "]";
 	}
 
-	public Post(Integer postId, String postContent, CustomerInfo displayName, String postTimeStamp) {
+	public Post(Integer postId, PostTitle postTitle, String postContent, CustomerInfo displayName,
+			String postTimeStamp) {
 		super();
 		this.postId = postId;
+		this.postTitle = postTitle;
 		this.postContent = postContent;
 		this.displayName = displayName;
 		this.postTimeStamp = postTimeStamp;
@@ -78,6 +93,5 @@ public class Post {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
 	
 }

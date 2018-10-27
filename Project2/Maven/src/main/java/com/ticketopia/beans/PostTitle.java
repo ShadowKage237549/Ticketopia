@@ -11,9 +11,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="post_titles")
+@Table(name="posts_title")
 public class PostTitle {
 	@Id
+	@Column(name="post_title_id")
 	@SequenceGenerator(sequenceName="title_id_sqn", name="title_Id")
 	@GeneratedValue(generator="title_Id", strategy=GenerationType.SEQUENCE)
 	private Integer Id;
