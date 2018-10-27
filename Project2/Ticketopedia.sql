@@ -9,8 +9,10 @@ DROP TABLE event_types CASCADE CONSTRAINTS;
 DROP TABLE tickets CASCADE CONSTRAINTS;
 DROP TABLE posts CASCADE CONSTRAINTS;
 DROP TABLE partners CASCADE CONSTRAINTS;
-DROP TABLE post_titles CASCADE CONSTRAINTS;
 DROP TABLE topics CASCADE CONSTRAINTS;
+DROP TABLE posts_title CASCADE CONSTRAINTS;
+
+
 CREATE TABLE user_type (
 	role_id NUMBER(6),
      --pk
@@ -210,7 +212,7 @@ INSERT INTO customer_information VALUES (
 --Basic users
 INSERT INTO customer_information VALUES (
 'srussel@russel.com',
-'Mr.Russel',
+'Mr.Russell',
 'Shane',
 'Russel',
 0,
@@ -417,15 +419,29 @@ CREATE TABLE payment_info (
      --fk 
 	card_number NUMBER(16),
 	security_number NUMBER(3),
-	expiration_date DATE,
+	expiration_date VARCHAR2(45),
      --needs formatting either here or in java. 
 	billing_address VARCHAR2(100),
 	billing_city VARCHAR2(50),
-	billing_state VARCHAR2(2),
-	billing_zip NUMBER(5),
+	billing_state VARCHAR2(20),
+	billing_zip NUMBER(6),
 	CONSTRAINT payment_email_fk FOREIGN KEY ( customer_email )
 		REFERENCES customer_information ( customer_email )
 );
+
+INSERT INTO payment_info VALUES (
+'bob.bobson@mafia.net',
+0000555577777888,
+000,
+01/99,
+'111 Killer Rd',
+'Heart Broken Town',
+'Mn',
+543876
+);
+
+--Have 5 shots of rum and start making up CC numbers 
+
 CREATE TABLE tickets (
 	ticket_id NUMBER(6),
      --pk
@@ -438,17 +454,17 @@ CREATE TABLE tickets (
 	event_city VARCHAR2(50),
 	event_state VARCHAR2(20),
 	event_zip NUMBER(6),
-	seat VARCHAR2(40),
+	seat VARCHAR2(600),
 	partner_id NUMBER(6),
      --fk
 	free_flag NUMBER(1),
-	CONSTRAINT Tickets_pk PRIMARY KEY ( ticket_id ),
+	CONSTRAINT tickets_pk PRIMARY KEY ( ticket_id ),
 	CONSTRAINT ticket_event_type_fk FOREIGN KEY ( event_type_id )
 		REFERENCES event_types ( event_type_id )
 );
 
 INSERT INTO tickets VALUES (
-1,
+7,
 'Movie Ticket',
 1,
 99,
@@ -463,7 +479,7 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-2,
+9,
 'Movie Ticket',
 1,
 700,
@@ -478,7 +494,7 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-3,
+5,
 'Concert Ticket',
 2,
 1000,
@@ -487,17 +503,17 @@ INSERT INTO tickets VALUES (
 'Fargo',
 'North Dakota',
 581052,
-'Front-Row',
+'A-1',
 2,
 0
 );
 
 INSERT INTO tickets VALUES (
-4,
+8,
 'Concert Ticket',
 2,
 350,
-'Back stage passes to Unleash the Archers',
+'Back stage passes to Eminem',
 '888 Grover Street',
 'Los Angelos',
 'Rhode Island',
@@ -511,43 +527,78 @@ CREATE TABLE topics(
 	topic_id NUMBER(6),
 	ticket_id NUMBER(6),
 	topic_name VARCHAR2(100),
-	topic_desc VARCHAR2(200),
+	topic_desc VARCHAR2(200), --Description on the ticket
 	CONSTRAINT topics_pk PRIMARY KEY (topic_id),
 	CONSTRAINT topic_ticket_fk FOREIGN KEY ( ticket_id )
 		REFERENCES tickets ( ticket_id )
 );
-
 INSERT INTO topics VALUES (
 1,
-1,
+7,
 'Venom the Movie!',
-'This movie was great. How the actor transformed into Venom had me all MIND=BLOWN!!!!'
+'Ticket admitting entrance to the movie Venom'
 );
 
 INSERT INTO topics VALUES (
 2,
-2,
-'Disturbed. . . Legends possibly?',
-'I got to meet David Draimen, nicest guy ever. He even signed my Disturbed Tattoo and wished me well! CANNOT WAIT TO SEE THEM AGAIN!'
+9,
+'Avengers: Infinity War Pt 2',
+'Ticket for one person to watching Avengers: Infinity War 2'
 );
 
-CREATE TABLE post_titles (
+INSERT INTO topics VALUES (
+3,
+5,
+'Disturbed live at Fargo Dome',
+'Back stage passes to meet Disturbed the band.'
+);
+
+INSERT INTO topics VALUES (
+4,
+8,
+'Eminem live in Detroit Michigan',
+'Meet and Greet with the Rap God himiself: Marshall Mathers'
+);
+
+
+CREATE TABLE posts_title (
 	post_title_id NUMBER(6),
-	post_title VARCHAR2(50),
+	post_title VARCHAR2(100),
 	topic_id NUMBER(6),
 	CONSTRAINT post_title_pk PRIMARY KEY ( post_title_id ),
 	CONSTRAINT post_title_fk FOREIGN KEY ( topic_id )
 		REFERENCES topics ( topic_id )
 );
 
+INSERT INTO posts_title VALUES (
+1,
+'DID YOU SEE HOW VENOM TRANSFORMED?!!!@#',
+1
+);
+
+INSERT INTO posts_title VALUES (
+2,
+'INFINITY WAR PT 2 HYPEEEEEE!$!@$!$@!$@!$@',
+2
+);
+
+INSERT INTO posts_title VALUES (
+3,
+'The fire shooting out from the stage during the concert... made me almost pass out!',
+3
+);
+
+INSERT INTO posts_title VALUES (
+4,
+'How should I dress for an Eminem Concert?',
+2
+);
+
 
 CREATE TABLE posts (
-	post_id NUMBER(10),
-     --pk
-	ticket_id NUMBER(6),
-     --fk
-	display_name VARCHAR2(20),
-     --fk
+	post_id NUMBER(10),  --pk
+	ticket_id NUMBER(6),--fk
+	display_name VARCHAR2(20),--fk
 	post_content VARCHAR2(500),
 	post_timestamp TIMESTAMP,
 	CONSTRAINT post_pk PRIMARY KEY ( post_id ),
@@ -556,4 +607,37 @@ CREATE TABLE posts (
 	CONSTRAINT post_user_fk FOREIGN KEY ( display_name )
 		REFERENCES customer_information ( display_name )
 );
+
+INSERT INTO posts VALUES (
+1,
+7,
+'TheDestiny',
+'Venom was amazing! The way he transformed... his style, he is my FAVORITE VILLAIN!!! AHHH',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+2,
+9,
+'JDoe',
+'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+3,
+5,
+'CatchinGretchen',
+'I got caught up in the moshpit during the Disturbed concert... I got knocked out and they had to stop the concert because of me... as an apology I got to meet the Band! It was so fun!',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+4,
+8,
+'Mr.Russell',
+'I got to see Eminem in concert, Im such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!',
+SYSTIMESTAMP
+);
+
 COMMIT;
