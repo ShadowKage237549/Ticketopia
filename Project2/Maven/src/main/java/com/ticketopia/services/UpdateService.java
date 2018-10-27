@@ -28,6 +28,12 @@ public class UpdateService {
 	public static CustomerInfoDaoImpl cid;
 	public static PaymentInfoDaoImpl pid;
 	
+	public boolean updateCustomer(String oldEmail, String newEmail, String displayName, String userFName, String userLName,
+			Integer accumulatedPoints, Integer role, String userAddress, String userCity, String userState,
+			Integer userZip, String password, Double price) {
+		return false;
+	}
+	
 	//update email
 	public Boolean updateEmail(CustomerInfo customer, String email) {
 		//cid = new CustomerInfoDaoImpl();

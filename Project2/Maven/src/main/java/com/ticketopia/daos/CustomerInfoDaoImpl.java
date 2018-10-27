@@ -58,17 +58,8 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			CustomerInfo ci = (CustomerInfo) session.get(CustomerInfo.class, customer.getUserEmail());
+			ci = customer;
 			ci.setUserEmail(email);
-			ci.setAccumulatedPoints(customer.getAccumulatedPoints());
-			ci.setDisplayName(customer.getDisplayName());
-			ci.setPassword(customer.getPassword());
-			ci.setRole(customer.getRole());
-			ci.setUserAddress(customer.getUserAddress());
-			ci.setUserCity(customer.getUserCity());
-			ci.setUserState(customer.getUserState());
-			ci.setUserZip(customer.getUserZip());
-			ci.setUserFName(customer.getUserFName());
-			ci.setUserLName(customer.getUserLName());
 			session.update(ci);
 			tx.commit();
 			return true;
