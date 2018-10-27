@@ -17,9 +17,7 @@ export class NavbarComponent implements OnInit {
     }
 
     isNotNull() {
-        (async () => {
-            return this.authService.isNotNull(localStorage.getItem("token"));
-        })();
+        return this.authService.isNotNull(localStorage.getItem("token"));
     }
     logout() {
         this.authService.logout();

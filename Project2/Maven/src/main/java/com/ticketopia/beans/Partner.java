@@ -21,25 +21,40 @@ public class Partner {
 	@Column(name="partner_name")
 	private String partnerName;
 	
+	
 	public Integer getPartnerId() {
 		return partnerId;
 	}
+
 	public void setPartnerId(Integer partnerId) {
 		this.partnerId = partnerId;
 	}
+
+	public String getPartnerDesc() {
+		return partnerDesc;
+	}
+
+	public void setPartnerDesc(String partnerDesc) {
+		this.partnerDesc = partnerDesc;
+	}
+
 	public String getPartnerName() {
 		return partnerName;
 	}
+
 	public void setPartnerName(String partnerName) {
 		this.partnerName = partnerName;
 	}
+
 	@Override
 	public String toString() {
-		return "Partners [partnerId=" + partnerId + ", partnerName=" + partnerName + "]";
+		return "Partner [partnerId=" + partnerId + ", partnerDesc=" + partnerDesc + ", partnerName=" + partnerName + "]";
 	}
-	public Partner(Integer partnerId, String partnerName) {
+
+	public Partner(Integer partnerId, String partnerDesc, String partnerName) {
 		super();
 		this.partnerId = partnerId;
+		this.partnerDesc = partnerDesc;
 		this.partnerName = partnerName;
 	}
 	public Partner() {

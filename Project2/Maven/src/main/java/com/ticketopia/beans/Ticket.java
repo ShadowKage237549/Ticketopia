@@ -64,8 +64,8 @@ public class Ticket {
 	public void setTicketType(String ticketType) {
 		this.ticketType = ticketType;
 	}
-	public EventType getEventType() {
-		return eventType;
+	public String getEventType() {
+		return eventType.getEventType();
 	}
 	public void setEventType(EventType eventType) {
 		this.eventType = eventType;
@@ -112,8 +112,8 @@ public class Ticket {
 	public void setSeat(String seat) {
 		this.seat = seat;
 	}
-	public Partner getPartner() {
-		return partner;
+	public String getPartner() {
+		return partner.getPartnerName();
 	}
 	public void setPartner(Partner partner) {
 		this.partner = partner;
@@ -126,8 +126,8 @@ public class Ticket {
 	}
 	@Override
 	public String toString() {
-		return "Ticket [ticketId=" + ticketId + ", ticketType=" + ticketType + ", eventType=" + eventType + ", ticketPrice=" + ticketPrice + ", eventDescription=" + eventDescription
-				+ ", eventAddress=" + eventAddress + ", eventCity=" + eventCity + ", eventState=" + eventState + ", eventZip=" + eventZip + ", seat=" + seat + ", partner=" + partner 
+		return "Ticket [ticketId=" + ticketId + ", ticketType=" + ticketType + ", eventType=" + eventType.getEventType() + ", ticketPrice=" + ticketPrice + ", eventDescription=" + eventDescription
+				+ ", eventAddress=" + eventAddress + ", eventCity=" + eventCity + ", eventState=" + eventState + ", eventZip=" + eventZip + ", seat=" + seat + ", partner=" + partner.getPartnerName() 
 				+ ", free=" + free + "]";
 	}
 	public Ticket(Integer ticketId, String ticketType, EventType eventType, Double ticketPrice, String eventDescription, String eventAddress, String eventCity, String eventState, Integer eventZip,

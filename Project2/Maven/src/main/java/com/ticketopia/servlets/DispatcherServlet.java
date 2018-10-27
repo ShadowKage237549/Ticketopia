@@ -52,7 +52,7 @@ public class DispatcherServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("/LogoutServlet");
 			rd.forward(request, response);
 			break;
-		case "tickets":
+		case "ticket":
 			rd = request.getRequestDispatcher("/TicketServlet");
 			rd.forward(request, response);
 			break;
