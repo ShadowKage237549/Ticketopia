@@ -9,6 +9,7 @@ import { AuthenticationService } from '../Authentication/authentication.service'
 export class TicketService {
     selectedStoreTicket: Ticket;
     tickets: Ticket[];
+    ticket: Ticket;
 
     constructor(private http: HttpClient, private auth: AuthenticationService) { }
     getTicketById(id: number) {

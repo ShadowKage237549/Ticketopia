@@ -1,5 +1,4 @@
 export class Ticket {
-    //TODO get the correct ticket parameters
     constructor(
         public ticketId: number,
         public ticketType: string,

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.PaymentInfo;
 import com.ticketopia.daos.PaymentInfoDao;
 import com.ticketopia.daos.PaymentInfoDaoImpl;
@@ -33,11 +34,12 @@ public class PaymentInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ObjectMapper om = new ObjectMapper();
 		PaymentInfo pi = om.convertValue(request.getParameter("payment"), PaymentInfo.class);
+		CustomerInfo ci = om.convertValue(request.getParameter("customer"), CustomerInfo.class);
 		boolean update = om.convertValue(request.getParameter("update"), Boolean.class);
 		boolean success;
 		PaymentInfoDao pid = new PaymentInfoDaoImpl();
 		if(update) {
-			success = pid.updatePaymentInfo(pi);
+			success = pid.updatePaymentInfo(pi,ci);
 		} else {
 			success = pid.insertNewPaymentInfo(pi);
 		}

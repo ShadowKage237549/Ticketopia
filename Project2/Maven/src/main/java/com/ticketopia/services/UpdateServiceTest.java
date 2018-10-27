@@ -1,8 +1,6 @@
 package com.ticketopia.services;
 
 import static org.junit.Assert.fail;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -13,7 +11,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.EventType;
@@ -57,8 +54,6 @@ public class UpdateServiceTest {
 
 	
 	public static UpdateService us = new UpdateService();
-	public static CustomerInfoDaoImpl cid = mock(CustomerInfoDaoImpl.class);
-	private static PaymentInfoDaoImpl pid = mock(PaymentInfoDaoImpl.class);
 	private static PostDao pd = new PostDaoImpl();
 	private static TicketDao td = new TicketDaoImpl();
 	private static PostTitleDao ptd = new PostTitleDaoImpl();
