@@ -1,5 +1,7 @@
 package com.ticketopia.daos;
 
+import java.util.List;
+
 import com.ticketopia.beans.EventType;
 
 public interface EventTypeDao {
@@ -8,9 +10,9 @@ public interface EventTypeDao {
 	public boolean createEventType(EventType eventType);
 	//Update an existing EventType
 	public boolean UpdateEventType(EventType eventType);
-	//Return an array of eventTypes
-	public EventType[] selectAllEventTypes();
-	//Return a single EventType by its ID
-	public EventType selectEventTypeById(Integer id);
+	//Return a list of eventTypes
+	public List<EventType> getAllEventTypes();
+	//Remove an event type
+	public boolean removeEventType(EventType eventType);
 	
 }

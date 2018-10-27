@@ -23,7 +23,7 @@ public class PaymentInfo implements Serializable{
 	private CustomerInfo customerInfo;
 	
 	@Column(name="card_number")
-	private Integer cardNumber;
+	private Long cardNumber;
 	
 	@Column(name="security_number")
 	private Integer securityCode;
@@ -51,11 +51,11 @@ public class PaymentInfo implements Serializable{
 		this.customerInfo = customerInfo;
 	}
 
-	public Integer getCardNumber() {
+	public Long getCardNumber() {
 		return cardNumber;
 	}
 
-	public void setCardNumber(Integer cardNumber) {
+	public void setCardNumber(Long cardNumber) {
 		this.cardNumber = cardNumber;
 	}
 
@@ -115,7 +115,7 @@ public class PaymentInfo implements Serializable{
 				+ "]";
 	}
 
-	public PaymentInfo(CustomerInfo customerInfo, Integer cardNumber, Integer securityCode, String expirationDate,
+	public PaymentInfo(CustomerInfo customerInfo, Long cardNumber, Integer securityCode, String expirationDate,
 			String billingAddress, String billingCity, String billingState, Integer billingZip) {
 		super();
 		this.customerInfo = customerInfo;
