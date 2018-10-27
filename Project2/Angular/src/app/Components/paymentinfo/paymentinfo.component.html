@@ -1,0 +1,39 @@
+<div class="row mx-3 my-5">
+    <h1>Payment Info</h1>
+</div>
+<hr>
+<div class="row mx-3 my-5">
+    <div class="col-6">
+        <h1 class="m-2">Existing Payment Info</h1>
+        <div class="card mx-2 mb-4" *ngFor="let payment of pInfos">
+            <div class="card-header px-3 py-2">
+                **** **** **** {{payment?.cardNumber | slice:12:16}}
+            </div>
+            <div class="card-text px-2 py-2">
+                {{payment?.expirationDate}}
+            </div>
+            <div class="card-text px-2 py-2">
+                {{payment?.billingAddress}} -
+                {{payment?.billingCity}} -
+                {{payment?.billingState}} -
+                {{payment?.billingZip}}
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <h1 class="mx-4">Add a new payment info</h1>
+        <form #registerPaymentForm="ngForm" class="form-group">
+            <input type="text" class="form-control m-3" placeholder="16 Digit Card Number" name="registerCardNumber"
+                [(ngModel)]="regPay.cardNumber">
+            <input type="text" class="form-control m-3" placeholder="SecurityCode" name="registerSecurityCode"
+                [(ngModel)]="regPay.securityCode">
+            <input type="text" class="form-control m-3" placeholder="ExpirationDate" name="registerExpirationDate"
+                [(ngModel)]="regPay.expirationDate">
+            <input type="text" class="form-control m-3" placeholder="Address" name="registerBillingAddress" [(ngModel)]="regPay.billingAddress">
+            <input type="text" class="form-control m-3" placeholder="City" name="registerBillingCity" [(ngModel)]="regPay.billingCity">
+            <input type="text" class="form-control m-3" placeholder="State" name="registerBillingState" [(ngModel)]="regPay.billingState">
+            <input type="text" class="form-control m-3" placeholder="Zipcode" name="registerBillingZip" [(ngModel)]="regPay.billingZip">
+            <input type="submit" class="btn btn-info m-3 px-5" (click)="registerNewPayment()" name="registerNewPayment">
+        </form>
+    </div>
+</div>

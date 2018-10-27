@@ -1,7 +1,5 @@
 import { AuthenticationService } from '../../Services/Authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
-import { CustomerInfo } from './user/CustomerInfo';
-import { UserType } from './user/UserType';
 
 @Component({
     selector: 'app-login',
@@ -10,8 +8,6 @@ import { UserType } from './user/UserType';
     providers: [AuthenticationService]
 })
 export class LoginComponent implements OnInit {
-
-    token: any = "";
     email: string;
     password: string;
 
@@ -23,8 +19,13 @@ export class LoginComponent implements OnInit {
     }
 
     logMeIn() {
-        console.log(this.email + this.password);
-        this.token = this.auth.login(this.email, this.password);
+        this.auth.login(this.email, this.password);
+        if (this.auth.getToken() == null) {
+            //route to err page
+        } else {
+            //route to home page
+            this.auth.requestCustomerData();
+        }
     }
 
 }

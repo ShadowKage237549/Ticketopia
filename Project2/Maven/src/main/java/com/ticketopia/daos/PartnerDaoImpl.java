@@ -73,7 +73,7 @@ public class PartnerDaoImpl implements PartnerDao {
 		Query query;
 		
 		try {
-			hql = "FROM partners";
+			hql = "FROM Partner";
 			query = session.createQuery(hql);
 			partners = query.list();
 		} catch(HibernateException e) {
@@ -81,6 +81,7 @@ public class PartnerDaoImpl implements PartnerDao {
 		} finally {
 			session.close();
 		}
+		System.out.println(partners);
 		return partners;
 	}
 }
