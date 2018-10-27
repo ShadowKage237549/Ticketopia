@@ -1,25 +1,27 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, ComponentFixture, TestBed, tick } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TicketComponent } from './ticket.component';
 
 describe('TicketComponent', () => {
-  let component: TicketComponent;
-  let fixture: ComponentFixture<TicketComponent>;
+    let component: TicketComponent;
+    let fixture: ComponentFixture<TicketComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ TicketComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [TicketComponent],
+            schemas: [CUSTOM_ELEMENTS_SCHEMA],
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(TicketComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(TicketComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        tick();
+        expect(component).toBeTruthy();
+    });
 });

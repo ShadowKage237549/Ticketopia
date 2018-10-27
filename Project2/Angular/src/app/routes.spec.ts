@@ -3,10 +3,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Location } from '@angular/common';
-import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 import { TestBed, async, ComponentFixture, fakeAsync, tick } from '@angular/core/testing';
-import { Router } from '../../node_modules/@angular/router';
+import { Router, RouterModule } from '../../node_modules/@angular/router';
 import { appRoutes } from './routes';
 import { ForumComponent } from './Components/forum/forum.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -26,7 +25,7 @@ describe('RoutingUnitTest', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule,
-                RouterTestingModule.withRoutes(appRoutes),
+                RouterModule.forRoot(appRoutes),
                 HttpClientModule],
             declarations: [AppComponent,
                 NavbarComponent,
