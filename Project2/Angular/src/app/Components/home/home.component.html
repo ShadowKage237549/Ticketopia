@@ -9,35 +9,11 @@
 <div class="row mx-3" *ngFor="let partner of partners">
     <div class="col">
         <div class="card text-center my-3">
-            <div class="card-header ">Company Name</div>
+            <div class="card-header ">{{partner.partnerName}}</div>
             <div class="card-body">
-                <p class="card-text">Find out the next best place you'll attend</p>
-                <a routerLink="Ticketopia/store" class="btn btn-info">Tickets available here!</a>
-            </div>
-        </div>
-        <div class="card text-center my-3">
-            <div class="card-header ">Company Name</div>
-            <div class="card-body">
-                <p class="card-text">Find out the next best place you'll attend</p>
+                <p class="card-text">{{partner.partnerDesc}}</p>
                 <a routerLink="Ticketopia/store" class="btn btn-info">Tickets available here!</a>
             </div>
         </div>
     </div>
-    <div class="col">
-        <div class="card text-center my-3">
-            <div class="card-header ">Company Name</div>
-            <div class="card-body">
-                <p class="card-text">Find out the next best place you'll attend</p>
-                <a routerLink="Ticketopia/store" class="btn btn-info">Tickets available here!</a>
-            </div>
-        </div>
-        <div class="card text-center my-3">
-            <div class="card-header ">Company Name</div>
-            <div class="card-body">
-                <p class="card-text">Find out the next best place you'll attend</p>
-                <a class="btn btn-info" routerLinkActive="active" routerLink="Ticketopia/store">Tickets available here!</a>
-            </div>
-        </div>
-    </div>
-
 </div>

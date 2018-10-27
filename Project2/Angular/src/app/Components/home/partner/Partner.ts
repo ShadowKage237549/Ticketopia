@@ -1,7 +1,8 @@
 export class Partner {
     constructor(
-        public partnerId:number,
-        public partnerName:string,
-        public partnerDescription:string
-        ){}
+        public partnerId: number,
+        public partnerDesc: string,
+        public partnerName: string,
+
+    ) { }
 }
