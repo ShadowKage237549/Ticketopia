@@ -8,4 +8,6 @@ public interface TopicDao {
 	public List<Topic> getAllTopics();
 
 	public boolean addTopic(Topic T);
+	public boolean removeTopic(Topic topic);
+	public boolean updateTopic(Topic topic);
 }

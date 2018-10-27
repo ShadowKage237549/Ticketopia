@@ -60,7 +60,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			CustomerInfo ci = (CustomerInfo) session.get(CustomerInfo.class, customer.getUserEmail());
 			ci = customer;
 			ci.setUserEmail(email);
-			session.update(ci);
+			session.merge(ci);
 			tx.commit();
 			return true;
 		} catch (HibernateException e) {

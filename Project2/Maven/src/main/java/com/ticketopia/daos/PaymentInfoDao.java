@@ -13,5 +13,5 @@ public interface PaymentInfoDao {
 	public boolean removePaymentInfo(PaymentInfo paymentInfo);
 	//Update a payment info bean in the database.
 	public List<PaymentInfo> getPayments();
-	public boolean updatePaymentInfo(PaymentInfo payment);
+	public boolean updatePaymentInfo(PaymentInfo payment, CustomerInfo customer);
 }
