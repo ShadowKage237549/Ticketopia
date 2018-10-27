@@ -7,8 +7,8 @@ describe('workspace-project App', () => {
         page = new ForumPage();
     });
 
-    it('should display the forum message', () => {
+    it('should display the forum header', () => {
         page.navigateTo();
-        expect(page.getParagraphText()).toEqual('Ticketopia!');
+        expect(page.getParagraphText()).toEqual('Ticketopia Forum');
     });
 });
