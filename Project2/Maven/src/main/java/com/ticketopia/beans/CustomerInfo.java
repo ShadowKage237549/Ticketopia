@@ -9,7 +9,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity //Marks the class as a persistent class
-@Table(name="customer_information",schema = "orcl")
+@Table(name="customer_information")
 public class CustomerInfo {
 	@Id //Marks as a primary key
 	@Column(name="customer_email")
