@@ -33,7 +33,7 @@ public class PaymentInfoDaoImpl implements PaymentInfoDao{
 	}
 	
 	@Override
-	public boolean updatePaymentInfo(PaymentInfo payment) {
+	public boolean updatePaymentInfo(PaymentInfo payment, CustomerInfo customer) {
 		Session session = null;
 		Transaction tx = null;
 		
@@ -42,7 +42,8 @@ public class PaymentInfoDaoImpl implements PaymentInfoDao{
 			tx = session.beginTransaction();
 			PaymentInfo pi = (PaymentInfo) session.get(PaymentInfo.class, payment.getCustomerInfo().getUserEmail());
 			pi = payment;
-			session.update(pi); //Returns the id of the fresh insert
+			pi.setCustomerInfo(customer);
+			session.merge(pi); //Returns the id of the fresh insert
 			tx.commit();
 			return true;
 		} catch (HibernateException e) {

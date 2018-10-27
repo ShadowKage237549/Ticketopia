@@ -55,7 +55,7 @@ public class UpdateService {
 	}
 	
 	public Integer subtractPoints(Integer points, Integer accumulatedPoints) {
-		Integer newPoints = accumulatedPoints = points;
+		Integer newPoints = accumulatedPoints - points;
 		return newPoints;
 	}
 	
@@ -70,9 +70,9 @@ public class UpdateService {
 	}
 	
 	//update payment
-	public Boolean updatePayment(CustomerInfo customer, Long cardNumber, Integer securityCode, 
-							String expirationDate, String billingAddress, String billingCity,
-							String billingState, Integer billingZip) {
+	public Boolean updatePayment(CustomerInfo customer, Long cardNumber, 
+							Integer securityCode, String expirationDate, String billingAddress, 
+							String billingCity, String billingState, Integer billingZip) {
 		PaymentInfoDao pid = new PaymentInfoDaoImpl();
 		PaymentInfo payment = new PaymentInfo();
 		
@@ -85,7 +85,7 @@ public class UpdateService {
 		payment.setBillingState(billingState);
 		payment.setBillingZip(billingZip);
 		
-		return pid.updatePaymentInfo(payment);
+		return pid.updatePaymentInfo(payment, customer);
 	}
 	
 	//update post
