@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.EventType;
+import com.ticketopia.beans.Partner;
 import com.ticketopia.beans.PaymentInfo;
 import com.ticketopia.beans.Post;
 import com.ticketopia.beans.PostTitle;
@@ -94,58 +95,26 @@ public class UpdateService {
 		return pd.updatePost(post, postContent);
 	}
 	
-	//update ticket price
-	public boolean updateTicketPrice(Ticket ticket, Double price) {
+	public boolean updateTicket(Integer ticketId, String ticketType, EventType eventType, Double ticketPrice,
+			String eventDescription, String eventAddress, String eventCity, String eventState,
+			Integer eventZip, String seat, Partner partner, boolean free) {
 		TicketDao td = new TicketDaoImpl();
+		Ticket ticket = new Ticket();
 		
-		return td.updateTicketPrice(ticket, price);
-	}
-	
-	public boolean updateTicketType(Ticket ticket, String price) {
-		TicketDao td = new TicketDaoImpl();
+		ticket.setTicketId(ticketId);
+		ticket.setTicketType(ticketType);
+		ticket.setEventType(eventType);
+		ticket.setTicketPrice(ticketPrice);
+		ticket.setEventDescription(eventDescription);
+		ticket.setEventAddress(eventAddress);
+		ticket.setEventCity(eventCity);
+		ticket.setEventState(eventState);
+		ticket.setEventZip(eventZip);
+		ticket.setSeat(seat);
+		ticket.setPartner(partner);
+		ticket.setFree(free);
 		
-		return td.updateTicketType(ticket, price);
-	}
-	
-	public boolean updateTicketEventType(Ticket ticket, Integer eventId) {
-		TicketDao td = new TicketDaoImpl();
-		EventTypeDao etd = new EventTypeDaoImpl();
-		List<EventType> events = etd.getAllEventTypes();
-		EventType eventType = null;
-		
-		for(EventType event: events) {
-			if (event.getEventTypeId() == eventId) {
-				eventType = event;
-				break;
-			}
-		}
-		
-		return td.updateTicketEventType(ticket, eventType);
-	}
-	
-	public boolean updateTicketDescription(Ticket ticket, String description) {
-		TicketDao td = new TicketDaoImpl();
-		
-		return td.updateTicketType(ticket, description);
-	}
-	
-	public boolean updateTicketAddress(Ticket ticket, String address,
-										String city, String state, Integer zip) {
-		TicketDao td = new TicketDaoImpl();
-		
-		return td.updateTicketAddress(ticket, address, city, state, zip);
-	}
-	
-	public boolean updateTicketSeat(Ticket ticket, String seat) {
-		TicketDao td = new TicketDaoImpl();
-		
-		return td.updateTicketType(ticket, seat);
-	}
-	
-	public boolean updateTicketFreeStatus(Ticket ticket, Boolean flag) {
-		TicketDao td = new TicketDaoImpl();
-		
-		return td.updateTicketFreeStatus(ticket, flag);
+		return td.updateTicket(ticket);
 	}
 	
 	//update post title

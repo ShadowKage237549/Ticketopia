@@ -20,14 +20,7 @@ public interface TicketDao {
 		// remove this ticket id from the database
 	public Boolean removeTicket(Ticket ticket);
 	
-	public Boolean updateTicketType(Ticket ticket, String type);
-	public Boolean updateTicketEventType(Ticket ticket, EventType eventType);
-	public Boolean updateTicketPrice(Ticket ticket, Double price);
-	public Boolean updateTicketDescription(Ticket ticket, String description);
-	public Boolean updateTicketAddress(Ticket ticket, String address,
-			String city, String state, Integer zip);
-	public Boolean updateTicketSeat(Ticket ticket, String seat);
-	public Boolean updateTicketFreeStatus(Ticket ticket, Boolean flag);
+	public boolean updateTicket(Ticket ticket);
 
 }
 
