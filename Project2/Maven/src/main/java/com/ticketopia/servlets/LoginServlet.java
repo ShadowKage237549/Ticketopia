@@ -3,7 +3,6 @@ package com.ticketopia.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -38,6 +37,7 @@ public class LoginServlet extends HttpServlet {
 		email = request.getParameter("email");
 		password = request.getParameter("password");
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
+		System.out.println(email + password);
 		CustomerInfo loggingInUser = cid.getCustomerByEmail(email.toLowerCase());
 		if(loggingInUser != null) {
 			if(loggingInUser.getPassword().equals(password)) {
@@ -52,25 +52,21 @@ public class LoginServlet extends HttpServlet {
 						.withClaim("userState", loggingInUser.getUserState())
 						.withClaim("userZip", loggingInUser.getUserZip())
 						.sign(algorithmHS);
-				response.setContentType("application/json");
-				PrintWriter out = response.getWriter();
-				out.print(token);
-				RequestDispatcher rd = request.getRequestDispatcher("");
-				rd.forward(request, response);
-				return;
-			} else {
-				response.setContentType("application/json");
+				response.setContentType("text/html");
 				PrintWriter out = response.getWriter();
 				ObjectMapper om = new ObjectMapper();
-				out.print(om.writeValueAsString("wrong info"));
+				System.out.println(om.writeValueAsString(token));
+				out.print(om.writeValueAsString(token));
+				return;
+			} else {
+				
 			}
 		}
 		
-		response.setContentType("application/json");
+		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		ObjectMapper om = new ObjectMapper();
-		out.print(om.writeValueAsString(loggingInUser));
-		
+		out.print(om.writeValueAsString("wrong info"));
 	}
 
 	/**
