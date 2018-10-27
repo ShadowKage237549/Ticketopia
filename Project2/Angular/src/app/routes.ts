@@ -1,14 +1,12 @@
-import { PaymentinfoComponent } from './Components/paymentinfo/paymentinfo.component';
-import { TicketComponent } from './Components/ticket/ticket.component';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './Components/home/home.component';
+import { PaymentinfoComponent } from './Components/paymentinfo/paymentinfo.component';
 import { ForumComponent } from './Components/forum/forum.component';
 import { ForumtopicComponent } from './Components/forumtopic/forumtopic.component';
 import { StoreComponent } from './Components/store/store.component';
 import { LoginComponent } from './Components/login/login.component';
 import { ForumpostComponent } from './Components/forumpost/forumpost.component';
-import { NgModule } from '@angular/core';
+import { TicketComponent } from './Components/ticket/ticket.component';
 
 export const appRoutes: Routes = [
     {
@@ -58,13 +56,3 @@ export const appRoutes: Routes = [
     }
 ];
 
-@NgModule({
-    imports: [
-        RouterModule.forRoot(appRoutes,
-        )
-    ],
-    exports: [
-        RouterModule
-    ],
-})
-export class AppRoutingModule { }

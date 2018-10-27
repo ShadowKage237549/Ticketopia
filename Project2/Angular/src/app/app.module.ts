@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'
-import { AppRoutingModule } from './routes';
+import { appRoutes } from './routes';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
@@ -30,10 +30,10 @@ import { RouterModule } from '@angular/router';
         PaymentinfoComponent
     ],
     imports: [
-        AppRoutingModule,
         BrowserModule,
         FormsModule,
         HttpClientModule,
+        RouterModule.forRoot(appRoutes)
     ],
     bootstrap: [AppComponent]
 })

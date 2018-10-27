@@ -9,6 +9,6 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Ticketpoia!');
+    expect(page.getParagraphText()).toEqual('Bobbert\'s Exciting application PART 2');
   });
 });

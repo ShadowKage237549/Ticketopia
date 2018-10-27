@@ -12,10 +12,10 @@
         </li>
         <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/login" *ngIf="!isNotNull()">Login</a>
-            <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/paymentinfo" *ngIf="isNotNull()">{{displayName}}</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/paymentinfo" *ngIf="isNotNull()">{{authService.customerInfo.displayName}}</a>
         </li>
         <li class="nav-item ml-auto">
-            <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/home" (click)="logout()" *ngIf="isNotNull()">logout</a>
+                <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/home" (click)="logout()" *ngIf="isNotNull()">logout</a>
         </li>
     </ul>
 </nav>

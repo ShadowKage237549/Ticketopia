@@ -1,15 +1,13 @@
+import { UserType } from './../../Components/login/user/UserType';
 import { Router } from '@angular/router';
 import { CustomerInfo } from '../../Components/login/user/CustomerInfo';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-async function delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
+import { BehaviorSubject } from 'rxjs';
+import { sign } from 'jsonwebtoken';
 @Injectable({
     providedIn: 'root'
 })
-
 export class AuthenticationService {
 
     public url: string = "http://localhost:8085/Ticketopia/";
@@ -26,21 +24,9 @@ export class AuthenticationService {
         body = body.set('password', password);
         this.http.post(this.url + 'LoginServlet', body, { headers: headers }).subscribe(data => this.storeToken(data));
     }
-
     storeToken(token: any) {
         if (token != 'wrong info' && token != null) {
-
-            (async () => {
-                // Do something before delay
-                console.log('before delay')
-                localStorage.setItem("token", token);
-                console.log(localStorage.getItem("token"));
-                //await delay(10000);
-                this.requestCustomerData();
-                // Do something after
-                console.log('after delay')
-            })();
-
+            localStorage.setItem("token", token);
         }
     }
     logout() {
@@ -60,10 +46,9 @@ export class AuthenticationService {
     }
     requestCustomerData() {
         let token = localStorage.getItem("token");
-        console.log("calling method");
-        this.http.get(this.url + "customerInfo.do?token=" + token).subscribe((data: CustomerInfo) => this.customerinfo = data);
-        localStorage.setItem("displayName", this.customerinfo.displayName);
-        console.log(this.customerinfo);
+        if (token != null) {
+            this.http.get(this.url + "customerInfo.do?token=" + token).subscribe((data: CustomerInfo) => this.customerinfo = data);
+        }
 
     }
 }

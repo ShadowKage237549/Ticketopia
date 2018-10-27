@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
 async function delay(ms:number){
     return new Promise(resolve => setTimeout(resolve, ms));
   }
-
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',

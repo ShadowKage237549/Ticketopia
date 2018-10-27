@@ -2,29 +2,27 @@ import { AuthenticationService } from '../../Services/Authentication/authenticat
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-navbar',
-    templateUrl: './navbar.component.html',
-    styleUrls: ['./navbar.component.css']
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  
+  
 
+  constructor(private authService:AuthenticationService) { }
 
-    displayName = localStorage.getItem("displayName");
-    constructor(private authService: AuthenticationService) { }
+  ngOnInit() {
+  }
 
-    ngOnInit() {
+  isNotNull(){
+    if(this.authService.isNotNull(localStorage.getItem("token"))){
+      return true;
     }
-
-    isNotNull() {
-        console.log(localStorage.getItem("token"));
-        if (this.authService.isNotNull(localStorage.getItem("token"))) {
-            return true;
-        }
-        return false;
-    }
-    logout() {
-        this.authService.logout();
-
-    }
+    return false;
+  }
+  logout(){
+    this.authService.logout();
+  }
 
 }
