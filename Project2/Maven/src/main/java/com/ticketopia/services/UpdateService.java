@@ -25,10 +25,13 @@ import com.ticketopia.daos.UserTypeDao;
 import com.ticketopia.daos.UserTypeDaoImpl;
 
 public class UpdateService {
+	public static CustomerInfoDaoImpl cid;
+	public static PaymentInfoDaoImpl pid;
+	
 	//update email
 	public Boolean updateEmail(CustomerInfo customer, String email) {
-		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		PaymentInfoDao pid = new PaymentInfoDaoImpl();
+		//cid = new CustomerInfoDaoImpl();
+		//PaymentInfoDao pid = new PaymentInfoDaoImpl();
 		List<PaymentInfo> payments = pid.getPayments();
 		PaymentInfo payment = null;
 		
@@ -54,13 +57,6 @@ public class UpdateService {
 										String billingState,
 										Integer billingZip) {
 		PaymentInfoDao pid = new PaymentInfoDaoImpl();
-		payment.setCardNumber(cardNumber);
-		payment.setSecurityCode(securityCode);
-		payment.setExpirationDate(expirationDate);
-		payment.setBillingAddress(billingAddress);
-		payment.setBillingCity(billingCity);
-		payment.setBillingState(billingState);
-		payment.setBillingZip(billingZip);
 		
 		return pid.updatePaymentCardNumber(payment, cardNumber) 
 				& pid.updatePaymentSecurityCode(payment, securityCode)

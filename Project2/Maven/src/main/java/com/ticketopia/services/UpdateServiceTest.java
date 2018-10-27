@@ -5,13 +5,15 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static org.testng.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mockito.InjectMocks;
-import org.mockito.MockitoAnnotations.Mock;
+import org.mockito.Mockito;
 
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.PaymentInfo;
@@ -19,9 +21,7 @@ import com.ticketopia.beans.Post;
 import com.ticketopia.beans.PostTitle;
 import com.ticketopia.beans.Ticket;
 import com.ticketopia.beans.UserType;
-import com.ticketopia.daos.CustomerInfoDao;
 import com.ticketopia.daos.CustomerInfoDaoImpl;
-import com.ticketopia.daos.PaymentInfoDao;
 import com.ticketopia.daos.PaymentInfoDaoImpl;
 import com.ticketopia.daos.PostDao;
 import com.ticketopia.daos.PostDaoImpl;
@@ -36,22 +36,28 @@ public class UpdateServiceTest {
 	private static Post post = mock(Post.class);
 	private static Ticket ticket = mock(Ticket.class);
 	private static PostTitle postTitle = mock(PostTitle.class);
+	
 	public static UpdateService us = new UpdateService();
-	public static CustomerInfoDao cid = mock(CustomerInfoDaoImpl.class);
-	private static PaymentInfoDao pid = new PaymentInfoDaoImpl();
+	public static CustomerInfoDaoImpl cid = mock(CustomerInfoDaoImpl.class);
+	private static PaymentInfoDaoImpl pid = mock(PaymentInfoDaoImpl.class);
 	private static PostDao pd = new PostDaoImpl();
 	private static TicketDao td = new TicketDaoImpl();
 	private static PostTitleDao ptd = new PostTitleDaoImpl();
+	
 	private static UserType role1 = new UserType(1, "basic");
 	private static CustomerInfo customer1 = new CustomerInfo("original@email.org", "Slappey", 
 			"Ben", "Bobbert", 100, role1, "12345 Street Ln", "City", "state", 00000, "admin");
 	
-	private static String email = "customer@info.com";;
+	private static String email = "customer@info.com";
+	private static List<PaymentInfo> payments = new ArrayList<>();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-	//	when(cid.updateCustomerInfo(customer,email)).thenReturn(true);
-//		when(pid.updatePaymentInfo(paymentInfo)).thenReturn(true);
+		payments.add(paymentInfo);
+		
+		when(cid.updateCustomerEmail(customer, email)).thenReturn(true);
+		when(pid.updatePaymentEmail(paymentInfo, customer)).thenReturn(true);
+		Mockito.doReturn(payments).when(pid).getPayments();
 //		when(pd.updatePost(post)).thenReturn(true);
 //		when(td.updateTicket(ticket)).thenReturn(true);
 //		when(ptd.updatePostTitle(postTitle)).thenReturn(true);
@@ -71,6 +77,8 @@ public class UpdateServiceTest {
 
 	@Test
 	public void testUpdateEmail() {
+		us.cid = this.cid;
+		us.pid = this.pid;
 		assertTrue(us.updateEmail(customer, email));
 	}
 
