@@ -5,7 +5,6 @@ package com.ticketopia.daos;
 import java.util.List;
 
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -15,114 +14,106 @@ import com.ticketopia.util.HibernateUtil;
 
 public class CustomerInfoDaoImpl implements CustomerInfoDao {
 	@Override
-	public boolean createCustomer(CustomerInfo customer) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		
-		try {
-			tx = session.beginTransaction();
-			session.save(customer); //Returns the id of the fresh insert
-			tx.commit();
-			return true;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			tx.rollback();
-			return false;
-		} finally {
-			session.close();
-		}
-	}
-	
-	@Override
-	public boolean adjustUserRole(CustomerInfo customer, Integer newRole) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		Query query;
-		String hql = null;	
-		UserType role = null;
-		
-		try {
-			hql = "FROM UserType WHERE roleId=:id";
-			query = session.createQuery(hql);
-			query.setParameter("id", newRole);
-			
-			role = (UserType)query.uniqueResult();
-			
-			customer.setRole(role.getRoleId());
-			
-			tx = session.beginTransaction();
-			session.save(customer); //Returns the id of the fresh insert
-			tx.commit();
-			return true;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			tx.rollback();
-			return false;
-		} finally {
-			session.close();
-		}
-	}
-	
-	@Override
-	public boolean changePassword(CustomerInfo customer, String newPassword) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		
-		try {
-			customer.setPassword(newPassword);
-			tx = session.beginTransaction();
-			session.save(customer); //Returns the id of the fresh insert
-			tx.commit();
-			return true;
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			tx.rollback();
-			return false;
-		} finally {
-			session.close();
-		}
-	}
-	
-	@Override
-	public void applyPoints(CustomerInfo customer, Integer points) {
-		Session session = HibernateUtil.getSession();
-		Transaction tx = null;
-		
-		try {
-			customer.setAccumulatedPoints(points);
-			tx = session.beginTransaction();
-			session.save(customer); //Returns the id of the fresh insert
-			tx.commit();
-		} catch (HibernateException e) {
-			e.printStackTrace();
-			tx.rollback();
-		} finally {
-			session.close();
-		}
-	}
-
-
-	@Override
 	public CustomerInfo getCustomerByEmail(String email) {
 		Session session = null;
 		CustomerInfo customer = null;
-		Query query = null;
-		String hql = "FROM CustomerInfo WHERE userEmail = :email";
 		try
 		{
 			session = HibernateUtil.getSession();
-			query = session.createQuery(hql);
-			query.setParameter("email", email);
-			List<CustomerInfo> list = query.list();
-			if(list.size() > 0) {
-				customer = list.get(0);
-			}
+			customer = (CustomerInfo)session.get(CustomerInfo.class, email);
 		}catch(HibernateException e) {
 			e.printStackTrace();
 		}finally {
 			session.close();
 		}
-		System.out.println(customer);
 		return customer;
+	}
+	
+	@Override
+	public boolean createCustomer(CustomerInfo customer) {
+		Session session = null;
+		Transaction tx = null;
+		
+		try {
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			session.save(customer); //Returns the id of the fresh insert
+			tx.commit();
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+			return false;
+		} finally {
+			session.close();
+		}
+	}
+	
+	@Override
+	public boolean updateCustomerInfo(CustomerInfo customer, String email) {
+		Session session = null;
+		Transaction tx = null;
+		
+		try {
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			CustomerInfo ci = (CustomerInfo) session.get(CustomerInfo.class, customer.getUserEmail());
+			ci.setUserEmail(email);
+			ci.setAccumulatedPoints(customer.getAccumulatedPoints());
+			ci.setDisplayName(customer.getDisplayName());
+			ci.setPassword(customer.getPassword());
+			ci.setRole(customer.getRole());
+			ci.setUserAddress(customer.getUserAddress());
+			ci.setUserCity(customer.getUserCity());
+			ci.setUserState(customer.getUserState());
+			ci.setUserZip(customer.getUserZip());
+			ci.setUserFName(customer.getUserFName());
+			ci.setUserLName(customer.getUserLName());
+			session.update(ci);
+			tx.commit();
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return false;
+	}
+
+	@Override
+	public List<CustomerInfo> getCustomerInfo() {
+		Session session = null;
+		List<CustomerInfo> customers = null;
+		
+		try {			
+			session = HibernateUtil.getSession();
+			customers = (List<CustomerInfo>)session.createQuery("FROM CustomerInfo").list();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return customers;
+	}
+	
+	@Override
+	public Boolean removeCustomerInfo(CustomerInfo customer) {
+		Session session = null;
+		Transaction tx = null;
+		
+		try {
+			session = HibernateUtil.getSession();
+			tx = session.beginTransaction();
+			CustomerInfo ci = (CustomerInfo) session.get(CustomerInfo.class, customer.getUserEmail());
+			session.delete(ci);
+			tx.commit();
+			return true;
+		} catch(HibernateException e) {
+			e.printStackTrace();
+			tx.rollback();
+		} finally {
+			session.close();
+		}
+		return false;
 	}
 }
