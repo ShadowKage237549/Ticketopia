@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { AuthenticationService } from './../Authentication/authentication.service';
 import { Partner } from './../../Components/home/partner/Partner';
 import { HttpClient } from '@angular/common/http';
@@ -9,7 +10,10 @@ import { Injectable } from '@angular/core';
 export class HomeService {
   constructor(private http:HttpClient, private authService:AuthenticationService) { }
 
+  partners:Partner[] = null;
   getPartners(){
-    return this.http.get<Partner[]>(this.authService.url + "partner.do");
+
+      this.http.get(this.authService.url + "partner.do").subscribe((data: Partner[]) => this.partners = data);
+ 
   }
 }

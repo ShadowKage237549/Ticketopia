@@ -2,7 +2,9 @@ import { Partner } from './partner/Partner';
 import { HomeService } from './../../Services/Home/home.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { async } from '@angular/core/testing';
+async function delay(ms:number){
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
 @Component({
     selector: 'app-home',
@@ -14,11 +16,13 @@ export class HomeComponent implements OnInit {
     constructor(private homeService: HomeService) { }
 
     ngOnInit() {
-        // this.subscribeToPartners();
+        (async () => {
+         this.homeService.getPartners();
+         await delay(500);
+         this.partners = this.homeService.partners;
+         console.log(this.partners);
+        })();
     }
 
-    subscribeToPartners() {
-        this.homeService.getPartners().subscribe((data: Partner[]) => this.partners = data);
-    }
 
 }
