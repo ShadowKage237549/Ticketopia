@@ -2,7 +2,9 @@ import { Partner } from './partner/Partner';
 import { HomeService } from './../../Services/Home/home.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+async function delay(ms:number){
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -13,11 +15,13 @@ export class HomeComponent implements OnInit {
     constructor(private homeService: HomeService) { }
 
     ngOnInit() {
-        this.getPartners();
+        (async () => {
+         this.homeService.getPartners();
+         await delay(500);
+         this.partners = this.homeService.partners;
+         console.log(this.partners);
+        })();
     }
 
-    getPartners() {
-        this.partners = this.homeService.getPartners();
-    }
 
 }
