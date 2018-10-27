@@ -13,21 +13,6 @@ import com.ticketopia.beans.UserType;
 import com.ticketopia.util.HibernateUtil;
 
 public class CustomerInfoDaoImpl implements CustomerInfoDao {
-	@Override
-	public CustomerInfo getCustomerByEmail(String email) {
-		Session session = null;
-		CustomerInfo customer = null;
-		try
-		{
-			session = HibernateUtil.getSession();
-			customer = (CustomerInfo)session.get(CustomerInfo.class, email);
-		}catch(HibernateException e) {
-			e.printStackTrace();
-		}finally {
-			session.close();
-		}
-		return customer;
-	}
 	
 	@Override
 	public boolean createCustomer(CustomerInfo customer) {
@@ -228,22 +213,6 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 		}
 		return false;
 	}
-
-	@Override
-	public List<CustomerInfo> getCustomerInfo() {
-		Session session = null;
-		List<CustomerInfo> customers = null;
-		
-		try {			
-			session = HibernateUtil.getSession();
-			customers = (List<CustomerInfo>)session.createQuery("FROM Ticket").list();
-		} catch (HibernateException e) {
-			e.printStackTrace();
-		} finally {
-			session.close();
-		}
-		return customers;
-	}
 	
 	@Override
 	public Boolean removeCustomerInfo(CustomerInfo customer) {
@@ -264,5 +233,28 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			session.close();
 		}
 		return false;
+    
+	public CustomerInfo getCustomerByEmail(String email) {
+		Session session = null;
+		CustomerInfo customer = null;
+		Query query = null;
+		String hql = "FROM CustomerInfo WHERE userEmail = :email";
+		try
+		{
+			session = HibernateUtil.getSession();
+			query = session.createQuery(hql);
+			query.setParameter("email", email);
+			List<CustomerInfo> list = query.list();
+			session.close();
+			if(list.size() > 0) {
+				customer = list.get(0);
+			}
+		}catch(HibernateException e) {
+			e.printStackTrace();
+		}
+			
+
+		System.out.println(customer);
+		return customer;
 	}
 }

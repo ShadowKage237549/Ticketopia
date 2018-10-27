@@ -9,6 +9,10 @@ DROP TABLE event_types CASCADE CONSTRAINTS;
 DROP TABLE tickets CASCADE CONSTRAINTS;
 DROP TABLE posts CASCADE CONSTRAINTS;
 DROP TABLE partners CASCADE CONSTRAINTS;
+DROP TABLE topics CASCADE CONSTRAINTS;
+DROP TABLE posts_title CASCADE CONSTRAINTS;
+
+
 CREATE TABLE user_type (
 	role_id NUMBER(6),
      --pk
@@ -37,14 +41,14 @@ CREATE TABLE partners (
 
 INSERT INTO partners VALUES (
 1,
-'Smokey Music Ltd',
-'Smokey Music Ltd, has been working with various bands and private musicians to provide discount tickets.'
+'smokey music ltd',
+'smokey music ltd, has been working with various bands and private musicians to provide discount tickets.'
 );
 
 INSERT INTO partners VALUES (
 2,
-'Regression films Ltd',
-'Regression films aims to sell discounted tickets by directly working with movie producers.'
+'regression films ltd',
+'regression films aims to sell discounted tickets by directly working with movie producers.'
 );
 
 CREATE TABLE customer_information (
@@ -58,7 +62,7 @@ CREATE TABLE customer_information (
      --fk
 	customer_address VARCHAR2(100),
 	customer_city VARCHAR2(100),
-	customer_state VARCHAR2(2),
+	customer_state VARCHAR2(20),
 	customer_zip NUMBER(10),
 	customer_password VARCHAR2(50),
 	CONSTRAINT CustomerInformation_pk PRIMARY KEY ( customer_email ),
@@ -67,7 +71,7 @@ CREATE TABLE customer_information (
 );
 
 INSERT INTO customer_information VALUES(
-'Bob.Bobson@mafia.net',
+'bob.bobson@mafia.net',
 'Mafia Master',
 'Bob',
 'Bobson',
@@ -76,12 +80,12 @@ INSERT INTO customer_information VALUES(
 '100 Killer Rd',
 'Heart Broken Town',
 'MN',
-99999,
+999969,
 'password'
 );
 
 INSERT INTO customer_information VALUES (
-'JohnDoe@.yahoo.com',
+'johndoe@.yahoo.com',
 'JDoe',
 'John',
 'Doe',
@@ -90,12 +94,12 @@ INSERT INTO customer_information VALUES (
 '111 Cloud Ln',
 'St. Cloud',
 'Mn',
-55319,
+553519,
 'DJDoe'
 );
 
 INSERT INTO customer_information VALUES (
-'Hamurai@hotmail.com',
+'hamurai@hotmail.com',
 'Hamurai',
 'Ham',
 'Urai',
@@ -104,12 +108,12 @@ INSERT INTO customer_information VALUES (
 '111 Ham Way',
 'Hampton',
 'Ohio',
-40281,
+403281,
 'swords'
 );
 
 INSERT INTO customer_information VALUES (
-'Destiny.A@gmail.com',
+'destiny.a@gmail.com',
 'TheDestiny',
 'Destiny',
 'Adams',
@@ -118,12 +122,12 @@ INSERT INTO customer_information VALUES (
 '2342 Destined Rd',
 'Mankato',
 'Kentucky',
-66666,
+666656,
 'Starbucks'
 );
 
-INSERT INTO customer_information VALUES
-'TWilson@gmail.com',
+INSERT INTO customer_information VALUES (
+'twilson@gmail.com',
 'TheWilsonator',
 'Todd',
 'Wilson',
@@ -132,12 +136,12 @@ INSERT INTO customer_information VALUES
 '9675307 Fairie Rd',
 'Bullhead Citay',
 'Arizona',
-53296,
+532496,
 'ChevyMan1234'
 );
 
 INSERT INTO customer_information VALUES (
-'GMiller@aol.com',
+'gmiller@aol.com',
 'Glenninator',
 'Glenn',
 'Miller',
@@ -146,12 +150,12 @@ INSERT INTO customer_information VALUES (
 '555 Miller Way',
 'Millerton',
 'California',
-99999,
+999799,
 'ILoveMiller'
 );
 
 INSERT INTO customer_information VALUES (
-'TDawgy09@hotmail.com',
+'tdawgy09@hotmail.com',
 'Travalanche',
 'Travis',
 'Eid',
@@ -160,12 +164,12 @@ INSERT INTO customer_information VALUES (
 '703 W Prairie Rd',
 'Palmerville',
 'Minnesota',
-55320
+553120,
 'Vinnymyboy'
 );
 
 INSERT INTO customer_information VALUES (
-'BirdoTheGreat@bln.com',
+'birdothegreat@bln.com',
 'Birdo',
 'Brandon',
 'Eid',
@@ -173,13 +177,13 @@ INSERT INTO customer_information VALUES (
 2,
 '21407 Hilltop Cres',
 'The Grove',
-12409,
+124095,
 2,
 'CapitalOneRocks'
 );
 
 INSERT INTO customer_information VALUES (
-'RPrososki@prososki.net',
+'rprososki@prososki.net',
 'PrososkiR',
 'Rachel',
 'Prososki',
@@ -188,12 +192,12 @@ INSERT INTO customer_information VALUES (
 '4321 Sunfish Rd',
 'Maple Grove',
 'AK',
-98765,
+987265,
 'admin5547'
 );
 
 INSERT INTO customer_information VALUES (
-'GBriggs@briggs.com',
+'gbriggs@briggs.com',
 'CatchinGretchen',
 'Gretchen',
 'Briggs',
@@ -201,14 +205,14 @@ INSERT INTO customer_information VALUES (
 2,
 '328 Ferry St',
 'Pinnacle Lakes',
-'WI'
-17384,
+'WI',
+173584,
 'HanselandGrettle'
 );
 --Basic users
 INSERT INTO customer_information VALUES (
-'SRussel@russel.com',
-'Mr.Russel',
+'srussel@russel.com',
+'Mr.Russell',
 'Shane',
 'Russel',
 0,
@@ -216,12 +220,12 @@ INSERT INTO customer_information VALUES (
 '17 Shady Way',
 'Isolation Island',
 'Hawaii',
-44444,
+444244,
 'Hexadecimal'
 );
 
 INSERT INTO customer_information VALUES (
-'CLane@lanes.net',
+'clane@lanes.net',
 'ExpertRacer',
 'Carmani',
 'Lane',
@@ -230,12 +234,12 @@ INSERT INTO customer_information VALUES (
 '1800 Racer Valley',
 'Tampa Bay',
 'Florida',
-98642,
+986642,
 'Porsche'
 );
 
 INSERT INTO customer_information VALUES (
-'GBriggs@outlook.com',
+'gbriggs@outlook.com',
 'General Briggs',
 'Greg',
 'Briggs',
@@ -244,12 +248,12 @@ INSERT INTO customer_information VALUES (
 '42342 Brigadier Lane',
 'The Bay',
 'MA',
-09707,
+097507,
 'Gophers'
 ); 
 
 INSERT INTO customer_information VALUES (
-'CStrife@strifeforce.com',
+'cstrife@strifeforce.com',
 'Ex-SOLDIER',
 'Cloud',
 'Strife',
@@ -258,12 +262,12 @@ INSERT INTO customer_information VALUES (
 '465748 7th Ave',
 'Middleton',
 'New Jersey',
-98765,
+987965,
 'BusterSword'
 );
 
 INSERT INTO customer_information VALUES (
-'OttM@otttech.net',
+'ottm@otttech.net',
 'Kane',
 'Michael',
 'Ott',
@@ -272,26 +276,26 @@ INSERT INTO customer_information VALUES (
 '100 Presidential Ave',
 'Capital Hill',
 'D.C.',
-62341,
+623416,
 'TheUndertaker'
 );
 
 INSERT INTO customer_information VALUES (
-'Jjohnson@aol.com',
+'jjohnson@aol.com',
 'JjBoombox',
 'Jordan',
 'Johnson',
 0,
 1,
-'1857 Chidori Cir'
+'1857 Chidori Cir',
 'Wyoming',
 'Kentucky',
-10410,
+107410,
 'ILikeTurtles'
 );
 
 INSERT INTO customer_information VALUES (
-'MsOwl@owly.com',
+'msowl@owly.com',
 'OliviatheOwl',
 'Olivia',
 'Owllette',
@@ -300,12 +304,12 @@ INSERT INTO customer_information VALUES (
 '6415 Joker blvd',
 'San Antonio',
 'Texas',
-76013,
+760143,
 'OwlsAreSoCute!'
 );
 
 INSERT INTO customer_information VALUES (
-'Srenity@yahoo.com',
+'srenity@yahoo.com',
 'Ms.Renity',
 'Serenity',
 'Smith',
@@ -314,12 +318,12 @@ INSERT INTO customer_information VALUES (
 '7654 Elm St',
 'Portland',
 'Oregon',
-68429,
+687429,
 'SereneSkies'
 );
 
 INSERT INTO customer_information VALUES (
-'Zprososki@prososki.net',
+'zprososki@prososki.net',
 'PrincessZ',
 'Zariah',
 'Prososki',
@@ -328,7 +332,7 @@ INSERT INTO customer_information VALUES (
 '101 1st St',
 'Holland',
 'Minnesota',
-56055,
+568055,
 'Vaporeon'
 );
 
@@ -336,7 +340,7 @@ INSERT INTO customer_information VALUES (
 --admin below
 
 INSERT INTO customer_information VALUES (
-'CBroadwell@admin.net',
+'cbroadwell@admin.net',
 'Cory Broadwell',
 'Cory',
 'Broadwell',
@@ -345,12 +349,12 @@ INSERT INTO customer_information VALUES (
 '111 Anime Street',
 'The Great Tomb of Nazarick',
 'Yggdrasil',
-77777,
+777877,
 'admin1'
 );
 
 INSERT INTO customer_information VALUES (
-'CGomez@admin.net',
+'cgomez@admin.net',
 'Courie Gomez',
 'Courie',
 'Gomez',
@@ -359,12 +363,12 @@ INSERT INTO customer_information VALUES (
 '123 19th Ave',
 'That one City We Do Not Name',
 'Nothingness',
-86753,
+867253,
 'admin2'
 );
 
 INSERT INTO customer_information VALUES (
-'BSlappey@admin.net',
+'bslappey@admin.net',
 'Ben Slappey',
 'Ben',
 'Slappey',
@@ -372,13 +376,13 @@ INSERT INTO customer_information VALUES (
 3,
 '555 Slappin ln',
 'Slapsville',
-'Slaphio',
+'Slapinia',
 88888,
 'admin3'
 );
 
 INSERT INTO customer_information VALUES(
-'PPrososki@admin.net',
+'pprososki@admin.net',
 'Philip Prososki',
 'Phil',
 'Prososki',
@@ -387,7 +391,7 @@ INSERT INTO customer_information VALUES(
 '651 Soul Reaper Ln',
 'Soul Society',
 'Otherside',
-21212,
+212812,
 'admin4'
 );
 
@@ -415,15 +419,29 @@ CREATE TABLE payment_info (
      --fk 
 	card_number NUMBER(16),
 	security_number NUMBER(3),
-	expiration_date DATE,
+	expiration_date VARCHAR2(45),
      --needs formatting either here or in java. 
 	billing_address VARCHAR2(100),
 	billing_city VARCHAR2(50),
-	billing_state VARCHAR2(2),
-	billing_zip NUMBER(5),
+	billing_state VARCHAR2(20),
+	billing_zip NUMBER(6),
 	CONSTRAINT payment_email_fk FOREIGN KEY ( customer_email )
 		REFERENCES customer_information ( customer_email )
 );
+
+INSERT INTO payment_info VALUES (
+'bob.bobson@mafia.net',
+0000555577777888,
+000,
+01/99,
+'111 Killer Rd',
+'Heart Broken Town',
+'Mn',
+543876
+);
+
+--Have 5 shots of rum and start making up CC numbers 
+
 CREATE TABLE tickets (
 	ticket_id NUMBER(6),
      --pk
@@ -434,19 +452,19 @@ CREATE TABLE tickets (
 	event_description VARCHAR2(1000),
 	event_address VARCHAR2(100),
 	event_city VARCHAR2(50),
-	event_state VARCHAR2(2),
-	event_zip NUMBER(5),
-	seat VARCHAR2(6),
+	event_state VARCHAR2(20),
+	event_zip NUMBER(6),
+	seat VARCHAR2(600),
 	partner_id NUMBER(6),
      --fk
 	free_flag NUMBER(1),
-	CONSTRAINT Tickets_pk PRIMARY KEY ( ticket_id ),
+	CONSTRAINT tickets_pk PRIMARY KEY ( ticket_id ),
 	CONSTRAINT ticket_event_type_fk FOREIGN KEY ( event_type_id )
 		REFERENCES event_types ( event_type_id )
 );
 
 INSERT INTO tickets VALUES (
-1,
+7,
 'Movie Ticket',
 1,
 99,
@@ -454,14 +472,29 @@ INSERT INTO tickets VALUES (
 '777 Zmax Blvd',
 'Reston',
 'Virginia',
-86943,
+869434,
 'Z-1',
 1,
 0
 );
 
 INSERT INTO tickets VALUES (
-2,
+9,
+'Movie Ticket',
+1,
+700,
+'Hunger games 5 with Jennifer Lawrence as your date',
+'921 HungerGames Lane',
+'Topeka',
+'Kansas',
+654657,
+'A-1',
+1,
+0
+);
+
+INSERT INTO tickets VALUES (
+5,
 'Concert Ticket',
 2,
 1000,
@@ -469,52 +502,103 @@ INSERT INTO tickets VALUES (
 '1800 North University Drive',
 'Fargo',
 'North Dakota',
-58102,
-'Front-Row',
+581052,
+'A-1',
 2,
 0
 );
 
+INSERT INTO tickets VALUES (
+8,
+'Concert Ticket',
+2,
+350,
+'Back stage passes to Eminem',
+'888 Grover Street',
+'Los Angelos',
+'Rhode Island',
+987987,
+'Side of Live Stage',
+2,
+0
+);
 
 CREATE TABLE topics(
 	topic_id NUMBER(6),
 	ticket_id NUMBER(6),
 	topic_name VARCHAR2(100),
-	topic_desc VARCHAR2(200),
+	topic_desc VARCHAR2(200), --Description on the ticket
 	CONSTRAINT topics_pk PRIMARY KEY (topic_id),
 	CONSTRAINT topic_ticket_fk FOREIGN KEY ( ticket_id )
 		REFERENCES tickets ( ticket_id )
 );
-
 INSERT INTO topics VALUES (
 1,
-1,
+7,
 'Venom the Movie!',
-'This movie was great. How the actor transformed into Venom had me all MIND=BLOWN!!!!',
+'Ticket admitting entrance to the movie Venom'
 );
 
 INSERT INTO topics VALUES (
 2,
-2,
-'Disturbed. . . Legends possibly?',
-'I got to meet David Draimen, nicest guy ever. He even signed my Disturbed Tattoo and wished me well! CANNOT WAIT TO SEE THEM AGAIN!'
+9,
+'Avengers: Infinity War Pt 2',
+'Ticket for one person to watching Avengers: Infinity War 2'
 );
+
+INSERT INTO topics VALUES (
+3,
+5,
+'Disturbed live at Fargo Dome',
+'Back stage passes to meet Disturbed the band.'
+);
+
+INSERT INTO topics VALUES (
+4,
+8,
+'Eminem live in Detroit Michigan',
+'Meet and Greet with the Rap God himiself: Marshall Mathers'
+);
+
 
 CREATE TABLE posts_title (
 	post_title_id NUMBER(6),
-	post_title VARCHAR2(50),
+	post_title VARCHAR2(100),
 	topic_id NUMBER(6),
 	CONSTRAINT post_title_pk PRIMARY KEY ( post_title_id ),
 	CONSTRAINT post_title_fk FOREIGN KEY ( topic_id )
 		REFERENCES topics ( topic_id )
 );
+
+INSERT INTO posts_title VALUES (
+1,
+'DID YOU SEE HOW VENOM TRANSFORMED?!!!@#',
+1
+);
+
+INSERT INTO posts_title VALUES (
+2,
+'INFINITY WAR PT 2 HYPEEEEEE!$!@$!$@!$@!$@',
+2
+);
+
+INSERT INTO posts_title VALUES (
+3,
+'The fire shooting out from the stage during the concert... made me almost pass out!',
+3
+);
+
+INSERT INTO posts_title VALUES (
+4,
+'How should I dress for an Eminem Concert?',
+2
+);
+
+
 CREATE TABLE posts (
-	post_id NUMBER(10),
-     --pk
-	ticket_id NUMBER(6),
-     --fk
-	display_name VARCHAR2(20),
-     --fk
+	post_id NUMBER(10),  --pk
+	ticket_id NUMBER(6),--fk
+	display_name VARCHAR2(20),--fk
 	post_content VARCHAR2(500),
 	post_timestamp TIMESTAMP,
 	CONSTRAINT post_pk PRIMARY KEY ( post_id ),
@@ -523,4 +607,37 @@ CREATE TABLE posts (
 	CONSTRAINT post_user_fk FOREIGN KEY ( display_name )
 		REFERENCES customer_information ( display_name )
 );
+
+INSERT INTO posts VALUES (
+1,
+7,
+'TheDestiny',
+'Venom was amazing! The way he transformed... his style, he is my FAVORITE VILLAIN!!! AHHH',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+2,
+9,
+'JDoe',
+'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+3,
+5,
+'CatchinGretchen',
+'I got caught up in the moshpit during the Disturbed concert... I got knocked out and they had to stop the concert because of me... as an apology I got to meet the Band! It was so fun!',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+4,
+8,
+'Mr.Russell',
+'I got to see Eminem in concert, Im such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!',
+SYSTIMESTAMP
+);
+
 COMMIT;

@@ -13,6 +13,7 @@ import { LoginComponent } from './Components/login/login.component';
 import { ForumtopicComponent } from './Components/forumtopic/forumtopic.component';
 import { ForumpostComponent } from './Components/forumpost/forumpost.component';
 import { TicketComponent } from './Components/ticket/ticket.component';
+import { PaymentinfoComponent } from './Components/paymentinfo/paymentinfo.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { TicketComponent } from './Components/ticket/ticket.component';
         LoginComponent,
         ForumtopicComponent,
         ForumpostComponent,
-        TicketComponent
+        TicketComponent,
+        PaymentinfoComponent
     ],
     imports: [
         BrowserModule,

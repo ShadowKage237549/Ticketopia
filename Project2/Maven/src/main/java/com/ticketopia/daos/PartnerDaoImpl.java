@@ -85,6 +85,7 @@ public class PartnerDaoImpl implements PartnerDao {
 		} finally {
 			session.close();
 		}
+		System.out.println(partners);
 		return partners;
 	}
 }

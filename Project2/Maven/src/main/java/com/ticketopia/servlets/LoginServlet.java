@@ -3,12 +3,13 @@ package com.ticketopia.servlets;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.daos.CustomerInfoDao;
@@ -36,24 +37,36 @@ public class LoginServlet extends HttpServlet {
 		email = request.getParameter("email");
 		password = request.getParameter("password");
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		CustomerInfo loggingInUser = null;
-		loggingInUser = cid.getCustomerByEmail(email);
-		if(!(loggingInUser == null)) {
+		System.out.println(email + password);
+		CustomerInfo loggingInUser = cid.getCustomerByEmail(email.toLowerCase());
+		if(loggingInUser != null) {
 			if(loggingInUser.getPassword().equals(password)) {
-				ObjectMapper om = new ObjectMapper();
-				response.setContentType("application/json");
+				Algorithm algorithmHS = Algorithm.HMAC256("secretPassword123");
+				String token = JWT.create().withIssuer("Shadow").withClaim("userEmail", loggingInUser.getUserEmail())
+						.withClaim("displayName", loggingInUser.getDisplayName())
+						.withClaim("userFName", loggingInUser.getUserFName())
+						.withClaim("userLName", loggingInUser.getUserLName())
+						.withClaim("accumulatedPoints", loggingInUser.getAccumulatedPoints())
+						.withClaim("userAddress", loggingInUser.getUserAddress())
+						.withClaim("userCity", loggingInUser.getUserCity())
+						.withClaim("userState", loggingInUser.getUserState())
+						.withClaim("userZip", loggingInUser.getUserZip())
+						.sign(algorithmHS);
+				response.setContentType("text/html");
 				PrintWriter out = response.getWriter();
-				out.println(om.writeValueAsString(loggingInUser));
-				RequestDispatcher rd = request.getRequestDispatcher("");
-				rd.forward(request, response);
+				ObjectMapper om = new ObjectMapper();
+				System.out.println(om.writeValueAsString(token));
+				out.print(om.writeValueAsString(token));
 				return;
+			} else {
+				
 			}
 		}
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		out.print("Incorrect Information");
-		
+		ObjectMapper om = new ObjectMapper();
+		out.print(om.writeValueAsString("wrong info"));
 	}
 
 	/**

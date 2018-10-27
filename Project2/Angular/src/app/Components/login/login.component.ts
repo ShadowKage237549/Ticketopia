@@ -1,7 +1,5 @@
 import { AuthenticationService } from '../../Services/Authentication/authentication.service';
 import { Component, OnInit } from '@angular/core';
-import { CustomerInfo } from './user/CustomerInfo';
-import { UserType } from './user/UserType';
 
 @Component({
     selector: 'app-login',
@@ -10,10 +8,9 @@ import { UserType } from './user/UserType';
     providers: [AuthenticationService]
 })
 export class LoginComponent implements OnInit {
+    email: string;
+    password: string;
 
-    token:any = "";
-    email:string = "";
-    password:string = "";
 
     constructor(private auth: AuthenticationService) {
     }
@@ -22,9 +19,13 @@ export class LoginComponent implements OnInit {
     }
 
     logMeIn() {
-        this.token = this.auth.login(this.email, this.password);
-        this.password = null;
-        this.email = null;
+        this.auth.login(this.email, this.password);
+        if (this.auth.getToken() == null) {
+            //route to err page
+        } else {
+            //route to home page
+            this.auth.requestCustomerData();
+        }
     }
 
 }

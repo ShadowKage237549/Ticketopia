@@ -1,23 +1,27 @@
 import { Partner } from './partner/Partner';
-import { HomeService } from './../../Services/home/home.service';
+import { HomeService } from './../../Services/Home/home.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
+async function delay(ms:number){
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  partners:Partner[];
-  constructor(private homeService:HomeService) { }
+    partners: Partner[];
+    constructor(private homeService: HomeService) { }
 
-  ngOnInit() {
-    this.subscribeToPartners();
-  }
-  
-  subscribeToPartners(){
-    this.homeService.getPartners().subscribe((data: Partner[]) => this.partners = data);
-  }
+    ngOnInit() {
+        (async () => {
+         this.homeService.getPartners();
+         await delay(500);
+         this.partners = this.homeService.partners;
+         console.log(this.partners);
+        })();
+    }
+
 
 }

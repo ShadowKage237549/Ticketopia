@@ -1,8 +1,5 @@
 import { AuthenticationService } from '../../Services/Authentication/authentication.service';
-import { CustomerInfo } from '../login/user/CustomerInfo';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -12,14 +9,20 @@ import { Observable } from 'rxjs';
 export class NavbarComponent implements OnInit {
   
   
-  loggedIn:boolean;
 
-  constructor(private auth:AuthenticationService) { }
+  constructor(private authService:AuthenticationService) { }
 
   ngOnInit() {
-    //This works, but the navbar does not get updated when changing the value
-    this.auth.isLoggedIn.subscribe(loggedIn => this.loggedIn = loggedIn);
-    console.log("TODO: IMPLEMENT AUTHENTICATION IN NAVBAR");
+  }
+
+  isNotNull(){
+    if(this.authService.isNotNull(localStorage.getItem("token"))){
+      return true;
+    }
+    return false;
+  }
+  logout(){
+    this.authService.logout();
   }
 
 }
