@@ -1,14 +1,12 @@
-<div class="row mx-3 my-5">
-    <h1>Ticketopia Forum</h1>
-</div>
 <div class="row mx-3">
     <div class="col-12 mx-3">
-        <h3>{{postTitle}}</h3>
+        <h3>{{postTitle.postTitle}}</h3>
         <hr>
     </div>
-    <div class="col-12 mx-3" *ngFor="let c of forumComments">
+    <div class="col-12 mx-3" *ngFor="let post of posts">
+        <h4>{{post.displayName}}</h4><br>
         <p class="comment rounded shadow-sm">
-            {{c.commentContent}}
+            {{post.postContent}}
         </p>
     </div>
 </div>

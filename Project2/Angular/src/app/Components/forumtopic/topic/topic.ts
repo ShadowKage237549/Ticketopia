@@ -1,10 +1,10 @@
 
-export class Topic{
-    
+export class Topic {
+
     constructor(
-        public topicId:number,
-        public topicName:string,
-        public topicDescription:string
-        ){}
+        public id: number,
+        public topicName: string,
+        public topicDescription: string
+    ) { }
 
 }
