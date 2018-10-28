@@ -6,7 +6,7 @@ import com.ticketopia.beans.Topic;
 
 public interface TopicDao {
 	public List<Topic> getAllTopics();
-
+	public Topic getTopicById(Integer id);
 	public boolean addTopic(Topic T);
 	public boolean removeTopic(Topic topic);
 	public boolean updateTopic(Topic topic);

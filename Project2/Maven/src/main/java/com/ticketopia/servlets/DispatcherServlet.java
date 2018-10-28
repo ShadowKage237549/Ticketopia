@@ -60,6 +60,14 @@ public class DispatcherServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("/PartnerServlet");
 			rd.forward(request, response);
 			break;
+		case "topic":
+			rd = request.getRequestDispatcher("/TopicServlet");
+			rd.forward(request, response);
+			break;
+		case "topics":
+			rd = request.getRequestDispatcher("/TopicsServlet");
+			rd.forward(request, response);
+			break;
 		case "customerinfo":
 			rd = request.getRequestDispatcher("/CustomerServlet");
 			rd.forward(request, response);
