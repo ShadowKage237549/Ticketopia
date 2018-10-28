@@ -11,13 +11,7 @@
                 Ticket-Type: {{ticket.ticketType}}
             </div>
             <div class="col-4">
-
-                <div *ngIf="ticket.freeFlag; else notFree">
-                    Ticket-Price: ${{ticket.ticketPrice}}
-                </div>
-                <ng-template #notFree>
-                    Ticket-Price: <s>${{ticket.ticketPrice}}</s> FREE!
-                </ng-template>
+                Ticket-Price: ${{ticket.ticketPrice}}
             </div>
             <div class="col-12">
                 Event Description: {{ticket.eventDescription}}
@@ -30,13 +24,13 @@
             </div>
 
             <div class="col-12 py-3">
-                Address: {{ticket?.eventAddress}}<br>
-                City: {{ticket?.eventCity}}<br>
-                State: {{ticket?.eventState}}<br>
-                Zipcode: {{ticket?.eventZip}}<br>
+                Address: {{ticket.eventAddress}}<br>
+                City: {{ticket.eventCity}}<br>
+                State: {{ticket.eventState}}<br>
+                Zipcode: {{ticket.eventZip}}<br>
                 <hr>
                 <div class="">
-                    Partner: {{ticket?.partner}}
+                    Partner: {{ticket.partner}}
                 </div>
             </div>
         </div>
