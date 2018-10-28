@@ -579,6 +579,8 @@ CREATE TABLE posts_title (
 		REFERENCES topics ( topic_id )
 );
 
+--If the last number is 1 2 3 or 4 it has to deal with that topic,1 being venom, 2 being infinity war, 3 being Disturbed, 4 being Eminem 
+
 INSERT INTO posts_title VALUES (
 1,
 'DID YOU SEE HOW VENOM TRANSFORMED?!!!@#',
@@ -588,37 +590,37 @@ INSERT INTO posts_title VALUES (
 INSERT INTO posts_title VALUES (
 2,
 'INFINITY WAR PT 2 HYPEEEEEE!$!@$!$@!$@!$@',
-1
+2
 );
 
 INSERT INTO posts_title VALUES (
 3,
 'The fire shooting out from the stage during the concert... made me almost pass out!',
-2
+3
 );
 
 INSERT INTO posts_title VALUES (
 4,
 'How should I dress for an Eminem Concert?',
-2
+4
 );
 
 INSERT INTO posts_title VALUES (
 5,
 'Venom was over hyped',
-3
+1
 );
 
 INSERT INTO posts_title VALUES (
 6,
 'Avengers: Infinity War 2... will anyone who died previously return?',
-3
+2
 );
 
 INSERT INTO posts_title VALUES (
 7,
 'That Disturbed concert was a bust... they are getting old and should retire',
-4
+3
 );
 
 INSERT INTO posts_title VALUES (
