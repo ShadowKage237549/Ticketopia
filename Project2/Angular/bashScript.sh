@@ -1,4 +1,4 @@
-ng build --prod --deploy-url "Ticketopia/" --base-href "Ticketopia/"
+ng build --prod --deploy-url "Ticketopia/"
 
 
 rm -f ../Maven/src/main/webapp/*

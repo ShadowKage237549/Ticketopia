@@ -11,6 +11,7 @@ import com.ticketopia.util.HibernateUtil;
 
 public class UserTypeDaoImpl implements UserTypeDao {
 	private final static Logger logger = Logger.getLogger(UserTypeDaoImpl.class);
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<UserType> getUserTypes() {
 		logger.info("getUserTypes called");
