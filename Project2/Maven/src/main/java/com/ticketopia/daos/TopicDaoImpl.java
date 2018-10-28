@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.Post;
 import com.ticketopia.beans.Ticket;
 import com.ticketopia.beans.Topic;
@@ -27,6 +28,22 @@ public class TopicDaoImpl implements TopicDao{
 			session.close();
 		}
 		return topics;
+	}
+	
+	@Override
+	public Topic getTopicById(Integer id) {
+		Session session = null;
+		Topic topic = null;
+		try
+		{
+			session = HibernateUtil.getSession();
+			topic = (Topic)session.get(Topic.class, id);
+		}catch(HibernateException e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return topic;
 	}
 
 	@Override
