@@ -162,6 +162,6 @@
   </servlet-mapping>
   <error-page>
 	<error-code>404</error-code>
-	<location>/Ticketopia/index.html</location>
+	<location>/index.html</location>
 </error-page>
 </web-app>
