@@ -55,7 +55,7 @@ export const appRoutes: Routes = [
         component: HomeComponent
     },
     {
-        path: 'Ticketopia/**',
+        path: '**',
         redirectTo: 'Ticketopia/home',
         pathMatch: 'Ticketopia/full'
     }
