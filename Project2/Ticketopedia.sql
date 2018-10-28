@@ -624,20 +624,20 @@ INSERT INTO posts_title VALUES (
 CREATE TABLE posts (
 	post_id NUMBER(10),  --pk
 	post_title_id NUMBER(6),--fk
-	display_name VARCHAR2(20),--fk
+	customer_email VARCHAR2(20),--fk
 	post_content VARCHAR2(500),
 	post_timestamp TIMESTAMP,
 	CONSTRAINT post_pk PRIMARY KEY ( post_id ),
 	CONSTRAINT post_topic_fk FOREIGN KEY ( post_title_id )
 		REFERENCES posts_title ( post_title_id ),
-	CONSTRAINT post_user_fk FOREIGN KEY ( display_name )
-		REFERENCES customer_information ( display_name )
+	CONSTRAINT post_user_fk FOREIGN KEY ( customer_email )
+		REFERENCES customer_information ( customer_email )
 );
 
 INSERT INTO posts VALUES (
 1,
 1,
-'TheDestiny',
+'destiny.a@gmail.com',
 'Venom was amazing! The way he transformed... his style, he is my FAVORITE VILLAIN!!! AHHH',
 SYSTIMESTAMP
 );
@@ -645,7 +645,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 2,
 1,
-'JDoe',
+'johndoe@.yahoo.com',
 'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!',
 SYSTIMESTAMP
 );
@@ -653,7 +653,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 3,
 2,
-'CatchinGretchen',
+'gbriggs@briggs.com',
 'I got caught up in the moshpit during the Disturbed concert... I got knocked out and they had to stop the concert because of me... as an apology I got to meet the Band! It was so fun!',
 SYSTIMESTAMP
 );
@@ -661,7 +661,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 4,
 2,
-'Mr.Russell',
+'srussel@russel.com',
 'I got to see Eminem in concert, Im such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!',
 SYSTIMESTAMP
 );
@@ -669,7 +669,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 5,
 1,
-'Jjboombox',
+'zprososki@prososki.net',
 'Took my nephew to Venom, he was completely baffled to see that Spiderman (his favorite hero) had an evil counterpart. The kid is now a venom fan spidy is out!!',
 SYSTIMESTAMP
 );
@@ -677,7 +677,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 6,
 1,
-'Ex-SOLDIER',
+'cstrife@strifeforce.com',
 'I cannot wait for infinity war part 2 to come out. I came into some extra money after a job and am going to treat all of my friends to it.',
 SYSTIMESTAMP
 );
@@ -685,7 +685,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 7,
 1,
-'PrincessZ',
+'zprososki@prososki.net',
 'Since the tooth fairy came, I am able to take my mommy and daddy out to a movie. They both really like Marvel so I am going to take them to the new infinity war when it comes out... is there a release date yet?',
 SYSTIMESTAMP
 );
@@ -693,7 +693,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 8,
 1,
-'Birdo',
+'birdothegreat@bln.com',
 'Took my friend Phil after a rough week at work to see Venom since he wanted to see it. We both enjoyed it. He now cannot wait to get his Spiderman PS4 from home so he can play that new spiderman game... its all he talks about now',
 SYSTIMESTAMP
 );
@@ -701,7 +701,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 9,
 2,
-'Travalanche',
+'tdawgy09@hotmail.com',
 'I have not been a fan of rap music but seeing as Eminem was coming to town I had to say i attended one of his concerts and all I can say is WOW - the dude knows how to put on a show. THANKS SLIM!',
 SYSTIMESTAMP    
 );
@@ -709,7 +709,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 10,
 2,
-'General Briggs',
+'gbriggs@outlook.com',
 'The music at the Disturbed Concert was so incredibly loud I am glad I remembered to bring some ear plugs for myself... and others. I sold 20 packs of ear plugs for a profit of $3.50 each. THE BRIGGS STRIKES AGAIN!!!',
 SYSTIMESTAMP    
 );
@@ -717,7 +717,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 11,
 2,
-'Hamurai',
+'hamurai@hotmail.com',
 'I find Eminem to be one of the most offensive people ever. I could not stand the people who attended his concert or the performance itself. How do I go about getting a refund?',
 SYSTIMESTAMP
 );
@@ -725,7 +725,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 12,
 1,
-'PrososkiR',
+'rprososki@prososki.net',
 'Went to see Venom the other night. I honestly have never seen a Marvel movie or been too interested in super heroes / villains. I enjoyed the movie. It was full of action!',
 SYSTIMESTAMP    
 );
@@ -733,7 +733,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 13,
 1,
-'Glenninator',
+'gmiller@aol.com',
 'Stop supporting these Marvel films. You people need to realize that DC comics is where the true heroes and villains are. Batman vs. Joker is WAY more interesting than a bunch of hooligans vs some dude named Thanos. HA! PLEBS!',
 SYSTIMESTAMP
 );
@@ -741,7 +741,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 14,
 2,
-'PPrososki',
+'cbroadwell@admin.net',
 'I went to see Eminem for the first time ever. Ended up having the opportunity to meet him and get a photograph. I was happy to find out that he is a not only a great person but also an amazing role model. People do not realize his
 music reflects some of his personal life.',
 SYSTIMESTAMP
@@ -750,7 +750,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 15,
 1,
-'BSlappey',
+'bslappey@admin.net',
 'VENOM === BEST MOVIE. Anyone who says otherwise is completely wrong and needs to go see it again to truly appreciate it!',
 SYSTIMESTAMP
 );
@@ -758,7 +758,7 @@ SYSTIMESTAMP
 INSERT INTO posts VALUES (
 16,
 2,
-'TheWilsonator',
+'twilson@gmail.com',
 'DISTURBED IS MY FAVORITE BAND! I CANNOT BELIEVE I WENT TO SEE THEM LIVE FOR THE FIRST TIME! I NEED TO GO TO MANY MORE CONCERTS! IT WAS AMAZINGGGGG!!!!!!! XD XD XD XD XD XD',
 SYSTIMESTAMP
 );
