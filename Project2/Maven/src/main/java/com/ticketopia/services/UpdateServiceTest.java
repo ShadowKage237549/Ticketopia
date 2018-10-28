@@ -1,6 +1,5 @@
 package com.ticketopia.services;
 
-import static org.junit.Assert.fail;
 import static org.testng.Assert.assertTrue;
 
 import java.sql.Timestamp;
@@ -8,11 +7,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.EventType;
@@ -23,8 +20,6 @@ import com.ticketopia.beans.PostTitle;
 import com.ticketopia.beans.Ticket;
 import com.ticketopia.beans.Topic;
 import com.ticketopia.beans.UserType;
-import com.ticketopia.daos.CustomerInfoDaoImpl;
-import com.ticketopia.daos.PaymentInfoDaoImpl;
 import com.ticketopia.daos.PostDao;
 import com.ticketopia.daos.PostDaoImpl;
 import com.ticketopia.daos.PostTitleDao;
@@ -71,15 +66,7 @@ public class UpdateServiceTest {
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
+	
 	@Test
 	public void testUpdateCustomer() {
 		assertTrue(us.updateCustomer("jjohnson@aol.com", "jjohnson@aol.com", "Kakashi", "Jordan", "Johnson", 

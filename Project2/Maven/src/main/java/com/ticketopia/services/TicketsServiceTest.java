@@ -1,16 +1,13 @@
 package com.ticketopia.services;
 
-import static org.junit.Assert.*;
-
+import static org.testng.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import com.ticketopia.beans.EventType;
 import com.ticketopia.beans.Partner;
@@ -49,15 +46,8 @@ public class TicketsServiceTest {
 		tickets.add(ticket3);
 	}
 
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
+	@AfterMethod
 	public void tearDown() throws Exception {
 		testTickets.clear();
 	}
