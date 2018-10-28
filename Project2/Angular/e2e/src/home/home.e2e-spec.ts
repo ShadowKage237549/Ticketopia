@@ -5,6 +5,7 @@ describe('project-workspace App', () => {
 
     beforeEach(() => { page = new HomePage();});
 
+    //Check if the test is on the correct page
     it('should display the home page header',() => {
         page.navigateTo();
         expect(page.getHeaderText()).toEqual('Ticketopia!');
