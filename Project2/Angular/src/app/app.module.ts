@@ -35,7 +35,7 @@ import { RegisterComponent } from './Components/register/register/register.compo
         BrowserModule,
         FormsModule,
         HttpClientModule,
-        RouterModule.forRoot(appRoutes)
+        RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     bootstrap: [AppComponent]
