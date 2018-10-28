@@ -1,5 +1,5 @@
 export class PostTitle {
-    postId: number;
+    Id: number;
     postTitle: string;
     topicId: number;
 }
