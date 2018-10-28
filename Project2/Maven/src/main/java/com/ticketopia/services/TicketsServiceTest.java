@@ -20,9 +20,9 @@ public class TicketsServiceTest {
 	private static EventType eventType1 = new EventType(1, "concert");
 	private static EventType eventType2 = new EventType(2, "movie");
 	private static EventType eventType3 = new EventType(3, "festival");
-	private static Partner partner1 = new Partner(1, "Napalm Blast");
-	private static Partner partner2 = new Partner(2, "AMC");
-	private static Partner partner3 = new Partner(3, "Nuclear Records");
+	private static Partner partner1 = new Partner(1, "Napalm Blast", "desc");
+	private static Partner partner2 = new Partner(2, "AMC", "desc");
+	private static Partner partner3 = new Partner(3, "Nuclear Records", "desc");
 	private static Ticket ticket1 = new Ticket(1, "backstage", eventType1,
 			99.99, "Amon Amarth", "1234 Concert Ln", "Concert City", "Concert State", 67890,
 			"pit", partner1, false);

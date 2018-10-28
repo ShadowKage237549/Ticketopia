@@ -33,11 +33,9 @@ export class ForumpostComponent implements OnInit {
                 await delay(500);
                 this.postTitle = this.fps.postTitles[0];
             }
-            console.log(this.postTitle);
             this.fcs.getPostsByTitleId(this.postTitleId);
             await delay(500);
             this.posts = this.fcs.posts;
-            console.log(this.posts);
         })();
     }
 }

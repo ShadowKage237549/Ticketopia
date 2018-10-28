@@ -27,7 +27,6 @@ export class ForumtopicComponent implements OnInit {
             this.topic = this.topicService.selectedTopic;
             if (this.topic != null) {
                 this.topicId = this.topic.id;
-                console.log(1);
             } else {
                 if (Number.parseInt(this.ar.snapshot.url[3].path) != null) {
                     this.topicId = Number.parseInt(this.ar.snapshot.url[3].path, 10);
@@ -38,24 +37,17 @@ export class ForumtopicComponent implements OnInit {
                 this.topicService.getTopicById(this.topicId);
                 await delay(500);
                 this.topic = this.topicService.selectedTopic;
-                console.log(1);
             }
-            console.log(this.postTitles);
-            console.log(1);
             if (this.postTitles == null) {
-                console.log(1);
                 this.fps.getPostsById(this.topicId);
                 await delay(500);
                 this.postTitles = this.fps.postTitles;
-                console.log(this.postTitles);
-                console.log(1);
             }
         })();
     }
 
     storePostTitle(postTitle: PostTitle) {
         this.fcs.postTitle = postTitle;
-        console.log(this.fcs.postTitle);
     }
 
 
