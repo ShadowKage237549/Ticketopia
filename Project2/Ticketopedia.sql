@@ -588,7 +588,7 @@ INSERT INTO posts_title VALUES (
 INSERT INTO posts_title VALUES (
 2,
 'INFINITY WAR PT 2 HYPEEEEEE!$!@$!$@!$@!$@',
-2
+1
 );
 
 INSERT INTO posts_title VALUES (
@@ -606,7 +606,7 @@ INSERT INTO posts_title VALUES (
 INSERT INTO posts_title VALUES (
 5,
 'Venom was over hyped',
-1
+3
 );
 
 INSERT INTO posts_title VALUES (
@@ -618,7 +618,7 @@ INSERT INTO posts_title VALUES (
 INSERT INTO posts_title VALUES (
 7,
 'That Disturbed concert was a bust... they are getting old and should retire',
-3
+4
 );
 
 INSERT INTO posts_title VALUES (
@@ -650,7 +650,7 @@ SYSTIMESTAMP
 
 INSERT INTO posts VALUES (
 2,
-2,
+1,
 'johndoe@.yahoo.com',
 'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!',
 SYSTIMESTAMP
@@ -674,7 +674,7 @@ SYSTIMESTAMP
 
 INSERT INTO posts VALUES (
 5,
-1,
+3,
 'zprososki@prososki.net',
 'Took my nephew to Venom, he was completely baffled to see that Spiderman (his favorite hero) had an evil counterpart. The kid is now a venom fan spidy is out!!',
 SYSTIMESTAMP
