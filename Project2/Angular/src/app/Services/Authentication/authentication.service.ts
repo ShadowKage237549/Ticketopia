@@ -66,8 +66,6 @@ export class AuthenticationService {
             await delay(500)
             localStorage.setItem("displayName", this.customerinfo.displayName);
         })();
-
         console.log(this.customerinfo);
-
     }
 }
