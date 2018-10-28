@@ -643,3 +643,4 @@ COMMIT;
 
 SELECT * FROM customer_information;
 SELECT * FROM posts;
+SELECT * FROM posts_title;

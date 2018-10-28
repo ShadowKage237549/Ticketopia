@@ -9,7 +9,7 @@ public interface EventTypeDao {
 	//Create new eventType
 	public boolean createEventType(EventType eventType);
 	//Update an existing EventType
-	public boolean UpdateEventType(EventType eventType);
+	public boolean updateEventType(EventType eventType);
 	//Return a list of eventTypes
 	public List<EventType> getAllEventTypes();
 	//Remove an event type
