@@ -2,6 +2,7 @@ import { Router } from '@angular/router';
 import { CustomerInfo } from '../../Components/login/user/CustomerInfo';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { async } from '@angular/core/testing';
 
 async function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -61,7 +62,11 @@ export class AuthenticationService {
         let token = localStorage.getItem("token");
         console.log("calling method");
         this.http.get(this.url + "customerInfo.do?token=" + token).subscribe((data: CustomerInfo) => this.customerinfo = data);
-        localStorage.setItem("displayName", this.customerinfo.displayName);
+        (async () => {
+            await delay(500)
+            localStorage.setItem("displayName", this.customerinfo.displayName);
+        })();
+
         console.log(this.customerinfo);
 
     }
