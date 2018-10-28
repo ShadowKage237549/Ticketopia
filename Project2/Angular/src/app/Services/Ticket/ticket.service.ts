@@ -12,7 +12,7 @@ export class TicketService {
 
     constructor(private http: HttpClient, private auth: AuthenticationService) { }
     getTicketById(id: number) {
-        this.http.get(this.auth.url + "ticket.do")
+        this.http.get(this.auth.url + "ticket.do?id=" + id).subscribe((data: Ticket) => this.ticket = data);
     }
 
 

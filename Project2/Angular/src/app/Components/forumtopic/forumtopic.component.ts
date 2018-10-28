@@ -18,31 +18,37 @@ export class ForumtopicComponent implements OnInit {
 
     // tslint:disable-next-line:max-line-length
     constructor(private topicService: TopicService, private fps: ForumpostService, private fcs: ForumcommentsService, private ar: ActivatedRoute) { }
-    topicId: number;
-    topic: Topic;
+    topicId: number = null;
+    topic: Topic = null;
 
-    postTitles: PostTitle[];
+    postTitles: PostTitle[] = null;
     ngOnInit() {
         (async () => {
             this.topic = this.topicService.selectedTopic;
-            console.log(this.topic);
             if (this.topic != null) {
                 this.topicId = this.topic.id;
-            } else if (this.topic = this.topicService.selectedTopic) {
-
+                console.log(1);
             } else {
-                this.topicId = Number.parseInt(this.ar.snapshot.url[3].path, 10);
+                if (Number.parseInt(this.ar.snapshot.url[3].path) != null) {
+                    this.topicId = Number.parseInt(this.ar.snapshot.url[3].path, 10);
+                } else {
+                    this.topicId = Number.parseInt(this.ar.snapshot.url[2].path, 10);
+                }
+
                 this.topicService.getTopicById(this.topicId);
                 await delay(500);
                 this.topic = this.topicService.selectedTopic;
-                console.log(this.topic);
-
+                console.log(1);
             }
+            console.log(this.postTitles);
+            console.log(1);
             if (this.postTitles == null) {
+                console.log(1);
                 this.fps.getPostsById(this.topicId);
                 await delay(500);
                 this.postTitles = this.fps.postTitles;
                 console.log(this.postTitles);
+                console.log(1);
             }
         })();
     }
