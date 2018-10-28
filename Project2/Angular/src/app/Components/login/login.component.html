@@ -6,7 +6,8 @@
         <form class="form-inline">
             <input type="email" class="form-control mx-2" placeholder="email" [(ngModel)]="email" name="loginEmail">
             <input type="password" class="form-control mx-2" placeholder="password" [(ngModel)]="password" name="loginPassword">
-            <button type="submit" class="btn btn-info mx-2 px-5" (click)="logMeIn()" name="loginSubmit">Login</button>
+            <button type="submit" class="btn btn-info mx-2 px-5" (click)="logMeIn()" name="loginSubmit"
+                routerLinkActive=active routerLink="/Ticketopia/home">Login</button>
         </form>
         <hr>
     </div>
