@@ -11,52 +11,52 @@ import { RegisterComponent } from './Components/register/register/register.compo
 
 export const appRoutes: Routes = [
     {
-        path: 'Ticketopia/login',
+        path: 'login',
         component: LoginComponent
     },
     {
-        path: 'Ticketopia/register',
+        path: 'register',
         component: RegisterComponent
     },
     {
-        path: 'Ticketopia/store',
+        path: 'store',
         component: StoreComponent
     },
     {
-        path: 'Ticketopia/paymentinfo',
+        path: 'paymentinfo',
         component: PaymentinfoComponent
     },
     {
-        path: 'Ticketopia/store/ticket/:ticketId',
+        path: 'store/ticket/:ticketId',
         component: TicketComponent
     },
     {
-        path: 'Ticketopia/home/store',
+        path: 'home/store',
         component: StoreComponent
     },
     {
-        path: 'Ticketopia/forum',
+        path: 'forum',
         component: ForumComponent
     },
     {
-        path: 'Ticketopia/forum/:topic',
+        path: 'forum/:topic',
         component: ForumtopicComponent
     },
     {
-        path: 'Ticketopia/forum/:topic/:post',
+        path: 'forum/:topic/:post',
         component: ForumpostComponent
     },
     {
-        path: 'Ticketopia',
+        path: '',
         component: HomeComponent
     },
     {
-        path: 'Ticketopia/home',
+        path: 'home',
         component: HomeComponent
     },
     {
         path: '**',
-        redirectTo: 'Ticketopia/home',
+        redirectTo: 'home',
         pathMatch: 'full'
     }
 ];
