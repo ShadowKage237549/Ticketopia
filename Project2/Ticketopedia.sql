@@ -41,16 +41,18 @@ CREATE TABLE partners (
 
 INSERT INTO partners VALUES (
 1,
-'smokey music ltd',
-'smokey music ltd, has been working with various bands and private musicians to provide discount tickets.'
+'regression films ltd',
+'regression films aims to sell discounted tickets by directly working with movie producers.'
+
 );
 
 INSERT INTO partners VALUES (
 2,
-'regression films ltd',
-'regression films aims to sell discounted tickets by directly working with movie producers.'
+'smokey music ltd',
+'smokey music ltd, has been working with various bands and private musicians to provide discount tickets.'
 );
 
+--Create a Customer information table
 CREATE TABLE customer_information (
 	customer_email VARCHAR2(100),
      --pk
@@ -70,6 +72,9 @@ CREATE TABLE customer_information (
 		REFERENCES user_type ( role_id )
 );
 
+--Create 10 basic, 10 premium, and 4 admin accounts. Premiums have points, basic does not, admin can have anything. 
+
+--Premium users first because they should be top priority for having subscriptions. 
 INSERT INTO customer_information VALUES(
 'bob.bobson@mafia.net',
 'Mafia Master',
@@ -209,7 +214,8 @@ INSERT INTO customer_information VALUES (
 173584,
 'HanselandGrettle'
 );
---Basic users
+
+--Basic users - those who use our service but do not pay us money. 
 INSERT INTO customer_information VALUES (
 'srussel@russel.com',
 'Mr.Russell',
@@ -337,7 +343,7 @@ INSERT INTO customer_information VALUES (
 );
 
 
---admin below
+--admin users AKA the Developers. 
 
 INSERT INTO customer_information VALUES (
 'cbroadwell@admin.net',
@@ -395,7 +401,7 @@ INSERT INTO customer_information VALUES(
 'admin4'
 );
 
-
+--Createa  table for the event types that are held. 
 CREATE TABLE event_types (
 	event_type_id NUMBER(6),
      --pk
@@ -403,15 +409,19 @@ CREATE TABLE event_types (
 	CONSTRAINT event_types_pk PRIMARY KEY ( event_type_id )
 );
 
+--Insert information into the DB for event types
 INSERT INTO event_types VALUES (
 1,
 'Venom at Zmax'
 );
 
+
 INSERT INTO event_types VALUES (
 2,
 'Disturbed in Concert - Fargo Dome'
 );
+
+
 
 
 CREATE TABLE payment_info (
@@ -541,7 +551,7 @@ INSERT INTO topics VALUES (
 INSERT INTO topics VALUES (
 2,
 2,
-'Avengers: Infinity War Pt 2',
+'Avengers: Infinity War Pt 2 the movie',
 'Avengers: Infinity War 2'
 );
 
@@ -577,13 +587,13 @@ INSERT INTO posts_title VALUES (
 
 INSERT INTO posts_title VALUES (
 2,
-'INFINITY WAR PT 2 HYPEEEEEE!$!@$!$@!$@!$@',
+'Venom was Over hyped.',
 1
 );
 
 INSERT INTO posts_title VALUES (
 3,
-'The fire shooting out from the stage during the concert... made me almost pass out!',
+'INFINITY WAR 2 HYPE @#!@$@!$!@',
 2
 );
 
@@ -642,7 +652,7 @@ INSERT INTO posts VALUES (
 2,
 1,
 'johndoe@.yahoo.com',
-'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!',
+'Keeping things real, Venom is so much more fascinating than Spiderman. He looks better, and is overall just better.',
 SYSTIMESTAMP
 );
 
@@ -650,7 +660,7 @@ INSERT INTO posts VALUES (
 3,
 2,
 'gbriggs@briggs.com',
-'I got caught up in the moshpit during the Disturbed concert... I got knocked out and they had to stop the concert because of me... as an apology I got to meet the Band! It was so fun!',
+'I am so excited for Infinity War Pt 2. I have watched all of the Avengers movies and recently started watching all of the Marvel movies from start to finish. I LOVE CAPTAIN AMERICA!',
 SYSTIMESTAMP
 );
 
@@ -658,7 +668,7 @@ INSERT INTO posts VALUES (
 4,
 2,
 'srussel@russel.com',
-'I got to see Eminem in concert, Im such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!',
+'Infinity War was one of the best movies I have seen. I do not know if it can be trumped so I am remaining optimistic for Part 2 of it. #THOR',
 SYSTIMESTAMP
 );
 
@@ -666,7 +676,7 @@ INSERT INTO posts VALUES (
 5,
 3,
 'zprososki@prososki.net',
-'Took my nephew to Venom, he was completely baffled to see that Spiderman (his favorite hero) had an evil counterpart. The kid is now a venom fan spidy is out!!',
+'That conert was lit... for real!!!',
 SYSTIMESTAMP
 );
 
@@ -674,7 +684,7 @@ INSERT INTO posts VALUES (
 6,
 3,
 'cstrife@strifeforce.com',
-'I cannot wait for infinity war part 2 to come out. I came into some extra money after a job and am going to treat all of my friends to it.',
+'Disturbed... the gods of metal. Do not @ me.',
 SYSTIMESTAMP
 );
 
@@ -682,7 +692,7 @@ INSERT INTO posts VALUES (
 7,
 4,
 'zprososki@prososki.net',
-'Since the tooth fairy came, I am able to take my mommy and daddy out to a movie. They both really like Marvel so I am going to take them to the new infinity war when it comes out... is there a release date yet?',
+'Would I be okay wearing a hoodie that is too big for me to kind of mimic Eminem? I do not want someone thinking I am doing something unpleasant.',
 SYSTIMESTAMP
 );
 
@@ -690,7 +700,7 @@ INSERT INTO posts VALUES (
 8,
 4,
 'birdothegreat@bln.com',
-'Took my friend Phil after a rough week at work to see Venom since he wanted to see it. We both enjoyed it. He now cannot wait to get his Spiderman PS4 from home so he can play that new spiderman game... its all he talks about now',
+'Who wants to dress up like THE REAL SLIM SHADY with me and my crew tonight?!',
 SYSTIMESTAMP
 );
 
@@ -698,7 +708,7 @@ INSERT INTO posts VALUES (
 9,
 5,
 'tdawgy09@hotmail.com',
-'I have not been a fan of rap music but seeing as Eminem was coming to town I had to say i attended one of his concerts and all I can say is WOW - the dude knows how to put on a show. THANKS SLIM!',
+'Went to Venom. Kept an open mind. Ended up walking out halfway through it. Except for the CGI in the Movie, it did not meet my tatses.',
 SYSTIMESTAMP    
 );
 
@@ -706,7 +716,7 @@ INSERT INTO posts VALUES (
 10,
 5,
 'gbriggs@outlook.com',
-'The music at the Disturbed Concert was so incredibly loud I am glad I remembered to bring some ear plugs for myself... and others. I sold 20 packs of ear plugs for a profit of $3.50 each. THE BRIGGS STRIKES AGAIN!!!',
+'Well I went to see Venom. I sat through the entire movie and mostly enjoyed it however, I would have preferred a deeper story for him. Felt a bit weak.',
 SYSTIMESTAMP    
 );
 
@@ -714,7 +724,7 @@ INSERT INTO posts VALUES (
 11,
 6,
 'hamurai@hotmail.com',
-'I find Eminem to be one of the most offensive people ever. I could not stand the people who attended his concert or the performance itself. How do I go about getting a refund?',
+'IS it true that Spiderman died in Infinity war?? WILL HE BE BACK?!?!?!',
 SYSTIMESTAMP
 );
 
@@ -722,7 +732,7 @@ INSERT INTO posts VALUES (
 12,
 6,
 'rprososki@prososki.net',
-'Went to see Venom the other night. I honestly have never seen a Marvel movie or been too interested in super heroes / villains. I enjoyed the movie. It was full of action!',
+'Starlord, forreal?!',
 SYSTIMESTAMP    
 );
 
@@ -730,7 +740,7 @@ INSERT INTO posts VALUES (
 13,
 7,
 'gmiller@aol.com',
-'Stop supporting these Marvel films. You people need to realize that DC comics is where the true heroes and villains are. Batman vs. Joker is WAY more interesting than a bunch of hooligans vs some dude named Thanos. HA! PLEBS!',
+'I was so disappointed with Disturbed in person. David Draimen is losing his screamo voice.',
 SYSTIMESTAMP
 );
 
@@ -738,8 +748,7 @@ INSERT INTO posts VALUES (
 14,
 7,
 'cbroadwell@admin.net',
-'I went to see Eminem for the first time ever. Ended up having the opportunity to meet him and get a photograph. I was happy to find out that he is a not only a great person but also an amazing role model. People do not realize his
-music reflects some of his personal life.',
+'I am a huge fan of Disturbed but I truly feel like it is time they hang up their hats. They are legends in their own right but, the new music I have heard just is not what they are or who they were.',
 SYSTIMESTAMP
 );
 
@@ -747,7 +756,7 @@ INSERT INTO posts VALUES (
 15,
 8,
 'bslappey@admin.net',
-'VENOM === BEST MOVIE. Anyone who says otherwise is completely wrong and needs to go see it again to truly appreciate it!',
+'I do not like Rap. I do not know why I am even commenting on this forum about Eminem. I am very bored. It is 2:00 in the morning. Goodnight World.',
 SYSTIMESTAMP
 );
 
@@ -755,7 +764,7 @@ INSERT INTO posts VALUES (
 16,
 8,
 'twilson@gmail.com',
-'DISTURBED IS MY FAVORITE BAND! I CANNOT BELIEVE I WENT TO SEE THEM LIVE FOR THE FIRST TIME! I NEED TO GO TO MANY MORE CONCERTS! IT WAS AMAZINGGGGG!!!!!!! XD XD XD XD XD XD',
+'If you do not think Slim Shady / Eminem / B Rabbit / Marshall Mathers is the one true Rap God, you can get out the kitchen. YOU ARE WHACKED YO! XD XD XD XD XD XD',
 SYSTIMESTAMP
 );
 
