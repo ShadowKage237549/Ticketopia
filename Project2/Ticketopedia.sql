@@ -431,7 +431,7 @@ CREATE TABLE payment_info (
 
 INSERT INTO payment_info VALUES (
 'bob.bobson@mafia.net',
-0000555577777888,
+1000555577777888,
 000,
 01/99,
 '111 Killer Rd',
@@ -440,7 +440,6 @@ INSERT INTO payment_info VALUES (
 543876
 );
 
---Have 5 shots of rum and start making up CC numbers 
 
 CREATE TABLE tickets (
 	ticket_id NUMBER(6),
@@ -464,11 +463,11 @@ CREATE TABLE tickets (
 );
 
 INSERT INTO tickets VALUES (
-7,
+1,
 'Movie Ticket',
 1,
 99,
-'Back Row seating for Venom with beer, popcorn, and ices included',
+'Movie',
 '777 Zmax Blvd',
 'Reston',
 'Virginia',
@@ -479,11 +478,11 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-9,
+2,
 'Movie Ticket',
 1,
 700,
-'Hunger games 5 with Jennifer Lawrence as your date',
+'Movie',
 '921 HungerGames Lane',
 'Topeka',
 'Kansas',
@@ -494,11 +493,11 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-5,
+3,
 'Concert Ticket',
 2,
 1000,
-'Meet and Greet with dinner included with Members of Disturbed',
+'Concert',
 '1800 North University Drive',
 'Fargo',
 'North Dakota',
@@ -509,11 +508,11 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-8,
+4,
 'Concert Ticket',
 2,
 350,
-'Back stage passes to Eminem',
+'Concert',
 '888 Grover Street',
 'Los Angelos',
 'Rhode Island',
@@ -534,30 +533,30 @@ CREATE TABLE topics(
 );
 INSERT INTO topics VALUES (
 1,
-7,
+1,
 'Venom the Movie!',
-'Ticket admitting entrance to the movie Venom'
+'Venom'
 );
 
 INSERT INTO topics VALUES (
 2,
-9,
+2,
 'Avengers: Infinity War Pt 2',
-'Ticket for one person to watching Avengers: Infinity War 2'
+'Avengers: Infinity War 2'
 );
 
 INSERT INTO topics VALUES (
 3,
-5,
+3,
 'Disturbed live at Fargo Dome',
-'Back stage passes to meet Disturbed the band.'
+'Thoughts on Disturbed live'
 );
 
 INSERT INTO topics VALUES (
 4,
-8,
+4,
 'Eminem live in Detroit Michigan',
-'Meet and Greet with the Rap God himiself: Marshall Mathers'
+'Discussion on Eminem concert history'
 );
 
 
@@ -579,13 +578,13 @@ INSERT INTO posts_title VALUES (
 INSERT INTO posts_title VALUES (
 2,
 'INFINITY WAR PT 2 HYPEEEEEE!$!@$!$@!$@!$@',
-2
+1
 );
 
 INSERT INTO posts_title VALUES (
 3,
 'The fire shooting out from the stage during the concert... made me almost pass out!',
-3
+2
 );
 
 INSERT INTO posts_title VALUES (
@@ -594,49 +593,169 @@ INSERT INTO posts_title VALUES (
 2
 );
 
+INSERT INTO posts_title VALUES (
+5,
+'Venom was over hyped',
+3
+);
+
+INSERT INTO posts_title VALUES (
+6,
+'Avengers: Infinity War 2... will anyone who died previously return?',
+3
+);
+
+INSERT INTO posts_title VALUES (
+7,
+'That Disturbed concert was a bust... they are getting old and should retire',
+4
+);
+
+INSERT INTO posts_title VALUES (
+8,
+'Eminem - King or God of Rap?',
+4
+);
 
 CREATE TABLE posts (
 	post_id NUMBER(10),  --pk
-	ticket_id NUMBER(6),--fk
-	display_name VARCHAR2(20),--fk
+	post_title_id NUMBER(6),--fk
+	customer_email VARCHAR2(100),--fk
 	post_content VARCHAR2(500),
 	post_timestamp TIMESTAMP,
 	CONSTRAINT post_pk PRIMARY KEY ( post_id ),
-	CONSTRAINT post_topic_fk FOREIGN KEY ( ticket_id )
-		REFERENCES tickets ( ticket_id ),
-	CONSTRAINT post_user_fk FOREIGN KEY ( display_name )
-		REFERENCES customer_information ( display_name )
+	CONSTRAINT post_topic_fk FOREIGN KEY ( post_title_id )
+		REFERENCES posts_title ( post_title_id ),
+	CONSTRAINT post_user_fk FOREIGN KEY ( customer_email )
+		REFERENCES customer_information ( customer_email )
 );
 
 INSERT INTO posts VALUES (
 1,
-7,
-'TheDestiny',
+1,
+'destiny.a@gmail.com',
 'Venom was amazing! The way he transformed... his style, he is my FAVORITE VILLAIN!!! AHHH',
 SYSTIMESTAMP
 );
 
 INSERT INTO posts VALUES (
 2,
-9,
-'JDoe',
+1,
+'johndoe@.yahoo.com',
 'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!',
 SYSTIMESTAMP
 );
 
 INSERT INTO posts VALUES (
 3,
-5,
-'CatchinGretchen',
+2,
+'gbriggs@briggs.com',
 'I got caught up in the moshpit during the Disturbed concert... I got knocked out and they had to stop the concert because of me... as an apology I got to meet the Band! It was so fun!',
 SYSTIMESTAMP
 );
 
 INSERT INTO posts VALUES (
 4,
-8,
-'Mr.Russell',
+2,
+'srussel@russel.com',
 'I got to see Eminem in concert, Im such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+5,
+3,
+'zprososki@prososki.net',
+'Took my nephew to Venom, he was completely baffled to see that Spiderman (his favorite hero) had an evil counterpart. The kid is now a venom fan spidy is out!!',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+6,
+3,
+'cstrife@strifeforce.com',
+'I cannot wait for infinity war part 2 to come out. I came into some extra money after a job and am going to treat all of my friends to it.',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+7,
+4,
+'zprososki@prososki.net',
+'Since the tooth fairy came, I am able to take my mommy and daddy out to a movie. They both really like Marvel so I am going to take them to the new infinity war when it comes out... is there a release date yet?',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+8,
+4,
+'birdothegreat@bln.com',
+'Took my friend Phil after a rough week at work to see Venom since he wanted to see it. We both enjoyed it. He now cannot wait to get his Spiderman PS4 from home so he can play that new spiderman game... its all he talks about now',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+9,
+5,
+'tdawgy09@hotmail.com',
+'I have not been a fan of rap music but seeing as Eminem was coming to town I had to say i attended one of his concerts and all I can say is WOW - the dude knows how to put on a show. THANKS SLIM!',
+SYSTIMESTAMP    
+);
+
+INSERT INTO posts VALUES (
+10,
+5,
+'gbriggs@outlook.com',
+'The music at the Disturbed Concert was so incredibly loud I am glad I remembered to bring some ear plugs for myself... and others. I sold 20 packs of ear plugs for a profit of $3.50 each. THE BRIGGS STRIKES AGAIN!!!',
+SYSTIMESTAMP    
+);
+
+INSERT INTO posts VALUES (
+11,
+6,
+'hamurai@hotmail.com',
+'I find Eminem to be one of the most offensive people ever. I could not stand the people who attended his concert or the performance itself. How do I go about getting a refund?',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+12,
+6,
+'rprososki@prososki.net',
+'Went to see Venom the other night. I honestly have never seen a Marvel movie or been too interested in super heroes / villains. I enjoyed the movie. It was full of action!',
+SYSTIMESTAMP    
+);
+
+INSERT INTO posts VALUES (
+13,
+7,
+'gmiller@aol.com',
+'Stop supporting these Marvel films. You people need to realize that DC comics is where the true heroes and villains are. Batman vs. Joker is WAY more interesting than a bunch of hooligans vs some dude named Thanos. HA! PLEBS!',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+14,
+7,
+'cbroadwell@admin.net',
+'I went to see Eminem for the first time ever. Ended up having the opportunity to meet him and get a photograph. I was happy to find out that he is a not only a great person but also an amazing role model. People do not realize his
+music reflects some of his personal life.',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+15,
+8,
+'bslappey@admin.net',
+'VENOM === BEST MOVIE. Anyone who says otherwise is completely wrong and needs to go see it again to truly appreciate it!',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+16,
+8,
+'twilson@gmail.com',
+'DISTURBED IS MY FAVORITE BAND! I CANNOT BELIEVE I WENT TO SEE THEM LIVE FOR THE FIRST TIME! I NEED TO GO TO MANY MORE CONCERTS! IT WAS AMAZINGGGGG!!!!!!! XD XD XD XD XD XD',
 SYSTIMESTAMP
 );
 
