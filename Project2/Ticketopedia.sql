@@ -620,7 +620,7 @@ INSERT INTO posts_title VALUES (
 CREATE TABLE posts (
 	post_id NUMBER(10),  --pk
 	post_title_id NUMBER(6),--fk
-	customer_email VARCHAR2(20),--fk
+	customer_email VARCHAR2(100),--fk
 	post_content VARCHAR2(500),
 	post_timestamp TIMESTAMP,
 	CONSTRAINT post_pk PRIMARY KEY ( post_id ),
