@@ -12,6 +12,6 @@ export class ForumpostService {
 
     getPostsById(id: number) {
         this.http.get(this.auth.url + "postTitle.do?id=" + id).subscribe((data: PostTitle[]) => this.postTitles = data);
-        return this.postTitles;
     }
+
 }

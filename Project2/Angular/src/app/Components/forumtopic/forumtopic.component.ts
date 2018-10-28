@@ -1,4 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PostTitle } from './../forumpost/post/ForumPost';
 import { Topic } from './topic/topic';
 import { Component, OnInit } from '@angular/core';
@@ -17,14 +17,20 @@ export class ForumtopicComponent implements OnInit {
     // //ForumtopicComponent is the page which displays all posts within a given forum topic.
 
     // tslint:disable-next-line:max-line-length
-    constructor(private topicService: TopicService, private fps: ForumpostService, private fcs: ForumcommentsService) { }
-
+    constructor(private topicService: TopicService, private fps: ForumpostService, private fcs: ForumcommentsService, private ar: ActivatedRoute) { }
+    topicId: number;
     topic: Topic;
+
     postTitles: PostTitle[];
     ngOnInit() {
         (async () => {
             this.topic = this.topicService.selectedTopic;
-            this.fps.getPostsById(this.topic.id);
+            if (this.topic != null) {
+                this.topicId = this.topic.id;
+            } else {
+                this.topicId = Number.parseInt(this.ar.snapshot.url[2].path, 10);
+            }
+            this.fps.getPostsById(this.topicId);
             await delay(500);
             this.postTitles = this.fps.postTitles;
             console.log(this.postTitles);

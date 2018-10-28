@@ -1,10 +1,10 @@
 import { Post } from './comment/ForumComment';
 import { Component, OnInit } from '@angular/core';
-import { TopicService } from '../../Services/Forumtopic/topic.service';
 import { Topic } from '../forumtopic/topic/topic';
 import { ForumcommentsService } from '../../Services/ForumComments/forumcomments.service';
 import { PostTitle } from 'src/app/Components/forumpost/post/ForumPost';
-import { post } from 'selenium-webdriver/http';
+import { ActivatedRoute } from '@angular/router';
+import { ForumpostService } from '../../Services/ForumPost/forumpost.service';
 async function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -15,8 +15,9 @@ async function delay(ms: number) {
 })
 export class ForumpostComponent implements OnInit {
     topics: Topic[];
-    constructor(private fcs: ForumcommentsService) { }
-    postTitle: PostTitle;
+    constructor(private fcs: ForumcommentsService, private ar: ActivatedRoute, private fps: ForumpostService) { }
+    postTitle: PostTitle = null;
+    postTitleId: number;
     posts: Post[];
 
 
@@ -24,8 +25,16 @@ export class ForumpostComponent implements OnInit {
         (async () => {
             await delay(500);
             this.postTitle = this.fcs.postTitle;
+            if (this.postTitle != null) {
+                this.postTitleId = this.postTitle.id;
+            } else {
+                this.postTitleId = Number.parseInt(this.ar.snapshot.url[3].path, 10);
+                this.fps.getPostsById(Number.parseInt(this.ar.snapshot.url[2].path, 10));
+                await delay(500);
+                this.postTitle = this.fps.postTitles[0];
+            }
             console.log(this.postTitle);
-            this.fcs.getPostsByTitleId(this.postTitle.id);
+            this.fcs.getPostsByTitleId(this.postTitleId);
             await delay(500);
             this.posts = this.fcs.posts;
             console.log(this.posts);
