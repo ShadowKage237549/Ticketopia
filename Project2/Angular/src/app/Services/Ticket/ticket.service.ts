@@ -7,7 +7,6 @@ import { AuthenticationService } from '../Authentication/authentication.service'
     providedIn: 'root'
 })
 export class TicketService {
-    selectedStoreTicket: Ticket;
     tickets: Ticket[];
     ticket: Ticket;
 

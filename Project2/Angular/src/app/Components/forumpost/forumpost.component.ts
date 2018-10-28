@@ -1,4 +1,4 @@
-import { ForumPost } from './post/ForumPost';
+import { PostTitle } from './post/ForumPost';
 import { ForumComment } from './comment/ForumComment';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,11 +11,10 @@ export class ForumpostComponent implements OnInit {
 
     constructor() { }
     //ForumpostComponent is the page which displays the comments within a given forum post.
-    selectedPost: ForumPost = new ForumPost(1, "Post Title 1", "Post Content");
-    forumComments: ForumComment[] = [new ForumComment(2, "commentContent")];
-    postId: number = this.selectedPost.postId;
-    postContent: string = this.selectedPost.postContent;
-    postTitle: string = this.selectedPost.postTitle;
+    //selectedPost: PostTitle = new PostTitle(1, "Post Title 1");
+    //forumComments: ForumComment[] = [new ForumComment(2, "commentContent")];
+    //postId: number = this.selectedPost.postId;
+    //postTitle: string = this.selectedPost.postTitle;
 
     ngOnInit() {
 

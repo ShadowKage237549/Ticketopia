@@ -16,8 +16,8 @@ export class StoreComponent implements OnInit {
 
     selectStoreTicket(ticket: Ticket) {
         this.ticketService.ticket = ticket;
-        this.ticketService.selectedStoreTicket = ticket;
-        this.topicService.selectedTopic = this.topicService.getTopicById(ticket.ticketId);
+        localStorage.setItem("ticketId", ticket.ticketId.toString());
+
     }
 
     ngOnInit() {
