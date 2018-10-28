@@ -2,7 +2,7 @@ import { browser, by, element } from 'protractor';
 
 export class loginPage { //The login page has both login and register capabilities, can only be accessed when the user is logged out.
     public currentUri:string;
-    //Navigate to the correct url
+    //Navigate to the login url
     navigateTo() {
         return browser.get('/Ticketopia/login');
     }
