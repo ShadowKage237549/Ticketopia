@@ -33,12 +33,10 @@ export class AuthenticationService {
 
             (async () => {
                 // Do something before delay
-                console.log('before delay')
                 localStorage.setItem("token", token);
                 await delay(2000);
                 this.requestCustomerData();
                 // Do something after
-                console.log('after delay')
             })();
 
         }
@@ -60,14 +58,12 @@ export class AuthenticationService {
     }
     requestCustomerData() {
         let token = localStorage.getItem("token");
-        console.log("calling method");
         this.http.get(this.url + "customerInfo.do?token=" + token).subscribe((data: CustomerInfo) => this.customerinfo = data);
         (async () => {
             await delay(500)
             localStorage.setItem("displayName", this.customerinfo.displayName);
         })();
 
-        console.log(this.customerinfo);
 
     }
 }

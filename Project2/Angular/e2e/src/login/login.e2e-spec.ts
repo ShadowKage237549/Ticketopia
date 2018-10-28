@@ -1,10 +1,10 @@
-import { loginPage } from './login.po';
+import { LoginPage } from './login.po';
 
 describe('workspace-project App', () => {
-    let page: loginPage;
+    let page: LoginPage;
 
     beforeEach(() => {
-        page = new loginPage();
+        page = new LoginPage();
     });
 
     //Test the page header of the login page

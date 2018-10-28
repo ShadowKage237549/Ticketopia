@@ -1,6 +1,7 @@
 import { browser, by, element } from 'protractor';
+import { BROWSER_MODULE_PROVIDERS } from '@angular/platform-browser/src/browser';
 
-export class loginPage { //The login page has both login and register capabilities, can only be accessed when the user is logged out.
+export class LoginPage { //The login page has both login and register capabilities, can only be accessed when the user is logged out.
     public currentUri:string;
     //Navigate to the login url
     navigateTo() {
@@ -12,7 +13,6 @@ export class loginPage { //The login page has both login and register capabiliti
         return element(by.css("app-login h1")).getText();
     }
 
-    /* --------------- LOGIN INPUT --------------- */
     inputUsername(email: string) {
         element(by.name('loginEmail')).sendKeys(email);
     }
@@ -27,40 +27,9 @@ export class loginPage { //The login page has both login and register capabiliti
         browser.sleep(500);
         return browser.getCurrentUrl();
     }
-    /* --------------- REGISTER INPUT --------------- */
-    inputRegisterEmail(email: string) {
-        element(by.name('registerEmail')).sendKeys(email);
-    }
-    inputRegisterPassword(password: string) {
-        element(by.name('registerPassword')).sendKeys(password);
-    }
-    inputDName(displayName: string) {
-        element(by.name('registerDName')).sendKeys(displayName);
-    }
-    inputFName(firstName: string) {
-        element(by.name('registerFName')).sendKeys(firstName);
-    }
 
-    inputLName(lastName: string) {
-        element(by.name('registerLName')).sendKeys(lastName);
+    clickLogout(){
+        element(by.name('pizza')).click();
     }
-    inputAddress(address: string) {
-        element(by.name('registerAddress')).sendKeys(address);
-    }
-    inputCity(city: string) {
-        element(by.name('registerCity')).sendKeys(city);
-    }
-    inputState(state: string) {
-        element(by.name('registerState')).sendKeys(state);
-    }
-    inputZipcode(zipcode: string) {
-        element(by.name('registerZipcode')).sendKeys(zipcode);
-    }
-
-   //Click register preferably after inputting ALL of the information.
-   clickRegister(){
-    element(by.name('registerSubmit')).click();
-    browser.sleep(500);
-    return browser.getCurrentUrl();
-}
+   
 }

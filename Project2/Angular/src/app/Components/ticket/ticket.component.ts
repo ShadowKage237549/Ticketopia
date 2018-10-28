@@ -16,7 +16,7 @@ async function delay(ms: number) {
     styleUrls: ['./ticket.component.css']
 })
 export class TicketComponent implements OnInit {
-    ticket: Ticket;
+    ticket: Ticket = null;
     ticketId: number;
     topic: Topic;
     postTitles: PostTitle[];
@@ -25,20 +25,18 @@ export class TicketComponent implements OnInit {
     ngOnInit() {
 
         (async () => {
-            await delay(1000);
             this.ticket = this.ticketService.ticket;
             if (this.ticket != null) {
                 this.ticketId = this.ticket.ticketId;
             } else {
                 this.ticketId = Number.parseInt(this.ar.snapshot.url[3].path, 10);
                 this.ticketService.getTicketById(this.ticketId);
-                await delay(1000);
+                await delay(500);
                 this.ticket = this.ticketService.ticket;
-                console.log(this.ticket);
             }
 
             this.topicService.getTopicById(this.ticketId);
-            await delay(1000);
+            await delay(500);
             this.topic = this.topicService.selectedTopic;
             this.fps.getPostsById(this.ticketId);
             await delay(500);

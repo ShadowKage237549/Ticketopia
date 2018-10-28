@@ -25,7 +25,6 @@ export class StoreComponent implements OnInit {
             this.ticketService.getTickets();
             await delay(1500);
             this.tickets = this.ticketService.tickets;
-            console.log(this.tickets);
         })();
 
     }

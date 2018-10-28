@@ -1,16 +1,17 @@
-import { loginPage } from './login.po';
+import { RegisterPage } from './register.po';
+
 
 describe('workspace-project App', () => {
-    let page: loginPage;
+    let page: RegisterPage;
 
     beforeEach(() => {
-        page = new loginPage();
+        page = new RegisterPage();
     });
 
     //Test the page header of the login page
     it('should display the login page header', () => {
         page.navigateTo();
-        expect(page.getHeaderText()).toEqual('Login to Ticketopia');
+        expect(page.getHeaderText()).toEqual('Register to Ticketopia!');
     });
 
     //Input the username and password into the respective fields and click login

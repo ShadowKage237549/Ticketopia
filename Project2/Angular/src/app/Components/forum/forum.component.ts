@@ -26,7 +26,6 @@ export class ForumComponent implements OnInit {
             this.topicService.getTopics();
             await delay(500);
             this.topics = this.topicService.topics;
-            console.log(this.topics);
         })();
     }
 

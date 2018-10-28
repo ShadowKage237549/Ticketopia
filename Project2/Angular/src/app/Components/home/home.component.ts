@@ -16,9 +16,8 @@ export class HomeComponent implements OnInit {
     ngOnInit() {
         (async () => {
             this.homeService.getPartners();
-            await delay(1500);
+            await delay(500);
             this.partners = this.homeService.partners;
-            console.log(this.partners);
         })();
     }
 
