@@ -409,10 +409,6 @@ INSERT INTO event_types VALUES (
 );
 
 INSERT INTO event_types VALUES (
-2
-);
-
-INSERT INTO event_types VALUES (
 2,
 'Disturbed in Concert - Fargo Dome'
 );
