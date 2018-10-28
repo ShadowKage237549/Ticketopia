@@ -13,8 +13,6 @@ import javax.persistence.Table;
 public class CustomerInfo {
 	@Id //Marks as a primary key
 	@Column(name="customer_email")
-	@SequenceGenerator(sequenceName="ci_seq", name="ci_seq")
-	@GeneratedValue(generator="ci_seq", strategy=GenerationType.SEQUENCE)
 	private String userEmail;
 	
 	@Column(name="display_name")

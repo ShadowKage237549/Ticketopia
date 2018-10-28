@@ -27,7 +27,7 @@ public class UpdateService {
 	private final static Logger logger = Logger.getLogger(UpdateService.class);
 	
 	// creates a new customer object to replace an old one with
-	public boolean updateCustomer(String oldEmail, String newEmail, String displayName, String userFName,
+	public static boolean updateCustomer(String oldEmail, String newEmail, String displayName, String userFName,
 			String userLName, Integer accumulatedPoints, Integer role, String userAddress, String userCity,
 			String userState, Integer userZip, String password, Double price, boolean lessPoints,
 			boolean morePoints) {
@@ -61,14 +61,14 @@ public class UpdateService {
 	}
 	
 	// subtracts points from a user
-	public Integer subtractPoints(Integer points, Integer accumulatedPoints) {
+	public static Integer subtractPoints(Integer points, Integer accumulatedPoints) {
 		logger.info("subtractPoints called");
 		Integer newPoints = accumulatedPoints - points;
 		return newPoints;
 	}
 	
 	// adds points to a user, amount based on whether they're basic or premium
-	public Integer addPoints(Integer role, Double price, Integer accumulatedPoints) {
+	public static Integer addPoints(Integer role, Double price, Integer accumulatedPoints) {
 		logger.info("addPoints called");
 		Integer points = accumulatedPoints;
 		if (role == 1) {
@@ -80,7 +80,7 @@ public class UpdateService {
 	}
 	
 	//creates payment object to update existing with
-	public Boolean updatePayment(CustomerInfo customer, Long cardNumber, 
+	public static Boolean updatePayment(CustomerInfo customer, Long cardNumber, 
 							Integer securityCode, String expirationDate, String billingAddress, 
 							String billingCity, String billingState, Integer billingZip) {
 		logger.info("updatePayment called");
@@ -104,7 +104,7 @@ public class UpdateService {
 	}
 	
 	//creates post object to update existing with
-	public boolean updatePost(Integer postId, PostTitle postTitle, String postContent,
+	public static boolean updatePost(Integer postId, PostTitle postTitle, String postContent,
 			CustomerInfo displayName, String postTimeStamp) {
 		logger.info("updatePost called");
 		
@@ -124,7 +124,7 @@ public class UpdateService {
 	}
 	
 	//updates a topic
-	public boolean updateTopic(Integer id, Ticket ticketId, String topicName, String topicDescription) {
+	public static boolean updateTopic(Integer id, Ticket ticketId, String topicName, String topicDescription) {
 		logger.info("updateTopic called");
 		
 		// creates objects
@@ -142,7 +142,7 @@ public class UpdateService {
 	}
 	
 	//creates ticket object to update existing with
-	public boolean updateTicket(Integer ticketId, String ticketType, EventType eventType, Double ticketPrice,
+	public static boolean updateTicket(Integer ticketId, String ticketType, EventType eventType, Double ticketPrice,
 			String eventDescription, String eventAddress, String eventCity, String eventState,
 			Integer eventZip, String seat, Partner partner, boolean free) {
 		logger.info("updateTicket called");
@@ -170,7 +170,7 @@ public class UpdateService {
 	}
 	
 	//creates post title object to update existing with
-	public boolean updatePostTitle(Integer id, Topic topic, String newTitle) {
+	public static boolean updatePostTitle(Integer id, Topic topic, String newTitle) {
 		logger.info("updatePostTitle called");
 		
 		// creates objects
