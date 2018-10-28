@@ -14,8 +14,8 @@ import { ForumtopicComponent } from './Components/forumtopic/forumtopic.componen
 import { ForumpostComponent } from './Components/forumpost/forumpost.component';
 import { TicketComponent } from './Components/ticket/ticket.component';
 import { PaymentinfoComponent } from './Components/paymentinfo/paymentinfo.component';
-import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './Components/register/register/register.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
