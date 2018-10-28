@@ -10,14 +10,19 @@ import { async } from '@angular/core/testing';
 export class NavbarComponent implements OnInit {
 
 
-    displayName = localStorage.getItem("displayName");
+    displayName = "";
     constructor(private authService: AuthenticationService) { }
 
     ngOnInit() {
     }
 
     isNotNull() {
-        return this.authService.isNotNull(localStorage.getItem("token"));
+        if (this.authService.isNotNull(localStorage.getItem("token"))) {
+            this.displayName = localStorage.getItem("displayName");
+            return true;
+        }
+
+        return false;
     }
     logout() {
         this.authService.logout();
