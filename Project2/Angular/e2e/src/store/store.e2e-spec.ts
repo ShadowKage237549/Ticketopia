@@ -12,7 +12,7 @@ describe('project-workspace App', () => {
     });
 
     it('should have tickets of an amount greater than zero.', () => {
-        expect(page.getNumberOfTickets()).toBeGreaterThan(-1); // Zero index based
+        expect(page.getNumberOfTickets()).toBeGreaterThan(1); // There are two elements which are not part of the number of tickets in the DIV. returned value is 6 if there are 4 tickets
     });
 
 
