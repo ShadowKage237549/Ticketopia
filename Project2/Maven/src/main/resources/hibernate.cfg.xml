@@ -19,7 +19,7 @@
 		</property>
 
 		<property name="hibernate.connection.url">
-			jdbc:oracle:thin:@system.cgtesvcgs8pi.us-east-2.rds.amazonaws.com:1521:xe
+			jdbc:oracle:thin:@system.cgtesvcgs8pi.us-east-2.rds.amazonaws.com:1521:orcl
 		</property>
 
 		<property name="hibernate.connection.username">
