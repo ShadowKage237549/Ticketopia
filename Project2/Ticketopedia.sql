@@ -12,14 +12,13 @@ DROP TABLE partners CASCADE CONSTRAINTS;
 DROP TABLE topics CASCADE CONSTRAINTS;
 DROP TABLE posts_title CASCADE CONSTRAINTS;
 
---Create tables needed for the DB. 
+
 CREATE TABLE user_type (
 	role_id NUMBER(6),
      --pk
 	role_name VARCHAR2(100),
 	CONSTRAINT role_id_pk PRIMARY KEY ( role_id )
 );
---Insert types of users: 1, basic, 2, premium, 3, Admins (Devs)
 INSERT INTO user_type VALUES (
 	1,
 	'basic'
@@ -32,8 +31,6 @@ INSERT INTO user_type VALUES (
 	3,
 	'admin'
 );
-
---Partner tables - our fictional partners we work with to sell tickets to events. 
 CREATE TABLE partners (
 	partner_id NUMBER(6),
      --pk
@@ -42,17 +39,17 @@ CREATE TABLE partners (
 	CONSTRAINT partner_pk PRIMARY KEY ( partner_id )
 );
 
---Insert data into partner table 
 INSERT INTO partners VALUES (
 1,
-'smokey music ltd',
-'smokey music ltd, has been working with various bands and private musicians to provide discount tickets.'
+'regression films ltd',
+'regression films aims to sell discounted tickets by directly working with movie producers.'
+
 );
 
 INSERT INTO partners VALUES (
 2,
-'regression films ltd',
-'regression films aims to sell discounted tickets by directly working with movie producers.'
+'smokey music ltd',
+'smokey music ltd, has been working with various bands and private musicians to provide discount tickets.'
 );
 
 --Create a Customer information table
@@ -609,7 +606,7 @@ INSERT INTO posts_title VALUES (
 INSERT INTO posts_title VALUES (
 5,
 'Venom was over hyped',
-3
+1
 );
 
 INSERT INTO posts_title VALUES (
@@ -621,7 +618,7 @@ INSERT INTO posts_title VALUES (
 INSERT INTO posts_title VALUES (
 7,
 'That Disturbed concert was a bust... they are getting old and should retire',
-4
+3
 );
 
 INSERT INTO posts_title VALUES (
@@ -677,7 +674,7 @@ SYSTIMESTAMP
 
 INSERT INTO posts VALUES (
 5,
-3,
+1,
 'zprososki@prososki.net',
 'Took my nephew to Venom, he was completely baffled to see that Spiderman (his favorite hero) had an evil counterpart. The kid is now a venom fan spidy is out!!',
 SYSTIMESTAMP
