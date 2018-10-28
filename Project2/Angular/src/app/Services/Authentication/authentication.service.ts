@@ -13,8 +13,7 @@ async function delay(ms: number) {
 
 export class AuthenticationService {
 
-    public url: string = "http://localhost:8085/Ticketopia/";
-    password: string = "1";
+    public url: string = "http://18.222.219.232:8085/Ticketopia/";
     customerinfo: CustomerInfo = null;
     constructor(private http: HttpClient, private router: Router) { }
 
