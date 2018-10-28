@@ -27,6 +27,7 @@ public class TicketDaoImpl implements TicketDao {
 			session = HibernateUtil.getSession();
 			tickets = (List<Ticket>)session.createQuery("FROM Ticket").list();
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -50,6 +51,7 @@ public class TicketDaoImpl implements TicketDao {
 			id = (Integer)session.save(ticket);
 			tx.commit();
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -76,6 +78,7 @@ public class TicketDaoImpl implements TicketDao {
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -103,6 +106,7 @@ public class TicketDaoImpl implements TicketDao {
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {

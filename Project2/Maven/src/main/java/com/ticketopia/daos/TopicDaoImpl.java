@@ -28,6 +28,7 @@ public class TopicDaoImpl implements TopicDao{
 			session = HibernateUtil.getSession();
 			topics = (List<Topic>)session.createQuery("FROM Topic").list();
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -48,6 +49,7 @@ public class TopicDaoImpl implements TopicDao{
 			session = HibernateUtil.getSession();
 			topic = (Topic)session.get(Topic.class, id);
 		}catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		}finally {
 			session.close();
@@ -71,6 +73,7 @@ public class TopicDaoImpl implements TopicDao{
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -95,6 +98,7 @@ public class TopicDaoImpl implements TopicDao{
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -122,6 +126,7 @@ public class TopicDaoImpl implements TopicDao{
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {

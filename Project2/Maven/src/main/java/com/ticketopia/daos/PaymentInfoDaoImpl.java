@@ -29,6 +29,7 @@ public class PaymentInfoDaoImpl implements PaymentInfoDao{
 			tx.commit();
 			return true;
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -57,6 +58,7 @@ public class PaymentInfoDaoImpl implements PaymentInfoDao{
 			tx.commit();
 			return true;
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -83,6 +85,7 @@ public class PaymentInfoDaoImpl implements PaymentInfoDao{
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -104,6 +107,7 @@ public class PaymentInfoDaoImpl implements PaymentInfoDao{
 			session = HibernateUtil.getSession();
 			payments = (List<PaymentInfo>)session.createQuery("FROM PaymentInfo").list();
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		} finally {
 			session.close();

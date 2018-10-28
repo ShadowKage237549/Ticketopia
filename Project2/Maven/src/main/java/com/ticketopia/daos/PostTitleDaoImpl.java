@@ -29,6 +29,7 @@ public class PostTitleDaoImpl implements PostTitleDao {
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -50,6 +51,7 @@ public class PostTitleDaoImpl implements PostTitleDao {
 			session = HibernateUtil.getSession();
 			postTitles = (List<PostTitle>)session.createQuery("FROM PostTitle").list();
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -74,6 +76,7 @@ public class PostTitleDaoImpl implements PostTitleDao {
 			session.merge(pt);
 			return true;
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		} finally {
 			session.close();

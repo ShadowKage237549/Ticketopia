@@ -29,6 +29,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			session = HibernateUtil.getSession();
 			customer = (CustomerInfo)session.get(CustomerInfo.class, email);
 		}catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		}finally {
 			session.close();
@@ -52,6 +53,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			tx.commit();
 			return true;
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -80,6 +82,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			tx.commit();
 			return true;
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -100,6 +103,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			session = HibernateUtil.getSession();
 			customers = (List<CustomerInfo>)session.createQuery("FROM CustomerInfo").list();
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -125,6 +129,7 @@ public class CustomerInfoDaoImpl implements CustomerInfoDao {
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {

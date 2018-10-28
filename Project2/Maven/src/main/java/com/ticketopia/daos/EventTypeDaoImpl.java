@@ -29,6 +29,7 @@ public class EventTypeDaoImpl implements EventTypeDao {
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -56,6 +57,7 @@ public class EventTypeDaoImpl implements EventTypeDao {
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -77,6 +79,7 @@ public class EventTypeDaoImpl implements EventTypeDao {
 			session = HibernateUtil.getSession();
 			eventTypes = (List<EventType>)session.createQuery("FROM EventType").list();
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -100,6 +103,7 @@ public class EventTypeDaoImpl implements EventTypeDao {
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
