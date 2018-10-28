@@ -160,4 +160,8 @@
     <servlet-name>TicketsServlet</servlet-name>
     <url-pattern>/TicketsServlet</url-pattern>
   </servlet-mapping>
+  <error-page>
+	<error-code>404</error-code>
+	<location>/Ticketopia/index.html</location>
+</error-page>
 </web-app>
