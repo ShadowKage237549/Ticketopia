@@ -45,12 +45,13 @@
     <p>Something went wrong please refresh</p>
 </ng-template>
 <div class="row mx-3 pt-5">
-    <div class="col-12">
+    <app-forumtopic></app-forumtopic>
+    <!-- <div class="col-12">
         {{topic.topicName}}
     </div>
     <div class="col-12" *ngFor="let postTitle of postTitles">
         <a class="row mx-3 forum rounded" routerLinkActive="active" routerLink="/Ticketopia/forum/{{postTitle.topicId}}/{{postTitle.id}}">
             <p class="col-12">{{postTitle.postTitle}}</p>
         </a>
-    </div>
+    </div> -->
 </div>

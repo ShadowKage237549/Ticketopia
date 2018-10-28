@@ -25,15 +25,25 @@ export class ForumtopicComponent implements OnInit {
     ngOnInit() {
         (async () => {
             this.topic = this.topicService.selectedTopic;
+            console.log(this.topic);
             if (this.topic != null) {
                 this.topicId = this.topic.id;
+            } else if (this.topic = this.topicService.selectedTopic) {
+
             } else {
-                this.topicId = Number.parseInt(this.ar.snapshot.url[2].path, 10);
+                this.topicId = Number.parseInt(this.ar.snapshot.url[3].path, 10);
+                this.topicService.getTopicById(this.topicId);
+                await delay(500);
+                this.topic = this.topicService.selectedTopic;
+                console.log(this.topic);
+
             }
-            this.fps.getPostsById(this.topicId);
-            await delay(500);
-            this.postTitles = this.fps.postTitles;
-            console.log(this.postTitles);
+            if (this.postTitles == null) {
+                this.fps.getPostsById(this.topicId);
+                await delay(500);
+                this.postTitles = this.fps.postTitles;
+                console.log(this.postTitles);
+            }
         })();
     }
 
