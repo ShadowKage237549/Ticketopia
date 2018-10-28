@@ -26,13 +26,11 @@ export class TicketComponent implements OnInit {
             this.ticket = this.ticketService.ticket;
             console.log(this.ticket);
             this.ticketId = Number.parseInt(localStorage.getItem("ticketId"), 10);
-            console.log(this.ticketId)
-            this.topic = this.topicService.getTopicById(this.ticketId);
-
-            await delay(1500); console.log(this.topic);
+            this.topicService.getTopicById(this.ticketId);
+            await delay(1000); console.log(this.topic);
+            this.topic = this.topicService.selectedTopic;
             this.postTitles = this.fps.getPostsById(this.ticketId);
-            console.log(this.postTitles);
-            await delay(1500);
+            await delay(1000);
         })();
     }
 
