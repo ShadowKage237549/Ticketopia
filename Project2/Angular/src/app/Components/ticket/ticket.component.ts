@@ -5,6 +5,8 @@ import { TopicService } from '../../Services/Forumtopic/topic.service';
 import { Topic } from '../forumtopic/topic/topic';
 import { PostTitle } from '../forumpost/post/ForumPost';
 import { ForumpostService } from '../../Services/ForumPost/forumpost.service';
+import { ActivatedRoute } from '@angular/router';
+import { tick } from '@angular/core/testing';
 async function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -18,16 +20,25 @@ export class TicketComponent implements OnInit {
     ticketId: number;
     topic: Topic;
     postTitles: PostTitle[];
-    constructor(private ticketService: TicketService, private topicService: TopicService, private fps: ForumpostService) { }
+    constructor(private ticketService: TicketService, private topicService: TopicService, private fps: ForumpostService, private ar: ActivatedRoute) { }
 
     ngOnInit() {
 
         (async () => {
+            await delay(1000);
             this.ticket = this.ticketService.ticket;
-            console.log(this.ticket);
-            this.ticketId = Number.parseInt(localStorage.getItem("ticketId"), 10);
+            if (this.ticket != null) {
+                this.ticketId = this.ticket.ticketId;
+            } else {
+                this.ticketId = Number.parseInt(this.ar.snapshot.url[3].path, 10);
+                this.ticketService.getTicketById(this.ticketId);
+                await delay(1000);
+                this.ticket = this.ticketService.ticket;
+                console.log(this.ticket);
+            }
+
             this.topicService.getTopicById(this.ticketId);
-            await delay(1000); console.log(this.topic);
+            await delay(1000);
             this.topic = this.topicService.selectedTopic;
             this.fps.getPostsById(this.ticketId);
             await delay(500);

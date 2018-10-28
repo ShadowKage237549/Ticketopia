@@ -56,6 +56,10 @@ public class DispatcherServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("/TicketServlet");
 			rd.forward(request, response);
 			break;
+		case "tickets":
+			rd = request.getRequestDispatcher("/TicketsServlet");
+			rd.forward(request, response);
+			break;
 		case "partner":
 			rd = request.getRequestDispatcher("/PartnerServlet");
 			rd.forward(request, response);

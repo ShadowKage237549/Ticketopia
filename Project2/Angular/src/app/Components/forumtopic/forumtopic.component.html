@@ -1,3 +1,7 @@
+<div class="col-12 mx-3">
+    <h6>{{topic.topicName}}</h6>
+</div>
+
 <div class="col-12 mx-3" *ngFor="let postTitle of postTitles">
     <a class="row mx-3 forum rounded" routerLinkActive="active" (click)="storePostTitle(postTitle)" routerLink="/Ticketopia/forum/{{postTitle.topicId}}/{{postTitle.id}}">
         <p class="col-12">{{postTitle.postTitle}}</p>

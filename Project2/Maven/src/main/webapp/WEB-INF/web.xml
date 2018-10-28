@@ -150,4 +150,14 @@
     <servlet-name>PostsServlet</servlet-name>
     <url-pattern>/PostsServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TicketsServlet</display-name>
+    <servlet-name>TicketsServlet</servlet-name>
+    <servlet-class>com.ticketopia.servlets.TicketsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TicketsServlet</servlet-name>
+    <url-pattern>/TicketsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>
