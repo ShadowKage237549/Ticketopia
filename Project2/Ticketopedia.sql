@@ -409,6 +409,10 @@ INSERT INTO event_types VALUES (
 );
 
 INSERT INTO event_types VALUES (
+2
+);
+
+INSERT INTO event_types VALUES (
 2,
 'Disturbed in Concert - Fargo Dome'
 );
@@ -463,7 +467,7 @@ CREATE TABLE tickets (
 );
 
 INSERT INTO tickets VALUES (
-7,
+1,
 'Movie Ticket',
 1,
 99,
@@ -478,7 +482,7 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-9,
+2,
 'Movie Ticket',
 1,
 700,
@@ -493,7 +497,7 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-5,
+3,
 'Concert Ticket',
 2,
 1000,
@@ -508,7 +512,7 @@ INSERT INTO tickets VALUES (
 );
 
 INSERT INTO tickets VALUES (
-8,
+4,
 'Concert Ticket',
 2,
 350,
@@ -533,28 +537,28 @@ CREATE TABLE topics(
 );
 INSERT INTO topics VALUES (
 1,
-7,
+1,
 'Venom the Movie!',
 'Venom'
 );
 
 INSERT INTO topics VALUES (
 2,
-9,
+2,
 'Avengers: Infinity War Pt 2',
 'Avengers: Infinity War 2'
 );
 
 INSERT INTO topics VALUES (
 3,
-5,
+3,
 'Disturbed live at Fargo Dome',
 'Thoughts on Disturbed live'
 );
 
 INSERT INTO topics VALUES (
 4,
-8,
+4,
 'Eminem live in Detroit Michigan',
 'Discussion on Eminem concert history'
 );
@@ -584,7 +588,7 @@ INSERT INTO posts_title VALUES (
 INSERT INTO posts_title VALUES (
 3,
 'The fire shooting out from the stage during the concert... made me almost pass out!',
-3
+2
 );
 
 INSERT INTO posts_title VALUES (
@@ -593,6 +597,29 @@ INSERT INTO posts_title VALUES (
 2
 );
 
+INSERT INTO posts_title VALUES (
+5,
+'Venom was over hyped',
+1
+);
+
+INSERT INTO posts_title VALUES (
+6,
+'Avengers: Infinity War 2... will anyone who died previously return?',
+1
+);
+
+INSERT INTO posts_title VALUES (
+7,
+'That Disturbed concert was a bust... they are getting old and should retire',
+2
+);
+
+INSERT INTO posts_title VALUES (
+8,
+'Eminem - King or God of Rap?',
+2
+);
 
 CREATE TABLE posts (
 	post_id NUMBER(10),  --pk
@@ -636,6 +663,103 @@ INSERT INTO posts VALUES (
 2,
 'Mr.Russell',
 'I got to see Eminem in concert, Im such a fan of rap and his style. It was fantastic to see the master of the dictionary in person!',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+5,
+1,
+'Jjboombox',
+'Took my nephew to Venom, he was completely baffled to see that Spiderman (his favorite hero) had an evil counterpart. The kid is now a venom fan spidy is out!!',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+6,
+1,
+'Ex-SOLDIER',
+'I cannot wait for infinity war part 2 to come out. I came into some extra money after a job and am going to treat all of my friends to it.',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+7,
+1,
+'PrincessZ',
+'Since the tooth fairy came, I am able to take my mommy and daddy out to a movie. They both really like Marvel so I am going to take them to the new infinity war when it comes out... is there a release date yet?',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+8,
+1,
+'Birdo',
+'Took my friend Phil after a rough week at work to see Venom since he wanted to see it. We both enjoyed it. He now cannot wait to get his Spiderman PS4 from home so he can play that new spiderman game... its all he talks about now',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+9,
+2,
+'Travalanche',
+'I have not been a fan of rap music but seeing as Eminem was coming to town I had to say i attended one of his concerts and all I can say is WOW - the dude knows how to put on a show. THANKS SLIM!',
+SYSTIMESTAMP    
+);
+
+INSERT INTO posts VALUES (
+10,
+2,
+'General Briggs',
+'The music at the Disturbed Concert was so incredibly loud I am glad I remembered to bring some ear plugs for myself... and others. I sold 20 packs of ear plugs for a profit of $3.50 each. THE BRIGGS STRIKES AGAIN!!!',
+SYSTIMESTAMP    
+);
+
+INSERT INTO posts VALUES (
+11,
+2,
+'Hamurai',
+'I find Eminem to be one of the most offensive people ever. I could not stand the people who attended his concert or the performance itself. How do I go about getting a refund?',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+12,
+1,
+'PrososkiR',
+'Went to see Venom the other night. I honestly have never seen a Marvel movie or been too interested in super heroes / villains. I enjoyed the movie. It was full of action!',
+SYSTIMESTAMP    
+);
+
+INSERT INTO posts VALUES (
+13,
+1,
+'Glenninator',
+'Stop supporting these Marvel films. You people need to realize that DC comics is where the true heroes and villains are. Batman vs. Joker is WAY more interesting than a bunch of hooligans vs some dude named Thanos. HA! PLEBS!',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+14,
+2,
+'PPrososki',
+'I went to see Eminem for the first time ever. Ended up having the opportunity to meet him and get a photograph. I was happy to find out that he is a not only a great person but also an amazing role model. People do not realize his
+music reflects some of his personal life.',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+15,
+1,
+'BSlappey',
+'VENOM === BEST MOVIE. Anyone who says otherwise is completely wrong and needs to go see it again to truly appreciate it!',
+SYSTIMESTAMP
+);
+
+INSERT INTO posts VALUES (
+16,
+2,
+'TheWilsonator',
+'DISTURBED IS MY FAVORITE BAND! I CANNOT BELIEVE I WENT TO SEE THEM LIVE FOR THE FIRST TIME! I NEED TO GO TO MANY MORE CONCERTS! IT WAS AMAZINGGGGG!!!!!!! XD XD XD XD XD XD',
 SYSTIMESTAMP
 );
 
