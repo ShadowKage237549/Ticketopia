@@ -2,6 +2,7 @@ package com.ticketopia.daos;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -11,12 +12,18 @@ import com.ticketopia.beans.Partner;
 import com.ticketopia.util.HibernateUtil;
 
 public class PartnerDaoImpl implements PartnerDao {
+	private final static Logger logger = Logger.getLogger(PartnerDaoImpl.class);
+	
+	// Creates a new partner object
 	@Override
 	public boolean insertNewPartner(Partner partner) {
-		Session session = HibernateUtil.getSession();
+		logger.info("insertNewPartner called");
+		Session session = null;
 		Transaction tx = null;
 		
 		try {
+			logger.info("About to hit the db");
+			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
 			session.save(partner);
 			tx.commit();
@@ -27,16 +34,22 @@ public class PartnerDaoImpl implements PartnerDao {
 		} finally {
 			session.close();
 		}
+		logger.info("Returning false");
 		return false;
 	}
 	
+	// Removes a partner
 	@Override
 	public boolean removePartnerById(Partner partner) {
-		Session session = HibernateUtil.getSession();
+		logger.info("removePartner called");
+		Session session = null;
 		Transaction tx = null;
 		
 		try {
+			logger.info("About to hit db");
+			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
+			logger.info("Getting partner object");
 			Partner p = (Partner) session.get(Partner.class, partner.getPartnerId());
 			session.delete(p);
 			tx.commit();
@@ -47,17 +60,26 @@ public class PartnerDaoImpl implements PartnerDao {
 		} finally {
 			session.close();
 		}
+		logger.info("Returning false");
 		return false;
 	}
 	
+	// updates a partner object
 	@Override
 	public boolean updatePartner(Partner partner) {
-		Session session = HibernateUtil.getSession();
+		logger.info("updatePartner called");
+		Session session = null;
 		Transaction tx = null;
+		Partner p = null;
 		
 		try {
+			logger.info("About to hit db");
+			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.update(partner);
+			logger.info("Getting partner object");
+			p = (Partner) session.get(Partner.class, partner.getPartnerId());
+			p = partner;
+			session.merge(p);
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
@@ -66,17 +88,22 @@ public class PartnerDaoImpl implements PartnerDao {
 		} finally {
 			session.close();
 		}
+		logger.info("Returning false");
 		return false;
 	}
 	
+	// Returns a list of all partners
 	@Override
 	public List<Partner> getAllPartner() {
-		Session session = HibernateUtil.getSession();
+		logger.info("getAllPartner called");
+		Session session = null;
 		List<Partner> partners = null;
 		String hql;
 		Query query;
 		
 		try {
+			logger.info("About to hit db");
+			session = HibernateUtil.getSession();
 			hql = "FROM Partner";
 			query = session.createQuery(hql);
 			partners = query.list();
@@ -85,7 +112,7 @@ public class PartnerDaoImpl implements PartnerDao {
 		} finally {
 			session.close();
 		}
-		System.out.println(partners);
+		logger.info("Returning partners");
 		return partners;
 	}
 }

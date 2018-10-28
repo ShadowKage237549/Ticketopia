@@ -20,9 +20,12 @@ public class TicketsServiceTest {
 	private static EventType eventType1 = new EventType(1, "concert");
 	private static EventType eventType2 = new EventType(2, "movie");
 	private static EventType eventType3 = new EventType(3, "festival");
-	private static Partner partner1 = new Partner(1, "Napalm Blast", "desc");
-	private static Partner partner2 = new Partner(2, "AMC", "desc");
-	private static Partner partner3 = new Partner(3, "Nuclear Records", "desc");
+	private static Partner partner1 = new Partner(1, 
+			"smokey music ltd, has been working with various bands and private musicians to provide discount tickets.",
+			"smokey music ltd");
+	private static Partner partner2 = new Partner(2, 
+			"regression films aims to sell discounted tickets by directly working with movie producers.",
+			"regression films ltd");
 	private static Ticket ticket1 = new Ticket(1, "backstage", eventType1,
 			99.99, "Amon Amarth", "1234 Concert Ln", "Concert City", "Concert State", 67890,
 			"pit", partner1, false);
@@ -140,10 +143,4 @@ public class TicketsServiceTest {
 		testTickets.add(ticket2);
 		assertEquals(TicketsService.getTicketByPartner(tickets, partner2), testTickets);
 	}
-	
-	@Test
-	public void testGetTicketByPartner3() {
-		assertEquals(TicketsService.getTicketByPartner(tickets, partner3), testTickets);
-	}
-
 }

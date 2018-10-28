@@ -3,6 +3,8 @@ package com.ticketopia.services;
 import static org.junit.Assert.fail;
 import static org.testng.Assert.assertTrue;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,10 +49,10 @@ public class UpdateServiceTest {
 			"Reston", "Virginia", 869434, "Z-1", partner, false);
 	private static Topic topic = new Topic(1, ticket, "Venom the Movie!", 
 			"Ticket admitting entrance to the movie Venom");
-	public static PostTitle postTitle = new PostTitle(1, topic, "DID YOU SEE HOW VENOM TRANSFORMED?!!!@#");
-	public static Post post = new Post(1, postTitle, 
+	public static PostTitle postTitle = new PostTitle(1, 1, "DID YOU SEE HOW VENOM TRANSFORMED?!!!@#");
+	public static Post post = new Post(1, 1, 
 			"Venom was amazing! The way he transformed... his style, he is my FAVORITE VILLAIN!!! AHHH",
-			customer3, "27-OCT-18 03.33.39.263000000 PM");
+			customer3, Timestamp.valueOf(LocalDateTime.now()));
 
 	
 	public static UpdateService us = new UpdateService();
@@ -94,7 +96,7 @@ public class UpdateServiceTest {
 	public void testUpdatePost() {
 		assertTrue(us.updatePost(1, postTitle, 
 				"Venom was gross",
-				customer3, "27-OCT-18 03.33.39.263000000 PM"));
+				customer3, Timestamp.valueOf(LocalDateTime.now())));
 	}
 
 	@Test
