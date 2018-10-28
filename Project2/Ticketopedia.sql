@@ -12,13 +12,14 @@ DROP TABLE partners CASCADE CONSTRAINTS;
 DROP TABLE topics CASCADE CONSTRAINTS;
 DROP TABLE posts_title CASCADE CONSTRAINTS;
 
-
+--Create tables needed for the DB. 
 CREATE TABLE user_type (
 	role_id NUMBER(6),
      --pk
 	role_name VARCHAR2(100),
 	CONSTRAINT role_id_pk PRIMARY KEY ( role_id )
 );
+--Insert types of users: 1, basic, 2, premium, 3, Admins (Devs)
 INSERT INTO user_type VALUES (
 	1,
 	'basic'
@@ -31,6 +32,8 @@ INSERT INTO user_type VALUES (
 	3,
 	'admin'
 );
+
+--Partner tables - our fictional partners we work with to sell tickets to events. 
 CREATE TABLE partners (
 	partner_id NUMBER(6),
      --pk
@@ -39,6 +42,7 @@ CREATE TABLE partners (
 	CONSTRAINT partner_pk PRIMARY KEY ( partner_id )
 );
 
+--Insert data into partner table 
 INSERT INTO partners VALUES (
 1,
 'smokey music ltd',
@@ -51,6 +55,7 @@ INSERT INTO partners VALUES (
 'regression films aims to sell discounted tickets by directly working with movie producers.'
 );
 
+--Create a Customer information table
 CREATE TABLE customer_information (
 	customer_email VARCHAR2(100),
      --pk
@@ -70,6 +75,9 @@ CREATE TABLE customer_information (
 		REFERENCES user_type ( role_id )
 );
 
+--Create 10 basic, 10 premium, and 4 admin accounts. Premiums have points, basic does not, admin can have anything. 
+
+--Premium users first because they should be top priority for having subscriptions. 
 INSERT INTO customer_information VALUES(
 'bob.bobson@mafia.net',
 'Mafia Master',
@@ -209,7 +217,8 @@ INSERT INTO customer_information VALUES (
 173584,
 'HanselandGrettle'
 );
---Basic users
+
+--Basic users - those who use our service but do not pay us money. 
 INSERT INTO customer_information VALUES (
 'srussel@russel.com',
 'Mr.Russell',
@@ -337,7 +346,7 @@ INSERT INTO customer_information VALUES (
 );
 
 
---admin below
+--admin users AKA the Developers. 
 
 INSERT INTO customer_information VALUES (
 'cbroadwell@admin.net',
@@ -395,7 +404,7 @@ INSERT INTO customer_information VALUES(
 'admin4'
 );
 
-
+--Createa  table for the event types that are held. 
 CREATE TABLE event_types (
 	event_type_id NUMBER(6),
      --pk
@@ -403,15 +412,19 @@ CREATE TABLE event_types (
 	CONSTRAINT event_types_pk PRIMARY KEY ( event_type_id )
 );
 
+--Insert information into the DB for event types
 INSERT INTO event_types VALUES (
 1,
 'Venom at Zmax'
 );
 
+
 INSERT INTO event_types VALUES (
 2,
 'Disturbed in Concert - Fargo Dome'
 );
+
+
 
 
 CREATE TABLE payment_info (
@@ -541,7 +554,7 @@ INSERT INTO topics VALUES (
 INSERT INTO topics VALUES (
 2,
 2,
-'Avengers: Infinity War Pt 2',
+'Avengers: Infinity War Pt 2 the movie',
 'Avengers: Infinity War 2'
 );
 
@@ -578,7 +591,7 @@ INSERT INTO posts_title VALUES (
 INSERT INTO posts_title VALUES (
 2,
 'INFINITY WAR PT 2 HYPEEEEEE!$!@$!$@!$@!$@',
-1
+2
 );
 
 INSERT INTO posts_title VALUES (
@@ -640,7 +653,7 @@ SYSTIMESTAMP
 
 INSERT INTO posts VALUES (
 2,
-1,
+2,
 'johndoe@.yahoo.com',
 'I am beyond stoked for the next part of Infinity war! I LOVE MARVEL!',
 SYSTIMESTAMP
