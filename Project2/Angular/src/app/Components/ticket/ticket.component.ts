@@ -29,8 +29,9 @@ export class TicketComponent implements OnInit {
             this.topicService.getTopicById(this.ticketId);
             await delay(1000); console.log(this.topic);
             this.topic = this.topicService.selectedTopic;
-            this.postTitles = this.fps.getPostsById(this.ticketId);
-            await delay(1000);
+            this.fps.getPostsById(this.ticketId);
+            await delay(500);
+            this.postTitles = this.fps.postTitles;
         })();
     }
 
