@@ -15,6 +15,7 @@ import { ForumpostComponent } from './Components/forumpost/forumpost.component';
 import { TicketComponent } from './Components/ticket/ticket.component';
 import { PaymentinfoComponent } from './Components/paymentinfo/paymentinfo.component';
 import { RouterModule } from '@angular/router';
+import { RegisterComponent } from './Components/register/register/register.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { RouterModule } from '@angular/router';
         ForumtopicComponent,
         ForumpostComponent,
         TicketComponent,
-        PaymentinfoComponent
+        PaymentinfoComponent,
+        RegisterComponent
     ],
     imports: [
         BrowserModule,
