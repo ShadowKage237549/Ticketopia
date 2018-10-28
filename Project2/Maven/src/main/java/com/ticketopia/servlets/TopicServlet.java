@@ -32,7 +32,7 @@ public class TopicServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ObjectMapper om = new ObjectMapper();
-		TopicDao td = new TopicDaoImpl();
+		TopicDao td = new TopicDaoImpl(); 
 		Topic topic = td.getTopicById(Integer.parseInt(request.getParameter("topicId")));
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
