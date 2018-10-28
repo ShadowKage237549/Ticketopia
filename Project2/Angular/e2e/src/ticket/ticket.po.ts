@@ -11,7 +11,8 @@ export class TicketPage {
     }
 
     getForumData() {
-        return element(by.css('app-forum h1'))
+        return element(by.css('app-forum h1'));
     }
 
+    
 }
