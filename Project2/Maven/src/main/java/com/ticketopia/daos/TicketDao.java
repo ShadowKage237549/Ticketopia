@@ -22,5 +22,7 @@ public interface TicketDao {
 	
 	public boolean updateTicket(Ticket ticket);
 
+	public Ticket getTicketById(Integer id);
+
 }
 

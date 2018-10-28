@@ -34,12 +34,11 @@ public class TicketServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TicketDao td = new TicketDaoImpl();
-		List<Ticket> tickets = new ArrayList<>();
-		tickets = td.getAllTickets();
+		Ticket ticket = td.getTicketById(Integer.parseInt(request.getParameter("id")));
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		ObjectMapper om = new ObjectMapper();
-		out.println(om.writeValueAsString(tickets));
+		out.println(om.writeValueAsString(ticket));
 	}
 
 	/**

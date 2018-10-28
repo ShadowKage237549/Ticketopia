@@ -3,10 +3,10 @@ package com.ticketopia.daos;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ticketopia.beans.EventType;
 import com.ticketopia.beans.Ticket;
 import com.ticketopia.util.HibernateUtil;
 
@@ -90,5 +90,24 @@ public class TicketDaoImpl implements TicketDao {
 			session.close();
 		}
 		return false;
+	}
+
+	@Override
+	public Ticket getTicketById(Integer id) {
+		Ticket ticket = null;
+		String hql = "FROM Ticket WHERE ticket_id = :id";
+		Session session = null;
+		Query query = null;
+		try {
+			session = HibernateUtil.getSession();
+			query = session.createQuery(hql);
+			query.setParameter("id", id);
+			ticket = (Ticket) query.uniqueResult();
+		}catch(HibernateException e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return ticket;
 	}
 }
