@@ -578,7 +578,7 @@ INSERT INTO posts_title VALUES (
 INSERT INTO posts_title VALUES (
 2,
 'INFINITY WAR PT 2 HYPEEEEEE!$!@$!$@!$@!$@',
-2
+1
 );
 
 INSERT INTO posts_title VALUES (
@@ -596,25 +596,25 @@ INSERT INTO posts_title VALUES (
 INSERT INTO posts_title VALUES (
 5,
 'Venom was over hyped',
-1
+3
 );
 
 INSERT INTO posts_title VALUES (
 6,
 'Avengers: Infinity War 2... will anyone who died previously return?',
-1
+3
 );
 
 INSERT INTO posts_title VALUES (
 7,
 'That Disturbed concert was a bust... they are getting old and should retire',
-2
+4
 );
 
 INSERT INTO posts_title VALUES (
 8,
 'Eminem - King or God of Rap?',
-2
+4
 );
 
 CREATE TABLE posts (
