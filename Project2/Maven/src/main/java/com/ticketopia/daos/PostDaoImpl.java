@@ -29,6 +29,7 @@ public class PostDaoImpl implements PostDao {
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -50,6 +51,7 @@ public class PostDaoImpl implements PostDao {
 			session = HibernateUtil.getSession();
 			posts = (List<Post>)session.createQuery("FROM Post").list();
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		} finally {
 			session.close();
@@ -75,6 +77,7 @@ public class PostDaoImpl implements PostDao {
 			tx.commit();
 			return true;
 		} catch (HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		} finally {
 			session.close();

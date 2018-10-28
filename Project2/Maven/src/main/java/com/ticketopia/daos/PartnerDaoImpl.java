@@ -29,6 +29,7 @@ public class PartnerDaoImpl implements PartnerDao {
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -55,6 +56,7 @@ public class PartnerDaoImpl implements PartnerDao {
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -83,6 +85,7 @@ public class PartnerDaoImpl implements PartnerDao {
 			tx.commit();
 			return true;
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 			tx.rollback();
 		} finally {
@@ -108,6 +111,7 @@ public class PartnerDaoImpl implements PartnerDao {
 			query = session.createQuery(hql);
 			partners = query.list();
 		} catch(HibernateException e) {
+			logger.warn("Something went wrong");
 			e.printStackTrace();
 		} finally {
 			session.close();
