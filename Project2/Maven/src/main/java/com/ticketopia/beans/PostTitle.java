@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -19,9 +17,8 @@ public class PostTitle {
 	@GeneratedValue(generator="title_Id", strategy=GenerationType.SEQUENCE)
 	private Integer Id;
 	
-	@ManyToOne
-	@JoinColumn(name="topic_id")
-	private Topic topicId;
+	@Column(name="topic_id")
+	private Integer topicId;
 	
 	@Column(name="post_title")
 	private String postTitle;
@@ -34,11 +31,11 @@ public class PostTitle {
 		Id = id;
 	}
 
-	public Topic getTopicId() {
+	public Integer getTopicId() {
 		return topicId;
 	}
 
-	public void setTopicId(Topic topicId) {
+	public void setTopicId(Integer topicId) {
 		this.topicId = topicId;
 	}
 
@@ -50,7 +47,7 @@ public class PostTitle {
 		this.postTitle = postTitle;
 	}
 
-	public PostTitle(Integer id, Topic topicId, String postTitle) {
+	public PostTitle(Integer id, Integer topicId, String postTitle) {
 		super();
 		Id = id;
 		this.topicId = topicId;

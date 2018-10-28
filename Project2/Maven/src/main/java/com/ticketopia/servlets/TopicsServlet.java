@@ -38,6 +38,7 @@ public class TopicsServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		ObjectMapper om = new ObjectMapper();
 		out.println(om.writeValueAsString(topics));
+		System.out.println(topics);
 	}
 
 	/**

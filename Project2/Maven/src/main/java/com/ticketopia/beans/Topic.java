@@ -8,9 +8,10 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name="topics")
 public class Topic {
 	@Id
+	@Column(name="topic_id")
 	private Integer id;
 	
 	@OneToOne
@@ -31,8 +32,8 @@ public class Topic {
 		this.id = id;
 	}
 
-	public Ticket getTicketId() {
-		return ticketId;
+	public Integer getTicketId() {
+		return ticketId.getTicketId();
 	}
 
 	public void setTicketId(Ticket ticketId) {
@@ -57,7 +58,7 @@ public class Topic {
 
 	@Override
 	public String toString() {
-		return "Topic [id=" + id + ", ticketId=" + ticketId + ", topicName=" + topicName + ", topicDescription=" + topicDescription + "]";
+		return "Topic [id=" + id + ", ticketId=" + ticketId.getTicketId() + ", topicName=" + topicName + ", topicDescription=" + topicDescription + "]";
 	}
 
 	public Topic(Integer id, Ticket ticketId, String topicName, String topicDescription) {

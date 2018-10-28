@@ -3,10 +3,11 @@ package com.ticketopia.daos;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.jboss.logging.annotations.Pos;
 
-import com.ticketopia.beans.Post;
 import com.ticketopia.beans.PostTitle;
 import com.ticketopia.util.HibernateUtil;
 
@@ -65,5 +66,24 @@ public class PostTitleDaoImpl implements PostTitleDao {
 			session.close();
 		}
 		return false;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<PostTitle> getPostTitlesById(Integer id) {
+		Session session = null;
+		String hql = "FROM PostTitle where topic_id = :id";
+		Query query = null;
+		List<PostTitle> postTitles = null;
+		try {
+			session = HibernateUtil.getSession();
+			query = session.createQuery(hql);
+			query.setParameter("id", id);
+			postTitles = query.list();
+		}catch(HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		return postTitles;
 	}
 }

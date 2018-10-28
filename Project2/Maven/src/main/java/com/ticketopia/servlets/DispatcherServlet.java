@@ -72,6 +72,14 @@ public class DispatcherServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("/CustomerServlet");
 			rd.forward(request, response);
 			break;
+		case "posttitle":
+			rd = request.getRequestDispatcher("/PostTitleServlet");
+			rd.forward(request, response);
+			break;
+		case "posts":
+			rd = request.getRequestDispatcher("/PostsServlet");
+			rd.forward(request, response);
+			break;
 		default:
 			response.sendError(404);
 			break;
