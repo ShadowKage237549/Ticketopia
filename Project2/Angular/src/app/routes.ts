@@ -7,11 +7,16 @@ import { StoreComponent } from './Components/store/store.component';
 import { LoginComponent } from './Components/login/login.component';
 import { ForumpostComponent } from './Components/forumpost/forumpost.component';
 import { TicketComponent } from './Components/ticket/ticket.component';
+import { RegisterComponent } from './Components/register/register/register.component';
 
 export const appRoutes: Routes = [
     {
         path: 'Ticketopia/login',
         component: LoginComponent
+    },
+    {
+        path: 'Ticketopia/register',
+        component: RegisterComponent
     },
     {
         path: 'Ticketopia/store',

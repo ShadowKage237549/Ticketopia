@@ -41,7 +41,7 @@ public class DispatcherServlet extends HttpServlet {
 
 		switch (action) {
 		case "register":
-			rd = request.getRequestDispatcher("/RegisterUser");
+			rd = request.getRequestDispatcher("/RegisterServlet");
 			rd.forward(request, response);
 			break;
 		case "login":

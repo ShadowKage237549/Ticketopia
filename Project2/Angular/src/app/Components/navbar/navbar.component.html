@@ -11,6 +11,9 @@
             <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/store">Store</a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/register" *ngIf="!isNotNull()">Register</a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/login" *ngIf="!isNotNull()">Login</a>
             <a class="nav-link" routerLinkActive="active" routerLink="Ticketopia/paymentinfo" *ngIf="isNotNull()">{{displayName}}</a>
         </li>

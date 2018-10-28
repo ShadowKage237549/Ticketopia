@@ -1,0 +1,32 @@
+<div class="row mx-3 my-5">
+    <h1>Register to Ticketopia!</h1>
+</div>
+
+<div class="col-12">
+    <div class="col-6">
+        <input type="email" class="form-control mx-2" [(ngModel)]="customer.userEmail" placeholder="email" name="registerEmail"
+            required>
+        <input type="password" class="form-control mx-2" [(ngModel)]="customer.password" placeholder="password" name="registerPassword"
+            required>
+        <input type="text" class="form-control mx-2" [(ngModel)]="customer.displayName" placeholder="display name" name="registerDName"
+            required>
+        <input type="text" class="form-control mx-2" [(ngModel)]="customer.userFName" placeholder="fname" name="registerFName"
+            required>
+        <input type="text" class="form-control mx-2" [(ngModel)]="customer.userLName" placeholder="lname" name="registerLName"
+            required>
+        <input type="text" class="form-control mx-2" [(ngModel)]="customer.userAddress" placeholder="address" name="registerAddress"
+            required>
+        <input type="text" class="form-control mx-2" [(ngModel)]="customer.userCity" placeholder="city" name="registerCity"
+            required>
+        <input type="text" class="form-control mx-2" [(ngModel)]="customer.userState" placeholder="state" name="registerState"
+            required>
+        <input type="number" min="0" max="999999" class="form-control mx-2" [(ngModel)]="customer.userZip" placeholder="zipcode"
+            name="registerZipcode" required>
+        <select [(ngModel)]="customer.role" name="role" required>
+            <option value=1 selected>basic</option>
+            <option value=2>premium</option>
+        </select>
+        <button class="btn btn-info mx-2 px-5" (click)="registerAccount()" routerLinkActive="active" routerLink="/Ticketopia/login"
+            name="registerSubmit">Register</button>
+    </div>
+</div>
