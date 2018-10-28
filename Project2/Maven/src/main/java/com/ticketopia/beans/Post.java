@@ -1,5 +1,7 @@
 package com.ticketopia.beans;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,20 +20,19 @@ public class Post {
 	@SequenceGenerator(sequenceName="Post_Generator", name="Post_Id")
 	@GeneratedValue(generator="Post_Id", strategy=GenerationType.SEQUENCE)
 	private Integer postId;
-	
-	@ManyToOne
-	@JoinColumn(name="post_title_id")
-	private PostTitle postTitle;
+
+	@Column(name="post_title_id")
+	private Integer postTitle;
 	
 	@Column(name="post_content")
 	private String postContent;
 	
 	@ManyToOne
-	@JoinColumn(name="display_name")
-	private CustomerInfo displayName;
+	@JoinColumn(name="customer_email")
+	private CustomerInfo customer;
 	
 	@Column(name="post_timestamp")
-	private String postTimeStamp;
+	private Timestamp postTimeStamp;
 
 	public Integer getPostId() {
 		return postId;
@@ -41,11 +42,11 @@ public class Post {
 		this.postId = postId;
 	}
 
-	public PostTitle getPostTitle() {
+	public Integer getPostTitle() {
 		return postTitle;
 	}
 
-	public void setPostTitle(PostTitle postTitle) {
+	public void setPostTitle(Integer postTitle) {
 		this.postTitle = postTitle;
 	}
 
@@ -57,35 +58,33 @@ public class Post {
 		this.postContent = postContent;
 	}
 
-	public CustomerInfo getDisplayName() {
-		return displayName;
+	public String getCustomer() {
+		return customer.getDisplayName();
 	}
 
-	public void setDisplayName(CustomerInfo displayName) {
-		this.displayName = displayName;
+	public void setCustomer(CustomerInfo customer) {
+		this.customer = customer;
 	}
 
-	public String getPostTimeStamp() {
+	public Timestamp getPostTimeStamp() {
 		return postTimeStamp;
 	}
 
-	public void setPostTimeStamp(String postTimeStamp) {
+	public void setPostTimeStamp(Timestamp postTimeStamp) {
 		this.postTimeStamp = postTimeStamp;
 	}
 
 	@Override
 	public String toString() {
-		return "Post [postId=" + postId + ", postTitle=" + postTitle + ", postContent=" + postContent + ", displayName="
-				+ displayName + ", postTimeStamp=" + postTimeStamp + "]";
+		return "Post [postId=" + postId + ", postTitle=" + postTitle + ", postContent=" + postContent + ", displayName=" + customer.getDisplayName() + ", postTimeStamp=" + postTimeStamp + "]";
 	}
 
-	public Post(Integer postId, PostTitle postTitle, String postContent, CustomerInfo displayName,
-			String postTimeStamp) {
+	public Post(Integer postId, Integer postTitle, String postContent, CustomerInfo customer, Timestamp postTimeStamp) {
 		super();
 		this.postId = postId;
 		this.postTitle = postTitle;
 		this.postContent = postContent;
-		this.displayName = displayName;
+		this.customer = customer;
 		this.postTimeStamp = postTimeStamp;
 	}
 
@@ -93,5 +92,7 @@ public class Post {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
+
+
 }

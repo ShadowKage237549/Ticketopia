@@ -1,15 +1,13 @@
 package com.ticketopia.daos;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.Post;
-import com.ticketopia.beans.Ticket;
 import com.ticketopia.util.HibernateUtil;
 
 public class PostDaoImpl implements PostDao {
@@ -68,5 +66,26 @@ public class PostDaoImpl implements PostDao {
 			session.close();
 		}
 		return false;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Post> getPostsByTitleId(Integer id) {
+		List<Post> posts = null;
+		Session session = null;
+		Query query = null;
+		String hql = "FROM Post WHERE post_title_id = :id";
+		try {
+			session = HibernateUtil.getSession();
+			query = session.createQuery(hql);
+			query.setParameter("id", id);
+			posts = query.list();
+			System.out.println(posts);
+		}catch(HibernateException e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return posts;
 	}
 }

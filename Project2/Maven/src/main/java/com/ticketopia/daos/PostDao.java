@@ -15,4 +15,5 @@ public interface PostDao {
 			// returns a list of all the posts
 	public List<Post> getPosts();
 	public boolean updatePost(Post post);
+	public List<Post> getPostsByTitleId(Integer id);
 }

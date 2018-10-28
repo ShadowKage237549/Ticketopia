@@ -37,6 +37,7 @@ public class TopicServlet extends HttpServlet {
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		out.println(om.writeValueAsString(topic));
+		System.out.println(topic);
 	}
 
 	/**

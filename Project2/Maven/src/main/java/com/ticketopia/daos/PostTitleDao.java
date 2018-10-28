@@ -8,4 +8,5 @@ public interface PostTitleDao {
 	public boolean createPostTitle(PostTitle postTitle);
 	public List<PostTitle> getPostTitles();
 	public boolean updatePostTitle(PostTitle postTitle);
+	public List<PostTitle> getPostTitlesById(Integer id);
 }

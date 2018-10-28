@@ -130,4 +130,24 @@
     <servlet-name>TopicsServlet</servlet-name>
     <url-pattern>/TopicsServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PostTitleServlet</display-name>
+    <servlet-name>PostTitleServlet</servlet-name>
+    <servlet-class>com.ticketopia.servlets.PostTitleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PostTitleServlet</servlet-name>
+    <url-pattern>/PostTitleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PostsServlet</display-name>
+    <servlet-name>PostsServlet</servlet-name>
+    <servlet-class>com.ticketopia.servlets.PostsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PostsServlet</servlet-name>
+    <url-pattern>/PostsServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

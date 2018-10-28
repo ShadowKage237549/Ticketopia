@@ -3,12 +3,10 @@ package com.ticketopia.daos;
 import java.util.List;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.ticketopia.beans.CustomerInfo;
-import com.ticketopia.beans.Post;
-import com.ticketopia.beans.Ticket;
 import com.ticketopia.beans.Topic;
 import com.ticketopia.util.HibernateUtil;
 
@@ -30,14 +28,23 @@ public class TopicDaoImpl implements TopicDao{
 		return topics;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Topic getTopicById(Integer id) {
 		Session session = null;
 		Topic topic = null;
+		Query query = null;
+		String hql = "FROM Topic WHERE id = :id";
 		try
 		{
 			session = HibernateUtil.getSession();
-			topic = (Topic)session.get(Topic.class, id);
+			query = session.createQuery(hql);
+			query.setParameter("id", id);
+			List<Topic> list = query.list();
+			for(Topic t : list) {
+				topic = t;
+				break;
+			}
 		}catch(HibernateException e) {
 			e.printStackTrace();
 		}finally {
