@@ -5,7 +5,9 @@ import { TopicService } from '../../Services/Forumtopic/topic.service';
 import { Topic } from '../forumtopic/topic/topic';
 import { ForumPost } from '../forumpost/post/ForumPost';
 import { ForumpostService } from '../../Services/ForumPost/forumpost.service';
-
+async function delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 @Component({
     selector: 'app-ticket',
     templateUrl: './ticket.component.html',
@@ -19,6 +21,7 @@ export class TicketComponent implements OnInit {
 
     ngOnInit() {
         this.ticket = this.ticketService.ticket;
+        (async () => { })()
         this.topic = this.topicService.getTopicById(this.ticket.ticketId);
         this.forumposts = this.fps.getPostsById(this.topic.topicId);
     }
