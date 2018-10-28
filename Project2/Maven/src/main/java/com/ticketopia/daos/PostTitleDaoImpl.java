@@ -82,6 +82,8 @@ public class PostTitleDaoImpl implements PostTitleDao {
 			postTitles = query.list();
 		}catch(HibernateException e) {
 			e.printStackTrace();
+		}finally {
+			session.close();
 		}
 		
 		return postTitles;
