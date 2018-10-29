@@ -6,6 +6,7 @@ import { Topic } from '../forumtopic/topic/topic';
 import { PostTitle } from '../forumpost/post/ForumPost';
 import { ForumpostService } from '../../Services/ForumPost/forumpost.service';
 import { ActivatedRoute } from '@angular/router';
+import { PaymentService } from 'src/app/Services/Account/payment.service';
 @Component({
     selector: 'app-ticket',
     templateUrl: './ticket.component.html',
@@ -18,7 +19,7 @@ export class TicketComponent implements OnInit, OnChanges {
     postTitles: PostTitle[] = null;
     purchased: boolean = false;
     // tslint:disable-next-line:max-line-length
-    constructor(private ticketService: TicketService, private topicService: TopicService, private fps: ForumpostService, private ar: ActivatedRoute) { }
+    constructor(private payment: PaymentService, private ticketService: TicketService, private topicService: TopicService, private fps: ForumpostService, private ar: ActivatedRoute) { }
     ngOnChanges(changes: SimpleChanges): void {
         if (this.ticket != null) {
             this.ticket = this.ticketService.ticket;
@@ -60,5 +61,12 @@ export class TicketComponent implements OnInit, OnChanges {
 
     purchase() {
         this.purchased = true;
+    }
+
+    paymentMethod() {
+        if (this.payment.paymentMethod == null) {
+            return false;
+        }
+        return true;
     }
 }
