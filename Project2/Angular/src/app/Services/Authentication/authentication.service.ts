@@ -13,7 +13,7 @@ async function delay(ms: number) {
 
 export class AuthenticationService {
 
-    public url = 'http://18.222.219.232:8085/Ticketopia/';
+    public url = 'http://18.218.104.150:8085/Ticketopia/';
     // public url = 'http://localhost:8085/Ticketopia/';
     customerinfo: CustomerInfo = null;
     constructor(private http: HttpClient, private router: Router) { }
