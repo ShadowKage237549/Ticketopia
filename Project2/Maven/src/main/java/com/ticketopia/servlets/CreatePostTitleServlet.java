@@ -1,11 +1,14 @@
 package com.ticketopia.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ticketopia.beans.PostTitle;
 import com.ticketopia.daos.PostTitleDao;
 import com.ticketopia.daos.PostTitleDaoImpl;
@@ -34,7 +37,12 @@ public class CreatePostTitleServlet extends HttpServlet {
 
 		PostTitle pt = new PostTitle(0, topicId, title);
 		PostTitleDao ptd = new PostTitleDaoImpl();
-		ptd.createPostTitle(pt);
+		Integer id = ptd.createPostTitle(pt);
+		response.setContentType("application/json");
+		PrintWriter out = response.getWriter();
+		ObjectMapper om = new ObjectMapper();
+		out.print(om.writeValueAsString(id));
+		
 	}
 
 	/**

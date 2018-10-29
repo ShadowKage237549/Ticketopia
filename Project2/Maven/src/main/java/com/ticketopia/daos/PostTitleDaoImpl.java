@@ -17,7 +17,7 @@ public class PostTitleDaoImpl implements PostTitleDao {
 	
 	// creates a new post title
 	@Override
-	public boolean createPostTitle(PostTitle postTitle) {
+	public Integer createPostTitle(PostTitle postTitle) {
 		logger.info("createPostTitle called");
 		Session session = null;
 		Transaction tx = null;
@@ -26,9 +26,9 @@ public class PostTitleDaoImpl implements PostTitleDao {
 			logger.info("about to hit db");
 			session = HibernateUtil.getSession();
 			tx = session.beginTransaction();
-			session.save(postTitle);
+			Integer i =(Integer) session.save(postTitle);
 			tx.commit();
-			return true;
+			return i;
 		} catch(HibernateException e) {
 			logger.warn("Something went wrong");
 			e.printStackTrace();
@@ -37,7 +37,7 @@ public class PostTitleDaoImpl implements PostTitleDao {
 			session.close();
 		}
 		logger.info("returning false");
-		return false;
+		return 0;
 	}
 	
 	// gets all post titles
