@@ -1,5 +1,6 @@
-<app-paymentinfo></app-paymentinfo>
-
+<div *ngIf="loggedIn()">
+    <app-paymentinfo></app-paymentinfo>
+</div>
 <div class="row py-3">
     <h1 class="ml-3">{{ticket.eventType}}</h1>
 </div>
