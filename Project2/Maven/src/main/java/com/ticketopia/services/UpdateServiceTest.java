@@ -45,7 +45,7 @@ public class UpdateServiceTest {
 	private static Topic topic = new Topic(1, ticket, "Venom the Movie!", 
 			"Ticket admitting entrance to the movie Venom");
 	public static PostTitle postTitle = new PostTitle(1, 1, "DID YOU SEE HOW VENOM TRANSFORMED?!!!@#");
-	public static Post post = new Post(1, 1, 
+	public static Post post = new Post(1, postTitle, 
 			"Venom was amazing! The way he transformed... his style, he is my FAVORITE VILLAIN!!! AHHH",
 			customer3, Timestamp.valueOf(LocalDateTime.now()));
 

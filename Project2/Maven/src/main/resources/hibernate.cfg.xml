@@ -19,6 +19,7 @@
 		</property>
 
 		<property name="hibernate.connection.url">
+			<!-- jdbc:oracle:thin:@system.cgtesvcgs8pi.us-east-2.rds.amazonaws.com:1521:orcl-->
 			jdbc:oracle:thin:@system.cgtesvcgs8pi.us-east-2.rds.amazonaws.com:1521:orcl
 		</property>
 
@@ -36,7 +37,7 @@
 			of 10. Considering free tier RDS' cap at 50 connections, I don't recommend 
 			it -->
 		<property name="hibernate.connection.pool_size">
-			5
+			2
 		</property>
 
 		<!-- syso all generated SQL for us to see. -->

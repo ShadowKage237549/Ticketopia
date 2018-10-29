@@ -160,8 +160,34 @@
     <servlet-name>TicketsServlet</servlet-name>
     <url-pattern>/TicketsServlet</url-pattern>
   </servlet-mapping>
-  <error-page>
-	<error-code>404</error-code>
-	<location>/index.html</location>
-</error-page>
+  <servlet>
+    <description></description>
+    <display-name>PaymentServlet</display-name>
+    <servlet-name>PaymentServlet</servlet-name>
+    <servlet-class>com.ticketopia.servlets.PaymentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PaymentServlet</servlet-name>
+    <url-pattern>/PaymentServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreatePostTitleServlet</display-name>
+    <servlet-name>CreatePostTitleServlet</servlet-name>
+    <servlet-class>com.ticketopia.servlets.CreatePostTitleServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreatePostTitleServlet</servlet-name>
+    <url-pattern>/CreatePostTitleServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PostServlet</display-name>
+    <servlet-name>PostServlet</servlet-name>
+    <servlet-class>com.ticketopia.servlets.PostServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PostServlet</servlet-name>
+    <url-pattern>/PostServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -41,7 +42,7 @@ public class PaymentInfoDaoImpl implements PaymentInfoDao{
 	
 	// updates a payment object
 	@Override
-	public boolean updatePaymentInfo(PaymentInfo payment, CustomerInfo customer) {
+	public boolean updatePaymentInfo(PaymentInfo payment) {
 		logger.info("updatePaymentInfo called");
 		Session session = null;
 		Transaction tx = null;
@@ -53,7 +54,6 @@ public class PaymentInfoDaoImpl implements PaymentInfoDao{
 			logger.info("getting paymentinfo object");
 			PaymentInfo pi = (PaymentInfo) session.get(PaymentInfo.class, payment.getCustomerInfo().getUserEmail());
 			pi = payment;
-			pi.setCustomerInfo(customer);
 			session.merge(pi); //Returns the id of the fresh insert
 			tx.commit();
 			return true;
@@ -96,6 +96,7 @@ public class PaymentInfoDaoImpl implements PaymentInfoDao{
 	}
 	
 	// gets a list of all payments
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<PaymentInfo> getPayments() {
 		logger.info("getPayments called");
@@ -114,6 +115,28 @@ public class PaymentInfoDaoImpl implements PaymentInfoDao{
 		}
 		logger.info("returning payments");
 		return payments;
+	}
+
+	@Override
+	public PaymentInfo getPaymentByEmail(String email) {
+		String hql = "FROM PaymentInfo WHERE customer_email = :email";
+		Session session = null;
+		PaymentInfo pi = null;
+		Query query = null;
+		try {
+			session = HibernateUtil.getSession();
+			query = session.createQuery(hql);
+			query.setParameter("email", email);
+			pi = (PaymentInfo) query.uniqueResult();
+		} catch (HibernateException e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		
+		
+		return pi;
+		
 	}
 
 }

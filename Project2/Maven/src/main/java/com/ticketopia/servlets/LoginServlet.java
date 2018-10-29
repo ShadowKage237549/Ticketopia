@@ -37,7 +37,6 @@ public class LoginServlet extends HttpServlet {
 		email = request.getParameter("email");
 		password = request.getParameter("password");
 		CustomerInfoDao cid = new CustomerInfoDaoImpl();
-		System.out.println(email + password);
 		CustomerInfo loggingInUser = cid.getCustomerByEmail(email.toLowerCase());
 		if(loggingInUser != null) {
 			if(loggingInUser.getPassword().equals(password)) {
@@ -55,7 +54,6 @@ public class LoginServlet extends HttpServlet {
 				response.setContentType("text/html");
 				PrintWriter out = response.getWriter();
 				ObjectMapper om = new ObjectMapper();
-				System.out.println(om.writeValueAsString(token));
 				out.print(om.writeValueAsString(token));
 				return;
 			} else {

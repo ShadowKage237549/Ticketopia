@@ -7,3 +7,13 @@
         <p class="col-12">{{postTitle.postTitle}}</p>
     </a>
 </div>
+<div *ngIf="loggedIn()">
+    <div class="col-12 mx-3">
+        <br><br>
+        Create a new topic
+        <br>
+        Topic Name:
+        <input type="text" [(ngModel)]="newPostTitle.postTitle" /><br>
+        <button class="btn btn-group-lg" (click)="createPostTitle()" routerLink="./">Create</button>
+    </div>
+</div>

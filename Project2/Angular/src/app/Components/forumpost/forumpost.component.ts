@@ -1,5 +1,5 @@
 import { Post } from './comment/ForumComment';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { Topic } from '../forumtopic/topic/topic';
 import { ForumcommentsService } from '../../Services/ForumComments/forumcomments.service';
 import { PostTitle } from 'src/app/Components/forumpost/post/ForumPost';
@@ -13,29 +13,53 @@ async function delay(ms: number) {
     templateUrl: './forumpost.component.html',
     styleUrls: ['./forumpost.component.css']
 })
-export class ForumpostComponent implements OnInit {
-    topics: Topic[];
+export class ForumpostComponent implements OnInit, OnChanges {
     constructor(private fcs: ForumcommentsService, private ar: ActivatedRoute, private fps: ForumpostService) { }
     postTitle: PostTitle = null;
     postTitleId: number;
     posts: Post[];
-
+    post: Post = {
+        postId: 0,
+        postTitle: {
+            id: 0,
+            postTitle: '',
+            topicId: 0,
+        },
+        postContent: '',
+        customer: '',
+    };
+    ngOnChanges(changes: SimpleChanges): void {
+        if (this.posts != null) {
+            this.posts = this.fcs.posts;
+        }
+        if (this.postTitle != null) {
+            this.postTitle = this.fps.postTitles[0];
+        }
+    }
 
     ngOnInit() {
-        (async () => {
-            await delay(500);
+        (() => {
             this.postTitle = this.fcs.postTitle;
             if (this.postTitle != null) {
                 this.postTitleId = this.postTitle.id;
             } else {
                 this.postTitleId = Number.parseInt(this.ar.snapshot.url[3].path, 10);
-                this.fps.getPostsById(Number.parseInt(this.ar.snapshot.url[2].path, 10));
-                await delay(500);
-                this.postTitle = this.fps.postTitles[0];
             }
             this.fcs.getPostsByTitleId(this.postTitleId);
-            await delay(500);
-            this.posts = this.fcs.posts;
+            setInterval((async () => { this.posts = this.fcs.posts; }), 200);
         })();
+    }
+
+    loggedIn() {
+        if (localStorage.getItem("token")) {
+            return true;
+        }
+        return false;
+    }
+
+    createPost() {
+        this.post.customer = localStorage.getItem("email");
+        this.post.postTitle = this.posts[0].postTitle;
+        this.fcs.createPost(this.post);
     }
 }

@@ -12,6 +12,6 @@ export class HomeService {
 
     partners: Partner[] = null;
     getPartners() {
-        this.http.get(this.authService.url + "partner.do").subscribe((data: Partner[]) => this.partners = data);
+        this.http.get(this.authService.url + 'partner.do').subscribe((data: Partner[]) => this.partners = data);
     }
 }

@@ -13,13 +13,13 @@ async function delay(ms: number) {
 
 export class AuthenticationService {
 
-    public url: string = "http://18.222.219.232:8085/Ticketopia/";
+    public url = 'http://18.222.219.232:8085/Ticketopia/';
     customerinfo: CustomerInfo = null;
     constructor(private http: HttpClient, private router: Router) { }
 
     login(email: string, password: string) {
         let body = new HttpParams();
-        let headers = new HttpHeaders().set(
+        const headers = new HttpHeaders().set(
             'Content-Type', 'application/x-www-form-urlencoded'
         );
         body = body.set('email', email);
@@ -28,25 +28,21 @@ export class AuthenticationService {
     }
 
     storeToken(token: any) {
-        if (token != 'wrong info' && token != null) {
+        if (token !== 'wrong info' && token != null) {
 
             (async () => {
-                // Do something before delay
-                console.log('before delay')
-                localStorage.setItem("token", token);
-                await delay(2000);
+                localStorage.setItem('token', token);
+                await delay(500);
                 this.requestCustomerData();
-                // Do something after
-                console.log('after delay')
             })();
 
         }
     }
     logout() {
-        localStorage.removeItem("token");
+        localStorage.removeItem('token');
     }
     getToken() {
-        let token = localStorage.getItem("token");
+        const token = localStorage.getItem('token');
         if (token != null) {
             return token;
         }
@@ -58,13 +54,13 @@ export class AuthenticationService {
         return false;
     }
     requestCustomerData() {
-        let token = localStorage.getItem("token");
-        console.log("calling method");
-        this.http.get(this.url + "customerInfo.do?token=" + token).subscribe((data: CustomerInfo) => this.customerinfo = data);
+        const token = localStorage.getItem('token');
+        this.http.get(this.url + 'customerInfo.do?token=' + token).subscribe((data: CustomerInfo) => this.customerinfo = data);
         (async () => {
-            await delay(500)
-            localStorage.setItem("displayName", this.customerinfo.displayName);
+            await delay(500);
+            localStorage.setItem('displayName', this.customerinfo.displayName);
+            localStorage.setItem('email', this.customerinfo.userEmail);
         })();
-        console.log(this.customerinfo);
+
     }
 }

@@ -98,7 +98,6 @@ public class PostDaoImpl implements PostDao {
 			query = session.createQuery(hql);
 			query.setParameter("id", id);
 			posts = query.list();
-			System.out.println(posts);
 		}catch(HibernateException e) {
 			e.printStackTrace();
 		}finally {

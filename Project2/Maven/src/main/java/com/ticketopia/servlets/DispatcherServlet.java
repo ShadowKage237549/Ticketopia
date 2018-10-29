@@ -28,9 +28,7 @@ public class DispatcherServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		StringBuffer url = request.getRequestURL();
-		System.out.println(url.toString());
 		String uri = request.getRequestURI();
-		System.out.println(uri);
 
 		RequestDispatcher rd;
 
@@ -38,7 +36,6 @@ public class DispatcherServlet extends HttpServlet {
 		String action = (tokens[tokens.length - 1]);
 		action = action.substring(0, action.length() - 3).toLowerCase();
 		System.out.println(action);
-
 		switch (action) {
 		case "register":
 			rd = request.getRequestDispatcher("/RegisterServlet");
@@ -80,8 +77,24 @@ public class DispatcherServlet extends HttpServlet {
 			rd = request.getRequestDispatcher("/PostTitleServlet");
 			rd.forward(request, response);
 			break;
+		case "createposttitle":
+			rd = request.getRequestDispatcher("/CreatePostTitleServlet");
+			rd.forward(request, response);
+			break;
+		case "post":
+			rd = request.getRequestDispatcher("/PostServlet");
+			rd.forward(request, response);
+			break;
 		case "posts":
 			rd = request.getRequestDispatcher("/PostsServlet");
+			rd.forward(request, response);
+			break;
+		case "updatepayment":
+			rd = request.getRequestDispatcher("/PaymentInfoServlet");
+			rd.forward(request, response);
+			break;
+		case "payment":
+			rd = request.getRequestDispatcher("/PaymentServlet");
 			rd.forward(request, response);
 			break;
 		default:

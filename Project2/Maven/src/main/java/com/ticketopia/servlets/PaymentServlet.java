@@ -2,7 +2,6 @@ package com.ticketopia.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,20 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ticketopia.beans.Topic;
-import com.ticketopia.daos.TopicDao;
-import com.ticketopia.daos.TopicDaoImpl;
+import com.ticketopia.beans.PaymentInfo;
+import com.ticketopia.daos.PaymentInfoDao;
+import com.ticketopia.daos.PaymentInfoDaoImpl;
 
 /**
- * Servlet implementation class TopicsServlet
+ * Servlet implementation class PaymentServlet
  */
-public class TopicsServlet extends HttpServlet {
+public class PaymentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TopicsServlet() {
+    public PaymentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +31,14 @@ public class TopicsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		TopicDao td = new TopicDaoImpl();
-		List<Topic> topics = td.getAllTopics();
+		String email = request.getParameter("email");
+		PaymentInfoDao pid = new PaymentInfoDaoImpl();
+		PaymentInfo pi = pid.getPaymentByEmail(email);
+		System.out.println(pi);
+		ObjectMapper om = new ObjectMapper();
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
-		ObjectMapper om = new ObjectMapper();
-		out.println(om.writeValueAsString(topics));
+		out.println(om.writeValueAsString(pi));
 	}
 
 	/**

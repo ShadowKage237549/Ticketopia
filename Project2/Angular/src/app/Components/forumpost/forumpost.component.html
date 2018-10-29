@@ -1,6 +1,6 @@
 <div class="row mx-3">
     <div class="col-12 mx-3">
-        <h3>{{postTitle.postTitle}}</h3>
+        <h3>{{posts[0].postTitle.postTitle}}</h3>
         <hr>
     </div>
     <div class="col-12 mx-3" *ngFor="let post of posts">
@@ -8,5 +8,15 @@
         <p class="comment rounded shadow-sm">
             {{post.postContent}}
         </p>
+    </div>
+</div>
+<div *ngIf="loggedIn()">
+    <br><br>
+    <div class="row mx-3">
+        <div class="col-12 mx-3">
+            Create a Post:<br>
+            <textarea rows=7 cols=115 [(ngModel)]="post.postContent"></textarea>
+            <button (click)="createPost()" routerLink="./">Post</button>
+        </div>
     </div>
 </div>

@@ -20,9 +20,10 @@ public class Post {
 	@SequenceGenerator(sequenceName="Post_Generator", name="Post_Id")
 	@GeneratedValue(generator="Post_Id", strategy=GenerationType.SEQUENCE)
 	private Integer postId;
-
-	@Column(name="post_title_id")
-	private Integer postTitle;
+	
+	@ManyToOne
+	@JoinColumn(name="post_title_id")
+	private PostTitle postTitle;
 	
 	@Column(name="post_content")
 	private String postContent;
@@ -42,11 +43,11 @@ public class Post {
 		this.postId = postId;
 	}
 
-	public Integer getPostTitle() {
+	public PostTitle getPostTitle() {
 		return postTitle;
 	}
 
-	public void setPostTitle(Integer postTitle) {
+	public void setPostTitle(PostTitle postTitle) {
 		this.postTitle = postTitle;
 	}
 
@@ -79,7 +80,7 @@ public class Post {
 		return "Post [postId=" + postId + ", postTitle=" + postTitle + ", postContent=" + postContent + ", displayName=" + customer.getDisplayName() + ", postTimeStamp=" + postTimeStamp + "]";
 	}
 
-	public Post(Integer postId, Integer postTitle, String postContent, CustomerInfo customer, Timestamp postTimeStamp) {
+	public Post(Integer postId, PostTitle postTitle, String postContent, CustomerInfo customer, Timestamp postTimeStamp) {
 		super();
 		this.postId = postId;
 		this.postTitle = postTitle;

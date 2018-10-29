@@ -12,13 +12,13 @@ export class TicketService {
 
     constructor(private http: HttpClient, private auth: AuthenticationService) { }
     getTicketById(id: number) {
-        this.http.get(this.auth.url + "ticket.do?id=" + id).subscribe((data: Ticket) => this.ticket = data);
+        this.http.get(this.auth.url + 'ticket.do?id=' + id).subscribe((data: Ticket) => this.ticket = data);
     }
 
 
-    //request pertains to whether you want to send a HTTP GET request.
+    // request pertains to whether you want to send a HTTP GET request.
     getTickets() {
-        this.http.get(this.auth.url + "tickets.do").subscribe((data: Ticket[]) => this.tickets = data);
+        this.http.get(this.auth.url + 'tickets.do').subscribe((data: Ticket[]) => this.tickets = data);
     }
 
 }

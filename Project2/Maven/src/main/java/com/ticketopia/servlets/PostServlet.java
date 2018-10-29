@@ -1,8 +1,8 @@
 package com.ticketopia.servlets;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,20 +10,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ticketopia.beans.Topic;
-import com.ticketopia.daos.TopicDao;
-import com.ticketopia.daos.TopicDaoImpl;
+import com.ticketopia.beans.CustomerInfo;
+import com.ticketopia.beans.Post;
+import com.ticketopia.beans.PostTitle;
+import com.ticketopia.daos.PostDao;
+import com.ticketopia.daos.PostDaoImpl;
+import com.ticketopia.util.ServletSupport;
 
 /**
- * Servlet implementation class TopicsServlet
+ * Servlet implementation class PostServlet
  */
-public class TopicsServlet extends HttpServlet {
+public class PostServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public TopicsServlet() {
+    public PostServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +35,13 @@ public class TopicsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		TopicDao td = new TopicDaoImpl();
-		List<Topic> topics = td.getAllTopics();
-		response.setContentType("application/json");
-		PrintWriter out = response.getWriter();
 		ObjectMapper om = new ObjectMapper();
-		out.println(om.writeValueAsString(topics));
+		PostTitle postTitle = om.readValue(request.getParameter("postTitle"), PostTitle.class);
+		String postContent = request.getParameter("postContent");
+		CustomerInfo user = ServletSupport.convertToken(request);
+		Post post = new Post(0, postTitle, postContent, user, Timestamp.valueOf(LocalDateTime.now()));
+		PostDao pd = new PostDaoImpl();
+		pd.createPost(post);
 	}
 
 	/**

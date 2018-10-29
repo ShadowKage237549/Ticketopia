@@ -13,11 +13,11 @@ export class TopicService {
     selectedTopic: Topic;
     constructor(private http: HttpClient, private auth: AuthenticationService) { }
     getTopicById(id: number) {
-        this.http.get(this.auth.url + "topic.do?topicId=" + id).subscribe((data: Topic) => this.selectedTopic = data);
+        this.http.get(this.auth.url + 'topic.do?topicId=' + id).subscribe((data: Topic) => this.selectedTopic = data);
     }
 
     getTopics() {
-        this.http.get(this.auth.url + "topics.do").subscribe((data: Topic[]) => this.topics = data);
+        this.http.get(this.auth.url + 'topics.do').subscribe((data: Topic[]) => this.topics = data);
     }
 
 

@@ -1,8 +1,9 @@
 
 import { Topic } from './../forumtopic/topic/topic';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TopicService } from '../../Services/Forumtopic/topic.service';
+import { async } from '@angular/core/testing';
 async function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -11,7 +12,7 @@ async function delay(ms: number) {
     templateUrl: './forum.component.html',
     styleUrls: ['./forum.component.css']
 })
-export class ForumComponent implements OnInit {
+export class ForumComponent implements OnInit, OnChanges {
 
     constructor(private topicService: TopicService) { }
     //Each topic is an anchor which leads to the forumtopic.component
@@ -21,11 +22,17 @@ export class ForumComponent implements OnInit {
         this.topicService.selectedTopic = topic;
     }
 
+    ngOnChanges(changes: SimpleChanges): void {
+        if (this.topics != null) {
+            this.topics = this.topicService.topics;
+        }
+
+    }
+
     ngOnInit() {
         (async () => {
             this.topicService.getTopics();
-            await delay(500);
-            this.topics = this.topicService.topics;
+            setInterval(async () => { this.topics = this.topicService.topics; }, 100);
         })();
     }
 

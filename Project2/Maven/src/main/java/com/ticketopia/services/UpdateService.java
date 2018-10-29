@@ -102,7 +102,7 @@ public class UpdateService {
 		payment.setBillingZip(billingZip);
 		
 		logger.info("sending object to daoimpl");
-		return pid.updatePaymentInfo(payment, customer);
+		return pid.updatePaymentInfo(payment);
 	}
 	
 	//creates post object to update existing with
@@ -116,7 +116,7 @@ public class UpdateService {
 		
 		// sets values of post
 		post.setPostId(postId);
-		post.setPostTitle(postTitle.getId());
+		post.setPostTitle(postTitle);
 		post.setPostContent(postContent);
 		post.setCustomer(customer);
 		post.setPostTimeStamp(postTimeStamp);

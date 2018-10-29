@@ -1,38 +1,51 @@
 import { PaymentService } from './../../Services/Account/payment.service';
 import { Payment } from './payment/payment';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
+import { async } from '@angular/core/testing';
+import { AuthenticationService } from '../../Services/Authentication/authentication.service';
 
 @Component({
-  selector: 'app-paymentinfo',
-  templateUrl: './paymentinfo.component.html',
-  styleUrls: ['./paymentinfo.component.css']
+    selector: 'app-paymentinfo',
+    templateUrl: './paymentinfo.component.html',
+    styleUrls: ['./paymentinfo.component.css']
 })
-export class PaymentinfoComponent implements OnInit {
+export class PaymentinfoComponent implements OnInit, OnChanges {
 
-  pInfos:Payment[] = [
-    new Payment(null,"1234123412341234",123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
-    new Payment(null,"1234123412341234",123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
-    new Payment(null,"1234123412341234",123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
-    new Payment(null,"1234123412341234",123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345),
-    new Payment(null,"1234123412341234",123,"expirationDate"," 12345 billingAddress","billingCity","billingState",12345)
-  ];
-  regPay:Payment = new Payment(null,null,null,null,null,null,null,null);
+    pInfo: Payment = null;
 
-  constructor(private paymentService:PaymentService) { }
-
-  ngOnInit() {
-  }
-
-  updateExistingPayment(payment:Payment){
-    if(payment != null){
-      this.paymentService.updatePayment(this.regPay).subscribe((data:Payment[]) => this.pInfos);
-    }
-  }
-  registerNewPayment(){
-    if(this.regPay != null){
-      this.paymentService.updatePayment(this.regPay).subscribe((data:Payment[]) => this.pInfos);
+    regPay: Payment = {
+        customerInfo: null,
+        cardNumber: 1111111111111111,
+        securityCode: 111,
+        expirationDate: '11/11',
+        billingAddress: '',
+        billingCity: '',
+        billingState: '',
+        billingZip: 12345,
+    };
+    update: boolean = false;
+    constructor(private paymentService: PaymentService, private auth: AuthenticationService) { }
+    ngOnChanges(changes: SimpleChanges): void {
+        if (this.pInfo != null) {
+            this.pInfo = this.paymentService.paymentMethod;
+        }
     }
 
-  }
+    ngOnInit() {
+        this.auth.requestCustomerData();
+        setInterval(() => { this.regPay.customerInfo = this.auth.customerinfo; }, 10000);
+        this.paymentService.getPayment(localStorage.getItem('email'));
+        setInterval(async () => { this.pInfo = this.paymentService.paymentMethod; }, 100);
+    }
+
+    updatePayment() {
+        (async () => {
+            if (this.pInfo != null) {
+                this.update = true;
+            }
+            this.paymentService.updatePayment(this.regPay, this.update);
+            this.pInfo = this.regPay;
+        })();
+    }
 
 }

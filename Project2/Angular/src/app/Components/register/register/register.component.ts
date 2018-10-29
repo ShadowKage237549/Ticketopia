@@ -17,11 +17,11 @@ export class RegisterComponent implements OnInit {
         userFName: '',
         userLName: '',
         accumulatedPoints: 0,
-        role: 0,
+        role: 1,
         userAddress: '',
         userCity: '',
         userState: '',
-        userZip: 0,
+        userZip: 12345,
     };
     constructor(private register: RegisterService) { }
 

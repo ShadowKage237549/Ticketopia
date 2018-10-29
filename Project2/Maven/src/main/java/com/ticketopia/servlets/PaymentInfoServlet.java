@@ -13,6 +13,7 @@ import com.ticketopia.beans.CustomerInfo;
 import com.ticketopia.beans.PaymentInfo;
 import com.ticketopia.daos.PaymentInfoDao;
 import com.ticketopia.daos.PaymentInfoDaoImpl;
+import com.ticketopia.util.ServletSupport;
 
 /**
  * Servlet implementation class PaymentInfoServlet
@@ -33,21 +34,15 @@ public class PaymentInfoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ObjectMapper om = new ObjectMapper();
-		PaymentInfo pi = om.convertValue(request.getParameter("payment"), PaymentInfo.class);
-		CustomerInfo ci = om.convertValue(request.getParameter("customer"), CustomerInfo.class);
-		boolean update = om.convertValue(request.getParameter("update"), Boolean.class);
-		boolean success;
+		System.out.println(request.getParameter("payment"));
+		PaymentInfo pi = om.readValue(request.getParameter("payment"), PaymentInfo.class);
+		String update = request.getParameter("update");
 		PaymentInfoDao pid = new PaymentInfoDaoImpl();
-		if(update) {
-			success = pid.updatePaymentInfo(pi,ci);
+		if(update.equals("true")) {
+			pid.updatePaymentInfo(pi);
 		} else {
-			success = pid.insertNewPaymentInfo(pi);
+			pid.insertNewPaymentInfo(pi);
 		}
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println(om.writeValueAsString(success));
-		
-				
 	}
 
 	/**

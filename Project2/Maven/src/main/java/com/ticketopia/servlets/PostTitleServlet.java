@@ -38,7 +38,6 @@ public class PostTitleServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		ObjectMapper om = new ObjectMapper();
 		out.println(om.writeValueAsString(postTitles));
-		System.out.println(postTitles);
 	}
 
 	/**
