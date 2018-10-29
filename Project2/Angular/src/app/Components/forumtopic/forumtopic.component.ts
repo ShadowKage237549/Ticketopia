@@ -5,6 +5,11 @@ import { Component, OnInit, SimpleChanges, OnChanges } from '@angular/core';
 import { TopicService } from '../../Services/Forumtopic/topic.service';
 import { ForumcommentsService } from '../../Services/ForumComments/forumcomments.service';
 import { ForumpostService } from '../../Services/ForumPost/forumpost.service';
+import { Post } from '../forumpost/comment/ForumComment';
+import { async } from '@angular/core/testing';
+async function delay(ms: number) {
+    return new Promise(resourse => setTimeout(resourse, ms));
+}
 @Component({
     selector: 'app-forumtopic',
     templateUrl: './forumtopic.component.html',
@@ -17,7 +22,16 @@ export class ForumtopicComponent implements OnInit, OnChanges {
     constructor(private topicService: TopicService, private fps: ForumpostService, private fcs: ForumcommentsService, private ar: ActivatedRoute) { }
     topicId: number = null;
     topic: Topic = null;
-
+    newPost: Post = {
+        postId: 0,
+        postTitle: {
+            id: 0,
+            postTitle: '',
+            topicId: 0,
+        },
+        postContent: '',
+        customer: '',
+    };
     postTitles: PostTitle[] = null;
     newPostTitle: PostTitle = {
         id: 0,
@@ -46,11 +60,11 @@ export class ForumtopicComponent implements OnInit, OnChanges {
                 }
 
                 this.topicService.getTopicById(this.topicId);
-                setInterval(async () => { this.topic = this.topicService.selectedTopic; }, 100);
+                setInterval(async () => { this.topic = this.topicService.selectedTopic; }, 400);
             }
             if (this.postTitles == null) {
                 this.fps.getPostsById(this.topicId);
-                setInterval(async () => { this.postTitles = this.fps.postTitles; }, 100);
+                setInterval(async () => { this.postTitles = this.fps.postTitles; }, 400);
             }
         })();
     }
@@ -60,8 +74,15 @@ export class ForumtopicComponent implements OnInit, OnChanges {
     }
 
     createPostTitle() {
-        this.newPostTitle.topicId = this.topicId;
-        this.fps.addPostTitle(this.newPostTitle);
+        (async () => {
+            this.newPostTitle.topicId = this.topicId;
+            this.fps.addPostTitle(this.newPostTitle);
+            await delay(1000);
+            this.newPost.postTitle = this.newPostTitle;
+            this.newPost.postTitle.id = this.fps.postTitleId;
+            this.fcs.createPost(this.newPost);
+        })();
+
     }
 
     loggedIn() {

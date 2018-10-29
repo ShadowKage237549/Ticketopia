@@ -46,7 +46,7 @@ export class ForumpostComponent implements OnInit, OnChanges {
                 this.postTitleId = Number.parseInt(this.ar.snapshot.url[3].path, 10);
             }
             this.fcs.getPostsByTitleId(this.postTitleId);
-            setInterval((async () => { this.posts = this.fcs.posts; }), 200);
+            setInterval((async () => { this.posts = this.fcs.posts; }), 500);
         })();
     }
 

@@ -14,6 +14,8 @@
         <br>
         Topic Name:
         <input type="text" [(ngModel)]="newPostTitle.postTitle" /><br>
-        <button class="btn btn-group-lg" (click)="createPostTitle()" routerLink="./">Create</button>
+        Post Content:
+        <textarea rows=7 cols=50 [(ngModel)]="newPost.postContent"></textarea>
+        <button class="btn btn-group-lg" (click)="createPostTitle(); " routerLink="./">Create</button>
     </div>
 </div>

@@ -20,7 +20,7 @@ export class ForumcommentsService {
 
 
     createPost(post: Post) {
-        console.log(post);
+        console.log("whyyyyy");
         let body = new HttpParams();
         const headers = new HttpHeaders();
         headers.set('content-type', 'application/x-www-form-urlencoded');
