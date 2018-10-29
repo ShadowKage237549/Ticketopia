@@ -39,7 +39,7 @@
     </div>
     <div class="col-2 mr-auto" *ngIf="!isPurchased() else purchased">
         <div *ngIf='loggedIn() else login'>
-            <button class="btn btn-info float-right" *ngIf="paymenMethod() else addPayment" (click)="purchase()">
+            <button class="btn btn-info float-right" *ngIf="paymentMethod() else addPayment" (click)="purchase()">
                 Buy Now!
             </button>
             <ng-template #addPayment>Please add a payment method above.</ng-template>
