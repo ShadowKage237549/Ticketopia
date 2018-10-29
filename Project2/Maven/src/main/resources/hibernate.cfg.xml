@@ -19,16 +19,16 @@
 		</property>
 
 		<property name="hibernate.connection.url">
-			<!-- jdbc:oracle:thin:@system.cgtesvcgs8pi.us-east-2.rds.amazonaws.com:1521:orcl-->
-			jdbc:oracle:thin:@localhost:1521:xe
+			jdbc:oracle:thin:@system.cgtesvcgs8pi.us-east-2.rds.amazonaws.com:1521:orcl
+			<!-- jdbc:oracle:thin:@localhost:1521:xe-->
 		</property>
 
 		<property name="hibernate.connection.username">
-			orcl
+			Shadow237549
 		</property>
 
 		<property name="hibernate.connection.password">
-			orcl
+			Shadow!123
 		</property>
 
 		<!-- This determines how many connections a single user can have to the 
