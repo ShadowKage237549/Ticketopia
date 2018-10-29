@@ -14,7 +14,19 @@ export class PaymentinfoComponent implements OnInit, OnChanges {
     pInfo: Payment = null;
 
     regPay: Payment = {
-        customerInfo: null,
+        customerInfo: {
+            userEmail: '',
+            displayName: '',
+            password: '',
+            userFName: '',
+            userLName: '',
+            accumulatedPoints: 0,
+            role: 0,
+            userAddress: '',
+            userCity: '',
+            userState: '',
+            userZip: 0,
+        },
         cardNumber: 1111111111111111,
         securityCode: 111,
         expirationDate: '11/11',
@@ -33,7 +45,7 @@ export class PaymentinfoComponent implements OnInit, OnChanges {
 
     ngOnInit() {
         this.auth.requestCustomerData();
-        setInterval(() => { this.regPay.customerInfo = this.auth.customerinfo; }, 10000);
+        setInterval(() => { this.regPay.customerInfo = this.auth.customerinfo; }, 1000);
         this.paymentService.getPayment(localStorage.getItem('email'));
         setInterval(async () => { this.pInfo = this.paymentService.paymentMethod; }, 100);
     }

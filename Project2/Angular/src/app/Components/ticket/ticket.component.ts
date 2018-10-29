@@ -7,6 +7,7 @@ import { PostTitle } from '../forumpost/post/ForumPost';
 import { ForumpostService } from '../../Services/ForumPost/forumpost.service';
 import { ActivatedRoute } from '@angular/router';
 import { PaymentService } from 'src/app/Services/Account/payment.service';
+import { Payment } from '../paymentinfo/payment/payment';
 @Component({
     selector: 'app-ticket',
     templateUrl: './ticket.component.html',
@@ -18,6 +19,7 @@ export class TicketComponent implements OnInit, OnChanges {
     topic: Topic = null;
     postTitles: PostTitle[] = null;
     purchased: boolean = false;
+    paymentMethod: Payment;
     // tslint:disable-next-line:max-line-length
     constructor(private payment: PaymentService, private ticketService: TicketService, private topicService: TopicService, private fps: ForumpostService, private ar: ActivatedRoute) { }
     ngOnChanges(changes: SimpleChanges): void {
@@ -41,6 +43,8 @@ export class TicketComponent implements OnInit, OnChanges {
                 this.ticketId = Number.parseInt(this.ar.snapshot.url[3].path, 10);
                 this.ticketService.getTicketById(this.ticketId);
                 setInterval((async () => { this.ticket = this.ticketService.ticket; }), 100);
+                this.payment.getPayment(localStorage.getItem("email"));
+                setInterval((async () => { this.paymentMethod = this.payment.paymentMethod; }), 300);
             }
 
             this.topicService.getTopicById(this.ticketId);
@@ -63,7 +67,7 @@ export class TicketComponent implements OnInit, OnChanges {
         this.purchased = true;
     }
 
-    paymentMethod() {
+    hasPaymentMethod() {
         if (this.payment.paymentMethod == null) {
             return false;
         }

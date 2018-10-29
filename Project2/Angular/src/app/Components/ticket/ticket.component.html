@@ -1,8 +1,5 @@
-<div *ngIf="loggedIn()">
-    <app-paymentinfo></app-paymentinfo>
-</div>
 <div class="row py-3">
-    <h1 class="ml-3">{{ticket.eventType}}</h1>
+    <h1 class="ml-3">{{ticket?.eventType}}</h1>
 </div>
 <div *ngIf="ticket" class="row mx-3">
     <div class="col-10 card">
@@ -40,10 +37,10 @@
     </div>
     <div class="col-2 mr-auto" *ngIf="!isPurchased() else purchased">
         <div *ngIf='loggedIn() else login'>
-            <button class="btn btn-info float-right" *ngIf="paymentMethod() else addPayment" (click)="purchase()">
+            <button class="btn btn-info float-right" *ngIf="hasPaymentMethod() else addPayment" (click)="purchase()">
                 Buy Now!
             </button>
-            <ng-template #addPayment>Please add a payment method above.</ng-template>
+            <ng-template #addPayment>Please add a payment method.</ng-template>
         </div>
         <ng-template #login>
             <h6>Login or Register to buy!</h6>
